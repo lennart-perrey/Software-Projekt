@@ -27,26 +27,26 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
              </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="Login_Logo.png" HeightRequest="80" VerticalOptions="End"/>
+                <Image Grid.Row="0" Source="Login_Logo.png" HeightRequest="100" VerticalOptions="End"/>
 
                 <Entry Grid.Row="1" x:Name="entry_email" Placeholder="max.mustermann@mail.de"
-                   BackgroundColor="White" HeightRequest="40" HorizontalTextAlignment="Center"
-                       Margin="0,20,0,0"/>
+                   BackgroundColor="White" HeightRequest="50" HorizontalTextAlignment="Center"
+                       Margin="0,80,0,0"/>
             
                 <Entry Grid.Row="2" x:Name="entry_password" Placeholder="password"
-                   BackgroundColor="White" HeightRequest="40" HorizontalTextAlignment="Center"/>
+                   BackgroundColor="White" HeightRequest="50" HorizontalTextAlignment="Center"/>
                 
                 <Button Grid.Row="3" x:Name="btn_login" Text="Sign Up" VerticalOptions="Center"
-                    HorizontalOptions="Fill" HeightRequest="40" Margin="0,20,0,0"
+                    HorizontalOptions="Fill" HeightRequest="50" Margin="0,20,0,0"
                     Clicked="btn_login_clicked" BackgroundColor="Gray"
                     TextColor="White" FontAttributes="Bold" FontSize="18"/>
                 
                 <Label Grid.Row="4" x:Name="lbl_createAcc" Text="problems to login in? get help here." 
                    HorizontalOptions="Center"
                    TextColor="Gray" FontSize="13" FontAttributes="Italic"
-                   Margin="0,20,0,0"/>
+                   Margin="0,10,0,0"/>
             
-                <Grid Grid.Row="5" Margin="0,20,0,0">
+                <Grid Grid.Row="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
@@ -59,7 +59,7 @@
                 <Label Grid.Column="2" BackgroundColor="Gray" HeightRequest="1" 
                         HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
             </Grid>
-            <StackLayout Orientation="Horizontal" Grid.Row="6" Margin="0,20,0,100"
+            <StackLayout Orientation="Horizontal" Grid.Row="6" Margin="0,20,0,80"
                          HorizontalOptions="Center">
                 <Image Source="FaceBookLogo.png" HeightRequest="35" WidthRequest="35"/>
                 <Label Text="Log in with facebook" TextColor="#485992" Margin="0,5,0,0"/>
