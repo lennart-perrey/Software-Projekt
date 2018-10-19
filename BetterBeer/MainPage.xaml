@@ -59,14 +59,14 @@
                 <Label Grid.Column="2" BackgroundColor="Gray" HeightRequest="1" 
                         HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
             </Grid>
-            <StackLayout Orientation="Horizontal" Grid.Row="6" Margin="0,20,0,80"
+            <StackLayout Orientation="Horizontal" Grid.Row="6" Margin="0,5,0,50"
                          HorizontalOptions="Center">
                 <Image Source="FaceBookLogo.png" HeightRequest="35" WidthRequest="35"/>
                 <Label Text="Log in with facebook" TextColor="#485992" Margin="0,5,0,0"/>
             </StackLayout>
             <Label Grid.Row="7" BackgroundColor="Gray" HeightRequest="1" 
                         HorizontalOptions="Fill" VerticalOptions="Center"/>
-            <Label Grid.Row="8" Text="Sign up for new Account" TextColor="Gray"
+            <Label Grid.Row="8" Text="Sign up for new Account" TextColor="#FFCD33" FontSize="Default"
                    HorizontalOptions="Center" VerticalOptions="FillAndExpand"
                    HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
