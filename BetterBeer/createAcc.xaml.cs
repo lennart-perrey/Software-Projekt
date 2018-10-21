@@ -10,6 +10,7 @@ namespace BetterBeer
         public createAcc()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void btn_create_clicked(object sender, EventArgs e)

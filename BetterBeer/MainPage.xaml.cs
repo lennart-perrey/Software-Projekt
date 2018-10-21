@@ -22,6 +22,7 @@ namespace BetterBeer
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            NavigationPage.SetHasNavigationBar(new createAcc(), false);
             await Navigation.PushAsync(new NavigationPage(new createAcc()));
         }
     }
