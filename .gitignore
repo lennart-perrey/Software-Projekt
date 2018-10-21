@@ -1,3 +1,7 @@
+Resource.designer.cs
+*.csproj
+*.sln
+
 # Autosave files
 *~
 
