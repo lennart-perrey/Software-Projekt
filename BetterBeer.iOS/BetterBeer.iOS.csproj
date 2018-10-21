@@ -158,5 +158,6 @@
     <BundleResource Include="Resources\Login_Logo.png" />
     <BundleResource Include="Resources\BetterBeerLogo.png" />
     <BundleResource Include="Resources\FaceBookLogo.png" />
+    <BundleResource Include="Resources\BackButton.png" />
   </ItemGroup>
 </Project>

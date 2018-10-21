@@ -20,9 +20,9 @@ namespace BetterBeer
             App.Current.MainPage = new NavigationPage(new AppPage());
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new AppPage());
+            await Navigation.PushAsync(new NavigationPage(new createAcc()));
         }
     }
 }
