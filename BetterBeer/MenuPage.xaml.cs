@@ -10,6 +10,7 @@ namespace BetterBeer
         public MenuPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

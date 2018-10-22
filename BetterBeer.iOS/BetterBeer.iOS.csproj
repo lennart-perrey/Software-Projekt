@@ -159,5 +159,6 @@
     <BundleResource Include="Resources\BetterBeerLogo.png" />
     <BundleResource Include="Resources\FaceBookLogo.png" />
     <BundleResource Include="Resources\BackButton.png" />
+    <BundleResource Include="Resources\Login_Logo_Android.png" />
   </ItemGroup>
 </Project>
