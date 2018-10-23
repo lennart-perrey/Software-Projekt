@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.createAcc">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+       <StackLayout Margin="20,0,20,0">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="Start">
+                <Image Source="Login_Logo.png" HeightRequest="80" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Grid BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                 </Grid.RowDefinitions>
+                    
+                    <Entry Grid.Row="0" x:Name="entry_vorName" Placeholder="Vorname"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                        
+                    <Entry Grid.Row="1" x:Name="entry_Name" Placeholder="Nachname"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                                            
+                    <Entry Grid.Row="2" x:Name="entry_UserName" Placeholder="Username"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                    
+                    <Entry Grid.Row="3" x:Name="entry_eMail" Placeholder="your E-Mail"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                
+                    <Entry Grid.Row="4" x:Name="entry_password" Placeholder="password"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                        
+                    <Entry Grid.Row="5" x:Name="entry_password2" Placeholder="repeat password"
+                       BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                    
+                    <Button Grid.Row="6" x:Name="btn_create" Text="join Family" VerticalOptions="Center"
+                        HorizontalOptions="Fill" HeightRequest="45"
+                        Clicked="btn_create_clicked" BackgroundColor="Gray"
+                        TextColor="White" FontAttributes="Bold" FontSize="18"/>
+              </Grid>
+         </StackLayout>
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

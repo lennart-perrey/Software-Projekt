@@ -10,6 +10,7 @@ namespace BetterBeer
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void btn_login_clicked(object sender, EventArgs e)
@@ -20,9 +21,10 @@ namespace BetterBeer
             App.Current.MainPage = new NavigationPage(new AppPage());
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new AppPage());
+            NavigationPage.SetHasNavigationBar(new createAcc(), false);
+            await Navigation.PushAsync(new NavigationPage(new createAcc()));
         }
     }
 }

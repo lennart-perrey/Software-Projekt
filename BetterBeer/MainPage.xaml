@@ -14,16 +14,25 @@
         </OnPlatform>
     </ContentPage.Padding>
     
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="LoginLogo" x:TypeArguments="ImageSource">
+                <OnPlatform.iOS>Login_Logo.png</OnPlatform.iOS>
+                <OnPlatform.Android>Login_Logo_Android.png</OnPlatform.Android>
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     
     <ContentPage.Content>
-       <StackLayout Margin="20,0,20,0">
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" 
+       <StackLayout BackgroundColor="White">
+        <StackLayout Margin="20,0,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
-                <Image Source="Login_Logo.png" HeightRequest="80" 
+                <Image Source="{StaticResource LoginLogo}"  
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
         </StackLayout>
-        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+        <StackLayout Margin="20,0,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
@@ -63,7 +72,7 @@
                 <Label Grid.Column="2" BackgroundColor="Gray" HeightRequest="1" 
                         HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
             </Grid>
-                <StackLayout Orientation="Horizontal" Grid.Row="5" Margin="50,0,0,0">
+                <StackLayout Orientation="Horizontal" Grid.Row="5" Margin="35,0,0,0">
                     <Image Source="FaceBookLogo.png" HeightRequest="35" WidthRequest="35" 
                            HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                     <Label Text="Log in with facebook" TextColor="#485992"
@@ -72,7 +81,7 @@
                 </StackLayout>
           </Grid>
         </StackLayout>
-        <StackLayout Orientation="Vertical" VerticalOptions="End" Margin="0,0,0,10">      
+        <StackLayout Margin="20,0,20,25" Orientation="Vertical" VerticalOptions="End">      
                     <Label BackgroundColor="Gray" HeightRequest="1" 
                            HorizontalOptions="Fill" VerticalOptions="Center"/>
                     <Label Text="Sign up for new Account" TextColor="#FFCD33" 
