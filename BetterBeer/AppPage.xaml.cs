@@ -10,6 +10,7 @@ namespace BetterBeer
         public AppPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void btn_login_clicked(object sender, EventArgs e)

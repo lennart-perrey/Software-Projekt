@@ -134,8 +134,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo-120-120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo-120-120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -144,7 +148,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -159,5 +163,6 @@
     <BundleResource Include="Resources\BetterBeerLogo.png" />
     <BundleResource Include="Resources\FaceBookLogo.png" />
     <BundleResource Include="Resources\BackButton.png" />
+    <BundleResource Include="Resources\Login_Logo_Android.png" />
   </ItemGroup>
 </Project>

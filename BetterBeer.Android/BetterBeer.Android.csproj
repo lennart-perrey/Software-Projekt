@@ -88,6 +88,7 @@
     <AndroidResource Include="Resources\drawable\FaceBookLogo.png" />
     <AndroidResource Include="Resources\drawable\Login_Logo.png" />
     <AndroidResource Include="Resources\drawable\BackButton.png" />
+    <AndroidResource Include="Resources\drawable\Login_Logo_Android.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
