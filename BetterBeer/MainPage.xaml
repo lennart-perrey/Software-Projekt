@@ -29,8 +29,8 @@
         <StackLayout Margin="20,0,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
                 <Image Source="{StaticResource LoginLogo}"  
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
+                       HorizontalOptions="Fill"
+                       VerticalOptions="FillAndExpand"/>
         </StackLayout>
         <StackLayout Margin="20,0,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <Grid BackgroundColor="White">
