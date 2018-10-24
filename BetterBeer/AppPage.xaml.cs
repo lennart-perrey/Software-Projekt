@@ -13,9 +13,9 @@ namespace BetterBeer
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private async void btn_login_clicked(object sender, EventArgs e)
+        private  void btn_login_clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new MenuPage()));
+             Navigation.PushAsync(new NavigationPage(new MenuPage()));
         }
     }
 }

@@ -2376,7 +2376,7 @@ namespace BetterBeer.Droid
 			public const int BetterBeerLogo = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int Camera = 2130837593;
+			public const int camera = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
 			public const int Chart = 2130837594;
