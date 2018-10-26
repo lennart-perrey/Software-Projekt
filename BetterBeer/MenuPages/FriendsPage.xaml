@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BetterBeer.FriendsPage"
+             BackgroundColor="#FFCD33">
+    
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="stlout_Swipe" Margin="10,15,10,10">
+            <Grid >
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="btn_Scan" Text="Scan" BorderColor="Black" BackgroundColor="#d18c3e" FontSize="Small" />
+                <Button Grid.Column="1"   x:Name="btn_Star" Text="Best Of" BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small"  />
+                <Button Grid.Column="2"  x:Name="btn_Dashboard" Text="Dashboard"  BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small"/>
+                <Button Grid.Column="3"   x:Name="btn_Friends" Text="Friends" BorderColor="Black"  FontSize="Small" BackgroundColor="#ffd966"/>
+                <Button Grid.Column="4"    x:Name="btn_Options" Text="Options" BorderColor="Black"   BackgroundColor="#d18c3e" FontSize="Small"/>
+
+
+            </Grid>
+
+            <Grid x:Name="grd_Swipe">
+                <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

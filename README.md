@@ -1,2 +1,0 @@
-# Software-Projekt
-Software Projekt

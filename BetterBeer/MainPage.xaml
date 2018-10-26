@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.MainPage">
+ 
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="LoginLogo" x:TypeArguments="ImageSource">
+                <OnPlatform.iOS>Login_Logo.png</OnPlatform.iOS>
+                <OnPlatform.Android>Login_Logo_Android.png</OnPlatform.Android>
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <ContentPage.Content>
+       <StackLayout BackgroundColor="White">
+        <StackLayout Margin="20,40,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
+                     VerticalOptions="Start">
+                <Image Source="{StaticResource LoginLogo}"  
+                       HorizontalOptions="Fill"
+                       VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+        <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+             </Grid.RowDefinitions>
+                
+                <Entry Grid.Row="0" x:Name="entry_email" Placeholder="max.mustermann@mail.de"
+                   BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Center"/>
+            
+                <Entry Grid.Row="1" x:Name="entry_password" Placeholder="password"
+                   BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Center"/>
+                
+                <Button Grid.Row="2" x:Name="btn_login" Text="Sign Up" VerticalOptions="Center"
+                    HorizontalOptions="Fill" HeightRequest="45"
+                    Clicked="btn_login_clicked" BackgroundColor="Gray"
+                    TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                
+                <Label Grid.Row="3" x:Name="lbl_createAcc" Text="problems to login in? get help here." 
+                   HorizontalOptions="Center"
+                   TextColor="Gray" FontSize="13" FontAttributes="Italic"
+                   Margin="0,10,0,0"/>
+            
+                <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" BackgroundColor="Gray" HeightRequest="1" 
+                        HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="OR" VerticalOptions="Center" TextColor="Gray"
+                       FontSize="15"/>
+                <Label Grid.Column="2" BackgroundColor="Gray" HeightRequest="1" 
+                        HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            </Grid>
+                <StackLayout Orientation="Horizontal" Grid.Row="5" Margin="35,0,0,0">
+                    <Image Source="FaceBookLogo.png" HeightRequest="35" WidthRequest="35" 
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                    <Label Text="Log in with facebook" TextColor="#485992"
+                           HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                           Margin="-20,0,0,0"/>
+                </StackLayout>
+          </Grid>
+        </StackLayout>
+        <StackLayout Margin="20,0,20,25" Orientation="Vertical" VerticalOptions="End">      
+                    <Label BackgroundColor="Gray" HeightRequest="1" 
+                           HorizontalOptions="Fill" VerticalOptions="Center"/>
+                    <Label Text="Sign up for new Account" TextColor="#FFCD33" 
+                           FontSize="Default" HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Label.GestureRecognizers>
+                    </Label>
+           </StackLayout>
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

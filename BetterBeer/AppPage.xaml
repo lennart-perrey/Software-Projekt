@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.AppPage">
+    <ContentPage.Content>
+        <StackLayout Padding="2" BackgroundColor="#FFCD33">
+           <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
+                
+                <Button x:Name="btn_login" Text="Login" VerticalOptions="Center"
+                        HorizontalOptions="Center" BackgroundColor="White"
+                        WidthRequest="150" Margin="15" TextColor="#FFCD33"
+                        FontAttributes="Bold" FontSize="Large"
+                        Clicked="btn_login_clicked"/>
+                
+           </StackLayout> 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
