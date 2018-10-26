@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.FriendsPage"
-             BackgroundImage="BetterBeerLogo.png">
+             BackgroundColor="#FFCD33">
     
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -16,7 +16,7 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe">
+        <StackLayout x:Name="stlout_Swipe" Margin="10,15,10,10">
             <Grid >
 
                     <Grid.RowDefinitions>
