@@ -69,7 +69,7 @@
                 </Grid>
             </StackLayout>
             
-            <StackLayout VerticalOptions="Fill" Orientation="Vertical"  BackgroundColor="White">
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
 
             
                 <Grid Margin="10,25,10,10">
