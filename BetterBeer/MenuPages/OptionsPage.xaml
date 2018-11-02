@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.OptionsPage"
-             BackgroundColor="White">
+             BackgroundColor="Black">
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -70,7 +70,7 @@
 
             </StackLayout>
 
-            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical"  BackgroundColor="White">
+            <StackLayout VerticalOptions="Fill" Orientation="Vertical"  BackgroundColor="White">
                 <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
                     <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
                 </Grid>
