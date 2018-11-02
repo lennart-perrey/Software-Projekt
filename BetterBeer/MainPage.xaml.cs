@@ -20,7 +20,7 @@ namespace BetterBeer
 
             if (Database.checkUser(email, password))
             {
-                App.Current.MainPage = new NavigationPage(new MenuPage());
+                await Navigation.PushAsync(new MenuPage());
             }
             else
             {

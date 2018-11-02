@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 
 using Xamarin.Forms;
@@ -15,15 +14,14 @@ namespace BetterBeer
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+
+        
             listener = new SwipeListener(stlout_Swipe, this);
         }
 
         public void OnLeftSwipe(View view)
         {
-            img_Ranking.BackgroundColor = img_Friends.BackgroundColor;
-            img_Friends.BackgroundColor = img_Ranking.BackgroundColor;
-
-            App.Current.MainPage = new NavigationPage(new FriendsPage());
+            App.Current.MainPage = new FriendsPage();
         }
 
         public void OnNothingSwipe(View view)
@@ -33,10 +31,8 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-            img_Ranking.BackgroundColor = img_Friends.BackgroundColor;
-            img_Friends.BackgroundColor = img_Ranking.BackgroundColor;
 
-            App.Current.MainPage = new NavigationPage(new StarPage());
+            App.Current.MainPage = new StarPage();
         }
 
         public void OnTopSwipe(View view)
@@ -46,20 +42,20 @@ namespace BetterBeer
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
+            App.Current.MainPage = new OptionsPage();
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new MenuPage());
+            App.Current.MainPage = new MenuPage();
         }
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new StarPage());
+            App.Current.MainPage = new StarPage();
         }
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new FriendsPage());
+            App.Current.MainPage = new FriendsPage();
         }
 
     }

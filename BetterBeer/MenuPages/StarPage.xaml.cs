@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,13 +13,14 @@ namespace BetterBeer.MenuPages
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
 
+
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
         public void OnLeftSwipe(View view)
         {
 
-            App.Current.MainPage = new NavigationPage(new MenuPage());
+            App.Current.MainPage = new MenuPage();
         }
 
         public void OnNothingSwipe(View view)
@@ -34,7 +30,7 @@ namespace BetterBeer.MenuPages
 
         public void OnRightSwipe(View view)
         {
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
+            App.Current.MainPage = new OptionsPage();
         }
 
         public void OnTopSwipe(View view)
@@ -44,17 +40,17 @@ namespace BetterBeer.MenuPages
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
+            App.Current.MainPage = new OptionsPage();
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new MenuPage());
+            App.Current.MainPage = new MenuPage();
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new FriendsPage());
+            App.Current.MainPage = new FriendsPage();
         }
     }
 }

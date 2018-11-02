@@ -68,9 +68,11 @@
                 </Grid>
             </StackLayout>
 
-            <Grid x:Name="grd_Swipe" Margin="10,25,10,10">
-                <Label FontSize="Large">UND HIER DIE BESTEN BIERE DER WELT IN IHREN EINZELNEN KATEGORIEN</Label>
-            </Grid>
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                    <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

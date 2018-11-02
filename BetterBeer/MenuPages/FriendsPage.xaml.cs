@@ -1,10 +1,5 @@
 ﻿using BetterBeer.MenuPages;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +14,8 @@ namespace BetterBeer
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+
             listener = new SwipeListener(stlout_Swipe, this);
         }
 
@@ -33,10 +30,9 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-            img_Scan.BackgroundColor = img_Friends.BackgroundColor;
-            img_Friends.BackgroundColor = img_Options.BackgroundColor;
+ 
 
-            App.Current.MainPage = new NavigationPage(new MenuPage());
+            App.Current.MainPage = new MenuPage();
         }
 
         public void OnTopSwipe(View view)
@@ -46,17 +42,17 @@ namespace BetterBeer
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
+            App.Current.MainPage = new OptionsPage();
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new MenuPage());
+            App.Current.MainPage = new MenuPage();
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new StarPage());
+            App.Current.MainPage = new StarPage();
         }
 
     }

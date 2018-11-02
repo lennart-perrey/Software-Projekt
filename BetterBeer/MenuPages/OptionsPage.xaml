@@ -70,9 +70,9 @@
 
             </StackLayout>
 
-            <StackLayout Margin="10,25,10,10">
-                <Grid x:Name="grd_Swipe">
-                    <Label FontSize="Large">Hier dann der platz für einzelne Optionen</Label>
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                    <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
                 </Grid>
             </StackLayout>
         </StackLayout>

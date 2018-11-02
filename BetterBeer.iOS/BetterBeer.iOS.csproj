@@ -160,9 +160,42 @@
   <ItemGroup>
     <BundleResource Include="Resources\BetterBeer_Logo.png" />
     <BundleResource Include="Resources\Login_Logo.png" />
-    <BundleResource Include="Resources\BetterBeerLogo.png" />
+    <AndroidResource Include="Resources\BetterBeerLogo.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <BundleResource Include="Resources\FaceBookLogo.png" />
     <BundleResource Include="Resources\BackButton.png" />
     <BundleResource Include="Resources\Login_Logo_Android.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RankingButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RankingButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CameraButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CameraButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Friends.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FriendsButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HomeButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HomeButtonClicked.PNG" />
   </ItemGroup>
 </Project>

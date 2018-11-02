@@ -17,7 +17,7 @@
 
     <ContentPage.Content>
         <StackLayout x:Name="stlout_Swipe" >
-            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="Black">
+            <StackLayout VerticalOptions="Start" BackgroundColor="Black">
                 <Grid >
 
                     <Grid.RowDefinitions>
@@ -65,11 +65,11 @@
                     </Image>
                 </Grid>
             </StackLayout>
-
-            <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
-            </Grid>
-
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                    <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
