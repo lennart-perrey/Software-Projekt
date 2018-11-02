@@ -32,7 +32,7 @@ namespace BetterBeer
             }
             else
             {
-                if (Database.newUser(uName, email, password))
+                if (Database.NewUser(uName, email, password))
                 {
                     await DisplayAlert("Super", "Dein Account wurde erfolgreich angelegt", "Ok");
                     App.Current.MainPage = new NavigationPage(new MainPage());

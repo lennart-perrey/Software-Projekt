@@ -12,12 +12,21 @@ namespace BetterBeer
     public class Database
     {
         const string API = "http://spbier.bplaced.net/DBConnect.php";
-        public static bool checkUser(string login, string password)
+        public static bool CheckUser(string login, string password)
         {
 
-            var postData = $"username={login}&password={password}";
-            string responseString = apiCall("validUser", postData);
+            string postData = $"password={password}";
+            if (login.Contains("@"))
+            {
+                postData += $"&email={login}";
 
+            }
+            else
+            {
+                postData += $"&username={login}";
+            }
+
+            string responseString = apiCall("validUser", postData);
 
             if (responseString == "1")
             {
@@ -29,9 +38,9 @@ namespace BetterBeer
             }
         }
 
-        public static bool newUser(String uName, String email, String password)
+        public static bool NewUser(String uName, String email, String password)
         {
-            var postData = $"username={uName}&email={email}&password={password}";
+            string postData = $"username={uName}&email={email}&password={password}";
             string responseString = apiCall("createUser", postData);
 
             if (responseString == "1")
@@ -47,9 +56,9 @@ namespace BetterBeer
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;
-            var data = Encoding.ASCII.GetBytes(postData);
+            byte[] data = Encoding.ASCII.GetBytes(postData);
 
-            var request = WebRequest.Create(requestString);
+            WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;

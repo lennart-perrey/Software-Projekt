@@ -18,7 +18,7 @@ namespace BetterBeer
             string email = entry_email.Text;
             string password = entry_password.Text;
 
-            if (Database.checkUser(email, password))
+            if (Database.CheckUser(email, password))
             {
                 await Navigation.PushAsync(new MenuPage());
             }
