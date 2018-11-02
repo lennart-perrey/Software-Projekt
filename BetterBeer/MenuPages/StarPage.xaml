@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.MenuPages.StarPage"
-             BackgroundColor="#FFCD33">
+             BackgroundColor="White">
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -13,38 +13,64 @@
                 0,0,0,0
             </OnPlatform.Android>
         </OnPlatform>
-        
+
     </ContentPage.Padding>
-    
+
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" Margin="10,15,10,10">
-            <Grid >
+        <StackLayout x:Name="stlout_Swipe" >
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                </Grid.RowDefinitions>
-
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" x:Name="btn_Scan" Text="Scan" BorderColor="Black" BackgroundColor="#d18c3e" FontSize="Small" />
-                <Button Grid.Column="1"   x:Name="btn_Star" Text="Best Of" BorderColor="Black"  BackgroundColor="#ffd966" FontSize="Small"  />
-                <Button Grid.Column="2"  x:Name="btn_Dashboard" Text="Dashboard"  BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small"/>
-                <Button Grid.Column="3"   x:Name="btn_Friends" Text="Friends" BorderColor="Black"  FontSize="Small" BackgroundColor="#d18c3e"/>
-                <Button Grid.Column="4"    x:Name="btn_Options" Text="Options" BorderColor="Black"  BackgroundColor="#d18c3e"  FontSize="Small"/>
+            <StackLayout BackgroundColor="Black" VerticalOptions="Start">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
 
 
-            </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-            <Grid x:Name="grd_Swipe">
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options_Tapped" ></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Image x:Name="img_Ranking" Source="RankingButtonClicked.PNG" Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer  ></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Friends_Tapped" ></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </StackLayout>
+
+            <Grid x:Name="grd_Swipe" Margin="10,25,10,10">
                 <Label FontSize="Large">UND HIER DIE BESTEN BIERE DER WELT IN IHREN EINZELNEN KATEGORIEN</Label>
             </Grid>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

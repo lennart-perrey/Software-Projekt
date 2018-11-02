@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.FriendsPage"
-             BackgroundColor="#FFCD33">
-    
+             BackgroundColor="White">
+
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <OnPlatform.iOS>
@@ -16,8 +16,9 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" Margin="10,15,10,10">
-            <Grid >
+        <StackLayout x:Name="stlout_Swipe" >
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="Black">
+                <Grid >
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -32,16 +33,40 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" x:Name="btn_Scan" Text="Scan" BorderColor="Black" BackgroundColor="#d18c3e" FontSize="Small" />
-                <Button Grid.Column="1"   x:Name="btn_Star" Text="Best Of" BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small"  />
-                <Button Grid.Column="2"  x:Name="btn_Dashboard" Text="Dashboard"  BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small"/>
-                <Button Grid.Column="3"   x:Name="btn_Friends" Text="Friends" BorderColor="Black"  FontSize="Small" BackgroundColor="#ffd966"/>
-                <Button Grid.Column="4"    x:Name="btn_Options" Text="Options" BorderColor="Black"   BackgroundColor="#d18c3e" FontSize="Small"/>
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
 
 
-            </Grid>
+                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
 
-            <Grid x:Name="grd_Swipe">
+                    <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Tapped" ></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Friends" Source="FriendsButtonClicked.PNG" Grid.Column="3">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer ></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </StackLayout>
+
+            <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
                 <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
             </Grid>
 

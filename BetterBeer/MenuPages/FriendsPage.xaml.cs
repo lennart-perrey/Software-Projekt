@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BetterBeer.MenuPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +10,20 @@ using Xamarin.Forms.Xaml;
 
 namespace BetterBeer
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FriendsPage : ContentPage,ISwipeCallback
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FriendsPage : ContentPage, ISwipeCallback
+    {
         SwipeListener listener;
 
-		public FriendsPage()
-		{
-			InitializeComponent();
+        public FriendsPage()
+        {
+            InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             listener = new SwipeListener(stlout_Swipe, this);
         }
 
         public void OnLeftSwipe(View view)
         {
-            btn_Options.BackgroundColor = btn_Friends.BackgroundColor;
-            btn_Friends.BackgroundColor = btn_Options.BackgroundColor;
-
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
         }
 
         public void OnNothingSwipe(View view)
@@ -36,9 +33,8 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-
-            btn_Dashboard.BackgroundColor = btn_Friends.BackgroundColor;
-            btn_Friends.BackgroundColor = btn_Dashboard.BackgroundColor;
+            img_Scan.BackgroundColor = img_Friends.BackgroundColor;
+            img_Friends.BackgroundColor = img_Options.BackgroundColor;
 
             App.Current.MainPage = new NavigationPage(new MenuPage());
         }
@@ -47,5 +43,21 @@ namespace BetterBeer
         {
 
         }
+
+        private void Options_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new OptionsPage());
+        }
+
+        private void Home_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new MenuPage());
+        }
+
+        private void Ranking_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new StarPage());
+        }
+
     }
 }

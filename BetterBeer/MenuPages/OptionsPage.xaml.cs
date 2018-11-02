@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BetterBeer.MenuPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,21 +10,21 @@ using Xamarin.Forms.Xaml;
 
 namespace BetterBeer
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OptionsPage : ContentPage,ISwipeCallback
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class OptionsPage : ContentPage, ISwipeCallback
+    {
         SwipeListener listener;
 
-		public OptionsPage()
-		{
-			InitializeComponent ();
+        public OptionsPage()
+        {
+            InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
         public void OnLeftSwipe(View view)
         {
-
+            App.Current.MainPage = new NavigationPage(new StarPage());
         }
 
         public void OnNothingSwipe(View view)
@@ -34,15 +35,25 @@ namespace BetterBeer
         public void OnRightSwipe(View view)
         {
 
-            btn_Friends.BackgroundColor = btn_Options.BackgroundColor;
-            btn_Options.BackgroundColor = btn_Friends.BackgroundColor;
-
-            App.Current.MainPage = new NavigationPage(new FriendsPage());
         }
 
         public void OnTopSwipe(View view)
         {
 
+        }
+
+
+        private void Home_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new MenuPage());
+        }
+        private void Ranking_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new StarPage());
+        }
+        private void Friends_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new FriendsPage());
         }
     }
 }

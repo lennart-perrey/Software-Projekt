@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BetterBeer.MenuPage"
-             BackgroundColor="#FFCD33">
-             
+             BackgroundColor="White">
+
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <OnPlatform.iOS>
@@ -18,32 +18,58 @@
 
     <ContentPage.Content>
 
-        <StackLayout x:Name="stlout_Swipe" Margin="10,15,10,10">
+        <StackLayout x:Name="stlout_Swipe" >
 
-            <Grid BackgroundColor="#FFCD33">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                </Grid.RowDefinitions>
-
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="0" x:Name="btn_Scan" Text="Scan" BorderColor="Black" BackgroundColor="#d18c3e" FontSize="Small" Clicked="btn_scan_Clicked" />
-                <Button Grid.Column="1"   x:Name="btn_Star" Text="Best Of" BorderColor="Black"  BackgroundColor="#d18c3e" FontSize="Small" Clicked="btn_Star_Clicked"  />
-                <Button Grid.Column="2"  x:Name="btn_Dashboard" Text="Dashboard"  BorderColor="Black"  BackgroundColor="#ffd966" FontSize="Small" Clicked="btn_Dashboard_Clicked"/>
-                <Button Grid.Column="3"   x:Name="btn_Friends" Text="Friends" BorderColor="Black"  FontSize="Small" BackgroundColor="#d18c3e" Clicked="btn_Friends_Clicked"/>
-                <Button Grid.Column="4"    x:Name="btn_Options" Text="Options" BorderColor="Black"   BackgroundColor="#d18c3e" FontSize="Small" Clicked="btn_Options_Clicked"/>
-
-            </Grid>
-
-            <Grid>
+            <StackLayout BackgroundColor="Black" VerticalOptions="StartAndExpand">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Home" Source="HomeButtonClicked.PNG" Grid.Column="2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </StackLayout>
+            <Grid>
+                <Grid Margin="10,25,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -58,17 +84,17 @@
                     <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent" >
                         <Label    Text="Bestes Bier: Ratsherrn"></Label>
                     </Frame>
-                    
+
                     <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent" >
                         <Label   Text="Dein Freund Leon hat Astra zuletzt bewertet"></Label>
                     </Frame>
-                    
+
                     <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent"  >
                         <Label   Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd "></Label>
                     </Frame>
 
                     <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent">
-                        
+
                         <Label Text="Bier des Tages: Augustiner Premium Bier"></Label>
                     </Frame>
 
@@ -85,3 +111,4 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+

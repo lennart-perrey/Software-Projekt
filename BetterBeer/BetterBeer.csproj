@@ -17,6 +17,9 @@
     <Compile Remove="MyPage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="ForgotPassword.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="MenuPages\FriendsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

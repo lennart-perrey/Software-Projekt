@@ -13,18 +13,33 @@ namespace BetterBeer
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private void btn_login_clicked(object sender, EventArgs e)
+        private async void btn_login_clicked(object sender, EventArgs e)
         {
             string email = entry_email.Text;
             string password = entry_password.Text;
 
-            App.Current.MainPage = new NavigationPage(new AppPage());
+            if (Database.checkUser(email, password))
+            {
+                App.Current.MainPage = new NavigationPage(new MenuPage());
+            }
+            else
+            {
+                await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
+                entry_email.Text = "";
+                entry_password.Text = "";
+            }
+
+
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void lbl_createAcc_Tapped(object sender, EventArgs e)
         {
-            NavigationPage.SetHasNavigationBar(new createAcc(), false);
             await Navigation.PushAsync(new NavigationPage(new createAcc()));
+        }
+
+        private async void lbl_forgotPassword_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NavigationPage(new ForgotPassword()));
         }
     }
 }

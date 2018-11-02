@@ -20,8 +20,8 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            btn_Dashboard.BackgroundColor = btn_Friends.BackgroundColor;
-            btn_Friends.BackgroundColor = btn_Dashboard.BackgroundColor;
+            img_Ranking.BackgroundColor = img_Friends.BackgroundColor;
+            img_Friends.BackgroundColor = img_Ranking.BackgroundColor;
 
             App.Current.MainPage = new NavigationPage(new FriendsPage());
         }
@@ -33,8 +33,8 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-            btn_Star.BackgroundColor = btn_Dashboard.BackgroundColor;
-            btn_Dashboard.BackgroundColor = btn_Star.BackgroundColor;
+            img_Ranking.BackgroundColor = img_Friends.BackgroundColor;
+            img_Friends.BackgroundColor = img_Ranking.BackgroundColor;
 
             App.Current.MainPage = new NavigationPage(new StarPage());
         }
@@ -44,34 +44,23 @@ namespace BetterBeer
 
         }
 
-        public void btn_scan_Clicked(object sender, EventArgs e)
+        private void Options_Tapped(object sender, EventArgs e)
         {
-
+            App.Current.MainPage = new NavigationPage(new OptionsPage());
         }
 
-        public void btn_Star_Clicked(object sender, EventArgs e)
+        private void Home_Tapped(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_Dashboard_Clicked(object sender, EventArgs e)
-        {
-
             App.Current.MainPage = new NavigationPage(new MenuPage());
         }
-
-        private void btn_Friends_Clicked(object sender, EventArgs e)
+        private void Ranking_Tapped(object sender, EventArgs e)
         {
-            btn_Dashboard.BackgroundColor = btn_Friends.BackgroundColor;
-            btn_Friends.BackgroundColor = btn_Dashboard.BackgroundColor;
+            App.Current.MainPage = new NavigationPage(new StarPage());
+        }
+        private void Friends_Tapped(object sender, EventArgs e)
+        {
             App.Current.MainPage = new NavigationPage(new FriendsPage());
         }
 
-        private void btn_Options_Clicked(object sender, EventArgs e)
-        {
-            btn_Dashboard.BackgroundColor = btn_Options.BackgroundColor;
-            btn_Options.BackgroundColor = btn_Dashboard.BackgroundColor;
-            App.Current.MainPage = new NavigationPage(new OptionsPage());
-        }
     }
 }
