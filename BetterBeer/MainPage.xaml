@@ -54,7 +54,7 @@
                     Clicked="btn_login_clicked" BackgroundColor="Gray"
                     TextColor="White" FontAttributes="Bold" FontSize="18"/>
 
-                    <Label Grid.Row="3" x:Name="lbl_forgotPassword" Text="Probleme beim anmelden? hilfe gibt es hier." 
+                    <Label Grid.Row="3" x:Name="lbl_forgotPassword" Text="Passwort vergessen?" 
                    HorizontalOptions="Center"
                    TextColor="Gray" FontSize="13" FontAttributes="Italic"
                    Margin="0,10,0,0">

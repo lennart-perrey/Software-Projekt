@@ -1,6 +1,4 @@
 ﻿using System;
-
-
 using Xamarin.Forms;
 using BetterBeer.MenuPages;
 using UIKit;
