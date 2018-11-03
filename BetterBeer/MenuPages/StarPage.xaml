@@ -17,7 +17,7 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" >
+        <StackLayout x:Name="stlout_Swipe" Margin="10,20,10,0">
 
             <StackLayout BackgroundColor="Black" VerticalOptions="Start">
                 <Grid>

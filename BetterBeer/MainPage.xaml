@@ -17,8 +17,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <OnPlatform x:Key="LoginLogo" x:TypeArguments="ImageSource">
-                <OnPlatform.iOS>Login_Logo.png</OnPlatform.iOS>
-                <OnPlatform.Android>Login_Logo_Android.png</OnPlatform.Android>
+                <OnPlatform.iOS>Logo_horizontal_SEPA.png</OnPlatform.iOS>
+                <OnPlatform.Android>Logo_horizontal_SEPA.png</OnPlatform.Android>
             </OnPlatform>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -28,9 +28,7 @@
         <StackLayout BackgroundColor="White">
             <StackLayout Margin="20,40,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
-                <Image Source="{StaticResource LoginLogo}"  
-                       HorizontalOptions="Fill"
-                       VerticalOptions="FillAndExpand"/>
+                <Image Source="{StaticResource LoginLogo}" HeightRequest="120"/>
             </StackLayout>
             <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
                 <Grid BackgroundColor="White">

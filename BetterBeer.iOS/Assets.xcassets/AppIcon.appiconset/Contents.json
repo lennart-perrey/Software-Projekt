@@ -1,49 +1,49 @@
 {
   "images": [
     {
-      "filename": "Icon40.png",
+      "filename": "BetterBeerLogo_40x40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "Icon60.png",
+      "filename": "BetterBeerLogo_60x60.png",
       "size": "20x20",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "Icon58.png",
+      "filename": "BetterBeerLogo_58x58.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "Icon87.png",
+      "filename": "BetterBeerLogo_87x87.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "Icon80.png",
+      "filename": "BetterBeerLogo_80x80.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "BetterBeer_Logo-120-120.png",
+      "filename": "BetterBeerLogo_120x120.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "BetterBeer_Logo-120-120.png",
+      "filename": "BetterBeerLogo_120x120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "BetterBeer_Logo.png",
+      "filename": "BetterBeerLogo_180x180.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"
@@ -103,19 +103,17 @@
       "idiom": "ipad"
     },
     {
-      "filename": "Icon1024.png",
+      "filename": "BetterBeerLogo_1024x1024.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "ios-marketing"
     },
     {
-      "filename": "BetterBeer_Logo-120-120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "car"
     },
     {
-      "filename": "BetterBeer_Logo.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "car"

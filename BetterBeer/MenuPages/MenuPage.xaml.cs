@@ -3,6 +3,7 @@
 
 using Xamarin.Forms;
 using BetterBeer.MenuPages;
+using UIKit;
 
 namespace BetterBeer
 {
@@ -13,10 +14,12 @@ namespace BetterBeer
         public MenuPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();
-
-        
+            InitializeComponent();       
             listener = new SwipeListener(stlout_Swipe, this);
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+            }
         }
 
         public void OnLeftSwipe(View view)

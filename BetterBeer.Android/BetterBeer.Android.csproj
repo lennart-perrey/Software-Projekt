@@ -83,12 +83,10 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\BetterBeer_Logo.png" />
-    <AndroidResource Include="Resources\drawable\BetterBeerLogo.png" />
     <AndroidResource Include="Resources\drawable\FaceBookLogo.png" />
-    <AndroidResource Include="Resources\drawable\Login_Logo.png" />
-    <AndroidResource Include="Resources\drawable\BackButton.png" />
-    <AndroidResource Include="Resources\drawable\Login_Logo_Android.png" />
+    <AndroidResource Include="Resources\drawable\Logo_horizontal_SEPA.png" />
+    <AndroidResource Include="Resources\drawable\BetterBeerLogo_H.png" />
+    <AndroidResource Include="Resources\drawable\BetterBeerLogo_V.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4004" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="BetterBeerLogo.png">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4004" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="BetterBeerLogo_V.png">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                             </imageView>
@@ -34,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BetterBeerLogo.png" width="597" height="943"/>
+        <image name="BetterBeerLogo_V.png" width="4502" height="8002"/>
     </resources>
 </document>

@@ -101,31 +101,13 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
@@ -134,12 +116,14 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeer_Logo-120-120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_40x40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_60x60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_58x58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_87x87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_80x80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_120x120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_180x180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\BetterBeerLogo_1024x1024.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -158,15 +142,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\BetterBeer_Logo.png" />
-    <BundleResource Include="Resources\Login_Logo.png" />
-    <AndroidResource Include="Resources\BetterBeerLogo.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <BundleResource Include="Resources\FaceBookLogo.png" />
-    <BundleResource Include="Resources\BackButton.png" />
-    <BundleResource Include="Resources\Login_Logo_Android.png" />
+    <BundleResource Include="Resources\Logo_horizontal_SEPA.png" />
+    <BundleResource Include="Resources\BetterBeerLogo_H.png" />
+    <BundleResource Include="Resources\BetterBeerLogo_V.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\MenuButtonClicked.PNG" />
