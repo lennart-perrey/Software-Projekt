@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace BetterBeer.MenuPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,7 +14,7 @@ namespace BetterBeer.MenuPages
             NavigationPage.SetHasNavigationBar(this, false);
             if (Device.RuntimePlatform == Device.iOS)
             {
-                UIKit.UIApplication.SharedApplication.StatusBarStyle = UIKit.UIStatusBarStyle.LightContent;
+                SetStatusStyle.SetStyle();
             }
         }
 

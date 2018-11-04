@@ -15,9 +15,9 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
+            if(Device.RuntimePlatform == Device.iOS)
             {
-                UIKit.UIApplication.SharedApplication.StatusBarStyle = UIKit.UIStatusBarStyle.LightContent;
+                SetStatusStyle.SetStyle();
             }
         }
 
