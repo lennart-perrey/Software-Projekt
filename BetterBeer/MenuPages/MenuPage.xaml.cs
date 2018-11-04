@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using BetterBeer.MenuPages;
-using UIKit;
 
 namespace BetterBeer
 {
@@ -16,7 +15,7 @@ namespace BetterBeer
             listener = new SwipeListener(stlout_Swipe, this);
             if(Device.RuntimePlatform == Device.iOS)
             {
-                UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+                UIKit.UIApplication.SharedApplication.StatusBarStyle = UIKit.UIStatusBarStyle.LightContent;
             }
         }
 
