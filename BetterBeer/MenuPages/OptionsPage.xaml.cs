@@ -54,5 +54,9 @@ namespace BetterBeer
         {
             App.Current.MainPage = new FriendsPage();
         }
+        private void Scan_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new ScanPage());
+        }
     }
 }

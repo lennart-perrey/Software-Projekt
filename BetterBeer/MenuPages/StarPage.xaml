@@ -61,7 +61,7 @@
 
                     <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 

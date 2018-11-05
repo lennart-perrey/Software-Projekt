@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
 {
@@ -23,6 +24,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
+
         }
 
         public void OnNothingSwipe(View view)
@@ -32,9 +34,7 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
- 
-
-            App.Current.MainPage = new MenuPage();
+            App.Current.MainPage = new NavigationPage(new ScanPage());
         }
 
         public void OnTopSwipe(View view)
@@ -56,6 +56,9 @@ namespace BetterBeer
         {
             App.Current.MainPage = new StarPage();
         }
-
+        private void Scan_Tapped(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NavigationPage(new ScanPage());
+        }
     }
 }
