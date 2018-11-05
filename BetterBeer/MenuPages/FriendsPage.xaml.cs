@@ -74,6 +74,7 @@ namespace BetterBeer
 
             scan.OnScanResult += (result) =>
             {
+                scan.IsScanning = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();

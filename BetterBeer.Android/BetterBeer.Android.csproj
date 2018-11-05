@@ -93,6 +93,7 @@
     <AndroidResource Include="Resources\drawable\Logo_horizontal_SEPA.png" />
     <AndroidResource Include="Resources\drawable\BetterBeerLogo_H.png" />
     <AndroidResource Include="Resources\drawable\BetterBeerLogoV.png" />
+    <AndroidResource Include="Resources\drawable\BetterBeerLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

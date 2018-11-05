@@ -25,6 +25,6 @@
     <item name="colorAccent">#FF4081</item>
   </style>
   <style name="MyTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:windowBackground">@drawable/BetterBeerLogoV</item>
+    <item name="android:windowBackground">@drawable/BetterBeerLogo</item>
   </style>
 </resources>
