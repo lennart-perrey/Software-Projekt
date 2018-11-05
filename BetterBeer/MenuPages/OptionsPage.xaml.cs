@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
 {
@@ -23,7 +24,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            App.Current.MainPage = new StarPage();
+            Navigation.PushAsync(new StarPage());
         }
 
         public void OnNothingSwipe(View view)
@@ -41,22 +42,34 @@ namespace BetterBeer
 
         }
 
-
         private void Home_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MenuPage();
+            Navigation.PushAsync(new MenuPage());
         }
+
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new StarPage();
+            Navigation.PushAsync(new StarPage());
         }
+
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new FriendsPage();
+            Navigation.PushAsync(new FriendsPage());
         }
+
         private void Scan_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new ScanPage());
+            var scan = new ZXingScannerPage();
+            Navigation.PushAsync(scan);
+
+            scan.OnScanResult += (result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Navigation.PopAsync();
+                    await DisplayAlert("Achtung", result.Text, "Ok");
+                });
+            };
         }
     }
 }

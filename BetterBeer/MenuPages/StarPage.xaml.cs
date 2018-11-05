@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
+
 namespace BetterBeer.MenuPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,7 +23,7 @@ namespace BetterBeer.MenuPages
         public void OnLeftSwipe(View view)
         {
 
-            App.Current.MainPage = new MenuPage();
+            Navigation.PushAsync(new MenuPage());
         }
 
         public void OnNothingSwipe(View view)
@@ -31,7 +33,7 @@ namespace BetterBeer.MenuPages
 
         public void OnRightSwipe(View view)
         {
-            App.Current.MainPage = new OptionsPage();
+            Navigation.PushAsync(new OptionsPage());
         }
 
         public void OnTopSwipe(View view)
@@ -41,21 +43,31 @@ namespace BetterBeer.MenuPages
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new OptionsPage();
+            Navigation.PushAsync(new OptionsPage());
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MenuPage();
+            Navigation.PushAsync(new MenuPage());
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new FriendsPage();
+            Navigation.PushAsync(new FriendsPage());
         }
         private void Scan_Tapped(object sender, EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new ScanPage());
+            var scan = new ZXingScannerPage();
+            Navigation.PushAsync(scan);
+
+            scan.OnScanResult += (result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Navigation.PopAsync();
+                    await DisplayAlert("Achtung", result.Text, "Ok");
+                });
+            };
         }
     }
 }
