@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
@@ -22,19 +23,23 @@ namespace BetterBeer
             }
         }
 
-        public void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
-            var scan = new ZXingScannerPage();
-            Navigation.PushAsync(scan);
+            var scanPage = new ZXingScannerPage();
 
-            scan.OnScanResult += (result) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
+            scanPage.OnScanResult += (result) => {
+                // Stop scanning
+                scanPage.IsScanning = false;
+
+                // Pop the page and show the result
+                Device.BeginInvokeOnMainThread(async () => {
                     await Navigation.PopAsync();
-                    await DisplayAlert("Achtung", result.Text, "Ok");
+                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
+
+            // Navigate to our scanner page
+            await Navigation.PushAsync(scanPage);
         }
 
         public void OnNothingSwipe(View view)
@@ -67,20 +72,33 @@ namespace BetterBeer
             Navigation.PushAsync(new StarPage());
         }
 
-        private void Scan_Tapped(object sender, EventArgs e)
+        void HandleResult (ZXing.Result result)
         {
-            var scan = new ZXingScannerPage();
-            Navigation.PushAsync(scan);
-
-            scan.OnScanResult += (result) =>
+            var msg = "No Barcode";
+            if (result != null)
             {
-                scan.IsScanning = false;
-                Device.BeginInvokeOnMainThread(async () =>
-                {
+                msg = result.Text;
+                DisplayAlert("Barcode", msg, "OK");
+            }
+        }
+
+        private async void Scan_Tapped(object sender, EventArgs e)
+        {
+            var scanPage = new ZXingScannerPage();
+
+            scanPage.OnScanResult += (result) => {
+                // Stop scanning
+                scanPage.IsScanning = false;
+
+                // Pop the page and show the result
+                Device.BeginInvokeOnMainThread(async () => {
                     await Navigation.PopAsync();
-                    await DisplayAlert("Achtung", result.Text, "Ok");
+                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
+
+            // Navigate to our scanner page
+            await Navigation.PushAsync(scanPage);
         }
     }
 }

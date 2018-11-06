@@ -20,10 +20,10 @@ namespace BetterBeer.MenuPages
             }
 
 
-            string highscore= Database.Highscore();
+            //string highscore= Database.Highscore();
 
 
-            highscoreLabel.Text = highscore;
+            //highscoreLabel.Text = highscore;
         }
 
         /*Toolbar*/
@@ -62,25 +62,23 @@ namespace BetterBeer.MenuPages
         {
             Navigation.PushAsync(new FriendsPage());
         }
-        private void Scan_Tapped(object sender, EventArgs e)
+        private async void Scan_Tapped(object sender, EventArgs e)
         {
-            var scan = new ZXingScannerPage();
-            Navigation.PushAsync(scan);
+            var scanPage = new ZXingScannerPage();
 
-            scan.OnScanResult += (result) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
+            scanPage.OnScanResult += (result) => {
+                // Stop scanning
+                scanPage.IsScanning = false;
+
+                // Pop the page and show the result
+                Device.BeginInvokeOnMainThread(async () => {
                     await Navigation.PopAsync();
-                    await DisplayAlert("Achtung", result.Text, "Ok");
+                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
+
+            // Navigate to our scanner page
+            await Navigation.PushAsync(scanPage);
         }
-
-
-       
-
-
-
     }
 }

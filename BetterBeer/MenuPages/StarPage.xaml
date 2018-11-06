@@ -18,7 +18,6 @@
 
     <ContentPage.Content>
         <StackLayout x:Name="stlout_Swipe" Margin="10,20,10,0">
-
             <StackLayout BackgroundColor="Black" VerticalOptions="Start">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -36,14 +35,14 @@
 
                     <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Options_Tapped" ></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
 
                     <Image x:Name="img_Ranking" Source="RankingButtonClicked.PNG" Grid.Column="1">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer  ></TapGestureRecognizer>
+                            <TapGestureRecognizer></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
@@ -55,7 +54,7 @@
 
                     <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Friends_Tapped" ></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
@@ -72,8 +71,6 @@
                 <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
                     <Label FontSize="Large">Topliste</Label>
                     <Label FontSize="Medium" x:Name="highscoreLabel"></Label>
-                    
-
                 </Grid>
             </StackLayout>
         </StackLayout>

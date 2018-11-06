@@ -22,7 +22,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>BetterBeer</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.SoftwareProjekt.BetterBeer</string>
+	<string>com.SoftwareProjekt2.BetterBeer</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -37,9 +37,9 @@
 	<string>BetterBeer möchte die Kamera benutzen</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1</string>
-  <key>MinimumOSVersion</key>
-  <string>12.0</string>
-
-
+	<key>MinimumOSVersion</key>
+	<string>12.0</string>
+	<key>NSCameraUsageDescription</key>
+	<string>BetterBeer braucht zugriff auf die Kamera</string>
 </dict>
 </plist>
