@@ -69,10 +69,12 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Label FontSize="Large">Topliste</Label>
                 <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                    <Label FontSize="Large">Topliste</Label>
                     <Label FontSize="Medium" x:Name="highscoreLabel"></Label>
-                    
+                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent" >
+                        <Label    x:Name="test" Text="Bestes Bier: Ratsherrn"></Label>
+                    </Frame>
 
                 </Grid>
             </StackLayout>

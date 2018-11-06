@@ -19,11 +19,12 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
 
+            string highscore = Database.Highscore();
+            Label label1= new Label{Text = highscore,FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+                          HorizontalOptions = LayoutOptions.Center};
 
-            string highscore= Database.Highscore();
-
-
-            highscoreLabel.Text = highscore;
+            grd_Swipe.Children.Add(label1);
+          
         }
 
         /*Toolbar*/
