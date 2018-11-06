@@ -15,16 +15,8 @@ namespace BetterBeer
         public static bool CheckUser(string login, string password)
         {
 
-            string postData = $"password={password}";
-            if (login.Contains("@"))
-            {
-                postData += $"&email={login}";
-
-            }
-            else
-            {
-                postData += $"&username={login}";
-            }
+            string postData = usernameOrEmail(login) +$"&password={password}";
+            
 
             string responseString = apiCall("validUser", postData);
 
@@ -53,6 +45,20 @@ namespace BetterBeer
             }
         }
 
+
+        public static string Highscore()
+        {
+            string requestString = API + "?action=getHighscores";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            return responseString;
+        }
+
+
+
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;
@@ -71,6 +77,24 @@ namespace BetterBeer
             var response = (HttpWebResponse)request.GetResponse();
             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return responseString;
+        }
+
+
+        private static string usernameOrEmail(string login)
+        {
+            string data = "";
+            if (login.Contains("@"))
+            {
+                data += $"email={login}";
+
+            }
+            else
+            {
+                data += $"username={login}";
+            }
+            return data;
+
+
         }
     }
 }

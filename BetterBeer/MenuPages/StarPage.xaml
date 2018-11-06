@@ -70,7 +70,10 @@
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                    <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
+                    <Label FontSize="Large">Topliste</Label>
+                    <Label FontSize="Medium" x:Name="highscoreLabel"></Label>
+                    
+
                 </Grid>
             </StackLayout>
         </StackLayout>

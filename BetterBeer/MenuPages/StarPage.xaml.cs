@@ -18,8 +18,15 @@ namespace BetterBeer.MenuPages
             {
                 SetStatusStyle.SetStyle();
             }
+
+
+            string highscore= Database.Highscore();
+
+
+            highscoreLabel.Text = highscore;
         }
 
+        /*Toolbar*/
         public void OnLeftSwipe(View view)
         {
 
@@ -69,5 +76,11 @@ namespace BetterBeer.MenuPages
                 });
             };
         }
+
+
+       
+
+
+
     }
 }
