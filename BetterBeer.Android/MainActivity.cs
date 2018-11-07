@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace BetterBeer.Droid
 {
-    [Activity(Label = "BetterBeer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "BetterBeer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, NoHistory =true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BetterBeer.MenuPages.BeerProfile">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="stlout_Swipe" Margin="10,20,10,0">
+            <StackLayout BackgroundColor="Black" VerticalOptions="Start">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Image x:Name="img_Ranking" Source="RankingButtonClicked.PNG" Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Home_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                    <SearchBar x:Name="beerSearch" Text="Suche nach deinen Lieblingssorten" PlaceholderColor="Black" VerticalOptions="Start"/>
+                    <Image x:Name="BeerImage" VerticalOptions="StartAndExpand"></Image>
+                    <Label x:Name="BeerInfo" VerticalOptions="FillAndExpand"/>
+                    <Grid x:Name="grd_rating">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
+                            <Label x:Name="attr1" Text="Attribut 1"/>
+                        </Frame>
+                        <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1">
+                            <Label x:Name="attr2"  Text="Attribut 2" />
+                        </Frame>
+                        <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">
+                            <Label x:Name="attr3" Text="Attribut 3" />
+                        </Frame>
+                        <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black">
+                            <Label x:Name="attr4" Text="Attribut 4" />
+                        </Frame>
+                        <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
+                            <Label x:Name="attr5" Text="Attribut 5"/>
+                        </Frame>
+
+                        <Image Grid.Column="1" Grid.Row="0" x:Name="img1Attr1"></Image>
+                        <Image Grid.Column="2" Grid.Row="0" x:Name="img2Attr1"></Image>
+                        <Image Grid.Column="3" Grid.Row="0" x:Name="img3Attr1"></Image>
+                        <Image Grid.Column="4" Grid.Row="0" x:Name="img4Attr1"></Image>
+                        <Image Grid.Column="5" Grid.Row="0" x:Name="img5Attr1"></Image>
+
+                        <Image Grid.Column="1" Grid.Row="1" x:Name="img1Attr2"></Image>
+                        <Image Grid.Column="2" Grid.Row="1" x:Name="img2Attr2"></Image>
+                        <Image Grid.Column="3" Grid.Row="1" x:Name="img3Attr2"></Image>
+                        <Image Grid.Column="4" Grid.Row="1" x:Name="img4Attr2"></Image>
+                        <Image Grid.Column="5" Grid.Row="1" x:Name="img5Attr2"></Image>
+
+                        <Image Grid.Column="1" Grid.Row="2" x:Name="img1Attr3"></Image>
+                        <Image Grid.Column="2" Grid.Row="2" x:Name="img2Attr3"></Image>
+                        <Image Grid.Column="3" Grid.Row="2" x:Name="img3Attr3"></Image>
+                        <Image Grid.Column="4" Grid.Row="2" x:Name="img4Attr3"></Image>
+                        <Image Grid.Column="5" Grid.Row="2" x:Name="img5Attr3"></Image>
+
+                        <Image Grid.Column="1" Grid.Row="3" x:Name="img1Attr4"></Image>
+                        <Image Grid.Column="2" Grid.Row="3" x:Name="img2Attr4"></Image>
+                        <Image Grid.Column="3" Grid.Row="3" x:Name="img3Attr4"></Image>
+                        <Image Grid.Column="4" Grid.Row="3" x:Name="img4Attr4"></Image>
+                        <Image Grid.Column="5" Grid.Row="3" x:Name="img5Attr4"></Image>
+
+                        <Image Grid.Column="1" Grid.Row="4" x:Name="img1Attr5"></Image>
+                        <Image Grid.Column="2" Grid.Row="4" x:Name="img2Attr5"></Image>
+                        <Image Grid.Column="3" Grid.Row="4" x:Name="img3Attr5"></Image>
+                        <Image Grid.Column="4" Grid.Row="4" x:Name="img4Attr5"></Image>
+                        <Image Grid.Column="5" Grid.Row="4" x:Name="img5Attr5"></Image>
+
+                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="0" >
+                            <Entry x:Name="entry1" Text="1-10" TextChanged="TextChanged"/>
+                        </Frame>
+                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="1">
+                            <Entry x:Name="entry2" Text="1-10" TextChanged="entry1_TextChanged"/>
+                        </Frame>
+                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="2">
+                            <Entry x:Name="entry3" Text="1-10"/>
+                        </Frame>
+                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="3">
+                            <Entry x:Name="entry4" Text="1-10"/>
+                        </Frame>
+                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="4">
+                            <Entry x:Name="entry5" Text="1-10"/>
+                        </Frame>
+                    </Grid>
+
+                    <Button x:Name="btn_Submit" Text="Bewertung Abgeben" VerticalOptions="Center"
+                    HorizontalOptions="Fill" HeightRequest="45"
+                     BackgroundColor="Gray"
+                    TextColor="White" FontAttributes="Bold" FontSize="18"/>
+
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
