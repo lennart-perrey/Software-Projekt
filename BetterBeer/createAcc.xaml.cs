@@ -18,10 +18,8 @@ namespace BetterBeer
 
             string uName = entry_UserName.Text;
             string email = entry_eMail.Text;
-            string SaltedPassword = HashAndSalt.CreateSalt();
-            await DisplayAlert("Super", SaltedPassword, "Ok");
-            string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
-            string password2 = HashAndSalt.HashString(String.Format("{0}{1}", entry_password2.Text, SaltedPassword));
+            string password = entry_password.Text;
+            string password2 = entry_password2.Text;
 
 
             if (uName == null || password == null)
@@ -34,7 +32,7 @@ namespace BetterBeer
             }
             else
             {
-                if (Database.NewUser(uName, email, password, SaltedPassword))
+                if (Database.NewUser(uName, email, password))
                 {
                     await DisplayAlert("Super", "Dein Account wurde erfolgreich angelegt", "Ok");
                     App.Current.MainPage = new NavigationPage(new MainPage());
