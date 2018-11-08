@@ -34,7 +34,7 @@ namespace BetterBeer
 
         private async void lbl_createAcc_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new MenuPages.BeerProfile()));
+            await Navigation.PushAsync(new NavigationPage(new createAcc()));
         }
 
         private async void lbl_forgotPassword_Tapped(object sender, EventArgs e)
