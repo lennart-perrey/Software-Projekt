@@ -8,15 +8,19 @@ using Android.OS;
 
 namespace BetterBeer.Droid
 {
-    [Activity(Label = "BetterBeer", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, NoHistory =true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "BetterBeer", Icon = "@drawable/BetterBeerIcon", Theme ="@style/MyTheme.Splash", MainLauncher = true, NoHistory =true)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+
+            base.Window.RequestFeature(WindowFeatures.ActionBar);
+            // Name of the MainActivity theme you had there before.
+            // Or you can use global::Android.Resource.Style.ThemeHoloLight
+            base.SetTheme(Resource.Style.MainTheme);
 
             base.OnCreate(savedInstanceState);
+
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

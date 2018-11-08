@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BetterBeer.MenuPages.BeerProfile">
+             x:Class="BetterBeer.MenuPages.BeerProfile"
+             BackgroundColor="Black">
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -67,101 +68,108 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                    <SearchBar x:Name="beerSearch" Text="Suche nach deinen Lieblingssorten" PlaceholderColor="Black" VerticalOptions="Start"/>
-                    <Image x:Name="BeerImage" VerticalOptions="StartAndExpand"></Image>
-                    <Label x:Name="BeerInfo" VerticalOptions="FillAndExpand"/>
-                    <Grid x:Name="grd_rating">
+                <ScrollView>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
+                    <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                        <Image x:Name="BeerImage" VerticalOptions="Start" Source="flensburger.jpg" ></Image>
+                        <Label x:Name="BeerInfo" VerticalOptions="FillAndExpand" Text="Aus der (fast) nördlichsten Brauerei Deutschlands entspringt dieses wundervoll süffige und prickelnde Getränk, welches seinen Namen durch die Stadt verliehen bekommen hat, in welcher es Gebraut wurde."/>
+                        <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                        <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
-                            <Label x:Name="attr1" Text="Attribut 1"/>
-                        </Frame>
-                        <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1">
-                            <Label x:Name="attr2"  Text="Attribut 2" />
-                        </Frame>
-                        <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">
-                            <Label x:Name="attr3" Text="Attribut 3" />
-                        </Frame>
-                        <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black">
-                            <Label x:Name="attr4" Text="Attribut 4" />
-                        </Frame>
-                        <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
-                            <Label x:Name="attr5" Text="Attribut 5"/>
-                        </Frame>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="80"/>
+                            </Grid.RowDefinitions>
 
-                        <Image Grid.Column="1" Grid.Row="0" x:Name="img1Attr1"></Image>
-                        <Image Grid.Column="2" Grid.Row="0" x:Name="img2Attr1"></Image>
-                        <Image Grid.Column="3" Grid.Row="0" x:Name="img3Attr1"></Image>
-                        <Image Grid.Column="4" Grid.Row="0" x:Name="img4Attr1"></Image>
-                        <Image Grid.Column="5" Grid.Row="0" x:Name="img5Attr1"></Image>
+                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
+                                <Label x:Name="attr1" Text="Geschmack"/>
+                            </Frame>
+                            <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1">
+                                <Label x:Name="attr2"  Text="Farbe" />
 
-                        <Image Grid.Column="1" Grid.Row="1" x:Name="img1Attr2"></Image>
-                        <Image Grid.Column="2" Grid.Row="1" x:Name="img2Attr2"></Image>
-                        <Image Grid.Column="3" Grid.Row="1" x:Name="img3Attr2"></Image>
-                        <Image Grid.Column="4" Grid.Row="1" x:Name="img4Attr2"></Image>
-                        <Image Grid.Column="5" Grid.Row="1" x:Name="img5Attr2"></Image>
+                            </Frame>
+                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">
+                                <Label x:Name="attr3" Text="Süffigkeit" />
+                            </Frame>
+                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black">
+                                <Label x:Name="attr4" Text="Design" />
+                            </Frame>
+                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
+                                <Label x:Name="attr5" Text="Kater"/>
+                            </Frame>
+                        
+                            <Image Source="LeeresBier" Grid.Column="1" Grid.Row="0" x:Name="img1Attr1">
+                                <Image.GestureRecognizers >
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="LeeresBier" Grid.Column="2" Grid.Row="0" x:Name="img2Attr1">
+                                <Image.GestureRecognizers >
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="LeeresBier" Grid.Column="3" Grid.Row="0" x:Name="img3Attr1">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="LeeresBier" Grid.Column="4" Grid.Row="0" x:Name="img4Attr1">
+                                  <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="LeeresBier" Grid.Column="5" Grid.Row="0" x:Name="img5Attr1">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
 
-                        <Image Grid.Column="1" Grid.Row="2" x:Name="img1Attr3"></Image>
-                        <Image Grid.Column="2" Grid.Row="2" x:Name="img2Attr3"></Image>
-                        <Image Grid.Column="3" Grid.Row="2" x:Name="img3Attr3"></Image>
-                        <Image Grid.Column="4" Grid.Row="2" x:Name="img4Attr3"></Image>
-                        <Image Grid.Column="5" Grid.Row="2" x:Name="img5Attr3"></Image>
+                            <Image Source="LeeresBier" Grid.Column="1" Grid.Row="1" x:Name="img1Attr2"></Image>
+                            <Image Source="LeeresBier" Grid.Column="2" Grid.Row="1" x:Name="img2Attr2"></Image>
+                            <Image Source="LeeresBier" Grid.Column="3" Grid.Row="1" x:Name="img3Attr2"></Image>
+                            <Image Source="LeeresBier" Grid.Column="4" Grid.Row="1" x:Name="img4Attr2"></Image>
+                            <Image Source="LeeresBier" Grid.Column="5" Grid.Row="1" x:Name="img5Attr2"></Image>
 
-                        <Image Grid.Column="1" Grid.Row="3" x:Name="img1Attr4"></Image>
-                        <Image Grid.Column="2" Grid.Row="3" x:Name="img2Attr4"></Image>
-                        <Image Grid.Column="3" Grid.Row="3" x:Name="img3Attr4"></Image>
-                        <Image Grid.Column="4" Grid.Row="3" x:Name="img4Attr4"></Image>
-                        <Image Grid.Column="5" Grid.Row="3" x:Name="img5Attr4"></Image>
+                            <Image Source="LeeresBier"  Grid.Column="1" Grid.Row="2" x:Name="img1Attr3"></Image>
+                            <Image Source="LeeresBier" Grid.Column="2" Grid.Row="2" x:Name="img2Attr3"></Image>
+                            <Image Source="LeeresBier" Grid.Column="3" Grid.Row="2" x:Name="img3Attr3"></Image>
+                            <Image Source="LeeresBier" Grid.Column="4" Grid.Row="2" x:Name="img4Attr3"></Image>
+                            <Image Source="LeeresBier" Grid.Column="5" Grid.Row="2" x:Name="img5Attr3"></Image>
 
-                        <Image Grid.Column="1" Grid.Row="4" x:Name="img1Attr5"></Image>
-                        <Image Grid.Column="2" Grid.Row="4" x:Name="img2Attr5"></Image>
-                        <Image Grid.Column="3" Grid.Row="4" x:Name="img3Attr5"></Image>
-                        <Image Grid.Column="4" Grid.Row="4" x:Name="img4Attr5"></Image>
-                        <Image Grid.Column="5" Grid.Row="4" x:Name="img5Attr5"></Image>
+                            <Image Source="LeeresBier" Grid.Column="1" Grid.Row="3" x:Name="img1Attr4"></Image>
+                            <Image Source="LeeresBier" Grid.Column="2" Grid.Row="3" x:Name="img2Attr4"></Image>
+                            <Image Source="LeeresBier" Grid.Column="3" Grid.Row="3" x:Name="img3Attr4"></Image>
+                            <Image Source="LeeresBier" Grid.Column="4" Grid.Row="3" x:Name="img4Attr4"></Image>
+                            <Image Source="LeeresBier" Grid.Column="5" Grid.Row="3" x:Name="img5Attr4"></Image>
 
-                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="0" >
-                            <Entry x:Name="entry1" Text="1-10" TextChanged="TextChanged"/>
-                        </Frame>
-                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="1">
-                            <Entry x:Name="entry2" Text="1-10" TextChanged="entry1_TextChanged"/>
-                        </Frame>
-                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="2">
-                            <Entry x:Name="entry3" Text="1-10"/>
-                        </Frame>
-                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="3">
-                            <Entry x:Name="entry4" Text="1-10"/>
-                        </Frame>
-                        <Frame BorderColor="Black" Grid.Column="6" Grid.Row="4">
-                            <Entry x:Name="entry5" Text="1-10"/>
-                        </Frame>
-                    </Grid>
+                            <Image Source="LeeresBier" Grid.Column="1" Grid.Row="4" x:Name="img1Attr5" ></Image>
+                            <Image Source="LeeresBier" Grid.Column="2" Grid.Row="4" x:Name="img2Attr5"></Image>
+                            <Image Source="LeeresBier" Grid.Column="3" Grid.Row="4" x:Name="img3Attr5"></Image>
+                            <Image Source="LeeresBier" Grid.Column="4" Grid.Row="4" x:Name="img4Attr5"></Image>
+                            <Image Source="LeeresBier" Grid.Column="5" Grid.Row="4" x:Name="img5Attr5"></Image>
 
-                    <Button x:Name="btn_Submit" Text="Bewertung Abgeben" VerticalOptions="Center"
-                    HorizontalOptions="Fill" HeightRequest="45"
-                     BackgroundColor="Gray"
-                    TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                        </Grid>
 
-                </Grid>
+                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,0,0,10" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"
+                          HeightRequest="45"
+                         BackgroundColor="Gray"
+                    TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
+
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

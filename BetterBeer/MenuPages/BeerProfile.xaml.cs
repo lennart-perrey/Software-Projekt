@@ -14,8 +14,9 @@ namespace BetterBeer.MenuPages
 	public partial class BeerProfile : ContentPage, ISwipeCallback
 	{
         SwipeListener listener;
+        double rating1 = 0;
 
-		public BeerProfile ()
+        public BeerProfile ()
 		{
 			InitializeComponent ();
             listener = new SwipeListener(stlout_Swipe, this);
@@ -26,25 +27,9 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        private void TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
-        private async void entry1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try 
-            {
-                int wert = Convert.ToInt32(this.Content);
-                   
-                
-            }
-            catch
-            {
-                await DisplayAlert("Fehler", "Bitte eine Zahl eingeben", "OK!");
-            }
 
-        }
+
         public void OnRightSwipe(View view)
         {
             Navigation.PushAsync(new OptionsPage());
@@ -96,6 +81,98 @@ namespace BetterBeer.MenuPages
         public void OnNothingSwipe(View view)
         {
            
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            if (img1Attr1.Source.ToString() == "LeeresBier.png")
+            {
+                img1Attr1.Source = "VollesBier.png";
+            }
+            else
+            {
+                img1Attr1.Source = "LeeresBier.png";
+            }
+            rating1 = 1;
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            if (img1Attr2.Source.ToString() == "LeeresBier.png")
+            {
+                img1Attr1.Source = "VollesBier.png";
+                img2Attr1.Source = "VollesBier.png";
+                
+            }
+            else
+            {
+                img1Attr1.Source = "LeeresBier.png";
+                img2Attr1.Source = "LeeresBier.png";
+
+            }
+            rating1 = 2;
+        }
+
+        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
+        {
+            if (img1Attr3.Source.ToString() == "LeeresBier.png")
+            {
+                img1Attr1.Source = "VollesBier.png";
+                img2Attr1.Source = "VollesBier.png";
+                img3Attr1.Source = "VollesBier.png";
+
+            }
+            else
+            {
+                img1Attr1.Source = "LeeresBier.png";
+                img2Attr1.Source = "LeeresBier.png";
+                img3Attr1.Source = "LeeresBier.png";
+            }
+            rating1 = 3;
+        }
+        private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
+        {
+            if (img1Attr4.Source.ToString() == "LeeresBier.png")
+            {
+                img1Attr1.Source = "VollesBier.png";
+                img2Attr1.Source = "VollesBier.png";
+                img3Attr1.Source = "VollesBier.png";
+                img4Attr1.Source = "VollesBier.png";
+
+            }
+            else
+            {
+                img1Attr1.Source = "LeeresBier.png";
+                img2Attr1.Source = "LeeresBier.png";
+                img3Attr1.Source = "LeeresBier.png";
+                img4Attr1.Source = "LeeresBier.png";
+            }
+            rating1 = 4;
+        }
+        private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
+        {
+            if (img1Attr5.Source.ToString() == "LeeresBier.png")
+            {
+                img1Attr1.Source = "VollesBier.png";
+                img2Attr1.Source = "VollesBier.png";
+                img3Attr1.Source = "VollesBier.png";
+                img4Attr1.Source = "VollesBier.png";
+                img5Attr1.Source = "VollesBier.png";
+            }
+            else
+            {
+                img1Attr1.Source = "LeeresBier.png";
+                img2Attr1.Source = "LeeresBier.png";
+                img3Attr1.Source = "LeeresBier.png";
+                img4Attr1.Source = "LeeresBier.png";
+                img5Attr1.Source = "LeeresBier.png";
+            }
+            rating1 = 5;
+        }
+
+        private void btn_Submit_Clicked(object sender, EventArgs e)
+        {
+            //Database.apiCall("createGrade", rating);
         }
     }
 }

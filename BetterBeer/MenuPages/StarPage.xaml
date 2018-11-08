@@ -69,7 +69,7 @@
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                    <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" />
+                    <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed"/>
                     <Label FontSize="Large">Topliste</Label>
                     <Label FontSize="Medium" x:Name="highscoreLabel"></Label>
                 </StackLayout>
