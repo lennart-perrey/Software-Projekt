@@ -30,7 +30,7 @@ namespace BetterBeer.MenuPages
         public void OnLeftSwipe(View view)
         {
 
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -40,7 +40,7 @@ namespace BetterBeer.MenuPages
 
         public void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage());
+            Navigation.PushAsync(new OptionsPage(),false);
         }
 
         public void OnTopSwipe(View view)

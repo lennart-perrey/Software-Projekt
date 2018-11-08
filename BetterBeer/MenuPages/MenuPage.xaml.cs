@@ -22,7 +22,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new FriendsPage());
+            Navigation.PushAsync(new FriendsPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -33,7 +33,7 @@ namespace BetterBeer
         public void OnRightSwipe(View view)
         {
 
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         public void OnTopSwipe(View view)

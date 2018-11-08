@@ -24,7 +24,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         public void OnNothingSwipe(View view)
