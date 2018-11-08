@@ -28,7 +28,7 @@
                         </Grid.RowDefinitions>
 
                         <Image Grid.Row="0" Source="Logo_horizontal_SEPA.png" HeightRequest="100"
-                               HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-20,0,0"/>
+                               HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-40,0,0"/>
 
                         <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="1" 
                             HorizontalOptions="FillAndExpand" VerticalOptions="Center"
@@ -60,7 +60,7 @@
 
                         <Entry Grid.Row="1" x:Name="entry_eMail" Placeholder="E-Mail"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
-                                   Keyboard="Email"/>
+                                   Keyboard="Email" TextChanged="Handle_TextChanged"/>
 
                         <Entry Grid.Row="2" x:Name="entry_password" Placeholder="Passwort"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"

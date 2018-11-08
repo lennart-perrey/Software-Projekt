@@ -45,5 +45,17 @@ namespace BetterBeer
 
             }
         }
+
+        void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (!entry_eMail.Text.Contains("@"))
+            {
+                entry_eMail.TextColor = Color.Red;
+            }
+            else
+            {
+                entry_eMail.TextColor = Color.Black;
+            }
+        }
     }
 }
