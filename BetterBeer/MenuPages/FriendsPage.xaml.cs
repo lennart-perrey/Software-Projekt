@@ -109,7 +109,7 @@ namespace BetterBeer
 
                 if (result != null)
                 {
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    await DisplayAlert("Scanned Barcode", result.Text, "Ok");
                 }
             }
             
