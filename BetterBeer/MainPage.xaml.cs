@@ -16,7 +16,11 @@ namespace BetterBeer
         private async void btn_login_clicked(object sender, EventArgs e)
         {
             string email = entry_email.Text;
-            string password = entry_password.Text;
+            string SaltedPassword = Database.GetSaltedPW(email);
+            await DisplayAlert("Super", SaltedPassword, "Ok");
+
+
+            string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
 
             if (Database.CheckUser(email, password))
             {
