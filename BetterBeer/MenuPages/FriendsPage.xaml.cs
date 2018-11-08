@@ -100,22 +100,29 @@ namespace BetterBeer
                         await DisplayAlert("Scanned Barcode", result.Text, "OK");
                     });
                 };
+                // Navigate to our scanner page
+                await Navigation.PushAsync(scanPage);
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
-                var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-
-                var result = await scanner.Scan();
-
-                if (result != null)
+                scanPage.OnScanResult += (result) =>
                 {
-                    await DisplayAlert("Scanned Barcode", result.Text, "Ok");
-                }
+                    // Stop scanning
+                    scanPage.IsScanning = false;
+
+                    // Pop the page and show the result
+                    Device.BeginInvokeOnMainThread( () =>
+                    {
+                        Navigation.PopModalAsync();
+                        DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    });
+                };
+                // Navigate to our scanner page
+                await Navigation.PushModalAsync(scanPage);
             }
             
 
-            // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
+
         }
     }
 }
