@@ -44,17 +44,17 @@ namespace BetterBeer
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage());
+            Navigation.PushAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)

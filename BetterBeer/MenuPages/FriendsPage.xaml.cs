@@ -69,7 +69,7 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-
+            Navigation.PushAsync(new MenuPage());
         }
 
         public void OnTopSwipe(View view)
@@ -79,17 +79,17 @@ namespace BetterBeer
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionsPage());
+            Navigation.PushAsync(new OptionsPage(),false);
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
