@@ -70,6 +70,7 @@
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <Label FontSize="Large">Topliste</Label>
+                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed"/>
                 <StackLayout x:Name="layout" Orientation="Vertical">
                 </StackLayout>
             </StackLayout>
