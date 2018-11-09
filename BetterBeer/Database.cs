@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Data;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.Net;
 using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
 
 namespace BetterBeer
 {
@@ -14,10 +13,7 @@ namespace BetterBeer
         const string API = "http://spbier.bplaced.net/DBConnect.php";
         public static bool CheckUser(string login, string password)
         {
-
-            string postData = usernameOrEmail(login) +$"&password={password}";
-            
-
+            string postData = usernameOrEmail(login) +$"&password={password}";          
             string responseString = apiCall("validUser", postData);
 
             if (responseString == "1")
@@ -46,15 +42,18 @@ namespace BetterBeer
         }
 
 
-        public static string Highscore()
+        public static List<Beer> Highscore()
         {
             string requestString = API + "?action=getHighscores";
             WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            var response = (HttpWebResponse)request.GetResponse();
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            return responseString;
+            request.ContentType = "application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Beer> beers= JsonConvert.DeserializeObject<List<Beer>>(responseString);
+            return beers;
         }
 
 
@@ -74,8 +73,8 @@ namespace BetterBeer
                 stream.Write(data, 0, data.Length);
             }
 
-            var response = (HttpWebResponse)request.GetResponse();
-            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return responseString;
         }
 

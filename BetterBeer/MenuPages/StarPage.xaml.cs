@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -19,12 +20,39 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
 
-            
+            List<Beer> highscores = Database.Highscore();
+            foreach (Beer beer in highscores)
+            {
+                Grid gridBeer = new Grid
+                {
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    RowDefinitions =
+                    {
+                        new RowDefinition { Height = GridLength.Auto },
+                        new RowDefinition { Height = GridLength.Auto },
+                        new RowDefinition { Height = GridLength.Auto  }
+                    },
+                    ColumnDefinitions =
+                    {
+                        new ColumnDefinition { Width = GridLength.Auto },
+                        new ColumnDefinition { Width = GridLength.Auto }
+                    }
+                };
 
-            //string highscore= Database.Highscore();
+                Label labelBeerName= new Label{Text = beer.beerName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand};
+                Label labelMarke = new Label { Text = beer.brand, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand, };
+                Label labelBewertung = new Label { Text = beer.avgRating.ToString(), FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),TextColor=Color.DarkKhaki, HorizontalOptions = LayoutOptions.CenterAndExpand, };
+                Label labelPic = new Label { Text = "HIER FOTO",  FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalTextAlignment = TextAlignment.End, };
 
 
-            //highscoreLabel.Text = highscore;
+                gridBeer.Children.Add(labelBeerName, 0, 0);
+                gridBeer.Children.Add(labelMarke, 0, 1);
+                gridBeer.Children.Add(labelBewertung, 1,0);
+                gridBeer.Children.Add(labelPic,2,1);
+
+                layout.Children.Add(gridBeer);
+            }
+          
         }
 
         /*Toolbar*/
@@ -63,42 +91,25 @@ namespace BetterBeer.MenuPages
         {
             Navigation.PushAsync(new FriendsPage());
         }
-        private async void Scan_Tapped(object sender, EventArgs e)
+        private void Scan_Tapped(object sender, EventArgs e)
         {
-            var scanPage = new ZXingScannerPage();
+            var scan = new ZXingScannerPage();
+            Navigation.PushAsync(scan);
 
-            scanPage.OnScanResult += (result) => {
-                // Stop scanning
-                scanPage.IsScanning = false;
-
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () => {
+            scan.OnScanResult += (result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    await DisplayAlert("Achtung", result.Text, "Ok");
                 });
             };
-
-            // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
         }
 
-        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-            string bier = searchBar.Text;
 
-            if (bier.ToUpper() == "FLENSBURGER")
-            {
-                //string response = Database.apiCall("showBeer", bier)
-                 Navigation.PushAsync(new BeerProfile());
-            }
-            else if (bier == "" || bier == "Suche")
-            {
-                DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
-            }
-            else
-            {
-                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
-            }
-        }
+       
+
+
+
     }
 }
