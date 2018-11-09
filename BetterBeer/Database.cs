@@ -26,9 +26,9 @@ namespace BetterBeer
             }
         }
 
-        public static bool NewUser(String uName, String email, String password)
+        public static bool NewUser(String uName, String email, String password, String SaltedPassword)
         {
-            string postData = $"username={uName}&email={email}&password={password}";
+            string postData = $"username={uName}&email={email}&password={password}&saltedpassword={SaltedPassword}";
             string responseString = apiCall("createUser", postData);
 
             if (responseString == "1")
@@ -39,6 +39,23 @@ namespace BetterBeer
             {
                 return false;
             }
+        }
+        public static string GetSaltedPW(string login)
+        {
+            string postData;
+            if (login.Contains("@"))
+            {
+                postData = $"&email={login}";
+
+            }
+            else
+            {
+                postData = $"&username={login}";
+            }
+
+            return apiCall("getSaltedPasswordByLogin", postData);
+
+
         }
 
 

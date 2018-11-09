@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -20,46 +19,19 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
 
-            List<Beer> highscores = Database.Highscore();
-            foreach (Beer beer in highscores)
-            {
-                Grid gridBeer = new Grid
-                {
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    RowDefinitions =
-                    {
-                        new RowDefinition { Height = GridLength.Auto },
-                        new RowDefinition { Height = GridLength.Auto },
-                        new RowDefinition { Height = GridLength.Auto  }
-                    },
-                    ColumnDefinitions =
-                    {
-                        new ColumnDefinition { Width = GridLength.Auto },
-                        new ColumnDefinition { Width = GridLength.Auto }
-                    }
-                };
+            
 
-                Label labelBeerName= new Label{Text = beer.beerName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand};
-                Label labelMarke = new Label { Text = beer.brand, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                Label labelBewertung = new Label { Text = beer.avgRating.ToString(), FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),TextColor=Color.DarkKhaki, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                Label labelPic = new Label { Text = "HIER FOTO",  FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalTextAlignment = TextAlignment.End, };
+            //string highscore= Database.Highscore();
 
 
-                gridBeer.Children.Add(labelBeerName, 0, 0);
-                gridBeer.Children.Add(labelMarke, 0, 1);
-                gridBeer.Children.Add(labelBewertung, 1,0);
-                gridBeer.Children.Add(labelPic,2,1);
-
-                layout.Children.Add(gridBeer);
-            }
-          
+            //highscoreLabel.Text = highscore;
         }
 
         /*Toolbar*/
         public void OnLeftSwipe(View view)
         {
 
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -69,7 +41,7 @@ namespace BetterBeer.MenuPages
 
         public void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage());
+            Navigation.PushAsync(new OptionsPage(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -79,37 +51,74 @@ namespace BetterBeer.MenuPages
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionsPage());
+            Navigation.PushAsync(new OptionsPage(),false);
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage());
+            Navigation.PushAsync(new FriendsPage(),false);
         }
-        private void Scan_Tapped(object sender, EventArgs e)
+        private async void Scan_Tapped(object sender, EventArgs e)
         {
-            var scan = new ZXingScannerPage();
-            Navigation.PushAsync(scan);
+            var scanPage = new ZXingScannerPage();
 
-            scan.OnScanResult += (result) =>
+            //iOS
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                scanPage.OnScanResult += (result) =>
                 {
-                    await Navigation.PopAsync();
-                    await DisplayAlert("Achtung", result.Text, "Ok");
-                });
-            };
+
+                    scanPage.IsScanning = false;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Navigation.PopAsync();
+                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    });
+                };
+
+                await Navigation.PushAsync(scanPage);
+            }
+            //Android
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                scanPage.OnScanResult += (result) =>
+                {
+
+                    scanPage.IsScanning = false;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Navigation.PopModalAsync();
+                        DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    });
+                };
+                await Navigation.PushModalAsync(scanPage);
+            }
         }
 
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            string bier = searchBar.Text;
 
-       
-
-
-
+            if (bier.ToUpper() == "FLENSBURGER")
+            {
+                //string response = Database.apiCall("showBeer", bier)
+                 Navigation.PushAsync(new BeerProfile());
+            }
+            else if (bier == "" || bier == "Suche")
+            {
+                DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
+            }
+            else
+            {
+                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
+            }
+        }
     }
 }
