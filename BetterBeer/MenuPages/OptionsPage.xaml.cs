@@ -24,7 +24,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -44,36 +44,56 @@ namespace BetterBeer
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage());
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage());
+            Navigation.PushAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
             var scanPage = new ZXingScannerPage();
 
-            scanPage.OnScanResult += (result) => {
-                // Stop scanning
-                scanPage.IsScanning = false;
+            //iOS
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                scanPage.OnScanResult += (result) =>
+                {
 
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () => {
-                    await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                });
-            };
+                    scanPage.IsScanning = false;
 
-            // Navigate to our scanner page
-            await Navigation.PushAsync(scanPage);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Navigation.PopAsync();
+                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    });
+                };
+
+                await Navigation.PushAsync(scanPage);
+            }
+            //Android
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                scanPage.OnScanResult += (result) =>
+                {
+
+                    scanPage.IsScanning = false;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Navigation.PopModalAsync();
+                        DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    });
+                };
+                await Navigation.PushModalAsync(scanPage);
+            }        
         }
     }
 }

@@ -41,7 +41,7 @@
                         <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
 
-                    <Entry Grid.Row="0" x:Name="entry_email" Placeholder="max.mustermann@mail.de"
+                    <Entry Grid.Row="0" x:Name="entry_email" Placeholder="EMail / Username"
                    BackgroundColor="White" HorizontalTextAlignment="Center"
                    Keyboard="Email"/>
 
