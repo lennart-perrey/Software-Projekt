@@ -3,6 +3,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 
 namespace BetterBeer
@@ -41,7 +42,7 @@ namespace BetterBeer
         }
 
 
-        public static string Highscore()
+        public static List<Beer> Highscore()
         {
             string requestString = API + "?action=getHighscores";
             WebRequest request = WebRequest.Create(requestString);
@@ -51,10 +52,8 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
 
-            Beer beer= JsonConvert.DeserializeObject<Beer>(responseString);
-
-
-            return responseString;
+            List<Beer> beers= JsonConvert.DeserializeObject<List<Beer>>(responseString);
+            return beers;
         }
 
 
