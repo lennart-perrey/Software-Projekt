@@ -28,7 +28,7 @@
         <StackLayout BackgroundColor="White">
             <StackLayout Margin="20,50,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
-                <Image Source="{StaticResource LoginLogo}" HeightRequest="120"/>
+                <Image Source="Logo_horizontal_SEPA" HeightRequest="120"/>
             </StackLayout>
             <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
                 <Grid BackgroundColor="White">

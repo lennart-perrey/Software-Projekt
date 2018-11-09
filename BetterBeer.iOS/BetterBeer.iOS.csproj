@@ -202,4 +202,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\HomeButtonClicked.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\flensburger.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LeeresBier.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\VollesBier.png" />
+  </ItemGroup>
 </Project>

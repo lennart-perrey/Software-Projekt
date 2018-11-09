@@ -19,6 +19,7 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
 
+            
 
             //string highscore= Database.Highscore();
 
@@ -98,6 +99,25 @@ namespace BetterBeer.MenuPages
                     });
                 };
                 await Navigation.PushModalAsync(scanPage);
+            }
+        }
+
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            string bier = searchBar.Text;
+
+            if (bier.ToUpper() == "FLENSBURGER")
+            {
+                //string response = Database.apiCall("showBeer", bier)
+                 Navigation.PushAsync(new BeerProfile());
+            }
+            else if (bier == "" || bier == "Suche")
+            {
+                DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
+            }
+            else
+            {
+                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
             }
         }
     }
