@@ -79,10 +79,14 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions> 
-                                            
+                        </Grid.ColumnDefinitions>
+
                         <Image Grid.Column="0" Source="FaceBookLogo.png" HeightRequest="40" WidthRequest="40" 
-                           HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                         <Label Grid.Column="1" Text="Mit Facebook anmelden" TextColor="#485992"
                            HorizontalOptions="StartAndExpand" VerticalOptions="Center"
                            Margin="-50,0,0,0"/>

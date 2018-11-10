@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Facebook;
 
 namespace BetterBeer.Droid
 {
@@ -20,7 +21,7 @@ namespace BetterBeer.Droid
             base.SetTheme(Resource.Style.MainTheme);
 
             base.OnCreate(savedInstanceState);
-
+            FacebookSdk.SdkInitialize(this.ApplicationContext);
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

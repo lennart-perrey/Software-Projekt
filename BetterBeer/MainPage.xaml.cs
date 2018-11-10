@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using FreshMvvm;
+using System;
+using System.Collections.Generic; 
 using Xamarin.Forms;
 
 namespace BetterBeer
@@ -40,6 +40,14 @@ namespace BetterBeer
         private async void lbl_forgotPassword_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NavigationPage(new ForgotPassword()));
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<LoginPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page);
+
+            Navigation.PushAsync(basicNavContainer);
         }
     }
 }
