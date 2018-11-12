@@ -8,10 +8,10 @@ namespace BetterBeer
     public class Beer
     {
         [JsonProperty("MarkenID")]
-        public int brandId;
+        public string brandId;
 
         [JsonProperty("BierId")]
-        public int beerId;
+        public string beerId;
 
         [JsonProperty("Biername")]
         public string beerName;
@@ -26,7 +26,7 @@ namespace BetterBeer
         public double avgRating;
 
 
-        public Beer(int brandId,int beerId, string beerName, string brand,string pic, double avgRating)
+        public Beer(string brandId,string beerId, string beerName, string brand,string pic, double avgRating)
         {
             this.brandId = brandId;
             this.beerId = beerId;
