@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.MenuPages.AddBeer"
+             BackgroundColor="White">
+    
+<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="20,0,20,0">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="Start">
+                    <Grid Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0" Source="Logo_horizontal_SEPA.png" HeightRequest="100"
+                               HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-20,0,0"/>
+
+                        <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="1" 
+                            HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                               Margin="0,20,0,0"/>
+
+                        <Label Grid.Row="2" Text="Ohh, dieses Bier kennen wir noch nicht. Bitte stellen Sie doch einen Antrag, damit wir dieses Bier in unser Sortiment Aufnehmen können."
+                               VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                               TextColor="Gray" FontAttributes="Italic"/>
+
+                        <Label Grid.Row="3" BackgroundColor="Gray" HeightRequest="1" 
+                            HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Margin="0,-100,0,0">
+                    <Grid BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+
+                        <Entry Grid.Row="0" x:Name="entry_BeerID" Placeholder="Username" IsEnabled="false"
+                               Text="BeerID"
+                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+
+                        <Entry Grid.Row="1" x:Name="entry_BeerName" Placeholder="Biername"
+                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
+                                   Keyboard="Email"/>
+
+                        <Entry Grid.Row="2" x:Name="entry_BrandName" Placeholder="Biermarke"
+                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
+                                   IsPassword="true"/>
+                                  
+                        <Label Grid.Row="3"/>
+
+                        <Button Grid.Row="4" x:Name="btn_add" Text="Bierantrag stellen" VerticalOptions="Center"
+                                HorizontalOptions="Fill" HeightRequest="45"
+                                Clicked="btn_add_clicked" BackgroundColor="Gray"
+                                TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                    </Grid>                            
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="0,0,0,35">
+                        <Button x:Name="btn_cancel" Text="Abbrechen" VerticalOptions="Center"
+                                HorizontalOptions="FillAndExpand" HeightRequest="45"
+                                Clicked="btn_cancel_clicked" BackgroundColor="#FF613F"
+                                TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                    </StackLayout>            
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

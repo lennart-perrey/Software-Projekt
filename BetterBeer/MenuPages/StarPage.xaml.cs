@@ -55,9 +55,6 @@ namespace BetterBeer.MenuPages
 
                 layout.Children.Add(gridBeer);
             }
-
-
-
         //highscoreLabel.Text = highscore;
     }
 
@@ -101,39 +98,22 @@ namespace BetterBeer.MenuPages
         {
             var scanPage = new ZXingScannerPage();
 
-            //iOS
-            if (Device.RuntimePlatform == Device.iOS)
+            scanPage.OnScanResult += (result) =>
             {
-                scanPage.OnScanResult += (result) =>
+                scanPage.IsScanning = false;
+
+                Device.BeginInvokeOnMainThread(() =>
                 {
-
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Navigation.PopAsync();
-                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-
-                await Navigation.PushAsync(scanPage);
-            }
-            //Android
-            else if (Device.RuntimePlatform == Device.Android)
-            {
-                scanPage.OnScanResult += (result) =>
-                {
-
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Navigation.PopModalAsync();
-                        DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-                await Navigation.PushModalAsync(scanPage);
-            }
+                    Navigation.PopModalAsync();
+                    //Beer beer = Database.getBeerById(result);
+                    //if (!beer == null)
+                    //{
+                    //  Navigation.PushModalAsync(new BeerProfile(beer));
+                    //}
+                    Navigation.PushModalAsync(new BeerProfile());
+                });
+            };
+            await Navigation.PushAsync(scanPage);
         }
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)

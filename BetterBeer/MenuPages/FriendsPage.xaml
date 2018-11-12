@@ -16,7 +16,7 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" Margin="10,20,10,0">
+        <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
             <StackLayout VerticalOptions="Start" BackgroundColor="Black">
                 <Grid >
 
@@ -36,8 +36,7 @@
                                 <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-
-
+                        
                         <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>

@@ -17,7 +17,7 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" Margin="10,20,10,0">
+        <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
 
             <StackLayout BackgroundColor="Black" VerticalOptions="Start">
                 <Grid>
@@ -67,9 +67,7 @@
 
                 </Grid>
             </StackLayout>
-
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Label FontSize="Large">Topliste</Label>
                 <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed"/>
                 <StackLayout x:Name="layout" Orientation="Vertical">
                 </StackLayout>

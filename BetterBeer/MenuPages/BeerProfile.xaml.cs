@@ -27,8 +27,10 @@ namespace BetterBeer.MenuPages
             }
         }
 
-
-
+        public BeerProfile (Beer scanBeer) : base()
+        {
+            Beer beer = scanBeer;
+        }
 
         public void OnRightSwipe(View view)
         {
@@ -58,18 +60,16 @@ namespace BetterBeer.MenuPages
         {
             var scanPage = new ZXingScannerPage();
 
-            scanPage.OnScanResult += (result) => {
-                // Stop scanning
+            scanPage.OnScanResult += (result) =>
+            {
                 scanPage.IsScanning = false;
 
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(async () => {
-                    await Navigation.PopAsync();
-                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Navigation.PopModalAsync();
+                    Navigation.PushModalAsync(new BeerProfile());
                 });
             };
-
-            // Navigate to our scanner page
             await Navigation.PushAsync(scanPage);
         }
 
@@ -85,20 +85,20 @@ namespace BetterBeer.MenuPages
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (img1Attr1.Source.ToString() == "LeeresBier.png")
+            if (img1Attr1.Source.ToString() == "LeeresBier.jpg")
             {
                 img1Attr1.Source = "VollesBier.png";
             }
             else
             {
-                img1Attr1.Source = "LeeresBier.png";
+                img1Attr1.Source = "LeeresBier.jpg";
             }
             rating1 = 1;
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            if (img1Attr2.Source.ToString() == "LeeresBier.png")
+            if (img1Attr2.Source.ToString() == "LeeresBier.jpg")
             {
                 img1Attr1.Source = "VollesBier.png";
                 img2Attr1.Source = "VollesBier.png";
@@ -106,8 +106,8 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                img1Attr1.Source = "LeeresBier.png";
-                img2Attr1.Source = "LeeresBier.png";
+                img1Attr1.Source = "LeeresBier.jpg";
+                img2Attr1.Source = "LeeresBier.jpg";
 
             }
             rating1 = 2;
@@ -115,7 +115,7 @@ namespace BetterBeer.MenuPages
 
         private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
-            if (img1Attr3.Source.ToString() == "LeeresBier.png")
+            if (img1Attr3.Source.ToString() == "LeeresBier.jpg")
             {
                 img1Attr1.Source = "VollesBier.png";
                 img2Attr1.Source = "VollesBier.png";
@@ -124,15 +124,15 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                img1Attr1.Source = "LeeresBier.png";
-                img2Attr1.Source = "LeeresBier.png";
-                img3Attr1.Source = "LeeresBier.png";
+                img1Attr1.Source = "LeeresBier.jpg";
+                img2Attr1.Source = "LeeresBier.jpg";
+                img3Attr1.Source = "LeeresBier.jpg";
             }
             rating1 = 3;
         }
         private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
-            if (img1Attr4.Source.ToString() == "LeeresBier.png")
+            if (img1Attr4.Source.ToString() == "LeeresBier.jpg")
             {
                 img1Attr1.Source = "VollesBier.png";
                 img2Attr1.Source = "VollesBier.png";
@@ -142,16 +142,16 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                img1Attr1.Source = "LeeresBier.png";
-                img2Attr1.Source = "LeeresBier.png";
-                img3Attr1.Source = "LeeresBier.png";
-                img4Attr1.Source = "LeeresBier.png";
+                img1Attr1.Source = "LeeresBier.jpg";
+                img2Attr1.Source = "LeeresBier.jpg";
+                img3Attr1.Source = "LeeresBier.jpg";
+                img4Attr1.Source = "LeeresBier.jpg";
             }
             rating1 = 4;
         }
         private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
         {
-            if (img1Attr5.Source.ToString() == "LeeresBier.png")
+            if (img1Attr5.Source.ToString() == "LeeresBier.jpg")
             {
                 img1Attr1.Source = "VollesBier.png";
                 img2Attr1.Source = "VollesBier.png";
@@ -161,11 +161,11 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                img1Attr1.Source = "LeeresBier.png";
-                img2Attr1.Source = "LeeresBier.png";
-                img3Attr1.Source = "LeeresBier.png";
-                img4Attr1.Source = "LeeresBier.png";
-                img5Attr1.Source = "LeeresBier.png";
+                img1Attr1.Source = "LeeresBier.jpg";
+                img2Attr1.Source = "LeeresBier.jpg";
+                img3Attr1.Source = "LeeresBier.jpg";
+                img4Attr1.Source = "LeeresBier.jpg";
+                img5Attr1.Source = "LeeresBier.jpg";
             }
             rating1 = 5;
         }

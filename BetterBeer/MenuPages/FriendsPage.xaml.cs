@@ -1,4 +1,5 @@
-﻿using BetterBeer.MenuPages;
+﻿using AVFoundation;
+using BetterBeer.MenuPages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,8 +19,8 @@ namespace BetterBeer
             NavigationPage.SetHasNavigationBar(this, false);
             listener = new SwipeListener(stlout_Swipe, this);
             if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
+            {               
+               SetStatusStyle.SetStyle();
             }
         }
 
@@ -27,39 +28,22 @@ namespace BetterBeer
         {
             var scanPage = new ZXingScannerPage();
 
-            //iOS
-            if (Device.RuntimePlatform == Device.iOS)
+            scanPage.OnScanResult += (result) =>
             {
-                scanPage.OnScanResult += (result) =>
-                {
+                scanPage.IsScanning = false;
 
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Navigation.PopAsync();
-                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-
-                await Navigation.PushAsync(scanPage);
-            }
-            //Android
-            else if (Device.RuntimePlatform == Device.Android)
-            {
-                scanPage.OnScanResult += (result) =>
-                {
-
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Navigation.PopModalAsync();
-                        DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-                await Navigation.PushModalAsync(scanPage);
-            }
+                Device.BeginInvokeOnMainThread(() =>
+                   {
+                    Navigation.PopModalAsync();
+                       //Beer beer = Database.getBeerById(result);
+                       //if (!beer == null)
+                       //{
+                       //  Navigation.PushModalAsync(new BeerProfile(beer));
+                       //}
+                       Navigation.PushModalAsync(new BeerProfile());
+                });
+            };
+            await Navigation.PushAsync(scanPage);
         }
 
         public void OnNothingSwipe(View view)
@@ -96,39 +80,26 @@ namespace BetterBeer
         {
             var scanPage = new ZXingScannerPage();
 
-            //iOS
-            if (Device.RuntimePlatform == Device.iOS)
+            scanPage.OnScanResult += (result) =>
             {
-                scanPage.OnScanResult += (result) =>
+                scanPage.IsScanning = false;
+
+                Device.BeginInvokeOnMainThread(() =>
                 {
-
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Navigation.PopAsync();
-                        await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-
-                await Navigation.PushAsync(scanPage);
-            }
-            //Android
-            else if (Device.RuntimePlatform == Device.Android)
-            {
-                scanPage.OnScanResult += (result) =>
-                {
-
-                    scanPage.IsScanning = false;
-
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Navigation.PopModalAsync();
-                        DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    });
-                };
-                await Navigation.PushModalAsync(scanPage);
-            }
+                    Navigation.PopModalAsync();
+                    //Beer beer = Database.getBeerById(result);
+                    //if (!beer == null)
+                    //{
+                    //  Navigation.PushModalAsync(new BeerProfile(beer));
+                    //}
+                    //else
+                    //{
+                    //  Navigation.PushModalAsync(new AddBeer());
+                    //}
+                    Navigation.PushModalAsync(new NavigationPage(new AddBeer()));
+                });
+            };
+            await Navigation.PushAsync(scanPage);
         }
     }
 }

@@ -46,7 +46,6 @@ namespace BetterBeer
             if (login.Contains("@"))
             {
                 postData = $"&email={login}";
-
             }
             else
             {
@@ -54,8 +53,6 @@ namespace BetterBeer
             }
 
             return apiCall("getSaltedPasswordByLogin", postData);
-
-
         }
 
 
@@ -73,6 +70,15 @@ namespace BetterBeer
             return beers;
         }
 
+        public static void createBeer (int id, string name, int brandId)
+        {
+
+        }
+
+        public static Beer getBeerById (int id)
+        {
+            throw new Exception();
+        }
 
 
         private static string apiCall(string action, string postData)
@@ -102,15 +108,12 @@ namespace BetterBeer
             if (login.Contains("@"))
             {
                 data += $"email={login}";
-
             }
             else
             {
                 data += $"username={login}";
             }
             return data;
-
-
         }
     }
 }
