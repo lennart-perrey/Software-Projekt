@@ -70,9 +70,9 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <ScrollView>
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                        <Label x:Name="BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
+                        <Label x:Name="lbl_BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
                                FontAttributes="Bold" FontSize="Large"/>
-                        <Image x:Name="BeerImage" VerticalOptions="Start" Source="flensburger.jpg"></Image>
+                        <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg"></Image>
                         <Grid>
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -82,7 +82,7 @@
                             <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
                                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                    Margin="0,10,0,0"/>
-                            <Label Grid.Row="1" x:Name="BeerInfo" VerticalOptions="FillAndExpand" Text="Aus der (fast) nördlichsten Brauerei Deutschlands entspringt dieses wundervoll süffige und prickelnde Getränk, welches seinen Namen durch die Stadt verliehen bekommen hat, in welcher es Gebraut wurde."/>
+                            <Label Grid.Row="1" x:Name="lbl_BeerInfo" VerticalOptions="FillAndExpand" Text="Aus der (fast) nördlichsten Brauerei Deutschlands entspringt dieses wundervoll süffige und prickelnde Getränk, welches seinen Namen durch die Stadt verliehen bekommen hat, in welcher es Gebraut wurde."/>
                             <Label Grid.Row="2" BackgroundColor="Gray" HeightRequest="1" 
                                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                             </Grid>

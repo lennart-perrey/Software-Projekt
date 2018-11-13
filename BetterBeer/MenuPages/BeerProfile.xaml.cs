@@ -27,9 +27,14 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        public BeerProfile (Beer scanBeer) : base()
+        public BeerProfile (Beer scannedBeer)
         {
-            Beer beer = scanBeer;
+            Beer beer = scannedBeer;
+            lbl_BeerName.Text = beer.beerName;
+            img_BeerImage.Source = beer.pic;
+            //lbl_BeerInfo.Text = beer.info;
+
+
         }
 
         public void OnRightSwipe(View view)

@@ -70,14 +70,67 @@ namespace BetterBeer
             return beers;
         }
 
-        public static void createBeer (int id, string name, int brandId)
+        public static long createBeer (string ean, string beerName, int brandId)
         {
+            string postData = $"ean={ean}&beerName={beerName}&brandId={brandId}";
+            byte[] data = Encoding.ASCII.GetBytes(postData);
 
+            string requestString = API + "?action=createBeer";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            return Convert.ToInt64(responseString);
         }
 
-        public static Beer getBeerById (int id)
+        public static List<Brand> showBrand ()
         {
-            throw new Exception();
+            string requestString = API + "?action=showBrand";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Brand> brands = JsonConvert.DeserializeObject<List<Brand>>(responseString);
+            return brands;
+        }
+
+        public static Beer getBeerById (string id)
+        {
+            string postData =$"id={id}";
+            byte[] data = Encoding.ASCII.GetBytes(postData);
+
+            string requestString = API + "?action=getBeerById";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            if(responseString != "null")
+            {
+                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                return beers[0];
+            }
+
+            return null;
         }
 
 

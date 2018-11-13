@@ -19,6 +19,7 @@
   <ItemGroup>
     <Compile Remove="MyPage.cs" />
     <Compile Remove="MenuPages\ScanPage.xaml.cs" />
+    <Compile Remove="Scanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MenuPages\ScanPage.xaml" />
