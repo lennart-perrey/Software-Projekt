@@ -126,7 +126,7 @@ namespace BetterBeer.MenuPages
             if (bier.ToUpper() == "FLENSBURGER")
             {
                 //string response = Database.apiCall("showBeer", bier)
-                 Navigation.PushAsync(new BeerProfile());
+                 Navigation.PushAsync(new BeerProfile(Database.getBeerById("41030806")));
             }
             else if (bier == "" || bier == "Suche")
             {

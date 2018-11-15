@@ -60,7 +60,7 @@ namespace BetterBeer.MenuPages
         {
             var scanPage = new ZXingScannerPage();
 
-        scanPage.OnScanResult += (result) =>
+            scanPage.OnScanResult += (result) =>
             {
                 scanPage.IsScanning = false;
 
@@ -75,8 +75,8 @@ namespace BetterBeer.MenuPages
                     else if (beer == null)
                     {
                         Navigation.PushAsync(new AddBeer(result.Text));
-                   
-        );
+                    }
+                });
             };
             await Navigation.PushAsync(scanPage);
         }

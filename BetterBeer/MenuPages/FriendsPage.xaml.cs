@@ -33,14 +33,14 @@ namespace BetterBeer
                 scanPage.IsScanning = false;
 
                 Device.BeginInvokeOnMainThread(() =>
-             {
+                {
                     Navigation.PopModalAsync();
-                 Beer beer = Database.getBeerById(result.Text);
-                 if (beer != null)
-                  
-                      avigation.PushAsync(new BeerProfile(beer));
+                    Beer beer = Database.getBeerById(result.Text);
+                    if (beer != null)
+                    {
+                        Navigation.PushAsync(new BeerProfile(beer));
                     }
-                 else if (beer null)
+                    else if (beer == null)
                     {
                         Navigation.PushAsync(new AddBeer(result.Text));
                     }
