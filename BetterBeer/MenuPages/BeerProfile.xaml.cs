@@ -16,24 +16,19 @@ namespace BetterBeer.MenuPages
         SwipeListener listener;
         double rating1 = 0;
 
-        public BeerProfile ()
-		{
-			InitializeComponent ();
+        public BeerProfile (Beer scannedBeer)
+        {
+            InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
             if (Device.RuntimePlatform == Device.iOS)
             {
                 SetStatusStyle.SetStyle();
             }
-        }
-
-        public BeerProfile (Beer scannedBeer)
-        {
             Beer beer = scannedBeer;
             lbl_BeerName.Text = beer.beerName;
             img_BeerImage.Source = beer.pic;
             //lbl_BeerInfo.Text = beer.info;
-
 
         }
 
@@ -65,15 +60,23 @@ namespace BetterBeer.MenuPages
         {
             var scanPage = new ZXingScannerPage();
 
-            scanPage.OnScanResult += (result) =>
+        scanPage.OnScanResult += (result) =>
             {
                 scanPage.IsScanning = false;
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopModalAsync();
-                    Navigation.PushModalAsync(new BeerProfile());
-                });
+                    Beer beer = Database.getBeerById(result.Text);
+                    if (beer != null)
+                    {
+                        Navigation.PushAsync(new BeerProfile(beer));
+                    }
+                    else if (beer == null)
+                    {
+                        Navigation.PushAsync(new AddBeer(result.Text));
+                   
+        );
             };
             await Navigation.PushAsync(scanPage);
         }

@@ -105,12 +105,15 @@ namespace BetterBeer.MenuPages
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopModalAsync();
-                    //Beer beer = Database.getBeerById(result);
-                    //if (!beer == null)
-                    //{
-                    //  Navigation.PushModalAsync(new BeerProfile(beer));
-                    //}
-                    Navigation.PushModalAsync(new BeerProfile());
+                    Beer beer = Database.getBeerById(result.Text);
+                    if (beer != null)
+                    {
+                        Navigation.PushAsync(new BeerProfile(beer));
+                    }
+                    else if (beer == null)
+                    {
+                        Navigation.PushAsync(new AddBeer(result.Text));
+                    }
                 });
             };
             await Navigation.PushAsync(scanPage);
