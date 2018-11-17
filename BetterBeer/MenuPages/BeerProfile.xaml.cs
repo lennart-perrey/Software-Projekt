@@ -67,7 +67,7 @@ namespace BetterBeer.MenuPages
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopModalAsync();
-                    Beer beer = Database.getBeerById(result.Text);
+                    Beer beer = Database.getBeerByEAN(result.Text);
                     if (beer != null)
                     {
                         Navigation.PushAsync(new BeerProfile(beer));

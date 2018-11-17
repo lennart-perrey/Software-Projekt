@@ -25,7 +25,7 @@ namespace BetterBeer.MenuPages
 
         private void btn_add_clicked(object sender, EventArgs e)
         {
-            string beerID = scanResult;
+            string ean = scanResult;
             string beerName = entry_BeerName.Text;
             string beerBrand = picker_BrandName.SelectedItem.ToString();
             string s =picker_BrandName.SelectedItem.ToString();
@@ -37,7 +37,7 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                if(Database.createBeer(beerID, beerName, brandID) > 0)
+                if(Database.createBeer(ean, beerName, brandID))
                 {
                     DisplayAlert("Info", "Bierantrag erfolgreich gesendet", "Ok");
                 }

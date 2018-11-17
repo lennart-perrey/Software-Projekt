@@ -105,7 +105,7 @@ namespace BetterBeer.MenuPages
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     Navigation.PopModalAsync();
-                    Beer beer = Database.getBeerById(result.Text);
+                    Beer beer = Database.getBeerByEAN(result.Text);
                     if (beer != null)
                     {
                         Navigation.PushAsync(new BeerProfile(beer));
@@ -126,7 +126,7 @@ namespace BetterBeer.MenuPages
             if (bier.ToUpper() == "FLENSBURGER")
             {
                 //string response = Database.apiCall("showBeer", bier)
-                 Navigation.PushAsync(new BeerProfile(Database.getBeerById("41030806")));
+                 Navigation.PushAsync(new BeerProfile(Database.getBeerByEAN("41030806")));
             }
             else if (bier == "" || bier == "Suche")
             {

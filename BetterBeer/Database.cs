@@ -70,25 +70,38 @@ namespace BetterBeer
             return beers;
         }
 
-        public static long createBeer (string ean, string beerName, int brandId)
+        public static bool createBeer (string ean, string beerName, int brandId)
         {
-            string postData = $"ean={ean}&beerName={beerName}&brandId={brandId}";
-            byte[] data = Encoding.ASCII.GetBytes(postData);
+            string postData = $"beerName={beerName}&brandId={brandId}";
+            int bierId=0;
 
-            string requestString = API + "?action=createBeer";
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
+            //Pruefung, ob Bier Vorhanden
+            string responseString = apiCall("showBeerByName", postData);
 
-            using (var stream = request.GetRequestStream())
+            //Wenn nicht, wird es hinzugefügt
+            if(responseString == "")
             {
-                stream.Write(data, 0, data.Length);
+                responseString = apiCall("createBeer", postData);
+            }
+            try { 
+                bierId = Convert.ToInt32(responseString);
+            }
+            catch (Exception e)
+            {
+                //Bier ist schon vorhanden in der Datenbank
+                return false;
             }
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            return Convert.ToInt64(responseString);
+            //create EAN-Code
+            if (bierId > 0)
+            {
+                string eanResult = apiCall("createEAN", $"ean={ean}&bierId={bierId}");
+                if (eanResult == "1")
+                {
+                    return true;
+                }
+            }
+             return false;
         }
 
         public static List<Brand> showBrand ()
@@ -105,12 +118,12 @@ namespace BetterBeer
             return brands;
         }
 
-        public static Beer getBeerById (string id)
+        public static Beer getBeerByEAN (string ean)
         {
-            string postData =$"id={id}";
+            string postData =$"ean={ean}";
             byte[] data = Encoding.ASCII.GetBytes(postData);
 
-            string requestString = API + "?action=getBeerById";
+            string requestString = API + "?action=getBeerByEAN";
             WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
