@@ -7,17 +7,21 @@ namespace BetterBeer.MenuPages
 {
     public partial class AddBeer : ContentPage
     {
+        List<Brand> brandsList = Database.showBrand();
+        IDictionary<string, int> brands = new Dictionary<string, int>();
         string scanResult = "";
 
         public AddBeer(string id)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            List<Brand> brands = Database.showBrand();
 
-            foreach(Brand brand in brands)
+
+
+            foreach(Brand brand in brandsList)
             {
-                picker_BrandName.Items.Add(brand.brandId + "-" + brand.brand);
+                brands[brand.brand] = brand.brandId;
+                picker_BrandName.Items.Add(brand.brand);
             }
 
             scanResult = id;
@@ -28,16 +32,16 @@ namespace BetterBeer.MenuPages
             string ean = scanResult;
             string beerName = entry_BeerName.Text;
             string beerBrand = picker_BrandName.SelectedItem.ToString();
-            string s =picker_BrandName.SelectedItem.ToString();
-            string[] s2= s.Split('-');
-            int brandID = Convert.ToInt32(s2[0]);
+            int brandId = brands[beerBrand];
+
+
             if (beerName == null || beerBrand == null)
             {
                 DisplayAlert("Achtung", "Biername oder Biermarke fehlen", "Ok");
             }
             else
             {
-                if(Database.createBeer(ean, beerName, brandID))
+                if(Database.createBeer(ean, beerName, brandId))
                 {
                     DisplayAlert("Info", "Bierantrag erfolgreich gesendet", "Ok");
                 }
