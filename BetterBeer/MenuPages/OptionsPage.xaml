@@ -17,6 +17,7 @@
 
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
             <StackLayout VerticalOptions="Start" BackgroundColor="Black">
                 <Grid >
@@ -71,10 +72,14 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Grid x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                    <Label FontSize="Large">Hier Platz für die ganzen Faces der Friends</Label>
-                </Grid>
+                <Button Text="Foto aufnehmen" x:Name="takePhoto" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18"
+                    Clicked="btn_takePhoto_Clicked"/>
+                <Button Text="Foto auswählen" x:Name="pickPhoto" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18"
+                    Clicked="btn_pickPhoto_Clicked"/>
+
+                <Image x:Name="image"/>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
