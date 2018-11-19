@@ -86,7 +86,7 @@ namespace BetterBeer
             try { 
                 bierId = Convert.ToInt32(responseString);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Bier ist schon vorhanden in der Datenbank
                 return false;
@@ -146,33 +146,6 @@ namespace BetterBeer
             return null;
         }
 
-        public static List<Beer> getBeerByName(string bier)
-        {
-            string postData = $"beerName={bier}";
-            byte[] data = Encoding.ASCII.GetBytes(postData);
-
-            string requestString = API + "?action=showBeerByName";
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            if (responseString != "null")
-            {
-                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
-                return beers;
-            }
-
-            return null;
-        }
 
         private static string apiCall(string action, string postData)
         {

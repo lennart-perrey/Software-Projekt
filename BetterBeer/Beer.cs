@@ -34,11 +34,6 @@ namespace BetterBeer
             this.brand = brand;
             this.pic = pic;
             this.avgRating = avgRating;
-
-            if(this.pic == null)
-            {
-                this.pic = "http://spbier.bplaced.net/images/beerExample2.png";
-            }
         }
     }
 }
