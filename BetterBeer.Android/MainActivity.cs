@@ -8,7 +8,7 @@ using Android.OS;
 
 namespace BetterBeer.Droid
 {
-    [Activity(Label = "BetterBeer", Icon = "@drawable/BetterBeerIcon", Theme ="@style/MyTheme.Splash", MainLauncher = true)]
+    [Activity(Label = "BetterBeer", Icon = "@drawable/BetterBeerIcon", Theme ="@style/MyTheme.Splash", MainLauncher = true, NoHistory =true)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -28,7 +28,6 @@ namespace BetterBeer.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
         }
