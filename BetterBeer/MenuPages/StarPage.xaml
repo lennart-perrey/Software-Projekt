@@ -69,10 +69,12 @@
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
 
+
                 <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed" TextChanged="searchBar_TextChanged" />
                 <StackLayout x:Name="highscoreLayout" Orientation="Vertical">
-                </StackLayout>
+                
             </StackLayout>
-        </StackLayout>
+           </StackLayout>
+         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -78,6 +78,7 @@
                     Clicked="btn_pickPhoto_Clicked"/>
 
                 <Image x:Name="image"/>
+
             </StackLayout>
         </StackLayout>
         </ScrollView>

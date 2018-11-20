@@ -174,7 +174,7 @@
 
                         </Grid>
 
-                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,30,0,10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
                           HeightRequest="45" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
                     </StackLayout>
                 </ScrollView>
