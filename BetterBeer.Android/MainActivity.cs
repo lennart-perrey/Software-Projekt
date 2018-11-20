@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace BetterBeer.Droid
 {
@@ -22,6 +23,7 @@ namespace BetterBeer.Droid
             base.OnCreate(savedInstanceState);
 
             global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            ImageCircleRenderer.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

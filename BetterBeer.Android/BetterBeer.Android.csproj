@@ -61,6 +61,9 @@
     <PackageReference Include="ZXing.Net.Mobile.Forms">
       <Version>2.3.2</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -94,6 +97,7 @@
     <AndroidResource Include="Resources\drawable\BetterBeerLogo_H.png" />
     <AndroidResource Include="Resources\drawable\BetterBeerLogoV.png" />
     <AndroidResource Include="Resources\drawable\BetterBeerLogo.png" />
+    <AndroidResource Include="Resources\drawable\MeinFoto.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

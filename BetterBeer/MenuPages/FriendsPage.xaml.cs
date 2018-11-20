@@ -1,5 +1,6 @@
 ﻿using AVFoundation;
 using BetterBeer.MenuPages;
+using Plugin.Media;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -102,6 +103,55 @@ namespace BetterBeer
                 });
             };
             await Navigation.PushAsync(scanPage);
+        }
+
+        private async void btn_takePhoto_Clicked(object sender, EventArgs e)
+        {
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Pictures",
+                Name = "ProfilPic.jpg"
+            });
+
+            if (file == null)
+                return;
+
+
+            image.Source = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                return stream;
+            });
+
+        }
+
+        private async void btn_pickPhoto_Clicked(object sender, EventArgs e)
+        {
+
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
+                return;
+            }
+            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+            });
+
+
+            if (file == null)
+                return;
+
+            image.Source = ImageSource.FromStream(() => file.GetStream());
+
         }
     }
 }
