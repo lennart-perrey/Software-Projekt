@@ -65,7 +65,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer: hass.marc@gmx.net (DGBC945DW6)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt2.BetterBeer</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt3.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>

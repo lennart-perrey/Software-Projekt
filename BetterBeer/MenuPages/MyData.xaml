@@ -18,10 +18,10 @@
     
     
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout x:Name="stlout_Swipe">
-            <StackLayout VerticalOptions="Start" BackgroundColor="white">
-               <Grid BackgroundColor="White">
+        <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="White" Margin="20,0,20,0">
+            <StackLayout Orientation="Vertical" VerticalOptions="Start" BackgroundColor="white">
+               <Grid>
                    <Grid.RowDefinitions>
                         <RowDefinition Height="150"/>
                         <RowDefinition Height="*"/>
@@ -38,20 +38,24 @@
                             </controls:CircleImage>
                            
                         <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
-                               HorizontalOptions="Fill" VerticalOptions="Center"/>
-                       </Grid>  
-                    <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="White">
+                               HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
+                       </Grid>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="White">
                         <Grid BackgroundColor="White">
                            <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                            </Grid.RowDefinitions>
-                            <Entry Grid.Row="0" x:Name="userName" />
-                            <Entry Grid.Row="1" x:Name="myEmail" />
+                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username"/>
+                            <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" />
                         </Grid>
                     </StackLayout>
-            </StackLayout>
+                <StackLayout Margin="0,0,0,15">
+                    <Button x:Name="btn_deleteAcc" Text="Account löchen" BackgroundColor="#FF613F"
+                            TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_deleteAcc_Clicked"/>
+                </StackLayout>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

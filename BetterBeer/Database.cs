@@ -40,6 +40,7 @@ namespace BetterBeer
                 return false;
             }
         }
+
         public static string GetSaltedPW(string login)
         {
             string postData;
@@ -54,7 +55,6 @@ namespace BetterBeer
 
             return apiCall("getSaltedPasswordByLogin", postData);
         }
-
 
         public static List<Beer> Highscore()
         {
@@ -193,7 +193,6 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
             return responseString;
         }
-
 
         private static string usernameOrEmail(string login)
         {

@@ -1,10 +1,8 @@
-﻿using AVFoundation;
-using BetterBeer.MenuPages;
+﻿using BetterBeer.MenuPages;
 using Plugin.Media;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer

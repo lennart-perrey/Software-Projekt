@@ -32,7 +32,11 @@ namespace BetterBeer.MenuPages
                 return;
 
             myImage.Source = ImageSource.FromStream(() => file.GetStream());
+        }
 
+        private async void btn_deleteAcc_Clicked (Object sender, EventArgs e)
+        {
+            throw new Exception();
         }
     }
 }

@@ -1,5 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BetterBeer.MenuPages.Options">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.MenuPages.Options"
+             Title="Einstellungen">
+    
+    
     <ContentPage.Content>
+        <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="White" Margin="20,10,20,0">
+            <StackLayout Orientation="Vertical" VerticalOptions="Start" BackgroundColor="white">
+                    </StackLayout>
+                    <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="White">
+                        <Grid BackgroundColor="White">
+                           <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                           </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="Hier kommen Einstellungen hin!"/>
+                        </Grid>
+                    </StackLayout>
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
