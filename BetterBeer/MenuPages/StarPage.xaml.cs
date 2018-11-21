@@ -13,6 +13,7 @@ namespace BetterBeer.MenuPages
         public StarPage()
         {
             InitializeComponent();
+            lv_searchBeer.IsVisible = false;
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
             if (Device.RuntimePlatform == Device.iOS)
@@ -99,61 +100,53 @@ namespace BetterBeer.MenuPages
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            var scanPage = new ZXingScannerPage();
-
-            scanPage.OnScanResult += (result) =>
-            {
-                scanPage.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Navigation.PopModalAsync();
-                    Beer beer = Database.getBeerByEAN(result.Text);
-                    if (beer != null)
-                    {
-                        Navigation.PushAsync(new BeerProfile(beer));
-                    }
-                    else if (beer == null)
-                    {
-                        Navigation.PushAsync(new AddBeer(result.Text));
-                    }
-                });
-            };
-            await Navigation.PushAsync(scanPage);
+            await Navigation.PushAsync(new CustomScanPage(),false);
         }
-
-
-
 
 
         /* Suchleistung Änderungen
          * */
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
+            lv_searchBeer.IsVisible = true;
+            highscoreLayout.IsVisible = false;
             string bier = searchBar.Text;
             if (bier == "")
-            {
-                highscoreLayout.Children.Clear();
-                setHighscore();
+            {   
+                lv_searchBeer.IsVisible = false;
+                highscoreLayout.IsVisible = true;
+                List<string> leer = new List<string>();
+                lv_searchBeer.ItemsSource = leer;
+                //highscoreLayout.Children.Clear();
+                //setHighscore();
             }
             else
             {
                 List<Beer> beers = Database.getBeerByName(bier);
 
-                string matchingBeers = "";
-                foreach (Beer beer in beers)
+                if(beers == null)
                 {
-                    matchingBeers += beer.beerName + ", ";
+                    List<string> leer = new List<string>();
+                    lv_searchBeer.ItemsSource = leer;
                 }
-                ListView listView = new ListView();
-                Label searchInfo = new Label { Text = "Meinst du:\n" + matchingBeers };
-                highscoreLayout.Children.Clear();
-                highscoreLayout.Children.Add(searchInfo);
+                else
+                {
+                    List<string> matchingBeers = new List<string>();
+                    foreach (Beer beer in beers)
+                    {
+                        matchingBeers.Add(beer.beerName);
+                    }
+                    //Label searchInfo = new Label { Text = "Meinst du:\n" + matchingBeers };
+                    //highscoreLayout.Children.Clear();
+                    //highscoreLayout.Children.Add(searchInfo);
+                    lv_searchBeer.ItemsSource = matchingBeers;
+                }
             }
         }
 
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
+            highscoreLayout.IsVisible = true;
             string bier = searchBar.Text;
             List<Beer> beers= Database.getBeerByName(bier);
 

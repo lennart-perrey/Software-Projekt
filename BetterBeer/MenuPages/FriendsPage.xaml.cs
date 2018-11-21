@@ -25,27 +25,7 @@ namespace BetterBeer
 
         public async void OnLeftSwipe(View view)
         {
-            var scanPage = new ZXingScannerPage();
-
-            scanPage.OnScanResult += (result) =>
-            {
-                scanPage.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Navigation.PopModalAsync();
-                    Beer beer = Database.getBeerByEAN(result.Text);
-                    if (beer != null)
-                    {
-                        Navigation.PushAsync(new BeerProfile(beer));
-                    }
-                    else if (beer == null)
-                    {
-                        Navigation.PushAsync(new AddBeer(result.Text));
-                    }
-                });
-            };
-            await Navigation.PushAsync(scanPage);
+            await Navigation.PushAsync(new CustomScanPage(), false);   
         }
 
         public void OnNothingSwipe(View view)
@@ -80,27 +60,7 @@ namespace BetterBeer
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            var scanPage = new ZXingScannerPage();
-
-            scanPage.OnScanResult += (result) =>
-            {
-                scanPage.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    Navigation.PopModalAsync();
-                    Beer beer = Database.getBeerByEAN(result.Text);
-                    if (beer != null)
-                    {
-                        Navigation.PushAsync(new BeerProfile(beer));
-                    }
-                    else if (beer == null)
-                    {
-                        Navigation.PushAsync(new AddBeer(result.Text));
-                    }
-                });
-            };
-            await Navigation.PushAsync(scanPage);
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
         private async void btn_takePhoto_Clicked(object sender, EventArgs e)

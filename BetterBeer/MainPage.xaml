@@ -43,11 +43,11 @@
 
                     <Entry Grid.Row="0" x:Name="entry_email" Placeholder="EMail / Username"
                    BackgroundColor="White" HorizontalTextAlignment="Center"
-                   Keyboard="Email"/>
+                   Keyboard="Email" TextChanged="entryMail_TextChanged"/>
 
                     <Entry Grid.Row="1" x:Name="entry_password" Placeholder="Passwort"
                        BackgroundColor="White" HorizontalTextAlignment="Center"
-                       IsPassword="true" Keyboard="Default"/>
+                       IsPassword="true" Keyboard="Default" TextChanged="entryPassword_TextChanged"/>
 
                     <Button Grid.Row="2" x:Name="btn_login" Text="Anmelden" VerticalOptions="Center"
                     HorizontalOptions="Fill" HeightRequest="45"
