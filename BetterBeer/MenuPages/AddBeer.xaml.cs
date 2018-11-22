@@ -18,7 +18,7 @@ namespace BetterBeer.MenuPages
 
 
 
-            foreach(Brand brand in brandsList)
+            foreach (Brand brand in brandsList)
             {
                 brands[brand.brand] = brand.brandId;
                 picker_BrandName.Items.Add(brand.brand);
@@ -41,7 +41,7 @@ namespace BetterBeer.MenuPages
             }
             else
             {
-                if(Database.createBeer(ean, beerName, brandId))
+                if (Database.createBeer(ean, beerName, brandId))
                 {
                     DisplayAlert("Info", "Bierantrag erfolgreich gesendet", "Ok");
                 }
