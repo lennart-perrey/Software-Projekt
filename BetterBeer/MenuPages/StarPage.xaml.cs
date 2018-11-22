@@ -33,28 +33,32 @@ namespace BetterBeer.MenuPages
                 Grid gridBeer = new Grid
                 {
                     VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = new Thickness(20,0,20,0),
+
                     RowDefinitions =
                         {
-                            new RowDefinition { Height = GridLength.Auto },
-                            new RowDefinition { Height = GridLength.Auto },
-                            new RowDefinition { Height = GridLength.Auto  }
+                            new RowDefinition { Height = 75},
+                            //new RowDefinition { Height = GridLength.Star}
                         },
                     ColumnDefinitions =
                         {
                             new ColumnDefinition { Width = GridLength.Auto },
+                            new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto }
+
                         }
                 };
 
-                Label labelBeerName = new Label { Text = beer.beerName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-                Label labelMarke = new Label { Text = beer.brand, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                Label labelBewertung = new Label { Text = beer.avgRating.ToString(), HorizontalTextAlignment = TextAlignment.End, FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), TextColor = Color.DarkKhaki, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                Image pic = new Image { Source = beer.pic, Aspect = Aspect.Fill, WidthRequest = 33, HeightRequest = 60, };
+                Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment= TextAlignment.Center, TextColor = Color.Black ,HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
+                //Label labelMarke = new Label { Text = beer.brand, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand, };
+                Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
+                Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand};
+                //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
 
                 gridBeer.Children.Add(labelBeerName, 0, 0);
-                gridBeer.Children.Add(labelMarke, 0, 1);
+                //gridBeer.Children.Add(labelMarke, 1, 0);
                 gridBeer.Children.Add(labelBewertung, 1, 0);
-                gridBeer.Children.Add(pic, 2, 3, 0, 2);
+                gridBeer.Children.Add(pic, 2,0);
 
                 highscoreLayout.Children.Add(gridBeer);
             }

@@ -37,29 +37,39 @@ namespace BetterBeer
 
         private void entryMail_TextChanged(object sender, EventArgs e)
         {
-            if(entry_email.Text != "" && entry_password.Text != "")
-            {
-                btn_login.IsEnabled = true;
-                btn_login.BackgroundColor = Color.FromHex("#FFCD33");
-            }
-            else
+            //if (entry_email.Placeholder.ToString() == "EMail / Username" || entry_password.Placeholder.ToString() == "Passwort")
+            //{
+            //    btn_login.IsEnabled = false;
+            //    btn_login.BackgroundColor = Color.Gray;
+            //}
+            if (entry_email.Text == "" || entry_password.Text == "")
             {
                 btn_login.IsEnabled = false;
                 btn_login.BackgroundColor = Color.Gray;
+            }
+            else if (entry_email.Text != "" && entry_password.Text != "")
+            {
+                btn_login.IsEnabled = true;
+                btn_login.BackgroundColor = Color.FromHex("#FFCD33");
             }
         }
 
         private void entryPassword_TextChanged(object sender, EventArgs e)
         {
-            if (entry_email.Text != "" && entry_password.Text != "")
-            {
-                btn_login.IsEnabled = true;
-                btn_login.BackgroundColor = Color.FromHex("#FFCD33");
-            }
-            else
+            //if (entry_email.Placeholder.ToString() == "EMail / Username" || entry_password.Placeholder.ToString() == "Passwort")
+            //{
+            //    btn_login.IsEnabled = false;
+            //    btn_login.BackgroundColor = Color.Gray;
+            //}
+            if (entry_email.Text == "" || entry_password.Text == "")
             {
                 btn_login.IsEnabled = false;
                 btn_login.BackgroundColor = Color.Gray;
+            }
+            else if(entry_email.Text != "" && entry_password.Text != "")
+            {
+                btn_login.IsEnabled = true;
+                btn_login.BackgroundColor = Color.FromHex("#FFCD33");
             }
         }
 
