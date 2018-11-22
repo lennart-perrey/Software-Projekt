@@ -144,6 +144,26 @@ namespace BetterBeer.MenuPages
             }
         }
 
+        private void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+
+            List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
+            Beer foundBeer = null;
+            foreach(Beer beer in beers)
+            {
+                foundBeer = beer;
+            }
+
+            if (foundBeer != null)
+            {
+                Navigation.PushAsync(new BeerProfile(foundBeer));
+            }
+            else
+            {
+                DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+            }
+        }
+
         private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             highscoreLayout.IsVisible = true;

@@ -74,7 +74,7 @@
                 <StackLayout x:Name="highscoreLayout" Orientation="Vertical">
 
                 </StackLayout>
-                <ListView x:Name="lv_searchBeer">
+                <ListView x:Name="lv_searchBeer" ItemTapped="Handle_ItemTapped">
                         
                 </ListView>
            </StackLayout>
