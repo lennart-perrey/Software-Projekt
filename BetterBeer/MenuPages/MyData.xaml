@@ -28,7 +28,7 @@
                         <RowDefinition Height="40"/>
                    </Grid.RowDefinitions>
                         <controls:CircleImage x:Name="myImage" Grid.Row="0" Source="MeinFoto.png"
-                             HeightRequest="150" WidthRequest="150" Aspect="AspectFill" BorderThickness="1"
+                             HeightRequest="150" WidthRequest="150" Aspect="AspectFit" BorderThickness="1"
                                               VerticalOptions="Center" HorizontalOptions="Center" 
                                               BorderColor="Gray" Margin="0,10,0,0">
                                 <controls:CircleImage.GestureRecognizers>

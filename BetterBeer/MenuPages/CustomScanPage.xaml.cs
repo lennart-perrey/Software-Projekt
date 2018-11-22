@@ -21,7 +21,6 @@ namespace BetterBeer.MenuPages
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 AutomationId = "zxingScannerView",
             };
-            zxing.IsScanning = true;
             zxing.OnScanResult += (result) =>
             {
                 zxing.IsAnalyzing = false;
@@ -30,15 +29,15 @@ namespace BetterBeer.MenuPages
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     // Stop analysis until we navigate away so we don't keep reading barcodes
-                    Navigation.PopModalAsync();
+                    Navigation.PopAsync();
                     Beer beer = Database.getBeerByEAN(result.Text);
                     if (beer != null)
                     {
-                        Navigation.PushModalAsync(new BeerProfile(beer));
+                        Navigation.PushAsync(new BeerProfile(beer));
                     }
                     else if (beer == null)
                     {
-                        Navigation.PushModalAsync(new AddBeer(result.Text));
+                        Navigation.PushAsync(new AddBeer(result.Text));
                     }
 
                 });
@@ -68,18 +67,18 @@ namespace BetterBeer.MenuPages
             Content = grid;
         }
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
-        //    zxing.IsScanning = true;
-        //}
+            zxing.IsScanning = true;
+        }
 
-        //protected override void OnDisappearing()
-        //{
-        //    zxing.IsScanning = false;
+        protected override void OnDisappearing()
+        {
+            zxing.IsScanning = false;
 
-        //    base.OnDisappearing();
-        //}
+            base.OnDisappearing();
+        }
     }
 }
