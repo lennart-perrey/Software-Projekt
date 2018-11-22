@@ -90,19 +90,16 @@
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition />
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="5*"/>
+
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="85"/>
+                                <RowDefinition Height="85"/>
+                                <RowDefinition Height="85"/>
+                                <RowDefinition Height="85"/>
+                                <RowDefinition Height="85"/>
                             </Grid.RowDefinitions>
 
                             <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
@@ -121,57 +118,28 @@
                             <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
                                 <Label x:Name="attr5" Text="Kater"/>
                             </Frame>
-                        
-                            <Image Source="LeeresBier.jpg" Grid.Column="1" Grid.Row="0" x:Name="img1Attr1">
-                                <Image.GestureRecognizers >
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="2" Grid.Row="0" x:Name="img2Attr1">
-                                <Image.GestureRecognizers >
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="3" Grid.Row="0" x:Name="img3Attr1">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="4" Grid.Row="0" x:Name="img4Attr1">
-                                  <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="5" Grid.Row="0" x:Name="img5Attr1">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
-                            </Image>
 
-                            <Image Source="LeeresBier.jpg" Grid.Column="1" Grid.Row="1" x:Name="img1Attr2"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="2" Grid.Row="1" x:Name="img2Attr2"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="3" Grid.Row="1" x:Name="img3Attr2"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="4" Grid.Row="1" x:Name="img4Attr2"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="5" Grid.Row="1" x:Name="img5Attr2"></Image>
 
-                            <Image Source="LeeresBier.jpg"  Grid.Column="1" Grid.Row="2" x:Name="img1Attr3"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="2" Grid.Row="2" x:Name="img2Attr3"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="3" Grid.Row="2" x:Name="img3Attr3"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="4" Grid.Row="2" x:Name="img4Attr3"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="5" Grid.Row="2" x:Name="img5Attr3"></Image>
-
-                            <Image Source="LeeresBier.jpg" Grid.Column="1" Grid.Row="3" x:Name="img1Attr4"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="2" Grid.Row="3" x:Name="img2Attr4"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="3" Grid.Row="3" x:Name="img3Attr4"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="4" Grid.Row="3" x:Name="img4Attr4"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="5" Grid.Row="3" x:Name="img5Attr4"></Image>
-
-                            <Image Source="LeeresBier.jpg" Grid.Column="1" Grid.Row="4" x:Name="img1Attr5" ></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="2" Grid.Row="4" x:Name="img2Attr5"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="3" Grid.Row="4" x:Name="img3Attr5"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="4" Grid.Row="4" x:Name="img4Attr5"></Image>
-                            <Image Source="LeeresBier.jpg" Grid.Column="5" Grid.Row="4" x:Name="img5Attr5"></Image>
-
+                            <Frame Grid.Row="0" Grid.Column="1">
+                                <Picker  x:Name="pickGeschmack" HorizontalOptions="Center"
+                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
+                            </Frame>
+                            <Frame Grid.Row="1" Grid.Column="1">
+                                <Picker  x:Name="pickFarbe" HorizontalOptions="Center"
+                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
+                            </Frame>
+                            <Frame Grid.Row="2" Grid.Column="1">
+                                <Picker  x:Name="pickSüff" HorizontalOptions="Center"
+                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
+                            </Frame>
+                            <Frame Grid.Row="3" Grid.Column="1">
+                                <Picker  x:Name="pickDesign" HorizontalOptions="Center"
+                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
+                            </Frame>
+                            <Frame Grid.Row="4" Grid.Column="1">
+                                <Picker  x:Name="pickKater" HorizontalOptions="Center"
+                               FontAttributes="Bold" FontSize="Large" ItemsSource="VollesBier.png"></Picker>
+                            </Frame>
                         </Grid>
 
                         <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"

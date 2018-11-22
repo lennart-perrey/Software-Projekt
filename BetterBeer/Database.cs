@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 using System.Text;
 using System.Net;
 using System.IO;
@@ -206,6 +207,34 @@ namespace BetterBeer
                 data += $"username={login}";
             }
             return data;
+        }
+
+
+        public static bool CreateRating(int beerID, int userID, List<int> rating)
+        {
+            string postData = $"beerID={beerID}&userID={userID}";
+            string ratingID = apiCall("createRating", postData);
+
+            try
+            {
+
+                if (Convert.ToInt32(ratingID) > 0)
+                {
+                    for(int i = 0; i<4; i++)
+                    {
+                        postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
+                        string responseString = apiCall("createGrade", postData);
+
+                    }
+
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return false;
         }
     }
 }

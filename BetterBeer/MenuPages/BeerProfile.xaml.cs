@@ -14,7 +14,15 @@ namespace BetterBeer.MenuPages
 	public partial class BeerProfile : ContentPage, ISwipeCallback
 	{
         SwipeListener listener;
-        double rating1 = 0;
+        List<int> rating = new List<int>();
+        int beerID;
+        int ratingGeschmack = 0;
+        int ratingFarbe = 0;
+        int ratingSüff = 0;
+        int ratingDesign = 0;
+        int ratingKater = 0;
+        
+
 
         public BeerProfile (Beer scannedBeer)
         {
@@ -26,10 +34,18 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
             Beer beer = scannedBeer;
+            beerID = Convert.ToInt32(beer.beerId);
             lbl_BeerName.Text = beer.beerName;
             img_BeerImage.Source = beer.pic;
-            //lbl_BeerInfo.Text = beer.info;
-
+            
+            for (int i = 1; i < 6; i++)
+            {
+               pickGeschmack.Items.Add(i.ToString());
+                pickDesign.Items.Add(i.ToString());
+                pickSüff.Items.Add(i.ToString());
+                pickFarbe.Items.Add(i.ToString());
+                pickKater.Items.Add(i.ToString());
+            }
         }
 
         public void OnRightSwipe(View view)
@@ -71,96 +87,30 @@ namespace BetterBeer.MenuPages
            
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            if (img1Attr1.Source.ToString() == "LeeresBier.jpg")
-            {
-                img1Attr1.Source = "VollesBier.png";
-            }
-            else
-            {
-                img1Attr1.Source = "LeeresBier.jpg";
-            }
-            rating1 = 1;
-        }
-
-        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        {
-            if (img1Attr2.Source.ToString() == "LeeresBier.jpg")
-            {
-                img1Attr1.Source = "VollesBier.png";
-                img2Attr1.Source = "VollesBier.png";
-                
-            }
-            else
-            {
-                img1Attr1.Source = "LeeresBier.jpg";
-                img2Attr1.Source = "LeeresBier.jpg";
-
-            }
-            rating1 = 2;
-        }
-
-        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
-        {
-            if (img1Attr3.Source.ToString() == "LeeresBier.jpg")
-            {
-                img1Attr1.Source = "VollesBier.png";
-                img2Attr1.Source = "VollesBier.png";
-                img3Attr1.Source = "VollesBier.png";
-
-            }
-            else
-            {
-                img1Attr1.Source = "LeeresBier.jpg";
-                img2Attr1.Source = "LeeresBier.jpg";
-                img3Attr1.Source = "LeeresBier.jpg";
-            }
-            rating1 = 3;
-        }
-        private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
-        {
-            if (img1Attr4.Source.ToString() == "LeeresBier.jpg")
-            {
-                img1Attr1.Source = "VollesBier.png";
-                img2Attr1.Source = "VollesBier.png";
-                img3Attr1.Source = "VollesBier.png";
-                img4Attr1.Source = "VollesBier.png";
-
-            }
-            else
-            {
-                img1Attr1.Source = "LeeresBier.jpg";
-                img2Attr1.Source = "LeeresBier.jpg";
-                img3Attr1.Source = "LeeresBier.jpg";
-                img4Attr1.Source = "LeeresBier.jpg";
-            }
-            rating1 = 4;
-        }
-        private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
-        {
-            if (img1Attr5.Source.ToString() == "LeeresBier.jpg")
-            {
-                img1Attr1.Source = "VollesBier.png";
-                img2Attr1.Source = "VollesBier.png";
-                img3Attr1.Source = "VollesBier.png";
-                img4Attr1.Source = "VollesBier.png";
-                img5Attr1.Source = "VollesBier.png";
-            }
-            else
-            {
-                img1Attr1.Source = "LeeresBier.jpg";
-                img2Attr1.Source = "LeeresBier.jpg";
-                img3Attr1.Source = "LeeresBier.jpg";
-                img4Attr1.Source = "LeeresBier.jpg";
-                img5Attr1.Source = "LeeresBier.jpg";
-            }
-            rating1 = 5;
-        }
-
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            //Database.apiCall("createGrade", rating);
+            ratingGeschmack = Convert.ToInt32(pickGeschmack.SelectedItem);
+            ratingFarbe = Convert.ToInt32(pickFarbe.SelectedItem);
+            ratingDesign = Convert.ToInt32(pickDesign.SelectedItem);
+            ratingSüff = Convert.ToInt32(pickSüff.SelectedItem);
+            ratingKater = Convert.ToInt32(pickKater.SelectedItem);
+
+            rating.Add(ratingGeschmack);
+            rating.Add(ratingFarbe);
+            rating.Add(ratingDesign);
+            rating.Add(ratingSüff);
+            rating.Add(ratingKater);
+
+            bool check = Database.CreateRating(beerID, 0, rating);
+
+            if (!check)
+            {
+                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte die Eingaben", "Okay");
+            }
         }
+
+      
     }
+
+
 }
