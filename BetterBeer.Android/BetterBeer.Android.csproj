@@ -67,16 +67,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FacebookLoginActivity.cs" />
+    <Compile Include="Facebook\Helpers\DateTimeHelper.cs" />
+    <Compile Include="Facebook\Helpers\FBSdkHelper.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Objects\DroidGraphResponse.cs" />
-    <Compile Include="Objects\GraphCallback.cs" />
+    <Compile Include="Facebook\Objects\DroidGraphResponse.cs" />
+    <Compile Include="Facebook\Objects\GraphCallback.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Facebook\Services\FacebookLoginService.cs" />
+    <Compile Include="Facebook\Services\GraphRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />

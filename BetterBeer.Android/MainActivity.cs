@@ -7,11 +7,14 @@ using Android.Widget;
 using Android.OS;
 using Xamarin.Facebook;
 
+
+[assembly: MetaData("com.facebook.sdk.ApplicationId", Value = "@string/facebook_app_id")]
 namespace BetterBeer.Droid
 {
     [Activity(Label = "BetterBeer", Icon = "@drawable/BetterBeerIcon", Theme ="@style/MyTheme.Splash", MainLauncher = true, NoHistory =true)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+ 
         protected override void OnCreate(Bundle savedInstanceState)
         {
 

@@ -101,7 +101,7 @@ namespace BetterBeer
                     catch (TaskCanceledException e)
                     {
                         System.Diagnostics.Debug.WriteLine("The task was canceled.");
-                        //						throw e;
+      					throw e;
                     }
 
 

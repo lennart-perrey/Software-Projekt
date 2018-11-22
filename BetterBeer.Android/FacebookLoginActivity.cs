@@ -14,7 +14,7 @@ using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 
 [assembly: MetaData("com.facebook.sdk.ApplicationId", Value = "@string/facebook_app_id")]
-namespace Wiggin.Facebook.Droid
+namespace BetterBeer
 {
     [Activity(Label = "")]
     public class FacebookLoginActivity : Activity
