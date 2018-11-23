@@ -30,21 +30,21 @@ namespace BetterBeer
             listviewGeneral.ItemsSource = items;
         }
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        async void  Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
-                Navigation.PushModalAsync(new MyData());
+                await Navigation.PushModalAsync(new MyData());
             }
             else if (listviewGeneral.SelectedItem.ToString() == "Einstellungen")
             {
-                Navigation.PushModalAsync(new Options());
+                await Navigation.PushModalAsync(new Options());
             }
         }
 
-        public void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
-            Navigation.PushModalAsync(new StarPage(),false);
+            await Navigation.PushModalAsync(new StarPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -62,19 +62,19 @@ namespace BetterBeer
 
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MenuPage(),false);
+            await Navigation.PushModalAsync(new MenuPage(),false);
         }
 
-        private void Ranking_Tapped(object sender, EventArgs e)
+        private async void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new StarPage(),false);
+            await Navigation.PushModalAsync(new StarPage(),false);
         }
 
-        private void Friends_Tapped(object sender, EventArgs e)
+        private async void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new FriendsPage(),false);
+            await Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)

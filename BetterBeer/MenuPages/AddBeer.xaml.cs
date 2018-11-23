@@ -29,7 +29,7 @@ namespace BetterBeer.MenuPages
             scanResult = id;
         }
 
-        private void btn_add_clicked(object sender, EventArgs e)
+        private async void btn_add_clicked(object sender, EventArgs e)
         {
             string ean = scanResult;
             string beerName = entry_BeerName.Text;
@@ -39,25 +39,25 @@ namespace BetterBeer.MenuPages
 
             if (beerName == null || beerBrand == null)
             {
-                DisplayAlert("Achtung", "Biername oder Biermarke fehlen", "Ok");
+                await DisplayAlert("Achtung", "Biername oder Biermarke fehlen", "Ok");
             }
             else
             {
                 if(Database.createBeer(ean, beerName, brandId))
                 {
-                    DisplayAlert("Info", "Bierantrag erfolgreich gesendet", "Ok");
+                   await  DisplayAlert("Info", "Bierantrag erfolgreich gesendet", "Ok");
                 }
                 else
                 {
-                    DisplayAlert("Fehler", "Bierantrag konnte nicht gesendet werden, bitte probieren Sie es später erneut", "Ok");
+                   await  DisplayAlert("Fehler", "Bierantrag konnte nicht gesendet werden, bitte probieren Sie es später erneut", "Ok");
                 }
-                Navigation.PushAsync(new MenuPage());
+                await Navigation.PushAsync(new MenuPage());
             }                            
         }
 
-        private void btn_cancel_clicked(object sender, EventArgs e)
+        private async void btn_cancel_clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MenuPage());
+           await Navigation.PushModalAsync(new MenuPage());
         }
     }
 }

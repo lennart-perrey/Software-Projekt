@@ -33,9 +33,9 @@ namespace BetterBeer
 
         }
 
-        public void OnRightSwipe(View view)
+        public async void OnRightSwipe(View view)
         {
-            Navigation.PushModalAsync(new MenuPage(),false);
+            await Navigation.PushModalAsync(new MenuPage(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -43,19 +43,19 @@ namespace BetterBeer
 
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new OptionsPage(), false);
+            await Navigation.PushModalAsync(new OptionsPage(), false);
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MenuPage(),false);
+            await Navigation.PushModalAsync(new MenuPage(),false);
         }
 
-        private void Ranking_Tapped(object sender, EventArgs e)
+        private async void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new StarPage(),false);
+            await Navigation.PushModalAsync(new StarPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
@@ -63,53 +63,6 @@ namespace BetterBeer
             await Navigation.PushModalAsync(new CustomScanPage(), false);
         }
 
-        private async void btn_takePhoto_Clicked(object sender, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-            {
-                await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
-                return;
-            }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-            {
-                Directory = "Pictures",
-                Name = "ProfilPic.jpg"
-            });
-
-            if (file == null)
-                return;
-
-
-            image.Source = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                return stream;
-            });
-
-        }
-
-        private async void btn_pickPhoto_Clicked(object sender, EventArgs e)
-        {
-
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
-                return;
-            }
-            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-            {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
-            });
-
-
-            if (file == null)
-                return;
-
-            image.Source = ImageSource.FromStream(() => file.GetStream());
-
-        }
     }
 }

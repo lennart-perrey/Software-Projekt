@@ -21,9 +21,9 @@ namespace BetterBeer
             }
         }
 
-        public void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
-            Navigation.PushModalAsync(new FriendsPage(),false);
+           await Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -31,10 +31,10 @@ namespace BetterBeer
 
         }
 
-        public void OnRightSwipe(View view)
+        public async void OnRightSwipe(View view)
         {
 
-            Navigation.PushModalAsync(new StarPage(),false);
+            await Navigation.PushModalAsync(new StarPage(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -42,19 +42,19 @@ namespace BetterBeer
 
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new OptionsPage(),false);
+            await Navigation.PushModalAsync(new OptionsPage(),false);
         }
 
-        private void Ranking_Tapped(object sender, EventArgs e)
+        private async void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new StarPage(),false);
+            await Navigation.PushModalAsync(new StarPage(),false);
         }
 
-        private void Friends_Tapped(object sender, EventArgs e)
+        private async void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new FriendsPage(),false);
+            await Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
