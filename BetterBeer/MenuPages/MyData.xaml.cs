@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Plugin.Media;
 
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace BetterBeer.MenuPages
         {
 
             await CrossMedia.Current.Initialize();
-            var answer = await DisplayAlert("Profilbild", "Möchtest du ein Bild aufnehmen oder auswählen?", "Aufnehmen", "Auswählen");
+            bool answer = await DisplayAlert("Profilbild", "Möchtest du ein Bild aufnehmen oder auswählen?", "Aufnehmen", "Auswählen");
 
             if (answer == false)
             {
@@ -36,6 +37,7 @@ namespace BetterBeer.MenuPages
                     return;
 
                 myImage.Source = ImageSource.FromStream(() => file.GetStream());
+
 
             }
             else if (answer == true)
