@@ -34,17 +34,17 @@ namespace BetterBeer
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
-                Navigation.PushAsync(new MyData());
+                Navigation.PushModalAsync(new MyData());
             }
             else if (listviewGeneral.SelectedItem.ToString() == "Einstellungen")
             {
-                Navigation.PushAsync(new Options());
+                Navigation.PushModalAsync(new Options());
             }
         }
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new StarPage(),false);
+            Navigation.PushModalAsync(new StarPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -64,22 +64,22 @@ namespace BetterBeer
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushModalAsync(new MenuPage(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage(),false);
+            Navigation.PushModalAsync(new StarPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage(),false);
+            Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushModalAsync(new CustomScanPage(), false);
         }
 
     }

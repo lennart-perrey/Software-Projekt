@@ -70,7 +70,7 @@ namespace BetterBeer.MenuPages
     public void OnLeftSwipe(View view)
         {
 
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushModalAsync(new MenuPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -80,7 +80,7 @@ namespace BetterBeer.MenuPages
 
         public void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            Navigation.PushModalAsync(new OptionsPage(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -90,21 +90,21 @@ namespace BetterBeer.MenuPages
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            Navigation.PushModalAsync(new OptionsPage(),false);
         }
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushModalAsync(new MenuPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage(),false);
+            Navigation.PushModalAsync(new FriendsPage(),false);
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(),false);
+            await Navigation.PushModalAsync(new CustomScanPage(),false);
         }
 
 
@@ -160,7 +160,7 @@ namespace BetterBeer.MenuPages
 
             if (foundBeer != null)
             {
-                Navigation.PushAsync(new BeerProfile(foundBeer));
+                Navigation.PushModalAsync(new BeerProfile(foundBeer));
             }
             else
             {
@@ -176,7 +176,7 @@ namespace BetterBeer.MenuPages
 
             if (beers.Count == 1)
             {
-                 Navigation.PushAsync(new BeerProfile(beers[0]));
+                 Navigation.PushModalAsync(new BeerProfile(beers[0]));
             }
             else if (beers.Count == 0)
             {

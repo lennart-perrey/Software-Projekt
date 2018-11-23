@@ -7,6 +7,7 @@ namespace BetterBeer.MenuPages
 {
     public partial class AddBeer : ContentPage
     {
+
         List<Brand> brandsList = Database.showBrand();
         IDictionary<string, int> brands = new Dictionary<string, int>();
         string scanResult = "";
@@ -15,6 +16,7 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            
 
 
 
@@ -55,7 +57,7 @@ namespace BetterBeer.MenuPages
 
         private void btn_cancel_clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushModalAsync(new MenuPage());
         }
     }
 }

@@ -12,7 +12,8 @@ namespace BetterBeer
         public MenuPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
-            InitializeComponent();       
+            InitializeComponent();
+            
             listener = new SwipeListener(stlout_Swipe, this);
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -22,7 +23,7 @@ namespace BetterBeer
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new FriendsPage(),false);
+            Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -33,7 +34,7 @@ namespace BetterBeer
         public void OnRightSwipe(View view)
         {
 
-            Navigation.PushAsync(new StarPage(),false);
+            Navigation.PushModalAsync(new StarPage(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -43,22 +44,22 @@ namespace BetterBeer
 
         private void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            Navigation.PushModalAsync(new OptionsPage(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage(),false);
+            Navigation.PushModalAsync(new StarPage(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage(),false);
+            Navigation.PushModalAsync(new FriendsPage(),false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushModalAsync(new CustomScanPage(), false);
         }
     }
 }
