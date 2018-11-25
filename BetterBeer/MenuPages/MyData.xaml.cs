@@ -72,7 +72,7 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        private async void btn_deleteAcc_Clicked (Object sender, EventArgs e)
+        private void btn_deleteAcc_Clicked(Object sender, EventArgs e)
         {
             throw new Exception();
         }

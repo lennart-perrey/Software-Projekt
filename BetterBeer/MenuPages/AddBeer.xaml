@@ -53,6 +53,7 @@
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         
+                        <Label Grid.Row="0" x:Name="lbl_ean" HorizontalOptions="Center" VerticalOptions="Center"/>
 
                         <Entry Grid.Row="1" x:Name="entry_BeerName" Placeholder="Biername"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"

@@ -30,21 +30,21 @@ namespace BetterBeer
             listviewGeneral.ItemsSource = items;
         }
 
-        async void  Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        void  Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
-                await Navigation.PushAsync(new MyData());
+                Navigation.PushAsync(new MyData());
             }
             else if (listviewGeneral.SelectedItem.ToString() == "Einstellungen")
             {
-                await Navigation.PushAsync(new Options());
+                Navigation.PushAsync(new Options());
             }
         }
 
-        public async void OnLeftSwipe(View view)
+        public void OnLeftSwipe(View view)
         {
-            await Navigation.PushModalAsync(new StarPage(),false);
+            Navigation.PushAsync(new StarPage(),false);
         }
 
         public void OnNothingSwipe(View view)

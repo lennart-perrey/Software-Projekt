@@ -67,10 +67,10 @@ namespace BetterBeer.MenuPages
 
 
     /*Toolbar*/
-    public async void OnLeftSwipe(View view)
+    public void OnLeftSwipe(View view)
         {
 
-            await Navigation.PushModalAsync(new MenuPage(),false);
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -78,9 +78,9 @@ namespace BetterBeer.MenuPages
 
         }
 
-        public async void OnRightSwipe(View view)
+        public void OnRightSwipe(View view)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new OptionsPage()));
+            Navigation.PushAsync(new NavigationPage(new OptionsPage()));
         }
 
         public void OnTopSwipe(View view)
@@ -88,23 +88,23 @@ namespace BetterBeer.MenuPages
 
         }
 
-        private async void Options_Tapped(object sender, EventArgs e)
+        private void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new OptionsPage()));
+            Navigation.PushAsync(new NavigationPage(new OptionsPage()));
         }
 
         private async void Home_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MenuPage(),false);
+            Navigation.PushAsync(new MenuPage(),false);
         }
 
         private async void Friends_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new FriendsPage(),false);
+            Navigation.PushAsync(new FriendsPage(),false);
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(),false);
+            Navigation.PushAsync(new CustomScanPage(),false);
         }
 
 
@@ -148,7 +148,7 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
 
             List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
@@ -160,15 +160,15 @@ namespace BetterBeer.MenuPages
 
             if (foundBeer != null)
             {
-                await Navigation.PushModalAsync(new BeerProfile(foundBeer));
+                Navigation.PushAsync(new BeerProfile(foundBeer));
             }
             else
             {
-                await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+                DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
             }
         }
 
-        private async void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             highscoreLayout.IsVisible = true;
             string bier = searchBar.Text;
@@ -176,12 +176,12 @@ namespace BetterBeer.MenuPages
 
             if (beers.Count == 1)
             {
-                 await Navigation.PushModalAsync(new BeerProfile(beers[0]));
+                 Navigation.PushAsync(new BeerProfile(beers[0]));
             }
             else if (beers.Count == 0)
             {
                 highscoreLayout.Children.Clear();
-                await DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
+                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
                 setHighscore();
             }
             else if (beers.Count  > 1)
@@ -191,15 +191,15 @@ namespace BetterBeer.MenuPages
                 {
                     matchingBeers += beer.beerName + ", ";
                 }
-                await DisplayAlert("Mehrere Biere gefunden", "Folgende Biere wurden gefunden:\n"+matchingBeers, "YO!");
+                DisplayAlert("Mehrere Biere gefunden", "Folgende Biere wurden gefunden:\n"+matchingBeers, "YO!");
             }
             else if (bier == "" || bier == "Suche")
             {
-                await DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
+                DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
             }
             else
             {
-                await DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
+                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
             }
         }
     }
