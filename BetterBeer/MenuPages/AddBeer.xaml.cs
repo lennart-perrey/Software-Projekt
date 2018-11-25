@@ -51,13 +51,13 @@ namespace BetterBeer.MenuPages
                 {
                    await  DisplayAlert("Fehler", "Bierantrag konnte nicht gesendet werden, bitte probieren Sie es später erneut", "Ok");
                 }
-                await Navigation.PushAsync(new MenuPage());
+                await Navigation.PushModalAsync(new MenuPage(),false);
             }                            
         }
 
         private async void btn_cancel_clicked(object sender, EventArgs e)
         {
-           await Navigation.PushModalAsync(new MenuPage());
+           await Navigation.PushModalAsync(new MenuPage(),false);
         }
     }
 }
