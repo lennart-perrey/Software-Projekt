@@ -28,7 +28,7 @@ namespace BetterBeer.MenuPages
             Beer beer = scannedBeer;
             lbl_BeerName.Text = beer.beerName;
             img_BeerImage.Source = beer.pic;
-            //lbl_BeerInfo.Text = beer.info;
+            //lbl_BeerInfo.Text = beer.;
 
         }
 
