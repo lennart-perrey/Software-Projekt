@@ -44,7 +44,7 @@ namespace BetterBeer
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
         private async void Ranking_Tapped(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace BetterBeer
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
     }
 }

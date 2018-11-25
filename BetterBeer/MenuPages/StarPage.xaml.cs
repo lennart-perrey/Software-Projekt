@@ -80,7 +80,7 @@ namespace BetterBeer.MenuPages
 
         public async void OnRightSwipe(View view)
         {
-             await Navigation.PushModalAsync(new OptionsPage(),false);
+            await Navigation.PushModalAsync(new NavigationPage(new OptionsPage()));
         }
 
         public void OnTopSwipe(View view)
@@ -90,7 +90,7 @@ namespace BetterBeer.MenuPages
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new NavigationPage(new OptionsPage()));
         }
 
         private async void Home_Tapped(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace BetterBeer.MenuPages
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new CustomScanPage(),false);
+            await Navigation.PushAsync(new CustomScanPage(),false);
         }
 
 
