@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BetterBeer.MenuPages.StarPage"
+             x:Class="BetterBeer.MenuPages.SearchPage"
              BackgroundColor="Black">
 
     <ContentPage.Padding>
@@ -70,10 +70,9 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
 
 
-                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" TextChanged="searchBar_TextChanged" />
-                <StackLayout x:Name="highscoreLayout" Orientation="Vertical">
-
-                </StackLayout>
+                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" 
+                           HorizontalOptions="Start" TextChanged="searchBar_TextChanged"/>
+                           
                 <ListView x:Name="lv_searchBeer" ItemTapped="Handle_ItemTapped">
                         
                 </ListView>

@@ -45,32 +45,43 @@ namespace BetterBeer.MenuPages
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto }
-
                         }
                 };
 
                 Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-                //Label labelMarke = new Label { Text = beer.brand, VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand, };
                 Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
                 Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
                 //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
 
                 gridBeer.Children.Add(labelBeerName, 0, 0);
-                //gridBeer.Children.Add(labelMarke, 1, 0);
                 gridBeer.Children.Add(labelBewertung, 1, 0);
                 gridBeer.Children.Add(pic, 2, 0);
 
                 highscoreLayout.Children.Add(gridBeer);
+
+                highscoreLayout.IsVisible = false;
+
+                //Show All Beers at Push from Page
+
+                //List<Beer> beers = Database.ShowBeer();
+
+                //List<string> matchingBeers = new List<string>();
+                //foreach(Beer beer1 in beers)
+                //{
+                  //  matchingBeers.Add(beer1.beerName);
+                //}
+                //
+              //lv_searchBeer.ItemsSource = matchingBeers;
             }
-    }
+        }
 
 
 
-    /*Toolbar*/
+    /*Tar*/
     public void OnLeftSwipe(View view)
         {
 
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -95,7 +106,7 @@ namespace BetterBeer.MenuPages
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
@@ -121,8 +132,7 @@ namespace BetterBeer.MenuPages
                 highscoreLayout.IsVisible = true;
                 List<string> leer = new List<string>();
                 lv_searchBeer.ItemsSource = leer;
-                //highscoreLayout.Children.Clear();
-                //setHighscore();
+
             }
             else
             {
@@ -136,13 +146,11 @@ namespace BetterBeer.MenuPages
                 else
                 {
                     List<string> matchingBeers = new List<string>();
-                    foreach (Beer beer in beers)
+                    foreach (Beer beer2 in beers)
                     {
-                        matchingBeers.Add(beer.beerName);
+                        matchingBeers.Add(beer2.beerName);
                     }
-                    //Label searchInfo = new Label { Text = "Meinst du:\n" + matchingBeers };
-                    //highscoreLayout.Children.Clear();
-                    //highscoreLayout.Children.Add(searchInfo);
+
                     lv_searchBeer.ItemsSource = matchingBeers;
                 }
             }
@@ -165,41 +173,6 @@ namespace BetterBeer.MenuPages
             else
             {
                 DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
-            }
-        }
-
-        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-            highscoreLayout.IsVisible = true;
-            string bier = searchBar.Text;
-            List<Beer> beers= Database.getBeerByName(bier);
-
-            if (beers.Count == 1)
-            {
-                 Navigation.PushAsync(new BeerProfile(beers[0]));
-            }
-            else if (beers.Count == 0)
-            {
-                highscoreLayout.Children.Clear();
-                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
-                setHighscore();
-            }
-            else if (beers.Count  > 1)
-            {
-                string matchingBeers = "";
-                foreach(Beer beer in beers)
-                {
-                    matchingBeers += beer.beerName + ", ";
-                }
-                DisplayAlert("Mehrere Biere gefunden", "Folgende Biere wurden gefunden:\n"+matchingBeers, "YO!");
-            }
-            else if (bier == "" || bier == "Suche")
-            {
-                DisplayAlert("Achtung!", "Bitte gib ein Bier ein!", "OK!");
-            }
-            else
-            {
-                DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
             }
         }
     }

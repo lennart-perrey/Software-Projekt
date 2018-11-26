@@ -35,7 +35,7 @@ namespace BetterBeer
 
         public void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         public void OnTopSwipe(View view)
@@ -50,7 +50,7 @@ namespace BetterBeer
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         private void Ranking_Tapped(object sender, EventArgs e)

@@ -5,11 +5,11 @@ using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
 {
-    public partial class MenuPage : ContentPage, ISwipeCallback
+    public partial class DashBoard : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
 
-        public MenuPage()
+        public DashBoard()
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();

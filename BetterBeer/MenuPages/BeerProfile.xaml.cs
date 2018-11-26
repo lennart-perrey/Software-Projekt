@@ -49,7 +49,7 @@ namespace BetterBeer.MenuPages
 
         private void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         private void Friends_Tapped(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace BetterBeer.MenuPages
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new MenuPage(),false);
+            Navigation.PushAsync(new DashBoard(),false);
         }
 
         public void OnNothingSwipe(View view)
