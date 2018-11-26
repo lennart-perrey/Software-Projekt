@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -21,7 +22,7 @@ namespace BetterBeer.MenuPages
                 SetStatusStyle.SetStyle();
             }
 
-            setHighscore();
+            //setHighscore();
          }
 
         /// Erstellt die Ausgabe der Topliste
@@ -121,39 +122,55 @@ namespace BetterBeer.MenuPages
 
         /* Suchleistung Änderungen
          * */
-        private void searchBar_TextChanged(object sender, EventArgs e)
+        private async void searchBar_TextChanged(object sender, EventArgs e)
         {
-            lv_searchBeer.IsVisible = true;
-            highscoreLayout.IsVisible = false;
-            string bier = searchBar.Text;
-            if (bier == "")
-            {   
-                lv_searchBeer.IsVisible = false;
-                highscoreLayout.IsVisible = true;
-                List<string> leer = new List<string>();
-                lv_searchBeer.ItemsSource = leer;
+            var cts = new CancellationTokenSource();
 
-            }
-            else
+            try
             {
-                List<Beer> beers = Database.getBeerByName(bier);
-
-                if(beers == null)
+                cts.CancelAfter(10000);
+                lv_searchBeer.IsVisible = true;
+                highscoreLayout.IsVisible = false;
+                string bier = searchBar.Text;
+                if (bier == "")
                 {
+                    lv_searchBeer.IsVisible = false;
+                    highscoreLayout.IsVisible = true;
                     List<string> leer = new List<string>();
                     lv_searchBeer.ItemsSource = leer;
+
                 }
                 else
                 {
-                    List<string> matchingBeers = new List<string>();
-                    foreach (Beer beer2 in beers)
-                    {
-                        matchingBeers.Add(beer2.beerName);
-                    }
+                    List<Beer> beers = Database.getBeerByName(bier);
 
-                    lv_searchBeer.ItemsSource = matchingBeers;
+                    if (beers == null)
+                    {
+                        List<string> leer = new List<string>();
+                        lv_searchBeer.ItemsSource = leer;
+                    }
+                    else
+                    {
+                        List<string> matchingBeers = new List<string>();
+                        foreach (Beer beer2 in beers)
+                        {
+                            matchingBeers.Add(beer2.beerName);
+                        }
+
+                        lv_searchBeer.ItemsSource = matchingBeers;
+                    }
                 }
             }
+            catch(OperationCanceledException)
+            {
+                await DisplayAlert("Fehler", "Ihr Internetverbindung ist zu langsam, bitte versuchen Sie es später erneut.", "Ok");
+            }
+            catch(Exception ex)
+            {
+                await DisplayAlert("Fehler", ex.Message, "Ok");
+            }
+
+            cts = null;
         }
 
         private void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
