@@ -33,8 +33,9 @@ namespace BetterBeer
             listviewGeneral.ItemsSource = itemsGeneral;
             listviewSystem.ItemsSource = itemsSystem;
         }
+    
 
-        async void Handle_ItemTapped1(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
@@ -48,6 +49,7 @@ namespace BetterBeer
             {
                 await Navigation.PushAsync(new Achievements());
             }
+        }
 
         public async void OnLeftSwipe(View view)
         {

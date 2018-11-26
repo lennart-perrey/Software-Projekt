@@ -83,7 +83,7 @@ namespace BetterBeer.MenuPages
 
 
     /*Tar*/
-    public  async void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new DashBoard(),false);
         }
@@ -105,7 +105,7 @@ namespace BetterBeer.MenuPages
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OptionsPage()));
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
         private async void Home_Tapped(object sender, EventArgs e)
