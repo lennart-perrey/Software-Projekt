@@ -22,9 +22,11 @@ namespace BetterBeer.MenuPages
             {
                 SetStatusStyle.SetStyle();
             }
-
+            this.BindingContext = this;
+            this.IsBusy = false;
+            act_Indicator.IsVisible = false;
             //setHighscore();
-         }
+        }
 
         /// Erstellt die Ausgabe der Topliste
         private void setHighscore()
@@ -70,10 +72,11 @@ namespace BetterBeer.MenuPages
                 //List<string> matchingBeers = new List<string>();
                 //foreach(Beer beer1 in beers)
                 //{
-                  //  matchingBeers.Add(beer1.beerName);
+                //  matchingBeers.Add(beer1.beerName);
                 //}
                 //
-              //lv_searchBeer.ItemsSource = matchingBeers;
+                //lv_searchBeer.ItemsSource = matchingBeers;
+
             }
         }
 
@@ -82,41 +85,41 @@ namespace BetterBeer.MenuPages
     /*Tar*/
     public  async void OnLeftSwipe(View view)
         {
-           await Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(),false);
         }
 
-        public void OnNothingSwipe(View view)
+        public async void OnNothingSwipe(View view)
         {
 
         }
 
-        public void OnRightSwipe(View view)
+        public async void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
-        public void OnTopSwipe(View view)
+        public async void OnTopSwipe(View view)
         {
 
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NavigationPage(new OptionsPage()));
+            await Navigation.PushAsync(new NavigationPage(new OptionsPage()));
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(),false);
         }
 
-        private void Friends_Tapped(object sender, EventArgs e)
+        private async void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage(),false);
+            await Navigation.PushAsync(new FriendsPage(),false);
         }
-        private void Scan_Tapped(object sender, EventArgs e)
+        private async void Scan_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomScanPage(),false);
+            await Navigation.PushAsync(new CustomScanPage(),false);
         }
 
 
@@ -125,13 +128,12 @@ namespace BetterBeer.MenuPages
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
             var cts = new CancellationTokenSource();
-            var activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
+            act_Indicator.IsVisible = true;
 
             try
             {
                 cts.CancelAfter(10000);
-                activitySpinner.StartAnimating();
-
+                this.IsBusy = true;
                 lv_searchBeer.IsVisible = true;
                 highscoreLayout.IsVisible = false;
                 string bier = searchBar.Text;
@@ -161,25 +163,29 @@ namespace BetterBeer.MenuPages
                         }
 
                         lv_searchBeer.ItemsSource = matchingBeers;
-                        activitySpinner.StopAnimating();
                     }
                 }
             }
             catch(OperationCanceledException)
             {
+                act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", "Ihr Internetverbindung ist zu langsam, bitte versuchen Sie es später erneut.", "Ok");
-                activitySpinner.StopAnimating();
+                this.IsBusy = false;
+
             }
             catch(Exception ex)
             {
+                act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", ex.Message, "Ok");
-                activitySpinner.StopAnimating();
+                this.IsBusy = false;
             }
 
             cts = null;
+            act_Indicator.IsVisible = false;
+            this.IsBusy = false;
         }
 
-        private void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
 
             List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
@@ -191,11 +197,11 @@ namespace BetterBeer.MenuPages
 
             if (foundBeer != null)
             {
-                Navigation.PushAsync(new BeerProfile(foundBeer));
+                await Navigation.PushAsync(new BeerProfile(foundBeer));               
             }
             else
             {
-                DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+               await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
             }
         }
     }

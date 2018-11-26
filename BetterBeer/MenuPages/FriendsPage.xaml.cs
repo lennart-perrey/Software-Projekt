@@ -23,44 +23,44 @@ namespace BetterBeer
             }
         }
 
-        public void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new CustomScanPage(), false);   
+            await Navigation.PushAsync(new CustomScanPage(), false);   
         }
 
-        public void OnNothingSwipe(View view)
-        {
-
-        }
-
-        public void OnRightSwipe(View view)
-        {
-            Navigation.PushAsync(new DashBoard(),false);
-        }
-
-        public void OnTopSwipe(View view)
+        public async void OnNothingSwipe(View view)
         {
 
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        public async void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new DashBoard(),false);
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        public async void OnTopSwipe(View view)
         {
-            Navigation.PushAsync(new DashBoard(),false);
+
         }
 
-        private void Ranking_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StarPage(),false);
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
-        private void Scan_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new DashBoard(),false);
+        }
+
+        private async void Ranking_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StarPage(),false);
+        }
+
+        private async void Scan_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
 

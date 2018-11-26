@@ -42,41 +42,41 @@ namespace BetterBeer.MenuPages
 
         public void OnLeftSwipe(View view)
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnNothingSwipe(View view)
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnRightSwipe(View view)
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnTopSwipe(View view)
         {
-            throw new NotImplementedException();
+
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NavigationPage(new OptionsPage()));
+            await Navigation.PushAsync(new NavigationPage(new OptionsPage()));
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DashBoard(), false);
+            await Navigation.PushAsync(new DashBoard(), false);
         }
 
-        private void Friends_Tapped(object sender, EventArgs e)
+        private async void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage(), false);
+            await Navigation.PushAsync(new FriendsPage(), false);
         }
-        private void Scan_Tapped(object sender, EventArgs e)
+        private async void Scan_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)

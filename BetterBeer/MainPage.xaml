@@ -53,7 +53,10 @@
                     HorizontalOptions="Fill" HeightRequest="45"
                     Clicked="btn_login_clicked" BackgroundColor="Gray"
                     TextColor="White" FontAttributes="Bold" FontSize="18"/>
-
+                    
+                    <ActivityIndicator x:Name="act_Indicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center"
+                                   HorizontalOptions="Center" Color="#FFCD33" HeightRequest="100" WidthRequest="100"/>
+                    
                     <Label Grid.Row="3" x:Name="lbl_forgotPassword" Text="Passwort vergessen?" 
                    HorizontalOptions="Center"
                    TextColor="Gray" FontSize="13" FontAttributes="Italic"
@@ -98,7 +101,7 @@
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="lbl_createAcc_Tapped"/>
                     </Label.GestureRecognizers>
-                </Label>
+                </Label> 
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -70,13 +70,16 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
 
 
-                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" TextChanged="searchBar_TextChanged" />
+                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" 
+                           HorizontalOptions="Start" TextChanged="searchBar_TextChanged"/>
+                <ActivityIndicator x:Name="act_Indicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center"
+                                   HorizontalOptions="Center" Color="#FFCD33" HeightRequest="100" WidthRequest="100"/>
+                
                 <StackLayout x:Name="highscoreLayout" Orientation="Vertical">
-
                 </StackLayout>
+                
                 <ListView x:Name="lv_searchBeer" ItemTapped="Handle_ItemTapped">
-                        
-                </ListView>
+                </ListView> 
            </StackLayout>
          </StackLayout>
     </ContentPage.Content>

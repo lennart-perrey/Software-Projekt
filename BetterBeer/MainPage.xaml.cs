@@ -12,26 +12,41 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             btn_login.IsEnabled = false;
+            BindingContext = this;
+            IsBusy = false;
+            act_Indicator.IsVisible = false;
         }
 
         private async void btn_login_clicked(object sender, EventArgs e)
         {
-            string email = entry_email.Text;
-            string SaltedPassword = Database.GetSaltedPW(email);
-            string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
-
-
-            if (Database.CheckUser(email, password))
+            try
             {
-                await Navigation.PushAsync(new DashBoard());
-            }
-            else
-            {
-                await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
-                entry_email.Text = "";
-                entry_password.Text = "";
-            }
+                act_Indicator.IsVisible = true;
+                IsBusy = true;
+                string email = entry_email.Text;
+                string SaltedPassword = Database.GetSaltedPW(email);
+                string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
 
+
+                if (Database.CheckUser(email, password))
+                {
+                    await Navigation.PushAsync(new DashBoard());
+                    act_Indicator.IsVisible = false;
+                    IsBusy = false;
+                }
+                else
+                {
+                    await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
+                    entry_email.Text = "";
+                    entry_password.Text = "";
+                    act_Indicator.IsVisible = false;
+                    IsBusy = false;
+                }
+            }
+            catch(Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen.", "Ok");
+            }
 
         }
 

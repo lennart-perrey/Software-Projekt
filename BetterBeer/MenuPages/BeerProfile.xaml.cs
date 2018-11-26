@@ -32,46 +32,46 @@ namespace BetterBeer.MenuPages
 
         }
 
-        public void OnRightSwipe(View view)
+        public async void OnRightSwipe(View view)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
-        public void OnTopSwipe(View view)
+        public async void OnTopSwipe(View view)
         {
 
         }
 
-        private void Options_Tapped(object sender, EventArgs e)
+        private async void Options_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(),false);
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        private async void Home_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(),false);
         }
 
-        private void Friends_Tapped(object sender, EventArgs e)
+        private async void Friends_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FriendsPage());
+            await Navigation.PushAsync(new FriendsPage());
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
-        public void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(),false);
         }
 
-        public void OnNothingSwipe(View view)
+        public async void OnNothingSwipe(View view)
         {
            
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             if (img1Attr1.Source.ToString() == "LeeresBier.jpg")
             {
@@ -158,7 +158,7 @@ namespace BetterBeer.MenuPages
             rating1 = 5;
         }
 
-        private void btn_Submit_Clicked(object sender, EventArgs e)
+        private async void btn_Submit_Clicked(object sender, EventArgs e)
         {
             //Database.apiCall("createGrade", rating);
         }
