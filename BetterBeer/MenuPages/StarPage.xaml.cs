@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -79,10 +80,9 @@ namespace BetterBeer.MenuPages
 
 
     /*Tar*/
-    public void OnLeftSwipe(View view)
+    public  async void OnLeftSwipe(View view)
         {
-
-            Navigation.PushAsync(new DashBoard(),false);
+           await Navigation.PushAsync(new DashBoard(),false);
         }
 
         public void OnNothingSwipe(View view)
@@ -125,10 +125,13 @@ namespace BetterBeer.MenuPages
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
             var cts = new CancellationTokenSource();
+            var activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
 
             try
             {
                 cts.CancelAfter(10000);
+                activitySpinner.StartAnimating();
+
                 lv_searchBeer.IsVisible = true;
                 highscoreLayout.IsVisible = false;
                 string bier = searchBar.Text;
@@ -158,16 +161,19 @@ namespace BetterBeer.MenuPages
                         }
 
                         lv_searchBeer.ItemsSource = matchingBeers;
+                        activitySpinner.StopAnimating();
                     }
                 }
             }
             catch(OperationCanceledException)
             {
                 await DisplayAlert("Fehler", "Ihr Internetverbindung ist zu langsam, bitte versuchen Sie es später erneut.", "Ok");
+                activitySpinner.StopAnimating();
             }
             catch(Exception ex)
             {
                 await DisplayAlert("Fehler", ex.Message, "Ok");
+                activitySpinner.StopAnimating();
             }
 
             cts = null;
