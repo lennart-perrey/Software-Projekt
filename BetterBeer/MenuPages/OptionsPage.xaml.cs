@@ -22,15 +22,19 @@ namespace BetterBeer
                 SetStatusStyle.SetStyle();
             }
 
-            List<string> items = new List<string>();
-            items.Add("Meine Daten");
-            items.Add("Einstellungen");
-            items.Add("Logout");
+            List<string> itemsGeneral = new List<string>();
+            itemsGeneral.Add("Meine Daten");
+            itemsGeneral.Add("Einstellungen");
+            itemsGeneral.Add("Achievements");
 
-            listviewGeneral.ItemsSource = items;
+            List<string> itemsSystem = new List<string>();
+            itemsSystem.Add("Logout");
+
+            listviewGeneral.ItemsSource = itemsGeneral;
+            listviewSystem.ItemsSource = itemsSystem;
         }
 
-        async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        async void Handle_ItemTapped1(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
@@ -40,7 +44,10 @@ namespace BetterBeer
             {
                 await Navigation.PushAsync(new Options());
             }
-        }
+            else if (listviewGeneral.SelectedItem.ToString() == "Achievements")
+            {
+                await Navigation.PushAsync(new Achievements());
+            }
 
         public async void OnLeftSwipe(View view)
         {

@@ -105,7 +105,7 @@ namespace BetterBeer.MenuPages
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new OptionsPage()));
+            await Navigation.PushAsync(new OptionsPage()));
         }
 
         private async void Home_Tapped(object sender, EventArgs e)

@@ -35,7 +35,22 @@
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                         
                         <ListView Grid.Row="2" x:Name="listviewGeneral" ItemTapped="Handle_ItemTapped"/>
-               </Grid>  
+               </Grid>
+               <Grid>
+                  <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                   </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="System" HorizontalOptions="FillAndExpand" Margin="10,0,0,0"
+                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Large"
+                               TextColor="Gray" FontAttributes="Bold"/>
+                        
+                        <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
+                               HorizontalOptions="Fill" VerticalOptions="Center"/>
+                        
+                        <ListView Grid.Row="2" x:Name="listviewSystem" ItemTapped="Handle_ItemTapped"/>
+               </Grid>
             </StackLayout>
         </StackLayout>
         </ScrollView>
