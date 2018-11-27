@@ -103,43 +103,81 @@
                             </Grid.RowDefinitions>
 
                             <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
-                                <Label x:Name="attr1" Text="Geschmack"/>
+                                <Label x:Name="attr1">
+                                    
+                                </Label>
                             </Frame>
                             <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1">
-                                <Label x:Name="attr2"  Text="Farbe" />
+                                <Label x:Name="attr2"   />
 
                             </Frame>
                             <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">
-                                <Label x:Name="attr3" Text="Süffigkeit" />
+                                <Label x:Name="attr3"/>
                             </Frame>
                             <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black">
-                                <Label x:Name="attr4" Text="Design" />
+                                <Label x:Name="attr4" />
                             </Frame>
                             <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
-                                <Label x:Name="attr5" Text="Kater"/>
+                                <Label x:Name="attr5"/>
                             </Frame>
 
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <Frame Grid.Row="0" Grid.Column="1">
-                                <Picker  x:Name="pickGeschmack" HorizontalOptions="Center"
-                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
-                            </Frame>
-                            <Frame Grid.Row="1" Grid.Column="1">
-                                <Picker  x:Name="pickFarbe" HorizontalOptions="Center"
-                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
-                            </Frame>
-                            <Frame Grid.Row="2" Grid.Column="1">
-                                <Picker  x:Name="pickSüff" HorizontalOptions="Center"
-                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
-                            </Frame>
-                            <Frame Grid.Row="3" Grid.Column="1">
-                                <Picker  x:Name="pickDesign" HorizontalOptions="Center"
-                               FontAttributes="Bold" FontSize="Large"  ItemsSource="VollesBier.png"></Picker>
-                            </Frame>
-                            <Frame Grid.Row="4" Grid.Column="1">
-                                <Picker  x:Name="pickKater" HorizontalOptions="Center"
-                               FontAttributes="Bold" FontSize="Large" ItemsSource="VollesBier.png"></Picker>
-                            </Frame>
+                                <Label Grid.Row="0" x:Name="lblAttr1"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr1" Minimum="0" Maximum="5" ValueChanged="pickAttr1_ValueChanged"/>
+                            
+                            </Grid>
+
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Frame  Grid.Row="0" >
+                                    <Label  x:Name="lblAttr2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+
+                                </Frame>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr2" Minimum="0" Maximum="5" ValueChanged="pickAttr2_ValueChanged"/>
+
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" x:Name="lblAttr3"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr3" Minimum="0" Maximum="5" ValueChanged="pickAttr3_ValueChanged"/>
+
+                            </Grid>
+
+                            <Grid Grid.Row="3" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" x:Name="lblAttr4"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr4" Minimum="0" Maximum="5" ValueChanged="pickAttr4_ValueChanged"/>
+
+                            </Grid>
+
+                            <Grid Grid.Row="4" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" x:Name="lblAttr5"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr5" Minimum="0" Maximum="5" ValueChanged="pickAttr5_ValueChanged"/>
+
+                            </Grid>
                         </Grid>
 
                         <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"

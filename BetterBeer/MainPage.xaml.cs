@@ -23,6 +23,7 @@ namespace BetterBeer
 
             if (Database.CheckUser(email, password))
             {
+                SpecificUser.UserID = Database.GetUserID();
                 await Navigation.PushAsync(new MenuPage());
             }
             else

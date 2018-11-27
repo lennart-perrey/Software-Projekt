@@ -215,26 +215,38 @@ namespace BetterBeer
             string postData = $"beerID={beerID}&userID={userID}";
             string ratingID = apiCall("createRating", postData);
 
-            try
+            if (Convert.ToInt32(ratingID) > 0)
             {
-
-                if (Convert.ToInt32(ratingID) > 0)
+                for (int i = 0; i < 4; i++)
                 {
-                    for(int i = 0; i<4; i++)
-                    {
-                        postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
-                        string responseString = apiCall("createGrade", postData);
+                    postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
+                    string responseString = apiCall("createGrade", postData);
 
-                    }
-
-                    return true;
                 }
+
+                return true;
             }
-            catch
-            {
-                return false;
-            }
+
             return false;
+        }
+
+        public static List<string> ShowCriteria()
+        {
+            string requestString = API + "?action=showCriteria";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<string> crits = JsonConvert.DeserializeObject<List<string>>(responseString);
+            return crits;
+        }
+
+        public static int GetUserID()
+        {
+            return 1;
         }
     }
 }

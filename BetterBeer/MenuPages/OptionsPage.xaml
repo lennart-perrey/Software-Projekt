@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.OptionsPage"
-             BackgroundColor="White"
-             Title="Menü">
+             BackgroundColor="Black"
+             >
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -19,14 +19,63 @@
 
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout x:Name="stlout_Swipe">
-            <StackLayout VerticalOptions="Start" BackgroundColor="white">
-               <Grid BackgroundColor="White">
-                   <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="150"/>
-                   </Grid.RowDefinitions>
+            <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
+                <StackLayout BackgroundColor="Black" VerticalOptions="Start">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image x:Name="img_Options" Source="MenuButtonClicked.PNG" Grid.Column="0">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer ></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+
+                        <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Home_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="white">
+                    <Grid BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
                         <Label Grid.Row="0" Text="Allgemeines" HorizontalOptions="FillAndExpand" Margin="10,0,0,0"
                                HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Large"
                                TextColor="Gray" FontAttributes="Bold"/>

@@ -15,6 +15,7 @@ namespace BetterBeer.MenuPages
 	{
         SwipeListener listener;
         List<int> rating = new List<int>();
+        List<string> crits;
         int beerID;
         int ratingGeschmack = 0;
         int ratingFarbe = 0;
@@ -38,14 +39,14 @@ namespace BetterBeer.MenuPages
             lbl_BeerName.Text = beer.beerName;
             img_BeerImage.Source = beer.pic;
             
-            for (int i = 1; i < 6; i++)
-            {
-               pickGeschmack.Items.Add(i.ToString());
-                pickDesign.Items.Add(i.ToString());
-                pickSüff.Items.Add(i.ToString());
-                pickFarbe.Items.Add(i.ToString());
-                pickKater.Items.Add(i.ToString());
-            }
+
+            crits = Database.ShowCriteria();
+            //attr1.Text = crits[0];
+            //attr2.Text = crits[1];
+            //attr3.Text = crits[2];
+            //attr4.Text = crits[3];
+            //attr5.Text = crits[4];
+
         }
 
         public void OnRightSwipe(View view)
@@ -89,11 +90,11 @@ namespace BetterBeer.MenuPages
 
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            ratingGeschmack = Convert.ToInt32(pickGeschmack.SelectedItem);
-            ratingFarbe = Convert.ToInt32(pickFarbe.SelectedItem);
-            ratingDesign = Convert.ToInt32(pickDesign.SelectedItem);
-            ratingSüff = Convert.ToInt32(pickSüff.SelectedItem);
-            ratingKater = Convert.ToInt32(pickKater.SelectedItem);
+            ratingGeschmack = Convert.ToInt32(lblAttr1.Text);
+            ratingFarbe = Convert.ToInt32(lblAttr2.Text);
+            ratingDesign = Convert.ToInt32(lblAttr3.Text);
+            ratingSüff = Convert.ToInt32(lblAttr4.Text);
+            ratingKater = Convert.ToInt32(lblAttr5.Text);
 
             rating.Add(ratingGeschmack);
             rating.Add(ratingFarbe);
@@ -109,7 +110,31 @@ namespace BetterBeer.MenuPages
             }
         }
 
-      
+
+        private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            lblAttr5.Text = pickAttr5.Value.ToString();
+        }
+
+        private void pickAttr4_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            lblAttr4.Text = pickAttr4.Value.ToString();
+        }
+
+        private void pickAttr2_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            lblAttr2.Text = pickAttr2.Value.ToString();
+        }
+
+        private void pickAttr1_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            lblAttr1.Text = pickAttr1.Value.ToString();
+        }
+
+        private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            lblAttr3.Text = pickAttr3.Value.ToString();
+        }
     }
 
 

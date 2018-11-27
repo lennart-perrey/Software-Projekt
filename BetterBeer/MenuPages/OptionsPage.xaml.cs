@@ -14,7 +14,7 @@ namespace BetterBeer
 
         public OptionsPage()
         {
-            NavigationPage.SetHasBackButton(this, true);
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent(); 
             listener = new SwipeListener(stlout_Swipe, this);
             if (Device.RuntimePlatform == Device.iOS)
