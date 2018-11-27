@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Plugin.Media;
 
 using Xamarin.Forms;
@@ -17,21 +18,58 @@ namespace BetterBeer.MenuPages
         {
 
             await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsPickPhotoSupported)
+            bool answer = await DisplayAlert("Profilbild", "Möchtest du ein Bild aufnehmen oder auswählen?", "Aufnehmen", "Auswählen");
+
+            if (answer == false)
             {
-                await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
+                    return;
+                }
+                var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+
+
+                if (file == null)
+                    return;
+
+                myImage.Source = ImageSource.FromStream(() => file.GetStream());
+
+
+            }
+            else if (answer == true)
+            {
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+                    return;
+                }
+
+                var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Directory = "Pictures",
+                    Name = "ProfilPic.jpg"
+                });
+
+                if (file == null)
+                    return;
+
+
+                myImage.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+            }
+            else
+            {
+                await DisplayAlert("Upps", "Das hat leider nicht geklappt!", "OK");
                 return;
             }
-            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-            {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
-            });
-
-
-            if (file == null)
-                return;
-
-            myImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
         private async void btn_deleteAcc_Clicked (Object sender, EventArgs e)

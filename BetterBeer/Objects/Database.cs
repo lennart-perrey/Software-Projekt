@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Plugin.Media.Abstractions;
 using BetterBeer.Objects;
 
 namespace BetterBeer
@@ -122,7 +123,7 @@ namespace BetterBeer
         public static Beer getBeerByEAN (string ean)
         {
             string postData =$"ean={ean}";
-            byte[] data = Encoding.ASCII.GetBytes(postData);
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
             string requestString = API + "?action=getBeerByEAN";
             WebRequest request = WebRequest.Create(requestString);
@@ -150,7 +151,7 @@ namespace BetterBeer
         public static List<Beer> getBeerByName(string bier)
         {
             string postData = $"beerName={bier}";
-            byte[] data = Encoding.ASCII.GetBytes(postData);
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
             string requestString = API + "?action=showBeerByName";
             WebRequest request = WebRequest.Create(requestString);
@@ -178,7 +179,7 @@ namespace BetterBeer
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;
-            byte[] data = Encoding.ASCII.GetBytes(postData);
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
             WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
@@ -207,6 +208,30 @@ namespace BetterBeer
                 data += $"username={login}";
             }
             return data;
+        }
+
+
+        public void uploadImageToDatabase(MediaFile img, Int32 UserID)
+        {
+
+            string requestString = API + "?action=uploadImage";
+            byte[] imgData;
+            
+
+            imgData = Pictures.imgToByte(img);
+            string postData = $"Picture={imgData}&UserId={UserID}";
+
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
         }
 
 
@@ -246,5 +271,25 @@ namespace BetterBeer
 
      
         
+
+        public static bool CreateRating(int beerID, int userID, List<int> rating)
+        {
+            string postData = $"beerID={beerID}&userID={userID}";
+            string ratingID = apiCall("createRating", postData);
+
+            if (Convert.ToInt32(ratingID) > 0)
+            {
+                for (int i = 0; i < rating.Count; i++)
+                {
+                    postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
+                    string responseString = apiCall("createGrade", postData);
+
+                }
+
+                return true;
+            }
+
+            return false;
+        }
     }
 }

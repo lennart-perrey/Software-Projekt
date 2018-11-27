@@ -21,7 +21,6 @@ namespace BetterBeer.MenuPages
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 AutomationId = "zxingScannerView",
             };
-
             zxing.IsScanning = true;
             zxing.OnScanResult += (result) =>
             {
@@ -69,6 +68,18 @@ namespace BetterBeer.MenuPages
             Content = grid;
         }
 
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
 
+        //    zxing.IsScanning = true;
+        //}
+
+        //protected override void OnDisappearing()
+        //{
+        //    zxing.IsScanning = false;
+
+        //    base.OnDisappearing();
+        //}
     }
 }
