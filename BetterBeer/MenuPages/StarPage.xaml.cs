@@ -148,6 +148,8 @@ namespace BetterBeer.MenuPages
                 else
                 {
                     List<Beer> beers = Database.getBeerByName(bier);
+                    act_Indicator.IsVisible = false;
+                    this.IsBusy = false;
 
                     if (beers == null)
                     {
@@ -181,27 +183,39 @@ namespace BetterBeer.MenuPages
             }
 
             cts = null;
-            act_Indicator.IsVisible = false;
-            this.IsBusy = false;
+
         }
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+            lv_searchBeer.IsVisible = false;
+            act_Indicator.IsVisible = true;
+            this.IsBusy = true;
+            try
+            {
+                List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
+                this.IsBusy = false;
+                Beer foundBeer = null;
+                foreach (Beer beer in beers)
+                {
+                    foundBeer = beer;
+                }
 
-            List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
-            Beer foundBeer = null;
-            foreach(Beer beer in beers)
-            {
-                foundBeer = beer;
+                if (foundBeer != null)
+                {
+                    await Navigation.PushAsync(new BeerProfile(foundBeer));
+                }
+                else
+                {
+                    lv_searchBeer.IsVisible = true;
+                    act_Indicator.IsVisible = false;
+                    this.IsBusy = false;
+                    await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+                }
             }
-
-            if (foundBeer != null)
+            catch(Exception)
             {
-                await Navigation.PushAsync(new BeerProfile(foundBeer));               
-            }
-            else
-            {
-               await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+                await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
             }
         }
     }
