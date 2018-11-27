@@ -30,6 +30,13 @@ namespace BetterBeer.MenuPages
             List<Beer> highscores = Database.Highscore();
             foreach (Beer beer in highscores)
             {
+                highscoreLayout.Children.Add(getBeerGrid(beer));
+            }
+    }
+
+        //Erstellt ein Grid /Label mit Name, Bewertung etc.
+        private Grid getBeerGrid(Beer beer)
+        {
                 Grid gridBeer = new Grid
                 {
                     VerticalOptions = LayoutOptions.FillAndExpand,
@@ -60,9 +67,8 @@ namespace BetterBeer.MenuPages
                 gridBeer.Children.Add(labelBewertung, 1, 0);
                 gridBeer.Children.Add(pic, 2, 0);
 
-                highscoreLayout.Children.Add(gridBeer);
+                return gridBeer;
             }
-    }
 
 
 
@@ -112,6 +118,7 @@ namespace BetterBeer.MenuPages
          * */
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
+
             lv_searchBeer.IsVisible = true;
             highscoreLayout.IsVisible = false;
             string bier = searchBar.Text;
@@ -200,6 +207,52 @@ namespace BetterBeer.MenuPages
             else
             {
                 DisplayAlert("Sorry", "Bier leider nicht gefunden", "Mist!");
+            }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Grid gridSort = new Grid
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Margin = new Thickness(20, 0, 20, 0),
+
+                RowDefinitions =
+                        {
+                            new RowDefinition { Height = 40},
+                            //new RowDefinition { Height = GridLength.Star}
+                        },
+                ColumnDefinitions =
+                        {
+                            new ColumnDefinition { Width = GridLength.Auto },
+                            new ColumnDefinition { Width = GridLength.Auto },
+                            new ColumnDefinition { Width = GridLength.Auto }
+
+                        }
+            };
+
+
+            /* List<Kriterien> kriterien= Database.get
+
+            foreach(krit in  kriterien){
+                   Button button = new Button { Text = KriteriumName};
+                   button.Clicked= sortByCrits(KriteriumID)
+
+            }
+        
+            */
+
+            Button button = new Button { Text = "Kriterium" };
+            highscoreLayout.Children.Add(button);
+            button.Clicked += delegate { sortByCrit(1); };
+        }
+
+        private void sortByCrit(int criteriumID)
+        {
+            List<Beer> highscores = Database.HighscoreForCrit(criteriumID);
+            foreach (Beer beer in highscores)
+            {
+                highscoreLayout.Children.Add(getBeerGrid(beer));
             }
         }
     }
