@@ -270,26 +270,6 @@ namespace BetterBeer
         }
 
      
-        
-
-        public static bool CreateRating(int beerID, int userID, List<int> rating)
-        {
-            string postData = $"beerID={beerID}&userID={userID}";
-            string ratingID = apiCall("createRating", postData);
-
-            if (Convert.ToInt32(ratingID) > 0)
-            {
-                for (int i = 0; i < rating.Count; i++)
-                {
-                    postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
-                    string responseString = apiCall("createGrade", postData);
-
-                }
-
-                return true;
-            }
-
-            return false;
-        }
+       
     }
 }
