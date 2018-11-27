@@ -20,10 +20,10 @@ namespace BetterBeer
             string SaltedPassword = Database.GetSaltedPW(email);
             string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
 
-
-            if (Database.CheckUser(email, password))
+            int check = Database.CheckUser(email, password);
+            if (check >0 )
             {
-                SpecificUser.UserID = Database.GetUserID();
+                SpecificUser.UserID = check;
                 await Navigation.PushAsync(new MenuPage());
             }
             else

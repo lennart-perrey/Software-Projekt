@@ -1,21 +1,19 @@
-﻿using System;
+﻿using BetterBeer.Objects;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer.MenuPages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BeerProfile : ContentPage, ISwipeCallback
 	{
         SwipeListener listener;
         List<int> rating = new List<int>();
-        List<string> crits;
+        List<Criteria> crits;
+
         int beerID;
         int ratingGeschmack = 0;
         int ratingFarbe = 0;
@@ -38,15 +36,15 @@ namespace BetterBeer.MenuPages
             beerID = Convert.ToInt32(beer.beerId);
             lbl_BeerName.Text = beer.beerName;
             img_BeerImage.Source = beer.pic;
-            
+            lbl_BeerInfo.Text = beer.info;
 
             crits = Database.ShowCriteria();
-            //attr1.Text = crits[0];
-            //attr2.Text = crits[1];
-            //attr3.Text = crits[2];
-            //attr4.Text = crits[3];
-            //attr5.Text = crits[4];
 
+            attr1.Text = crits[0].Kriterium;
+            attr2.Text = crits[1].Kriterium;
+            attr3.Text = crits[2].Kriterium;
+            //attr4.Text = crits[3].Kriterium;
+            //attr5.Text = crits[4].Kriterium;
         }
 
         public void OnRightSwipe(View view)
@@ -102,7 +100,7 @@ namespace BetterBeer.MenuPages
             rating.Add(ratingSüff);
             rating.Add(ratingKater);
 
-            bool check = Database.CreateRating(beerID, 0, rating);
+            bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating);
 
             if (!check)
             {

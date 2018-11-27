@@ -5,25 +5,25 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-
+using BetterBeer.Objects;
 
 namespace BetterBeer
 {
     public class Database
     {
         const string API = "http://spbier.bplaced.net/DBConnect.php";
-        public static bool CheckUser(string login, string password)
+        public static int CheckUser(string login, string password)
         {
             string postData = usernameOrEmail(login) +$"&password={password}";          
-            string responseString = apiCall("validUser", postData);
+            int responseString = int.Parse(apiCall("validUser", postData));
 
-            if (responseString == "1")
+            if (responseString > 0)
             {
-                return true;
+                return responseString;
             }
             else
             {
-                return false;
+                return -1;
             }
         }
 
@@ -217,7 +217,7 @@ namespace BetterBeer
 
             if (Convert.ToInt32(ratingID) > 0)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < rating.Count; i++)
                 {
                     postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
                     string responseString = apiCall("createGrade", postData);
@@ -230,7 +230,7 @@ namespace BetterBeer
             return false;
         }
 
-        public static List<string> ShowCriteria()
+        public static List<Criteria> ShowCriteria()
         {
             string requestString = API + "?action=showCriteria";
             WebRequest request = WebRequest.Create(requestString);
@@ -240,13 +240,11 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
 
-            List<string> crits = JsonConvert.DeserializeObject<List<string>>(responseString);
+            List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
             return crits;
         }
 
-        public static int GetUserID()
-        {
-            return 1;
-        }
+     
+        
     }
 }

@@ -25,8 +25,11 @@ namespace BetterBeer
         [JsonProperty("Bewertung")]
         public double avgRating;
 
+        [JsonProperty("BierBeschreibung")]
+        public string info;
 
-        public Beer(string brandId,string beerId, string beerName, string brand,string pic, double avgRating)
+
+        public Beer(string brandId,string beerId, string beerName, string brand,string pic, double avgRating, string info)
         {
             this.brandId = brandId;
             this.beerId = beerId;
@@ -34,6 +37,7 @@ namespace BetterBeer
             this.brand = brand;
             this.pic = pic;
             this.avgRating = avgRating;
+            this.info = info;
 
             if(this.pic == null)
             {
