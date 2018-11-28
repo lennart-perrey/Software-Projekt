@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BetterBeer.OptionsPage"
              BackgroundColor="Black"
-             >
+             Title="Menü">
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -19,14 +19,13 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
+            <StackLayout x:Name="stlout_Swipe" Margin="0,-5,0,0">
                 <StackLayout BackgroundColor="Black" VerticalOptions="Start">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
-
-
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -70,9 +69,9 @@
                 </StackLayout>
 
                 <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="white">
-                    <Grid BackgroundColor="White">
+                    <Grid BackgroundColor="White" Margin="0,5,0,0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
@@ -87,7 +86,7 @@
                </Grid>  
                <Grid BackgroundColor="White">
                    <Grid.RowDefinitions>
-                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
                          <RowDefinition Height="*"/>
                          <RowDefinition Height="50"/>
                    </Grid.RowDefinitions>

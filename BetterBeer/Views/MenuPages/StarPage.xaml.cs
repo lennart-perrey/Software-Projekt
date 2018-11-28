@@ -27,7 +27,8 @@ namespace BetterBeer.MenuPages
             this.BindingContext = this;
             this.IsBusy = false;
             act_Indicator.IsVisible = false;
-            //setHighscore();
+            picker_Criteria.IsVisible = false;
+            setHighscore();
         }
 
         /// Erstellt die Ausgabe der Topliste
@@ -71,59 +72,16 @@ namespace BetterBeer.MenuPages
             gridBeer.Children.Add(pic, 2, 0);
 
             highscoreLayout.Children.Add(gridBeer);
-
             return gridBeer;
-            highscoreLayout.IsVisible = false;
-
         }
-
-
-
-        /*Tar*/
-        public async void OnLeftSwipe(View view)
-        {
-            await Navigation.PushAsync(new DashBoard(), false);
-        }
-
-        public async void OnNothingSwipe(View view)
-        {
-
-        }
-
-        public async void OnRightSwipe(View view)
-        {
-            await Navigation.PushAsync(new OptionsPage(), false);
-        }
-
-        public async void OnTopSwipe(View view)
-        {
-
-        }
-
-        private async void Options_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new OptionsPage(), false);
-        }
-
-        private async void Home_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DashBoard(), false);
-        }
-
-        private async void Friends_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new FriendsPage(), false);
-        }
-        private async void Scan_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CustomScanPage(), false);
-        }
-
-
         /* Suchleistung Änderungen
          * */
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
+            highscoreLayout.IsVisible = false;
+            lv_searchBeer.IsVisible = true;
+            picker_Criteria.IsVisible = false;
+
             var cts = new CancellationTokenSource();
             act_Indicator.IsVisible = true;
 
@@ -185,6 +143,7 @@ namespace BetterBeer.MenuPages
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+            highscoreLayout.IsVisible = true;
             lv_searchBeer.IsVisible = false;
             act_Indicator.IsVisible = true;
             this.IsBusy = true;
@@ -216,38 +175,88 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void btn_Filter_Clicked(object sender, EventArgs e)
         {
-            Grid gridSort = new Grid
+            try
             {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Margin = new Thickness(20, 0, 20, 0),
+                lv_searchBeer.IsVisible = false;
+                picker_Criteria.IsVisible = true;
 
-                RowDefinitions =
+                List<Criteria> kriterien = Database.ShowCriteria();
+                List<String> kriterienString = new List<string>();
+
+                foreach (Criteria krit in kriterien)
+                {
+                    kriterienString.Add(krit.Kriterium);
+                }
+                picker_Criteria.ItemsSource = kriterienString;
+                picker_Criteria.SelectedIndex = 0;
+            }
+            catch(Exception)
+            {
+                DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
+            }
+
+
+            //foreach (Criteria krit in kriterien)
+            //{
+              //  if (krit.Deleted_On == null)
+                //{
+                  //  Button button = new Button { Text = krit.Kriterium };
+                    //button.Clicked += delegate { sortByCrit(krit.KriterienID); };
+                    //highscoreLayout.Children.Add(button);
+                //}
+            //}
+        }
+
+        void item_Tapped(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                highscoreLayout.Children.Clear();
+                List<Criteria> kriterien = Database.ShowCriteria();
+
+                Grid gridSort = new Grid
+                {
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = new Thickness(20, 0, 20, 0),
+
+                    RowDefinitions =
                         {
                             new RowDefinition { Height = 40},
                             //new RowDefinition { Height = GridLength.Star}
                         },
-                ColumnDefinitions =
+                    ColumnDefinitions =
                         {
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto }
-
                         }
-            };
+                };
 
-
-            List<Criteria> kriterien = Database.ShowCriteria();
-
-            foreach (Criteria krit in kriterien)
-            {
-                if (krit.Deleted_On == null)
+                foreach (Criteria crit in kriterien)
                 {
-                    Button button = new Button { Text = krit.Kriterium };
-                    button.Clicked += delegate { sortByCrit(krit.KriterienID); };
-                    highscoreLayout.Children.Add(button);
+                    if (picker_Criteria.SelectedItem.ToString() == crit.Kriterium)
+                    {
+                        List<Beer> beersByCrit = Database.HighscoreForCrit(crit.KriterienID);
+                        foreach (Beer beer in beersByCrit)
+                        {
+                            Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
+                            Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
+                            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
+                            //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
+
+                            gridSort.Children.Add(labelBeerName, 0, 0);
+                            gridSort.Children.Add(labelBewertung, 1, 0);
+                            gridSort.Children.Add(pic, 2, 0);
+                            highscoreLayout.Children.Add(gridSort);
+                        }
+                      }
                 }
+            }
+            catch(Exception)
+            {
+                DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
             }
         }
 
@@ -259,5 +268,45 @@ namespace BetterBeer.MenuPages
                 highscoreLayout.Children.Add(getBeerGrid(beer));
             }
         }
+
+        public async void OnLeftSwipe(View view)
+        {
+            await Navigation.PushAsync(new DashBoard(), false);
+        }
+
+        public async void OnNothingSwipe(View view)
+        {
+
+        }
+
+        public async void OnRightSwipe(View view)
+        {
+            await Navigation.PushAsync(new OptionsPage(), false);
+        }
+
+        public async void OnTopSwipe(View view)
+        {
+
+        }
+
+        private async void Options_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OptionsPage(), false);
+        }
+
+        private async void Home_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DashBoard(), false);
+        }
+
+        private async void Friends_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FriendsPage(), false);
+        }
+        private async void Scan_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CustomScanPage(), false);
+        }
+
     }
 }
