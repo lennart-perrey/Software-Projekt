@@ -28,23 +28,25 @@ namespace BetterBeer
                 string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
 
 
-                if (Database.CheckUser(email, password))
+                if (Database.CheckUser(email, password) > 0)
                 {
-                    await Navigation.PushAsync(new DashBoard());
                     act_Indicator.IsVisible = false;
                     IsBusy = false;
+                    await Navigation.PushAsync(new DashBoard());
                 }
                 else
                 {
+                    act_Indicator.IsVisible = false;
+                    IsBusy = false;
                     await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
                     entry_email.Text = "";
                     entry_password.Text = "";
-                    act_Indicator.IsVisible = false;
-                    IsBusy = false;
                 }
             }
             catch(Exception)
             {
+                act_Indicator.IsVisible = false;
+                IsBusy = false;
                 await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen.", "Ok");
             }
 

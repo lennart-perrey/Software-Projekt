@@ -30,30 +30,34 @@ namespace BetterBeer
             List<string> itemsSystem = new List<string>();
             itemsSystem.Add("Logout");
 
-            listviewGeneral.ItemsSource = itemsGeneral;
-            listviewSystem.ItemsSource = itemsSystem;
+            ListViewGeneral.ItemsSource = itemsGeneral;
+            ListViewSystem.ItemsSource = itemsSystem;
         }
     
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
+            if (ListViewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
                await Navigation.PushAsync(new MyData());
             }
-            else if (listviewGeneral.SelectedItem.ToString() == "Einstellungen")
+            else if (ListViewGeneral.SelectedItem.ToString() == "Einstellungen")
             {
                 await Navigation.PushAsync(new Options());
             }
-            else if (listviewGeneral.SelectedItem.ToString() == "Achievements")
+            else if (ListViewGeneral.SelectedItem.ToString() == "Achievements")
             {
                 await Navigation.PushAsync(new Achievements());
+            }
+            else if (ListViewSystem.SelectedItem.ToString() == "Logout")
+            {
+                throw new Exception();
             }
         }
 
         public async void OnLeftSwipe(View view)
         {
-
+            await Navigation.PushAsync(new StarPage(), false);
         }
 
         public async void OnNothingSwipe(View view)
@@ -69,6 +73,25 @@ namespace BetterBeer
         public async void OnTopSwipe(View view)
         {
 
+        }
+
+        private async void Ranking_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StarPage(), false);
+        }
+
+        private async void Home_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DashBoard(), false);
+        }
+
+        private async void Friends_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FriendsPage(), false);
+        }
+        private async void Scan_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
     }
 }

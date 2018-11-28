@@ -29,6 +29,9 @@
             <StackLayout Margin="20,50,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
                 <Image Source="Logo_horizontal_SEPA" HeightRequest="120"/>
+                <ActivityIndicator x:Name="act_Indicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center"
+                                   HorizontalOptions="Center" Color="#FFCD33" HeightRequest="100" WidthRequest="100"/>
+                    
             </StackLayout>
             <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
                 <Grid BackgroundColor="White">
@@ -53,9 +56,6 @@
                     HorizontalOptions="Fill" HeightRequest="45"
                     Clicked="btn_login_clicked" BackgroundColor="Gray"
                     TextColor="White" FontAttributes="Bold" FontSize="18"/>
-                    
-                    <ActivityIndicator x:Name="act_Indicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center"
-                                   HorizontalOptions="Center" Color="#FFCD33" HeightRequest="100" WidthRequest="100"/>
                     
                     <Label Grid.Row="3" x:Name="lbl_forgotPassword" Text="Passwort vergessen?" 
                    HorizontalOptions="Center"

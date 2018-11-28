@@ -13,6 +13,7 @@ namespace BetterBeer.MenuPages
     public partial class StarPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+
         public StarPage()
         {
             InitializeComponent();
@@ -37,63 +38,51 @@ namespace BetterBeer.MenuPages
             {
                 highscoreLayout.Children.Add(getBeerGrid(beer));
             }
-    }
+        }
 
         //Erstellt ein Grid /Label mit Name, Bewertung etc.
         private Grid getBeerGrid(Beer beer)
         {
-                Grid gridBeer = new Grid
-                {
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    Margin = new Thickness(20, 0, 20, 0),
+            Grid gridBeer = new Grid
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Margin = new Thickness(20, 0, 20, 0),
 
-                    RowDefinitions =
+                RowDefinitions =
                         {
                             new RowDefinition { Height = 75},
                             //new RowDefinition { Height = GridLength.Star}
                         },
-                    ColumnDefinitions =
+                ColumnDefinitions =
                         {
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto },
                             new ColumnDefinition { Width = GridLength.Auto }
                         }
-                };
+            };
 
-                Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-                Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
-                //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
+            Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
+            Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
+            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
+            //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
 
-                gridBeer.Children.Add(labelBeerName, 0, 0);
-                gridBeer.Children.Add(labelBewertung, 1, 0);
-                gridBeer.Children.Add(pic, 2, 0);
+            gridBeer.Children.Add(labelBeerName, 0, 0);
+            gridBeer.Children.Add(labelBewertung, 1, 0);
+            gridBeer.Children.Add(pic, 2, 0);
 
-                highscoreLayout.Children.Add(gridBeer);
+            highscoreLayout.Children.Add(gridBeer);
 
-                highscoreLayout.IsVisible = false;
+            return gridBeer;
+            highscoreLayout.IsVisible = false;
 
-                //Show All Beers at Push from Page
-
-                //List<Beer> beers = Database.ShowBeer();
-
-                //List<string> matchingBeers = new List<string>();
-                //foreach(Beer beer1 in beers)
-                //{
-                //  matchingBeers.Add(beer1.beerName);
-                //}
-                //
-                //lv_searchBeer.ItemsSource = matchingBeers;
-
-            }
         }
 
 
 
-    /*Tar*/
+        /*Tar*/
         public async void OnLeftSwipe(View view)
         {
-            await Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(), false);
         }
 
         public async void OnNothingSwipe(View view)
@@ -103,7 +92,7 @@ namespace BetterBeer.MenuPages
 
         public async void OnRightSwipe(View view)
         {
-            await Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(), false);
         }
 
         public async void OnTopSwipe(View view)
@@ -113,21 +102,21 @@ namespace BetterBeer.MenuPages
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(), false);
         }
 
         private async void Home_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(), false);
         }
 
         private async void Friends_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FriendsPage(),false);
+            await Navigation.PushAsync(new FriendsPage(), false);
         }
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(),false);
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
 
@@ -176,14 +165,14 @@ namespace BetterBeer.MenuPages
                     }
                 }
             }
-            catch(OperationCanceledException)
+            catch (OperationCanceledException)
             {
                 act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", "Ihr Internetverbindung ist zu langsam, bitte versuchen Sie es später erneut.", "Ok");
                 this.IsBusy = false;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", ex.Message, "Ok");
@@ -221,7 +210,7 @@ namespace BetterBeer.MenuPages
                     await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
             }
@@ -251,7 +240,8 @@ namespace BetterBeer.MenuPages
 
             List<Criteria> kriterien = Database.ShowCriteria();
 
-            foreach(Criteria krit in  kriterien){
+            foreach (Criteria krit in kriterien)
+            {
                 if (krit.Deleted_On == null)
                 {
                     Button button = new Button { Text = krit.Kriterium };
