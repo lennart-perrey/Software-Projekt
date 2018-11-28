@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
+using BetterBeer.Objects;
 
 namespace BetterBeer.MenuPages
 {
@@ -232,19 +233,16 @@ namespace BetterBeer.MenuPages
             };
 
 
-            /* List<Kriterien> kriterien= Database.get
+            List<Criteria> kriterien = Database.ShowCriteria();
 
-            foreach(krit in  kriterien){
-                   Button button = new Button { Text = KriteriumName};
-                   button.Clicked= sortByCrits(KriteriumID)
-
+            foreach(Criteria krit in  kriterien){
+                if (krit.Deleted_On == null)
+                {
+                    Button button = new Button { Text = krit.Kriterium };
+                    button.Clicked += delegate { sortByCrit(krit.KriterienID); };
+                    highscoreLayout.Children.Add(button);
+                }
             }
-        
-            */
-
-            Button button = new Button { Text = "Kriterium" };
-            highscoreLayout.Children.Add(button);
-            button.Clicked += delegate { sortByCrit(1); };
         }
 
         private void sortByCrit(int criteriumID)
