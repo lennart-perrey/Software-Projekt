@@ -68,9 +68,9 @@
                 </Grid>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
+              <Button  Text="Filtern" Clicked="Button_Clicked" />
 
-
-                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed" TextChanged="searchBar_TextChanged" />
+                <SearchBar x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" HorizontalOptions="Start" SearchButtonPressed="searchBar_SearchButtonPressed" TextChanged="searchBar_TextChanged"  />
                 <StackLayout x:Name="highscoreLayout" Orientation="Vertical">
 
                 </StackLayout>

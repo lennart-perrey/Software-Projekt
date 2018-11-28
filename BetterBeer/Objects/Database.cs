@@ -72,6 +72,33 @@ namespace BetterBeer
             return beers;
         }
 
+
+        public static List<Beer> HighscoreForCrit(int critID)
+        {
+            string requestString = API + "?action=getHighscores";
+            string postData = $"critID={critID}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+            return beers;
+        }
+
+
         public static bool createBeer (string ean, string beerName, int brandId)
         {
             string postData = $"beerName={beerName}&brandId={brandId}";
