@@ -22,65 +22,53 @@ namespace BetterBeer
                 SetStatusStyle.SetStyle();
             }
 
-            List<string> items = new List<string>();
-            items.Add("Meine Daten");
-            items.Add("Einstellungen");
-            items.Add("Logout");
+            List<string> itemsGeneral = new List<string>();
+            itemsGeneral.Add("Meine Daten");
+            itemsGeneral.Add("Einstellungen");
+            itemsGeneral.Add("Achievements");
 
-            listviewGeneral.ItemsSource = items;
+            List<string> itemsSystem = new List<string>();
+            itemsSystem.Add("Logout");
+
+            listviewGeneral.ItemsSource = itemsGeneral;
+            listviewSystem.ItemsSource = itemsSystem;
         }
+    
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             if (listviewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
-                Navigation.PushAsync(new MyData());
+               await Navigation.PushAsync(new MyData());
             }
             else if (listviewGeneral.SelectedItem.ToString() == "Einstellungen")
             {
-                Navigation.PushAsync(new Options());
+                await Navigation.PushAsync(new Options());
+            }
+            else if (listviewGeneral.SelectedItem.ToString() == "Achievements")
+            {
+                await Navigation.PushAsync(new Achievements());
             }
         }
 
-        public void OnLeftSwipe(View view)
-        {
-            Navigation.PushAsync(new StarPage(),false);
-        }
-
-        public void OnNothingSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
 
         }
 
-        public void OnRightSwipe(View view)
+        public async void OnNothingSwipe(View view)
         {
 
         }
 
-        public void OnTopSwipe(View view)
+        public async void OnRightSwipe(View view)
         {
 
         }
 
-        private void Home_Tapped(object sender, EventArgs e)
+        public async void OnTopSwipe(View view)
         {
-            Navigation.PushAsync(new MenuPage(),false);
-        }
 
-        private void Ranking_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new StarPage(),false);
         }
-
-        private void Friends_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new FriendsPage(),false);
-        }
-
-        private async void Scan_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CustomScanPage(), false);
-        }
-
     }
 }

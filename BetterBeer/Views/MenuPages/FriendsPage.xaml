@@ -63,11 +63,7 @@
                 </Grid>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Button Text="Foto aufnehmen" x:Name="takePhoto" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18"
-                    Clicked="btn_takePhoto_Clicked"/>
-                <Button Text="Foto auswählen" x:Name="pickPhoto" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18"
-                    Clicked="btn_pickPhoto_Clicked"/>
-                <Image x:Name="image"/>
+                <Label Text="Hier könnten Freunde stehen!"></Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -15,7 +15,7 @@ namespace BetterBeer
 
         private  void btn_login_clicked(object sender, EventArgs e)
         {
-             Navigation.PushAsync(new NavigationPage(new MenuPage()));
+             Navigation.PushAsync(new NavigationPage(new DashBoard()));
         }
     }
 }
