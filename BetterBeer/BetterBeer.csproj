@@ -23,6 +23,7 @@
     <Compile Remove="Scanner.cs" />
     <Compile Remove="ImageCircleRenderer.cs" />
     <Compile Remove="ImageCircle.cs" />
+    <Compile Remove="Objects\BeerModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">
