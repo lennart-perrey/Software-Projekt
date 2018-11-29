@@ -127,7 +127,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" x:Name="lblAttr1"/>
+                                <Image Grid.Row="0" x:Name="imgAttr1"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr1" Minimum="0" Maximum="5" ValueChanged="pickAttr1_ValueChanged"/>
                             
                             </Grid>
@@ -138,10 +138,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                               
-                                <Label  x:Name="lblAttr2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-
-                            
+                                <Image Grid.Row="0" x:Name="imgAttr2"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr2" Minimum="0" Maximum="5" ValueChanged="pickAttr2_ValueChanged"/>
 
                             </Grid>
@@ -152,7 +149,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" x:Name="lblAttr3"/>
+                                <Image Grid.Row="0" x:Name="imgAttr3"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr3" Minimum="0" Maximum="5" ValueChanged="pickAttr3_ValueChanged"/>
 
                             </Grid>
@@ -163,7 +160,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" x:Name="lblAttr4"/>
+                                <Image Grid.Row="0" x:Name="imgAttr4"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr4" Minimum="0" Maximum="5" ValueChanged="pickAttr4_ValueChanged"/>
 
                             </Grid>
@@ -174,7 +171,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" x:Name="lblAttr5"/>
+                                <Image Grid.Row="0" x:Name="imgAttr5"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr5" Minimum="0" Maximum="5" ValueChanged="pickAttr5_ValueChanged"/>
 
                             </Grid>

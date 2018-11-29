@@ -88,11 +88,11 @@ namespace BetterBeer.MenuPages
 
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            ratingGeschmack = Convert.ToInt32(lblAttr1.Text);
-            ratingFarbe = Convert.ToInt32(lblAttr2.Text);
-            ratingDesign = Convert.ToInt32(lblAttr3.Text);
-            ratingSüff = Convert.ToInt32(lblAttr4.Text);
-            ratingKater = Convert.ToInt32(lblAttr5.Text);
+            ratingGeschmack = Convert.ToInt32(pickAttr1.Value);
+            ratingFarbe = Convert.ToInt32(pickAttr2.Value);
+            ratingDesign = Convert.ToInt32(pickAttr3.Value);
+            ratingSüff = Convert.ToInt32(pickAttr4.Value);
+            ratingKater = Convert.ToInt32(pickAttr1.Value);
 
             rating.Add(ratingGeschmack);
             rating.Add(ratingFarbe);
@@ -111,27 +111,122 @@ namespace BetterBeer.MenuPages
 
         private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            lblAttr5.Text = pickAttr5.Value.ToString();
+            switch (pickAttr5.Value)
+            {
+                case 1:
+                    imgAttr1.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr1.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr1.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr1.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr1.Source = "fiveBeer.png";
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void pickAttr4_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            lblAttr4.Text = pickAttr4.Value.ToString();
+            switch (pickAttr4.Value)
+            {
+                case 1:
+                    imgAttr1.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr1.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr1.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr1.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr1.Source = "fiveBeer.png";
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void pickAttr2_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            lblAttr2.Text = pickAttr2.Value.ToString();
+            switch (pickAttr2.Value)
+            {
+                case 1:
+                    imgAttr1.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr1.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr1.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr1.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr1.Source = "fiveBeer.png";
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void pickAttr1_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            lblAttr1.Text = pickAttr1.Value.ToString();
+            switch (pickAttr1.Value)
+            {
+                case 1:
+                    imgAttr1.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr1.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr1.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr1.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr1.Source = "fiveBeer.png";
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            lblAttr3.Text = pickAttr3.Value.ToString();
+            switch (pickAttr3.Value)
+            {
+                case 1:
+                    imgAttr1.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr1.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr1.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr1.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr1.Source = "fiveBeer.png";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using Xamarin.Forms;
 using System.Text;
 using System.Net;
 using System.IO;
@@ -277,7 +276,7 @@ namespace BetterBeer
                 for (int i = 0; i < rating.Count; i++)
                 {
                     postData = $"ratingID={ratingID}&critId={i}&grade={rating[i]}";
-                    string responseString = apiCall("createGrade", postData);
+                    apiCall("createGrade", postData);
 
                 }
 
