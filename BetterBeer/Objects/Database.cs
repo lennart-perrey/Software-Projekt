@@ -76,7 +76,7 @@ namespace BetterBeer
         public static List<Beer> HighscoreForCrit(int critID)
         {
             string requestString = API + "?action=getHighscores";
-            string postData = $"critID={critID}";
+            string postData = $"critId={critID}";
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
 

@@ -13,6 +13,9 @@ namespace BetterBeer.MenuPages
     public partial class StarPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        List<Criteria> kriterien = Database.ShowCriteria();
+        IDictionary<string, int> criticsDict = new Dictionary<string, int>();
+
 
         public StarPage()
         {
@@ -172,12 +175,15 @@ namespace BetterBeer.MenuPages
                 lv_searchBeer.IsVisible = false;
                 picker_Criteria.IsVisible = true;
 
-                List<Criteria> kriterien = Database.ShowCriteria();
                 List<String> kriterienString = new List<string>();
 
-                foreach (Criteria krit in kriterien)
+                foreach (Criteria crit in kriterien)
                 {
-                    kriterienString.Add(krit.Kriterium);
+                    if (crit.Deleted_On == null)
+                    {
+                        criticsDict[crit.Kriterium] = crit.KriterienID;
+                        kriterienString.Add(crit.Kriterium);
+                    }
                 }
                 picker_Criteria.ItemsSource = kriterienString;
                 picker_Criteria.SelectedIndex = 0;
@@ -186,17 +192,6 @@ namespace BetterBeer.MenuPages
             {
                 DisplayAlert("Info", "Bitte wählen Sie ein Kriterium aus dem Picker.", "Ok");
             }
-
-
-            //foreach (Criteria krit in kriterien)
-            //{
-              //  if (krit.Deleted_On == null)
-                //{
-                  //  Button button = new Button { Text = krit.Kriterium };
-                    //button.Clicked += delegate { sortByCrit(krit.KriterienID); };
-                    //highscoreLayout.Children.Add(button);
-                //}
-            //}
         }
 
         void item_Tapped(object sender, Xamarin.Forms.FocusEventArgs e)
@@ -206,24 +201,17 @@ namespace BetterBeer.MenuPages
                 highscoreLayout.IsVisible = true;
                 highscoreLayout.Children.Clear();
                 lv_searchBeer.IsVisible = false;
-                List<Criteria> kriterien = Database.ShowCriteria();
 
-                foreach (Criteria crit in kriterien)
-                {
-                    if(crit.Deleted_On == null)
+                int critID = criticsDict[picker_Criteria.SelectedItem.ToString()];
+                if(critID > 0){
+                    List<Beer> beersByCrit = Database.HighscoreForCrit(critID);
+                    foreach (Beer beer in beersByCrit)
                     {
-                        if (picker_Criteria.SelectedItem.ToString() == crit.Kriterium)
-                        {
-                            List<Beer> beersByCrit = Database.HighscoreForCrit(crit.KriterienID);
-                            foreach (Beer beer in beersByCrit)
-                            {
-                                highscoreLayout.Children.Add(getBeerGrid(beer));
-                            }
-                        }
+                        highscoreLayout.Children.Add(getBeerGrid(beer));
                     }
 
                 }
-            }
+           }
             catch(Exception)
             {
                 DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
