@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 using BetterBeer.Objects;
+using System.Data;
 
 namespace BetterBeer.MenuPages
 {
@@ -15,19 +16,21 @@ namespace BetterBeer.MenuPages
         SwipeListener listener;
         List<Criteria> kriterien = Database.ShowCriteria();
         IDictionary<string, int> criticsDict = new Dictionary<string, int>();
-
+        public Beer SelectedBeer { get; set; }
 
         public StarPage()
         {
             InitializeComponent();
-            lv_searchBeer.IsVisible = false;
+
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
             if (Device.RuntimePlatform == Device.iOS)
             {
                 SetStatusStyle.SetStyle();
             }
+
             picker_Criteria.IsVisible = false;
+
             setHighscore();
         }
 
@@ -35,77 +38,21 @@ namespace BetterBeer.MenuPages
         private void setHighscore()
         {
             List<Beer> highscores = Database.Highscore();
-            getListViewBeerHighScore(highscores);
-            //foreach (Beer beer in highscores)
-            //{
-              //  highscoreLayout.Children.Add(getBeerGrid(beer));
-            //}
+            lv_highscoreBeer.ItemsSource = highscores;
         }
 
-        //Erstellt ein Grid /Label mit Name, Bewertung etc.
-        private Grid getBeerGrid(Beer beer)
-        {
-            Grid gridBeer = new Grid
-            {
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Margin = new Thickness(20, 0, 20, 0),
-
-                RowDefinitions =
-                        {
-                            new RowDefinition { Height = 50},
-                            //new RowDefinition { Height = GridLength.Star}
-                        },
-                ColumnDefinitions =
-                        {
-                            new ColumnDefinition { Width = 235 },
-                            new ColumnDefinition { Width = 80 },
-                            new ColumnDefinition { Width = GridLength.Auto }
-                        }
-            };
-
-            Label labelBeerName = new Label { Text = beer.beerName, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Start, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-            Label labelBewertung = new Label { Text = " | " + beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand, HeightRequest = 40, WidthRequest = 40};
-            //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
-
-            gridBeer.Children.Add(labelBeerName, 0, 0);
-            gridBeer.Children.Add(labelBewertung, 1, 0);
-            gridBeer.Children.Add(pic, 2, 0);
-
-            highscoreLayout.Children.Add(gridBeer);
-            return gridBeer;
-        }
-
-        private void getListViewBeerHighScore(List<Beer> beer)
-        {
-            lv_searchBeer.ItemsSource = beer;
-        }
         /* Suchleistung Änderungen
          * */
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
-            highscoreLayout.IsVisible = false;
-            lv_searchBeer.IsVisible = true;
             picker_Criteria.IsVisible = false;
-
-            if(searchBar.Text == "")
-            {
-                highscoreLayout.Children.Clear();
-                setHighscore();
-            }
 
             try
             {
-                lv_searchBeer.IsVisible = true;
-                highscoreLayout.IsVisible = false;
                 string bier = searchBar.Text;
                 if (bier == "")
                 {
-                    lv_searchBeer.IsVisible = false;
-                    highscoreLayout.IsVisible = true;
-                    List<string> leer = new List<string>();
-                    lv_searchBeer.ItemsSource = leer;
-
+                    setHighscore();
                 }
                 else
                 {
@@ -114,17 +61,11 @@ namespace BetterBeer.MenuPages
                     if (beers == null)
                     {
                         List<string> leer = new List<string>();
-                        lv_searchBeer.ItemsSource = leer;
+                        lv_highscoreBeer.ItemsSource = leer;
                     }
                     else
-                    {
-                        List<string> matchingBeers = new List<string>();
-                        foreach (Beer beer2 in beers)
-                        {
-                            matchingBeers.Add(beer2.beerName);
-                        }
-
-                        lv_searchBeer.ItemsSource = matchingBeers;
+                    { 
+                        lv_highscoreBeer.ItemsSource = beers;
                     }
                 }
             }
@@ -140,12 +81,10 @@ namespace BetterBeer.MenuPages
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            highscoreLayout.IsVisible = true;
-            lv_searchBeer.IsVisible = false;
             try
             {
-                List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
-                this.IsBusy = false;
+                SelectedBeer = (Beer)lv_highscoreBeer.SelectedItem;
+                List<Beer> beers = Database.getBeerByName(SelectedBeer.beerName);
                 Beer foundBeer = null;
                 foreach (Beer beer in beers)
                 {
@@ -158,7 +97,6 @@ namespace BetterBeer.MenuPages
                 }
                 else
                 {
-                    lv_searchBeer.IsVisible = true;
                     await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
                 }
             }
@@ -172,7 +110,6 @@ namespace BetterBeer.MenuPages
         {
             try
             {
-                lv_searchBeer.IsVisible = false;
                 picker_Criteria.IsVisible = true;
 
                 List<String> kriterienString = new List<string>();
@@ -198,32 +135,16 @@ namespace BetterBeer.MenuPages
         {
             try
             {
-                highscoreLayout.IsVisible = true;
-                highscoreLayout.Children.Clear();
-                lv_searchBeer.IsVisible = false;
-
                 int critID = criticsDict[picker_Criteria.SelectedItem.ToString()];
-                if(critID > 0){
+                if(critID > 0)
+                {
                     List<Beer> beersByCrit = Database.HighscoreForCrit(critID);
-                    foreach (Beer beer in beersByCrit)
-                    {
-                        highscoreLayout.Children.Add(getBeerGrid(beer));
-                    }
-
+                    lv_highscoreBeer.ItemsSource = beersByCrit;
                 }
            }
             catch(Exception)
             {
                 DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
-            }
-        }
-
-        private void sortByCrit(int criteriumID)
-        {
-            List<Beer> highscores = Database.HighscoreForCrit(criteriumID);
-            foreach (Beer beer in highscores)
-            {
-                highscoreLayout.Children.Add(getBeerGrid(beer));
             }
         }
 
