@@ -24,9 +24,6 @@ namespace BetterBeer.MenuPages
             {
                 SetStatusStyle.SetStyle();
             }
-            this.BindingContext = this;
-            this.IsBusy = false;
-            act_Indicator.IsVisible = false;
             picker_Criteria.IsVisible = false;
             setHighscore();
         }
@@ -82,13 +79,17 @@ namespace BetterBeer.MenuPages
             lv_searchBeer.IsVisible = true;
             picker_Criteria.IsVisible = false;
 
+            if(searchBar.Text == "")
+            {
+                highscoreLayout.Children.Clear();
+                setHighscore();
+            }
+
             var cts = new CancellationTokenSource();
-            act_Indicator.IsVisible = true;
 
             try
             {
                 cts.CancelAfter(10000);
-                this.IsBusy = true;
                 lv_searchBeer.IsVisible = true;
                 highscoreLayout.IsVisible = false;
                 string bier = searchBar.Text;
@@ -103,8 +104,6 @@ namespace BetterBeer.MenuPages
                 else
                 {
                     List<Beer> beers = Database.getBeerByName(bier);
-                    act_Indicator.IsVisible = false;
-                    this.IsBusy = false;
 
                     if (beers == null)
                     {
@@ -125,16 +124,11 @@ namespace BetterBeer.MenuPages
             }
             catch (OperationCanceledException)
             {
-                act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", "Ihr Internetverbindung ist zu langsam, bitte versuchen Sie es später erneut.", "Ok");
-                this.IsBusy = false;
-
             }
             catch (Exception ex)
             {
-                act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", ex.Message, "Ok");
-                this.IsBusy = false;
             }
 
             cts = null;
@@ -145,8 +139,6 @@ namespace BetterBeer.MenuPages
         {
             highscoreLayout.IsVisible = true;
             lv_searchBeer.IsVisible = false;
-            act_Indicator.IsVisible = true;
-            this.IsBusy = true;
             try
             {
                 List<Beer> beers = Database.getBeerByName(lv_searchBeer.SelectedItem.ToString());
@@ -164,8 +156,6 @@ namespace BetterBeer.MenuPages
                 else
                 {
                     lv_searchBeer.IsVisible = true;
-                    act_Indicator.IsVisible = false;
-                    this.IsBusy = false;
                     await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
                 }
             }
@@ -194,7 +184,7 @@ namespace BetterBeer.MenuPages
             }
             catch(Exception)
             {
-                DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
+                DisplayAlert("Info", "Bitte wählen Sie ein Kriterium aus dem Picker.", "Ok");
             }
 
 
@@ -213,7 +203,9 @@ namespace BetterBeer.MenuPages
         {
             try
             {
+                highscoreLayout.IsVisible = true;
                 highscoreLayout.Children.Clear();
+                lv_searchBeer.IsVisible = false;
                 List<Criteria> kriterien = Database.ShowCriteria();
 
                 Grid gridSort = new Grid
