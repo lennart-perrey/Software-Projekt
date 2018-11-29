@@ -208,42 +208,20 @@ namespace BetterBeer.MenuPages
                 lv_searchBeer.IsVisible = false;
                 List<Criteria> kriterien = Database.ShowCriteria();
 
-                Grid gridSort = new Grid
-                {
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    Margin = new Thickness(20, 0, 20, 0),
-
-                    RowDefinitions =
-                        {
-                            new RowDefinition { Height = 40},
-                            //new RowDefinition { Height = GridLength.Star}
-                        },
-                    ColumnDefinitions =
-                        {
-                            new ColumnDefinition { Width = GridLength.Auto },
-                            new ColumnDefinition { Width = GridLength.Auto },
-                            new ColumnDefinition { Width = GridLength.Auto }
-                        }
-                };
-
                 foreach (Criteria crit in kriterien)
                 {
-                    if (picker_Criteria.SelectedItem.ToString() == crit.Kriterium)
+                    if(crit.Deleted_On == null)
                     {
-                        List<Beer> beersByCrit = Database.HighscoreForCrit(crit.KriterienID);
-                        foreach (Beer beer in beersByCrit)
+                        if (picker_Criteria.SelectedItem.ToString() == crit.Kriterium)
                         {
-                            Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-                            Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-                            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
-                            //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
-
-                            gridSort.Children.Add(labelBeerName, 0, 0);
-                            gridSort.Children.Add(labelBewertung, 1, 0);
-                            gridSort.Children.Add(pic, 2, 0);
-                            highscoreLayout.Children.Add(gridSort);
+                            List<Beer> beersByCrit = Database.HighscoreForCrit(crit.KriterienID);
+                            foreach (Beer beer in beersByCrit)
+                            {
+                                highscoreLayout.Children.Add(getBeerGrid(beer));
+                            }
                         }
-                      }
+                    }
+
                 }
             }
             catch(Exception)

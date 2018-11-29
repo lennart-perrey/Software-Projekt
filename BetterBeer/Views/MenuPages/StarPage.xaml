@@ -82,12 +82,12 @@
                                BackgroundColor="Black" Margin="0,-10,0,0"/>
                     
                         <Button x:Name="btn_Filter" Grid.Column="1" Text="Filtern" Clicked="btn_Filter_Clicked" 
-                                TextColor="#FFCD33" FontAttributes="Bold" FontSize="Large" BackgroundColor="Black"
+                                TextColor="White" FontAttributes="Bold" FontSize="Large" BackgroundColor="Black"
                                 HorizontalOptions="Center" VerticalOptions="Center"/> 
                 </Grid>
                 <Picker x:Name="picker_Criteria" HorizontalOptions="FillAndExpand"
-                        HeightRequest="50" SelectedIndexChanged="item_Tapped" BackgroundColor="White"
-                        TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,-5,0,0"/>
+                        HeightRequest="50" SelectedIndexChanged="item_Tapped" BackgroundColor="#FFCD33"
+                        TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,-10,0,0"/>
                 
                 <StackLayout x:Name="highscoreLayout" Orientation="Vertical" Margin="0,10,0,0">       
                 </StackLayout>
