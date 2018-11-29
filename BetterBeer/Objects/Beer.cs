@@ -28,8 +28,6 @@ namespace BetterBeer
         [JsonProperty("BierBeschreibung")]
         public string info { get; set; }
 
-        public Beer SelectedBeer { get; set; }
-
 
         public Beer(string brandId,string beerId, string beerName, string brand,string pic, double avgRating, string info)
         {
