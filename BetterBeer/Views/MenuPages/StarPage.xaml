@@ -76,7 +76,6 @@
                         <ColumnDefinition Width="275"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-
                         <SearchBar Grid.Column="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Start" 
                                HorizontalOptions="Start" TextChanged="searchBar_TextChanged"
                                BackgroundColor="Black" Margin="0,-10,0,0"/>
@@ -93,6 +92,16 @@
                 </StackLayout>
                 
                 <ListView x:Name="lv_searchBeer" ItemTapped="Handle_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Topic}" TextColor="Black" Detail="{Binding beerName}" 
+                                      DetailColor="Black"/>
+                            <TextCell Text="{Binding Topic}" TextColor="Black" Detail="{Binding avgRating}" 
+                                      DetailColor="Black"/>
+                            <ImageCell TextColor="Black" Detail="{Binding beerName}" 
+                                      DetailColor="Black"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
 
            </StackLayout>

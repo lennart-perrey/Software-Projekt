@@ -35,10 +35,11 @@ namespace BetterBeer.MenuPages
         private void setHighscore()
         {
             List<Beer> highscores = Database.Highscore();
-            foreach (Beer beer in highscores)
-            {
-                highscoreLayout.Children.Add(getBeerGrid(beer));
-            }
+            getListViewBeerHighScore(highscores);
+            //foreach (Beer beer in highscores)
+            //{
+              //  highscoreLayout.Children.Add(getBeerGrid(beer));
+            //}
         }
 
         //Erstellt ein Grid /Label mit Name, Bewertung etc.
@@ -51,20 +52,20 @@ namespace BetterBeer.MenuPages
 
                 RowDefinitions =
                         {
-                            new RowDefinition { Height = 75},
+                            new RowDefinition { Height = 50},
                             //new RowDefinition { Height = GridLength.Star}
                         },
                 ColumnDefinitions =
                         {
-                            new ColumnDefinition { Width = GridLength.Auto },
-                            new ColumnDefinition { Width = GridLength.Auto },
+                            new ColumnDefinition { Width = 235 },
+                            new ColumnDefinition { Width = 80 },
                             new ColumnDefinition { Width = GridLength.Auto }
                         }
             };
 
-            Label labelBeerName = new Label { Text = beer.beerName + " | ", VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
-            Label labelBewertung = new Label { Text = beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
-            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand };
+            Label labelBeerName = new Label { Text = beer.beerName, VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black, HorizontalTextAlignment = TextAlignment.Start, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), HorizontalOptions = LayoutOptions.CenterAndExpand };
+            Label labelBewertung = new Label { Text = " | " + beer.avgRating.ToString() + " | ", VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)), TextColor = Color.Black, HorizontalOptions = LayoutOptions.CenterAndExpand, };
+            Image pic = new Image { Source = beer.pic, Aspect = Aspect.AspectFit, HorizontalOptions = LayoutOptions.EndAndExpand, HeightRequest = 40, WidthRequest = 40};
             //Label labelLine = new Label { BackgroundColor = Color.Gray, HeightRequest = 1, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill };
 
             gridBeer.Children.Add(labelBeerName, 0, 0);
@@ -73,6 +74,11 @@ namespace BetterBeer.MenuPages
 
             highscoreLayout.Children.Add(gridBeer);
             return gridBeer;
+        }
+
+        private void getListViewBeerHighScore(List<Beer> beer)
+        {
+            lv_searchBeer.ItemsSource = beer;
         }
         /* Suchleistung Änderungen
          * */
@@ -88,11 +94,8 @@ namespace BetterBeer.MenuPages
                 setHighscore();
             }
 
-            var cts = new CancellationTokenSource();
-
             try
             {
-                cts.CancelAfter(10000);
                 lv_searchBeer.IsVisible = true;
                 highscoreLayout.IsVisible = false;
                 string bier = searchBar.Text;
@@ -133,9 +136,6 @@ namespace BetterBeer.MenuPages
             {
                 await DisplayAlert("Fehler", ex.Message, "Ok");
             }
-
-            cts = null;
-
         }
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
@@ -261,6 +261,7 @@ namespace BetterBeer.MenuPages
         {
             await Navigation.PushAsync(new FriendsPage(), false);
         }
+
         private async void Scan_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);
