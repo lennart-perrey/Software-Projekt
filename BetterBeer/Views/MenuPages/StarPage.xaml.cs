@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing.Net.Mobile.Forms;
 using BetterBeer.Objects;
 using System.Data;
 
