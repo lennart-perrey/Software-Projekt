@@ -43,7 +43,7 @@
 
                     <Image x:Name="img_Ranking" Source="RankingButtonClicked.PNG" Grid.Column="1">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer  ></TapGestureRecognizer>
+                            <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
@@ -55,7 +55,7 @@
 
                     <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Friends_Tapped" ></TapGestureRecognizer>
+                            <TapGestureRecognizer></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 

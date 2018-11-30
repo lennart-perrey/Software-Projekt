@@ -30,7 +30,17 @@ namespace BetterBeer
 
         }
 
-        public async void OnLeftSwipe(View view)
+        private async void searchBar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+            private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+
+        }
+
+            public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);   
         }
