@@ -17,13 +17,30 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             listener = new SwipeListener(stlout_Swipe, this);
+
             if (Device.RuntimePlatform == Device.iOS)
-            {               
-               SetStatusStyle.SetStyle();
+            {
+                SetStatusStyle.SetStyle();
+                searchBar.BackgroundColor = Color.Black;
             }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                searchBar.BackgroundColor = Color.White;
+            }
+
         }
 
-        public async void OnLeftSwipe(View view)
+        private async void searchBar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+            private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+
+        }
+
+            public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);   
         }

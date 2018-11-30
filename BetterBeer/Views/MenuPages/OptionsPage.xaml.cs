@@ -51,7 +51,7 @@ namespace BetterBeer
             }
             else if (ListViewSystem.SelectedItem.ToString() == "Logout")
             {
-                throw new Exception();
+                await Navigation.PushAsync(new MainPage(),false);
             }
         }
 

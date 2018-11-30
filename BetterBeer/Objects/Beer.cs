@@ -8,25 +8,25 @@ namespace BetterBeer
     public class Beer
     {
         [JsonProperty("MarkenID")]
-        public string brandId;
+        public string brandId { get; set; }
 
         [JsonProperty("BierId")]
-        public string beerId;
+        public string beerId { get; set; }
 
         [JsonProperty("Biername")]
-        public string beerName;
+        public string beerName { get; set; }
 
         [JsonProperty("Marke")]
-        public string brand;
+        public string brand { get; set; }
 
         [JsonProperty("Bild")]
-        public string pic;
+        public string pic { get; set; }
 
         [JsonProperty("Bewertung")]
-        public double avgRating;
+        public double avgRating { get; set; }
 
         [JsonProperty("BierBeschreibung")]
-        public string info;
+        public string info { get; set; }
 
 
         public Beer(string brandId,string beerId, string beerName, string brand,string pic, double avgRating, string info)
@@ -36,7 +36,7 @@ namespace BetterBeer
             this.beerName = beerName;
             this.brand = brand;
             this.pic = pic;
-            this.avgRating = avgRating;
+            this.avgRating = Math.Round(avgRating,1);
             this.info = info;
 
             if(this.pic == null)
