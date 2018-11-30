@@ -27,7 +27,7 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
-            NavigationPage.SetHasNavigationBar(this, false);
+
             if (Device.RuntimePlatform == Device.iOS)
             {
                 SetStatusStyle.SetStyle();
@@ -55,25 +55,6 @@ namespace BetterBeer.MenuPages
         public void OnTopSwipe(View view)
         {
 
-        }
-
-        private void Options_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new OptionsPage());
-        }
-
-        private void Home_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new MenuPage());
-        }
-
-        private void Friends_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new FriendsPage());
-        }
-        private async void Scan_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
         public void OnLeftSwipe(View view)

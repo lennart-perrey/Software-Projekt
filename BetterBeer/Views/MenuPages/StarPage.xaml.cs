@@ -116,34 +116,36 @@ namespace BetterBeer.MenuPages
         {
             try
             {
-                if(picker_Criteria.IsVisible == true)
-                {   
+                if (picker_Criteria.IsVisible == true)
+                {
                     setHighscore();
                     picker_Criteria.IsVisible = false;
                 }
-
-                  picker_Criteria.IsVisible = true;
-
-                List<String> kriterienString = new List<string>();
-
-                foreach (Criteria crit in kriterien)
+                else
                 {
-                    if (crit.Deleted_On == null)
+                    picker_Criteria.IsVisible = true;
+
+                    List<String> kriterienString = new List<string>();
+
+                    foreach (Criteria crit in kriterien)
                     {
-                        criticsDict[crit.Kriterium] = crit.KriterienID;
-                        kriterienString.Add(crit.Kriterium);
+                        if (crit.Deleted_On == null)
+                        {
+                            criticsDict[crit.Kriterium] = crit.KriterienID;
+                            kriterienString.Add(crit.Kriterium);
+                        }
                     }
+                    picker_Criteria.ItemsSource = kriterienString;
+                    picker_Criteria.SelectedIndex = 0;
                 }
-                picker_Criteria.ItemsSource = kriterienString;
-                picker_Criteria.SelectedIndex = 0;
             }
             catch(Exception)
             {
-                DisplayAlert("Info", "Bitte wählen Sie ein Kriterium aus dem Picker.", "Ok");
+                DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");
             }
         }
 
-        void item_Tapped(object sender, Xamarin.Forms.FocusEventArgs e)
+        void picker_SelectedItemChanged(object sender, Xamarin.Forms.FocusEventArgs e)
         {
             try
             {
@@ -153,7 +155,7 @@ namespace BetterBeer.MenuPages
                     List<Beer> beersByCrit = Database.HighscoreForCrit(critID);
                     lv_highscoreBeer.ItemsSource = beersByCrit;
                 }
-           }
+            }
             catch(Exception)
             {
                 DisplayAlert("Fehler", "Ups, da ist etwas schief gelaufen!", "Ok");

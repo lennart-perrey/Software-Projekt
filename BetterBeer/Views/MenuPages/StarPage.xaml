@@ -81,7 +81,7 @@
                                 HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/> 
                 </Grid>
                 <Picker x:Name="picker_Criteria" HorizontalOptions="FillAndExpand"
-                        HeightRequest="50" SelectedIndexChanged="item_Tapped" BackgroundColor="#FFCD33"
+                        HeightRequest="50" SelectedIndexChanged="picker_SelectedItemChanged" BackgroundColor="#FFCD33"
                         TextColor="Black" FontSize="Large" FontAttributes="Bold" Margin="0,-10,0,0"/>
                 <Grid BackgroundColor="White">
                     <Grid.RowDefinitions>
