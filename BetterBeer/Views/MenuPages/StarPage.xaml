@@ -100,8 +100,7 @@
                              <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                             
-                </Grid>      
-                                    
+                </Grid>                          
                 <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>

@@ -32,6 +32,7 @@ namespace BetterBeer.MenuPages
             else if (Device.RuntimePlatform == Device.Android)
             {
                 searchBar.BackgroundColor = Color.White;
+                searchBar.WidthRequest = 250;
             }
 
             picker_Criteria.IsVisible = false;
@@ -115,7 +116,13 @@ namespace BetterBeer.MenuPages
         {
             try
             {
-                picker_Criteria.IsVisible = true;
+                if(picker_Criteria.IsVisible == true)
+                {   
+                    setHighscore();
+                    picker_Criteria.IsVisible = false;
+                }
+
+                  picker_Criteria.IsVisible = true;
 
                 List<String> kriterienString = new List<string>();
 
