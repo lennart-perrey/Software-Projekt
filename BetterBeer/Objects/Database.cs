@@ -203,11 +203,6 @@ namespace BetterBeer
             return null;
         }
 
-        //public static List<Beer> ShowBeer()
-        //{
-        //
-        //}
-
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;

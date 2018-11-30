@@ -15,6 +15,10 @@ namespace BetterBeer.MenuPages
         public MyData()
         {
             InitializeComponent();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
 
             //get Passsword, Picture, Username and EMail from Database
 
@@ -169,6 +173,14 @@ namespace BetterBeer.MenuPages
             myPassword.IsVisible = true;
             myPassword2.IsVisible = true;
 
+        }
+        protected override void OnDisappearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+            base.OnDisappearing();
         }
     }
 }

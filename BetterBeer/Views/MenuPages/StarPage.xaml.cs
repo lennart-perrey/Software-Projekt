@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BetterBeer.Objects;
 using System.Data;
+using BetterBeer.Views.MenuPages;
 
 namespace BetterBeer.MenuPages
 {
@@ -110,7 +111,7 @@ namespace BetterBeer.MenuPages
 
                 if (foundBeer != null)
                 {
-                    await Navigation.PushAsync(new BeerProfile(foundBeer));
+                    await Navigation.PushAsync(new ShowBeerRating(foundBeer));
                 }
                 else
                 {

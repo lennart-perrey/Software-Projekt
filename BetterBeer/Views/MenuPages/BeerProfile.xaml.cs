@@ -27,6 +27,10 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
 
             Beer beer = scannedBeer;
             beerID = Convert.ToInt32(beer.beerId);

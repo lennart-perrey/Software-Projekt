@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BetterBeer.Views.MenuPages.ShowBeerRating"
+             Title="Bier-Bewertung">
+
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0,20,0,0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0,0,0,0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="stlout_Swipe">
+            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+                    <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
+                        <Label x:Name="lbl_BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
+                               FontAttributes="Bold" FontSize="Large"/>
+                        <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg"></Image>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                                   Margin="0,10,0,0"/>
+                            <Label Grid.Row="1" Text="Anzahl Bewetungen:" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextDecorations="Underline"/>
+                            <Label Grid.Row="2" x:Name="lbl_Counter" TextColor="#FFD657" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Grid.Row="3" BackgroundColor="Gray" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        </Grid>
+
+                        <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand" Margin="0,15,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="#FFD657" Padding="10"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="lbl_attr1" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="1" BorderColor="#FFD657"  Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="lbl_attr2" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="lbl_attr3" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="lbl_attr4" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                            </Frame>
+
+                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="lbl_attr5" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                            </Frame>
+
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" x:Name="lbl_crit1" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"
+                                       TextColor="Maroon"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" x:Name="lbl_crit2" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"
+                                       TextColor="Maroon"/>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" x:Name="lbl_crit3" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"
+                                       TextColor="Maroon"/>
+                            </Grid>
+
+                            <Grid Grid.Row="3" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" x:Name="lbl_crit4" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"
+                                       TextColor="Maroon"/>
+                            </Grid>
+
+                            <Grid Grid.Row="4" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" x:Name="lbl_crit5" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"
+                                       TextColor="Maroon"/>
+                            </Grid>
+                        </Grid>
+
+                        <Button x:Name="btn_Submit" Text="Bier Bewerten" Margin="0,30,0,20" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                          HeightRequest="45" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_RateBeer_Clicked"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
