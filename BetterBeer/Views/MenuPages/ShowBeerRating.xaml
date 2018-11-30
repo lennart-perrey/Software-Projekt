@@ -27,8 +27,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
@@ -54,23 +54,23 @@
                             </Grid.RowDefinitions>
 
                             <Frame Grid.Column="0" Grid.Row="0" BorderColor="#FFD657" Padding="10"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr1" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr1" TextColor="Black" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="1" BorderColor="#FFD657"  Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr2" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr2" TextColor="Black" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="2" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr3" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr3" TextColor="Black" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="3" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr4" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr4" TextColor="Black" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="4" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr5" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr5" TextColor="Black" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Grid Grid.Row="0" Grid.Column="1">
