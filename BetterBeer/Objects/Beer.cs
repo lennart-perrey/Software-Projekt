@@ -36,7 +36,7 @@ namespace BetterBeer
             this.beerName = beerName;
             this.brand = brand;
             this.pic = pic;
-            this.avgRating = avgRating;
+            this.avgRating = Math.Round(avgRating,1);
             this.info = info;
 
             if(this.pic == null)

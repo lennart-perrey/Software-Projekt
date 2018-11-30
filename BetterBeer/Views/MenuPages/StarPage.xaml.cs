@@ -17,6 +17,8 @@ namespace BetterBeer.MenuPages
         List<Criteria> kriterien = Database.ShowCriteria();
         IDictionary<string, int> criticsDict = new Dictionary<string, int>();
         public Beer SelectedBeer { get; set; }
+        List<String> kriterienString;
+
 
         public StarPage()
         {
@@ -36,6 +38,17 @@ namespace BetterBeer.MenuPages
             }
 
             picker_Criteria.IsVisible = false;
+
+            kriterienString = new List<string>();
+
+            foreach (Criteria crit in kriterien)
+            {
+                if (crit.Deleted_On == null)
+                {
+                    criticsDict[crit.Kriterium] = crit.KriterienID;
+                    kriterienString.Add(crit.Kriterium);
+                }
+            }
 
             setHighscore();
         }
@@ -125,16 +138,7 @@ namespace BetterBeer.MenuPages
                 {
                     picker_Criteria.IsVisible = true;
 
-                    List<String> kriterienString = new List<string>();
 
-                    foreach (Criteria crit in kriterien)
-                    {
-                        if (crit.Deleted_On == null)
-                        {
-                            criticsDict[crit.Kriterium] = crit.KriterienID;
-                            kriterienString.Add(crit.Kriterium);
-                        }
-                    }
                     picker_Criteria.ItemsSource = kriterienString;
                     picker_Criteria.SelectedIndex = 0;
                 }
