@@ -3075,7 +3075,7 @@ namespace BetterBeer.Droid
 			public const int notify_panel_notification_icon_bg = 2130837821;
 			
 			// aapt resource value: 0x7f02013e
-			public const int oneBier = 2130837822;
+			public const int oneBeer = 2130837822;
 			
 			// aapt resource value: 0x7f02013f
 			public const int RankingButton = 2130837823;

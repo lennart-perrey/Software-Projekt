@@ -154,7 +154,7 @@
     <AndroidResource Include="Resources\drawable\LeeresBier.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\oneBier.png" />
+    <AndroidResource Include="Resources\drawable\oneBeer.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />

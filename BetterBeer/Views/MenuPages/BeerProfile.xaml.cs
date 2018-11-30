@@ -40,11 +40,12 @@ namespace BetterBeer.MenuPages
 
             crits = Database.ShowCriteria();
 
+
             attr1.Text = crits[0].Kriterium;
             attr2.Text = crits[1].Kriterium;
             attr3.Text = crits[2].Kriterium;
-            //attr4.Text = crits[3].Kriterium;
-            //attr5.Text = crits[4].Kriterium;
+            attr4.Text = crits[3].Kriterium;
+            attr5.Text = crits[4].Kriterium;
         }
 
         public void OnRightSwipe(View view)
@@ -106,6 +107,11 @@ namespace BetterBeer.MenuPages
             {
                 DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte die Eingaben", "Okay");
             }
+            else
+            {
+                DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
+                Navigation.PushAsync(new DashBoard());
+            }
         }
 
 
@@ -114,23 +120,26 @@ namespace BetterBeer.MenuPages
             switch (pickAttr5.Value)
             {
                 case 1:
-                    imgAttr1.Source = "oneBeer.png";
+                    imgAttr5.Source = "oneBeer.png";
                     break;
                 case 2:
-                    imgAttr1.Source = "twoBeer.png";
+                    imgAttr5.Source = "twoBeer.png";
                     break;
                 case 3:
-                    imgAttr1.Source = "threeBeer.png";
+                    imgAttr5.Source = "threeBeer.png";
                     break;
                 case 4:
-                    imgAttr1.Source = "fourBeer.png";
+                    imgAttr5.Source = "fourBeer.png";
                     break;
                 case 5:
-                    imgAttr1.Source = "fiveBeer.png";
+                    imgAttr5.Source = "fiveBeer.png";
                     break;
-                default:
+                case 0:
+                    imgAttr5.Source = "LeeresBier.png";
                     break;
+                
             }
+            Check();
         }
 
         private void pickAttr4_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -138,23 +147,25 @@ namespace BetterBeer.MenuPages
             switch (pickAttr4.Value)
             {
                 case 1:
-                    imgAttr1.Source = "oneBeer.png";
+                    imgAttr4.Source = "oneBeer.png";
                     break;
                 case 2:
-                    imgAttr1.Source = "twoBeer.png";
+                    imgAttr4.Source = "twoBeer.png";
                     break;
                 case 3:
-                    imgAttr1.Source = "threeBeer.png";
+                    imgAttr4.Source = "threeBeer.png";
                     break;
                 case 4:
-                    imgAttr1.Source = "fourBeer.png";
+                    imgAttr4.Source = "fourBeer.png";
                     break;
                 case 5:
-                    imgAttr1.Source = "fiveBeer.png";
+                    imgAttr4.Source = "fiveBeer.png";
                     break;
-                default:
+                case 0:
+                    imgAttr4.Source = "LeeresBier.png";
                     break;
             }
+            Check();
         }
 
         private void pickAttr2_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -162,23 +173,25 @@ namespace BetterBeer.MenuPages
             switch (pickAttr2.Value)
             {
                 case 1:
-                    imgAttr1.Source = "oneBeer.png";
+                    imgAttr2.Source = "oneBeer.png";
                     break;
                 case 2:
-                    imgAttr1.Source = "twoBeer.png";
+                    imgAttr2.Source = "twoBeer.png";
                     break;
                 case 3:
-                    imgAttr1.Source = "threeBeer.png";
+                    imgAttr2.Source = "threeBeer.png";
                     break;
                 case 4:
-                    imgAttr1.Source = "fourBeer.png";
+                    imgAttr2.Source = "fourBeer.png";
                     break;
                 case 5:
-                    imgAttr1.Source = "fiveBeer.png";
+                    imgAttr2.Source = "fiveBeer.png";
                     break;
-                default:
+                case 0:
+                    imgAttr2.Source = "LeeresBier.png";
                     break;
             }
+            Check();
         }
 
         private void pickAttr1_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -200,9 +213,11 @@ namespace BetterBeer.MenuPages
                 case 5:
                     imgAttr1.Source = "fiveBeer.png";
                     break;
-                default:
+                case 0:
+                    imgAttr1.Source = "LeeresBier.png";
                     break;
             }
+            Check();
         }
 
         private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -210,22 +225,39 @@ namespace BetterBeer.MenuPages
             switch (pickAttr3.Value)
             {
                 case 1:
-                    imgAttr1.Source = "oneBeer.png";
+                    imgAttr3.Source = "oneBeer.png";
                     break;
                 case 2:
-                    imgAttr1.Source = "twoBeer.png";
+                    imgAttr3.Source = "twoBeer.png";
                     break;
                 case 3:
-                    imgAttr1.Source = "threeBeer.png";
+                    imgAttr3.Source = "threeBeer.png";
                     break;
                 case 4:
-                    imgAttr1.Source = "fourBeer.png";
+                    imgAttr3.Source = "fourBeer.png";
                     break;
                 case 5:
-                    imgAttr1.Source = "fiveBeer.png";
+                    imgAttr3.Source = "fiveBeer.png";
                     break;
-                default:
+                case 0:
+                    imgAttr3.Source = "LeeresBier.png";
                     break;
+            }
+            Check();
+           
+        }
+
+        private void Check()
+        {
+            if (pickAttr1.Value == 0 || pickAttr2.Value == 0 || pickAttr3.Value == 0 || pickAttr4.Value == 0 || pickAttr5.Value == 0)
+            {
+                btn_Submit.IsEnabled = false;
+                btn_Submit.BackgroundColor = Color.Gray;
+            }
+            else
+            {
+                btn_Submit.IsEnabled = true;
+                btn_Submit.BackgroundColor = Color.FromHex("#FFCD33");
             }
         }
     }

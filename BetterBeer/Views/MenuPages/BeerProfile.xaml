@@ -76,7 +76,7 @@
                         <Grid>
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="110"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                             <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
@@ -102,23 +102,23 @@
                                 <RowDefinition Height="85"/>
                             </Grid.RowDefinitions>
 
-                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" >
-                                <Label x:Name="attr1">
+                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black"  BackgroundColor="#FFCD33">
+                                <Label x:Name="attr1" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium">
                                     
                                 </Label>
                             </Frame>
-                            <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1">
-                                <Label x:Name="attr2"   />
+                            <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1" BackgroundColor="#FFCD33">
+                                <Label x:Name="attr2" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium" />
 
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">
-                                <Label x:Name="attr3"/>
+                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" BackgroundColor="#FFCD33">
+                                <Label x:Name="attr3" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium"/>
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black">
-                                <Label x:Name="attr4" />
+                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black" BackgroundColor="#FFCD33">
+                                <Label x:Name="attr4" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium" />
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black">
-                                <Label x:Name="attr5"/>
+                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black" BackgroundColor="#FFCD33">
+                                <Label x:Name="attr5" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium" Font=""/>
                             </Frame>
 
                             <Grid Grid.Row="0" Grid.Column="1">
@@ -127,7 +127,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr1"/>
+                                <Image Grid.Row="0" x:Name="imgAttr1" Source="LeeresBier.png"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr1" Minimum="0" Maximum="5" ValueChanged="pickAttr1_ValueChanged"/>
                             
                             </Grid>
@@ -138,7 +138,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr2"/>
+                                <Image Grid.Row="0" x:Name="imgAttr2" Source="LeeresBier.png"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr2" Minimum="0" Maximum="5" ValueChanged="pickAttr2_ValueChanged"/>
 
                             </Grid>
@@ -149,7 +149,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr3"/>
+                                <Image Grid.Row="0" x:Name="imgAttr3" Source="LeeresBier.png"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr3" Minimum="0" Maximum="5" ValueChanged="pickAttr3_ValueChanged"/>
 
                             </Grid>
@@ -160,7 +160,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr4"/>
+                                <Image Grid.Row="0" x:Name="imgAttr4" Source="LeeresBier.png"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr4" Minimum="0" Maximum="5" ValueChanged="pickAttr4_ValueChanged"/>
 
                             </Grid>
@@ -171,13 +171,13 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr5"/>
+                                <Image Grid.Row="0" x:Name="imgAttr5" Source="LeeresBier.png"/>
                                 <Stepper Grid.Row="1"  x:Name="pickAttr5" Minimum="0" Maximum="5" ValueChanged="pickAttr5_ValueChanged"/>
 
                             </Grid>
                         </Grid>
 
-                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
                           HeightRequest="45" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
                     </StackLayout>
                 </ScrollView>
