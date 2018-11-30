@@ -97,7 +97,7 @@
                         <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                         
-                        <ListView Grid.Row="2" x:Name="ListViewSystem" ItemTapped="Handle_ItemTapped"/>
+                        <ListView Grid.Row="2" x:Name="ListViewSystem" ItemTapped="HandleSystem_ItemTapped"/>
                </Grid>  
             </StackLayout>
         </StackLayout>

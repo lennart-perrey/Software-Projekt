@@ -49,9 +49,13 @@ namespace BetterBeer
             {
                 await Navigation.PushAsync(new Achievements());
             }
-            else if (ListViewSystem.SelectedItem.ToString() == "Logout")
+        }
+
+        private async void HandleSystem_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (ListViewSystem.SelectedItem.ToString() == "Logout")
             {
-                await Navigation.PushAsync(new MainPage(),false);
+                await Navigation.PushAsync(new MainPage(), false);
             }
         }
 
