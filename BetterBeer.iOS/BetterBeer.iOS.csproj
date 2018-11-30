@@ -221,33 +221,33 @@
     <BundleResource Include="Resources\VollesBier.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\fiveBeer.png">
+    <BundleResource Include="Resources\fiveBeer.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\fourBeer.png">
+    <BundleResource Include="Resources\fourBeer.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\oneBeer.png">
+    <BundleResource Include="Resources\oneBeer.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\twoBeer.png">
+    <BundleResource Include="Resources\twoBeer.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\threeBeer.png">
+    <BundleResource Include="Resources\threeBeer.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
-    </AndroidResource>
+    </BundleResource>
   </ItemGroup>
 </Project>

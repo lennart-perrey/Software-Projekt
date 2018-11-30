@@ -28,6 +28,11 @@ namespace BetterBeer.MenuPages
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
 
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+
             Beer beer = scannedBeer;
             beerID = Convert.ToInt32(beer.beerId);
             lbl_BeerName.Text = beer.beerName;
@@ -112,7 +117,7 @@ namespace BetterBeer.MenuPages
                     imgAttr5.Source = "fiveBeer.png";
                     break;
                 case 0:
-                    imgAttr5.Source = "LeeresBier.png";
+                    imgAttr5.Source = "LeeresBier.jpg";
                     break;
                 
             }
@@ -139,7 +144,7 @@ namespace BetterBeer.MenuPages
                     imgAttr4.Source = "fiveBeer.png";
                     break;
                 case 0:
-                    imgAttr4.Source = "LeeresBier.png";
+                    imgAttr4.Source = "LeeresBier.jpg";
                     break;
             }
             Check();
@@ -165,7 +170,7 @@ namespace BetterBeer.MenuPages
                     imgAttr2.Source = "fiveBeer.png";
                     break;
                 case 0:
-                    imgAttr2.Source = "LeeresBier.png";
+                    imgAttr2.Source = "LeeresBier.jpg";
                     break;
             }
             Check();
@@ -191,7 +196,7 @@ namespace BetterBeer.MenuPages
                     imgAttr1.Source = "fiveBeer.png";
                     break;
                 case 0:
-                    imgAttr1.Source = "LeeresBier.png";
+                    imgAttr1.Source = "LeeresBier.jpg";
                     break;
             }
             Check();
@@ -217,7 +222,7 @@ namespace BetterBeer.MenuPages
                     imgAttr3.Source = "fiveBeer.png";
                     break;
                 case 0:
-                    imgAttr3.Source = "LeeresBier.png";
+                    imgAttr3.Source = "LeeresBier.jpg";
                     break;
             }
             Check();

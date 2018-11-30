@@ -12,8 +12,7 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             btn_login.IsEnabled = false;
-            BindingContext = this;
-            IsBusy = false;
+
             act_Indicator.IsVisible = false;
         }
 
@@ -21,8 +20,6 @@ namespace BetterBeer
         {
             try
             {
-                act_Indicator.IsVisible = true;
-                IsBusy = true;
                 string email = entry_email.Text;
                 string SaltedPassword = Database.GetSaltedPW(email);
                 string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
@@ -30,14 +27,10 @@ namespace BetterBeer
 
                 if (Database.CheckUser(email, password) > 0)
                 {
-                    act_Indicator.IsVisible = false;
-                    IsBusy = false;
                     await Navigation.PushAsync(new DashBoard());
                 }
                 else
                 {
-                    act_Indicator.IsVisible = false;
-                    IsBusy = false;
                     await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
                     entry_email.Text = "";
                     entry_password.Text = "";
@@ -45,8 +38,6 @@ namespace BetterBeer
             }
             catch(Exception)
             {
-                act_Indicator.IsVisible = false;
-                IsBusy = false;
                 await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen.", "Ok");
             }
 
@@ -91,7 +82,7 @@ namespace BetterBeer
             }
         }
 
-            private async void lbl_createAcc_Tapped(object sender, EventArgs e)
+        private async void lbl_createAcc_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NavigationPage(new createAcc()));
         }

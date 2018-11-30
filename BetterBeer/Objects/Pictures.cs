@@ -8,8 +8,7 @@ namespace BetterBeer
 {
     class Pictures
     {
-
-        public static byte[] imgToByte(MediaFile file)
+        public static byte[] ImgToByte(MediaFile file)
         {
             using (var memoryStream = new MemoryStream())
             {

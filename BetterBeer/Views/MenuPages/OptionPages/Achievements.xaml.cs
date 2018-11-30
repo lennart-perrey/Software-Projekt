@@ -10,6 +10,10 @@ namespace BetterBeer.MenuPages
         public Achievements()
         {
             InitializeComponent();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
         }
     }
 }

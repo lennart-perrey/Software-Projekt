@@ -1,6 +1,8 @@
 ﻿using BetterBeer.MenuPages;
+using BetterBeer.Objects;
 using Plugin.Media;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
@@ -28,6 +30,8 @@ namespace BetterBeer
                 searchBar.BackgroundColor = Color.White;
             }
 
+            List<Friend> friends = Database.GetFriends();
+            lv_FriendsList.ItemsSource = friends;
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
