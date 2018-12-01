@@ -11,7 +11,18 @@ namespace BetterBeer
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+            if (!isLoggedIn)
+            {
+                //Load if Not Logged In
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                //Load if Logged In
+                MainPage = new NavigationPage(new MenuPage());
+            }
+
         }
 
         protected override void OnStart()

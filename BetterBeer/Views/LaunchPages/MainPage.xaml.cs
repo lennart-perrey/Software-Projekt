@@ -27,6 +27,7 @@ namespace BetterBeer
 
                 if (Database.CheckUser(email, password) > 0)
                 {
+                    Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
                     await Navigation.PushAsync(new DashBoard());
                 }
                 else

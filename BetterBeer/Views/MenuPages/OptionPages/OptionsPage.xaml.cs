@@ -55,6 +55,8 @@ namespace BetterBeer
         {
             if (ListViewSystem.SelectedItem.ToString() == "Logout")
             {
+                Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+                SpecificUser.UserID = 0;
                 await Navigation.PushAsync(new MainPage(), false);
             }
         }
