@@ -98,6 +98,31 @@ namespace BetterBeer
             return beers;
         }
 
+        public static Beer getAvgGradeByBeerId(string beerId)
+        {
+            string postData = $"bierId={beerId}";
+            string responseString = apiCall("getAvgGradeByBeerId", postData);
+            
+            if (responseString != "null")
+            {
+                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                return beers[0];
+            }
+
+            return null;
+        }
+        public static string countRatings(string beerId)
+        {
+            string postData = $"bierId={beerId}";
+            string responseString = apiCall("getAvgGradeByBeerId", postData);
+
+            if (responseString != "null")
+            {
+                return responseString;
+            }
+
+            return null;
+        }
 
         public static bool createBeer (string ean, string beerName, int brandId)
         {
@@ -203,11 +228,6 @@ namespace BetterBeer
             return null;
         }
 
-        //public static List<Beer> ShowBeer()
-        //{
-        //
-        //}
-
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;
@@ -250,7 +270,7 @@ namespace BetterBeer
             byte[] imgData;
             
 
-            imgData = Pictures.ImgToByte(img);
+            imgData = Pictures.imgToByte(img);
             string postData = $"Picture={imgData}&UserId={UserID}";
 
             byte[] data = Encoding.UTF8.GetBytes(postData);
@@ -301,56 +321,7 @@ namespace BetterBeer
             return crits;
         }
 
-        public static List<Friend> GetFriends()
-        {
-            string postData = $"userId={SpecificUser.UserID}";
-            byte[] data = Encoding.UTF8.GetBytes(postData);
-
-            string requestString = API + "?action=showFriends";
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
-            return friends;
-        }
-        
-        public static List<Friend> FindFriends(string friendName)
-        {
-            string postData = $"userId={SpecificUser.UserID}&friendname={friendName}";
-            byte[] data = Encoding.UTF8.GetBytes(postData);
-
-            string requestString = API + "?action=showFriends";
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            if (responseString != "null")
-            {
-                List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
-                return friends;
-            }
-
-            return null;
-        }
-        
+     
+       
     }
 }
