@@ -47,6 +47,14 @@ namespace BetterBeer.MenuPages
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
         }
+        protected override void OnDisappearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+            base.OnDisappearing();
+        }
 
         public void OnRightSwipe(View view)
         {

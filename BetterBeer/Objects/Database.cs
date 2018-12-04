@@ -98,6 +98,31 @@ namespace BetterBeer
             return beers;
         }
 
+        public static Beer getAvgGradeByBeerId(string beerId)
+        {
+            string postData = $"bierId={beerId}";
+            string responseString = apiCall("getAvgGradeByBeerId", postData);
+            
+            if (responseString != "null")
+            {
+                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                return beers[0];
+            }
+
+            return null;
+        }
+        public static string countRatings(string beerId)
+        {
+            string postData = $"bierId={beerId}";
+            string responseString = apiCall("getAvgGradeByBeerId", postData);
+
+            if (responseString != "null")
+            {
+                return responseString;
+            }
+
+            return null;
+        }
 
         public static bool createBeer (string ean, string beerName, int brandId)
         {
