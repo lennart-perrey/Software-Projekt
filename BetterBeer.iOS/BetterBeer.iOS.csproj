@@ -182,36 +182,6 @@
     <BundleResource Include="Resources\MeinFoto.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MenuButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\RankingButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\RankingButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\CameraButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\CameraButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FriendsButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\FriendsButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\HomeButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\HomeButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\flensburger.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -249,5 +219,35 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CameraButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CameraButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FriendsButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FriendsButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HomeButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HomeButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RankingButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\RankingButtonClicked.PNG" />
   </ItemGroup>
 </Project>
