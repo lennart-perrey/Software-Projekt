@@ -265,28 +265,79 @@ namespace BetterBeer
         }
 
 
-        //public void uploadImageToDatabase(MediaFile img, Int32 UserID)
-        //{
+        public void uploadImageToDatabase(MediaFile img, Int32 UserID)
+        {
 
-        //    string requestString = API + "?action=uploadImage";
-        //    byte[] imgData;
-            
+            string requestString = API + "?action=uploadImage";
+            byte[] imgData;
 
-        //    imgData = Pictures.imgToByte(img);
-        //    string postData = $"Picture={imgData}&UserId={UserID}";
 
-        //    byte[] data = Encoding.UTF8.GetBytes(postData);
+            imgData = Pictures.ImgToByte(img);
+            string postData = $"Picture={imgData}&UserId={UserID}";
 
-        //    WebRequest request = WebRequest.Create(requestString);
-        //    request.Method = "POST";
-        //    request.ContentType = "multipart/form-data";
-        //    request.ContentLength = data.Length;
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
-        //    using (var stream = request.GetRequestStream())
-        //    {
-        //        stream.Write(data, 0, data.Length);
-        //    }
-        //}
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+        }
+
+        public static List<Friend> GetFriends()
+        {
+            string postData = $"userId={SpecificUser.UserID}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+            string requestString = API + "?action=showFriends";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
+            return friends;
+        }
+
+        public static List<Friend> FindFriends(string friendName)
+        {
+            string postData = $"userId={SpecificUser.UserID}&friendname={friendName}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+            string requestString = API + "?action=showFriends";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            if (responseString != "null")
+            {
+                List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
+                return friends;
+            }
+
+            return null;
+        }
 
 
         public static bool CreateRating(int beerID, int userID, List<int> rating)
@@ -321,9 +372,6 @@ namespace BetterBeer
 
             List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
             return crits;
-        }
-
-     
-       
+        } 
     }
 }
