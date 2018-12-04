@@ -44,7 +44,12 @@ namespace BetterBeer.Views.MenuPages
             lbl_attr5.Text = criterias[4].Kriterium;
 
             //Get Rating for Beer
-            Beer beersCrit1 = Database.getAvgGradeByBeerId(beer.beerId);
+            List<Beer> beers = Database.getAvgGradeByBeerId(beer.beerId);
+            lbl_crit1.Text = beers[0].avgRating.ToString();
+            lbl_crit2.Text = beers[1].avgRating.ToString();
+            lbl_crit3.Text = beers[2].avgRating.ToString();
+            lbl_crit4.Text = beers[3].avgRating.ToString();
+            lbl_crit5.Text = beers[4].avgRating.ToString();
 
         }
 

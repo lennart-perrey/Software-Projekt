@@ -98,7 +98,7 @@ namespace BetterBeer
             return beers;
         }
 
-        public static Beer getAvgGradeByBeerId(string beerId)
+        public static List<Beer> getAvgGradeByBeerId(string beerId)
         {
             string postData = $"bierId={beerId}";
             string responseString = apiCall("getAvgGradeByBeerId", postData);
@@ -106,15 +106,15 @@ namespace BetterBeer
             if (responseString != "null")
             {
                 List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
-                return beers[0];
+                return beers;
             }
 
             return null;
         }
         public static string countRatings(string beerId)
         {
-            string postData = $"bierId={beerId}";
-            string responseString = apiCall("getAvgGradeByBeerId", postData);
+            string postData = $"beerId={beerId}";
+            string responseString = apiCall("countRatings", postData);
 
             if (responseString != "null")
             {
