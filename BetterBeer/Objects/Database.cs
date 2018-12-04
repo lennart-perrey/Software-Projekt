@@ -265,28 +265,28 @@ namespace BetterBeer
         }
 
 
-        public void uploadImageToDatabase(MediaFile img, Int32 UserID)
-        {
+        //public void uploadImageToDatabase(MediaFile img, Int32 UserID)
+        //{
 
-            string requestString = API + "?action=uploadImage";
-            byte[] imgData;
+        //    string requestString = API + "?action=uploadImage";
+        //    byte[] imgData;
             
 
-            imgData = Pictures.imgToByte(img);
-            string postData = $"Picture={imgData}&UserId={UserID}";
+        //    imgData = Pictures.imgToByte(img);
+        //    string postData = $"Picture={imgData}&UserId={UserID}";
 
-            byte[] data = Encoding.UTF8.GetBytes(postData);
+        //    byte[] data = Encoding.UTF8.GetBytes(postData);
 
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "multipart/form-data";
-            request.ContentLength = data.Length;
+        //    WebRequest request = WebRequest.Create(requestString);
+        //    request.Method = "POST";
+        //    request.ContentType = "multipart/form-data";
+        //    request.ContentLength = data.Length;
 
-            using (var stream = request.GetRequestStream())
-            {
-                stream.Write(data, 0, data.Length);
-            }
-        }
+        //    using (var stream = request.GetRequestStream())
+        //    {
+        //        stream.Write(data, 0, data.Length);
+        //    }
+        //}
 
 
         public static bool CreateRating(int beerID, int userID, List<int> rating)

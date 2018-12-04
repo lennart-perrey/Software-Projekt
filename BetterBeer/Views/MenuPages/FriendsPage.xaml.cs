@@ -30,8 +30,8 @@ namespace BetterBeer
                 searchBar.BackgroundColor = Color.White;
             }
 
-            List<Friend> friends = Database.GetFriends();
-            lv_FriendsList.ItemsSource = friends;
+            //List<Friend> friends = Database.GetFriends();
+            //lv_FriendsList.ItemsSource = friends;
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
