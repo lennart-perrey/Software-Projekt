@@ -15,19 +15,8 @@ namespace BetterBeer.MenuPages
         public MyData()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
 
             //get Passsword, Picture, Username and EMail from Database
-        }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
         }
 
         private async void myImage_Tapped(object sender, EventArgs e)

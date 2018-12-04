@@ -22,11 +22,6 @@ namespace BetterBeer
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                SetStatusStyle.SetStyle();
-                searchBar.BackgroundColor = Color.Black;
-            }
-            else if (Device.RuntimePlatform == Device.Android)
-            {
                 searchBar.BackgroundColor = Color.White;
             }
 

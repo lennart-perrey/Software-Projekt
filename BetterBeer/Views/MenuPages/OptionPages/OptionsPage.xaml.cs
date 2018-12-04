@@ -14,13 +14,9 @@ namespace BetterBeer
 
         public OptionsPage()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent(); 
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
 
             List<string> itemsGeneral = new List<string>();
             itemsGeneral.Add("Meine Daten");
@@ -33,15 +29,6 @@ namespace BetterBeer
             ListViewGeneral.ItemsSource = itemsGeneral;
             ListViewSystem.ItemsSource = itemsSystem;
         }
-
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
-        }
-
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {

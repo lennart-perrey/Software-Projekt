@@ -25,14 +25,9 @@ namespace BetterBeer.MenuPages
 
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
-            if (Device.RuntimePlatform == Device.iOS)
+
+            if (Device.RuntimePlatform == Device.Android)
             {
-                SetStatusStyle.SetStyle();
-                searchBar.BackgroundColor = Color.Black;
-            }
-            else if (Device.RuntimePlatform == Device.Android)
-            {
-                searchBar.BackgroundColor = Color.White;
                 searchBar.WidthRequest = 250;
             }
 
@@ -50,13 +45,6 @@ namespace BetterBeer.MenuPages
             }
 
             setHighscore();
-        }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
         }
 
         /// Erstellt die Ausgabe der Topliste

@@ -2,76 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BetterBeer.DashBoard"
-             BackgroundColor="Black">
-
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <OnPlatform.iOS>
-                0,20,0,0
-            </OnPlatform.iOS>
-            <OnPlatform.Android>
-                0,0,0,0
-            </OnPlatform.Android>
-        </OnPlatform>
-    </ContentPage.Padding>
-
-
+             BackgroundColor="White">
+    
     <ContentPage.Content>
-
-        <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
-
-            <StackLayout BackgroundColor="Black" VerticalOptions="StartAndExpand">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                    </Grid.RowDefinitions>
-
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-
-                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <Image x:Name="img_Home" Source="HomeButtonClicked.PNG" Grid.Column="2">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                </Grid>
-            </StackLayout>
-            
-            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-
-            
+        <StackLayout x:Name="stlout_Swipe" Margin="0,40,0,0">
+            <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <Grid Margin="10,25,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -109,7 +44,55 @@
                         <Label Text="Johannes ist doof"></Label>
                     </Frame>
                 </Grid>
-            </StackLayout> 
+            </StackLayout>
+            <StackLayout BackgroundColor="Black" VerticalOptions="End">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Home" Source="HomeButtonClicked.PNG" Grid.Column="2" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4" VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

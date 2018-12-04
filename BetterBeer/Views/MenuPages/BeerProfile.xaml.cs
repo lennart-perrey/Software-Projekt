@@ -27,21 +27,6 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-
-                pickAttr1.MinimumWidthRequest = 250;
-                pickAttr2.MinimumWidthRequest = 250;
-                pickAttr3.MinimumWidthRequest = 250;
-                pickAttr4.MinimumWidthRequest = 250;
-                pickAttr5.MinimumWidthRequest = 250;
-            }
-
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
 
             Beer beer = scannedBeer;
             beerID = Convert.ToInt32(beer.beerId);
@@ -63,13 +48,6 @@ namespace BetterBeer.MenuPages
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
         }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-        }
 
         public void OnRightSwipe(View view)
         {
@@ -83,7 +61,7 @@ namespace BetterBeer.MenuPages
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new DashBoard());
         }
 
         public void OnNothingSwipe(View view)

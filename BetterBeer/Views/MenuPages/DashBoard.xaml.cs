@@ -15,17 +15,6 @@ namespace BetterBeer
             InitializeComponent();
             
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
-        }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
         }
 
         public async void OnLeftSwipe(View view)
