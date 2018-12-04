@@ -27,6 +27,10 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
             listener = new SwipeListener(stlout_Swipe, this);
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
 
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -47,6 +51,14 @@ namespace BetterBeer.MenuPages
             attr3.Text = crits[2].Kriterium;
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
+        }
+        protected override void OnDisappearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+            base.OnDisappearing();
         }
 
         public void OnRightSwipe(View view)

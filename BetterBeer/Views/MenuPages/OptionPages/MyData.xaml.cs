@@ -174,5 +174,13 @@ namespace BetterBeer.MenuPages
             myPassword2.IsVisible = true;
 
         }
+        protected override void OnDisappearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+            base.OnDisappearing();
+        }
     }
 }

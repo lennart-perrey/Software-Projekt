@@ -11,6 +11,12 @@ namespace BetterBeer
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+
             btn_login.IsEnabled = false;
 
             act_Indicator.IsVisible = false;

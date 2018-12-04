@@ -14,7 +14,7 @@ namespace BetterBeer
         const string API = "http://spbier.bplaced.net/DBConnect.php";
         public static int CheckUser(string login, string password)
         {
-            string postData = usernameOrEmail(login) +$"&password={password}";          
+            string postData = usernameOrEmail(login) +$"&password={password}";
             int responseString = int.Parse(apiCall("validUser", postData));
 
             if (responseString > 0)
@@ -98,23 +98,23 @@ namespace BetterBeer
             return beers;
         }
 
-        public static Beer getAvgGradeByBeerId(string beerId)
+        public static List<Beer> getAvgGradeByBeerId(string beerId)
         {
             string postData = $"bierId={beerId}";
             string responseString = apiCall("getAvgGradeByBeerId", postData);
-            
+
             if (responseString != "null")
             {
                 List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
-                return beers[0];
+                return beers;
             }
 
             return null;
         }
         public static string countRatings(string beerId)
         {
-            string postData = $"bierId={beerId}";
-            string responseString = apiCall("getAvgGradeByBeerId", postData);
+            string postData = $"beerId={beerId}";
+            string responseString = apiCall("countRatings", postData);
 
             if (responseString != "null")
             {
@@ -129,7 +129,7 @@ namespace BetterBeer
             string postData = $"beerName={beerName}&brandId={brandId}&userId={SpecificUser.UserID}";
             int bierId=0;
 
-      
+
 
             //Pruefung, ob Bier Vorhanden
             string responseString = apiCall("showBeerByName", postData);
@@ -139,7 +139,7 @@ namespace BetterBeer
             {
                 responseString = apiCall("createBeer", postData);
             }
-            try { 
+            try {
                 bierId = Convert.ToInt32(responseString);
             }
             catch (Exception)
@@ -372,6 +372,6 @@ namespace BetterBeer
 
             List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
             return crits;
-        } 
+        }
     }
 }
