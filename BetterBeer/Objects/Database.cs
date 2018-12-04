@@ -126,8 +126,10 @@ namespace BetterBeer
 
         public static bool createBeer (string ean, string beerName, int brandId)
         {
-            string postData = $"beerName={beerName}&brandId={brandId}";
+            string postData = $"beerName={beerName}&brandId={brandId}&userId={SpecificUser.UserID}";
             int bierId=0;
+
+      
 
             //Pruefung, ob Bier Vorhanden
             string responseString = apiCall("showBeerByName", postData);
