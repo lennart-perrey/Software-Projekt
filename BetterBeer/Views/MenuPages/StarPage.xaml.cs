@@ -51,6 +51,13 @@ namespace BetterBeer.MenuPages
 
             setHighscore();
         }
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+        }
 
         /// Erstellt die Ausgabe der Topliste
         private void setHighscore()

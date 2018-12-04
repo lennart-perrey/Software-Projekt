@@ -57,14 +57,13 @@ namespace BetterBeer.Views.MenuPages
         {
             await Navigation.PushAsync(new BeerProfile(beer));
         }
-    
-        protected override void OnDisappearing()
+
+        protected override void OnAppearing()
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                SetStatusStyle.SetStyle();
+                SetStatusStyle.SetStyleBlack();
             }
-            base.OnDisappearing();
         }
     }
 }

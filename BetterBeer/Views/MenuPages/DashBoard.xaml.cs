@@ -20,6 +20,13 @@ namespace BetterBeer
                 SetStatusStyle.SetStyle();
             }
         }
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+        }
 
         public async void OnLeftSwipe(View view)
         {

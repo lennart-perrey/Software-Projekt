@@ -18,8 +18,15 @@ namespace BetterBeer
             }
 
             btn_login.IsEnabled = false;
+        }
 
-            act_Indicator.IsVisible = false;
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+            base.OnDisappearing();
         }
 
         private async void btn_login_clicked(object sender, EventArgs e)

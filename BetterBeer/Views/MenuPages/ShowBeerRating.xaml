@@ -22,8 +22,8 @@
                             <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
                                    HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                    Margin="0,10,0,0"/>
-                            <Label Grid.Row="1" Text="Anzahl Bewetungen:" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextDecorations="Underline"/>
-                            <Label Grid.Row="2" x:Name="lbl_Counter" TextColor="#FFD657" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Grid.Row="1" Text="Anzahl Bewertungen:" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" TextDecorations="Underline"/>
+                            <Label Grid.Row="2" x:Name="lbl_Counter" TextColor="Black" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
                             <Label Grid.Row="3" BackgroundColor="Gray" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                         </Grid>
 
@@ -42,23 +42,23 @@
                             </Grid.RowDefinitions>
 
                             <Frame Grid.Column="0" Grid.Row="0" BorderColor="#FFD657" Padding="10"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr1" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr1" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="1" BorderColor="#FFD657"  Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr2" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr2" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="2" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr3" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr3" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="3" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr4" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr4" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Frame Grid.Column="0" Grid.Row="4" BorderColor="#FFD657" Padding="10" HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label x:Name="lbl_attr5" TextColor="Gray" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
+                                <Label x:Name="lbl_attr5" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="45"/>
                             </Frame>
 
                             <Grid Grid.Row="0" Grid.Column="1">

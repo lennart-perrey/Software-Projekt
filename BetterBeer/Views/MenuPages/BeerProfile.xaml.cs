@@ -30,6 +30,12 @@ namespace BetterBeer.MenuPages
             if (Device.RuntimePlatform == Device.iOS)
             {
                 SetStatusStyle.SetStyleBlack();
+
+                pickAttr1.MinimumWidthRequest = 250;
+                pickAttr2.MinimumWidthRequest = 250;
+                pickAttr3.MinimumWidthRequest = 250;
+                pickAttr4.MinimumWidthRequest = 250;
+                pickAttr5.MinimumWidthRequest = 250;
             }
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -43,6 +49,11 @@ namespace BetterBeer.MenuPages
             img_BeerImage.Source = beer.pic;
             lbl_BeerInfo.Text = beer.info;
 
+            if(lbl_BeerInfo.Text == "")
+            {
+                lbl_line.IsVisible = false;
+            }
+
             crits = Database.ShowCriteria();
 
 
@@ -52,13 +63,12 @@ namespace BetterBeer.MenuPages
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
         }
-        protected override void OnDisappearing()
+        protected override void OnAppearing()
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
                 SetStatusStyle.SetStyleBlack();
             }
-            base.OnDisappearing();
         }
 
         public void OnRightSwipe(View view)

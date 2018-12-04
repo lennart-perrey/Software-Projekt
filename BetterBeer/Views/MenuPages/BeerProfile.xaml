@@ -15,15 +15,17 @@
                         <Grid>
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                             <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
-                                   HorizontalOptions="Fill" VerticalOptions="Center"
-                                   />
-                            <Label Grid.Row="1" x:Name="lbl_BeerInfo" VerticalOptions="FillAndExpand" />
-                            <Label Grid.Row="2" BackgroundColor="Gray" HeightRequest="1" 
                                    HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            
+                            <Label Grid.Row="1" x:Name="lbl_BeerInfo" VerticalOptions="CenterAndExpand"/>
+                            
+                            <Label Grid.Row="2" x:Name="lbl_line" BackgroundColor="Gray" HeightRequest="1" 
+                                   HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            
                             </Grid>
                         <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand" Margin="0,15,0,0">
 
@@ -41,23 +43,24 @@
                                 <RowDefinition Height="85"/>
                             </Grid.RowDefinitions>
 
-                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black"  BackgroundColor="#FFCD33">
-                                <Label x:Name="attr1" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium">
-                                    
-                                </Label>
+                            <Frame Grid.Column="0" Grid.Row="0" BorderColor="#FFD657" Padding="25"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="attr1" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="80"/>
                             </Frame>
-                            <Frame BorderColor="Black" Grid.Column="0" Grid.Row="1" BackgroundColor="#FFCD33">
-                                <Label x:Name="attr2" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium" />
 
+                            <Frame Grid.Column="0" Grid.Row="1" BorderColor="#FFD657" Padding="25"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="attr2" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="80"/>
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" BackgroundColor="#FFCD33">
-                                <Label x:Name="attr3" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium"/>
+
+                            <Frame Grid.Column="0" Grid.Row="2" BorderColor="#FFD657" Padding="25"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="attr3" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="80"/>
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="Black" BackgroundColor="#FFCD33">
-                                <Label x:Name="attr4" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium" />
+
+                            <Frame Grid.Column="0" Grid.Row="3" BorderColor="#FFD657" Padding="25"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="attr4" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="80"/>
                             </Frame>
-                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="Black" BackgroundColor="#FFCD33">
-                                <Label x:Name="attr5" TextColor="White" BackgroundColor="#FFCD33" FontSize="Medium"/>
+
+                            <Frame Grid.Column="0" Grid.Row="4" BorderColor="#FFD657" Padding="25"  HasShadow="False" BackgroundColor="#FFD657" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Label x:Name="attr5" TextColor="White" FontAttributes="Bold" BackgroundColor="#FFD657" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="80"/>
                             </Frame>
 
                             <Grid Grid.Row="0" Grid.Column="1">
@@ -66,8 +69,8 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr1" Source="LeeresBier.png"/>
-                                <Stepper Grid.Row="1"  x:Name="pickAttr1" Minimum="0" Maximum="5" ValueChanged="pickAttr1_ValueChanged"/>
+                                <Image Grid.Row="0" x:Name="imgAttr1" Source="LeeresBier.jpg"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr1" Minimum="0" Maximum="5" ValueChanged="pickAttr1_ValueChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
                             
                             </Grid>
 
@@ -77,8 +80,8 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr2" Source="LeeresBier.png"/>
-                                <Stepper Grid.Row="1"  x:Name="pickAttr2" Minimum="0" Maximum="5" ValueChanged="pickAttr2_ValueChanged"/>
+                                <Image Grid.Row="0" x:Name="imgAttr2" Source="LeeresBier.jpg"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr2" Minimum="0" Maximum="5" ValueChanged="pickAttr2_ValueChanged" HorizontalOptions="Center"/>
 
                             </Grid>
 
@@ -88,8 +91,8 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr3" Source="LeeresBier.png"/>
-                                <Stepper Grid.Row="1"  x:Name="pickAttr3" Minimum="0" Maximum="5" ValueChanged="pickAttr3_ValueChanged"/>
+                                <Image Grid.Row="0" x:Name="imgAttr3" Source="LeeresBier.jpg"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr3" Minimum="0" Maximum="5" ValueChanged="pickAttr3_ValueChanged" HorizontalOptions="Center"/>
 
                             </Grid>
 
@@ -99,8 +102,8 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr4" Source="LeeresBier.png"/>
-                                <Stepper Grid.Row="1"  x:Name="pickAttr4" Minimum="0" Maximum="5" ValueChanged="pickAttr4_ValueChanged"/>
+                                <Image Grid.Row="0" x:Name="imgAttr4" Source="LeeresBier.jpg"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr4" Minimum="0" Maximum="5" ValueChanged="pickAttr4_ValueChanged" HorizontalOptions="Center"/>
 
                             </Grid>
 
@@ -110,13 +113,13 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" x:Name="imgAttr5" Source="LeeresBier.png"/>
-                                <Stepper Grid.Row="1"  x:Name="pickAttr5" Minimum="0" Maximum="5" ValueChanged="pickAttr5_ValueChanged"/>
+                                <Image Grid.Row="0" x:Name="imgAttr5" Source="LeeresBier.jpg"/>
+                                <Stepper Grid.Row="1"  x:Name="pickAttr5" Minimum="0" Maximum="5" ValueChanged="pickAttr5_ValueChanged" HorizontalOptions="Center"/>
 
                             </Grid>
                         </Grid>
 
-                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
                           HeightRequest="45" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
                     </StackLayout>
                 </ScrollView>
