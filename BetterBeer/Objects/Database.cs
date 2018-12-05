@@ -33,6 +33,7 @@ namespace BetterBeer
             string postData = $"username={uName}&email={email}&password={password}&saltedpassword={SaltedPassword}";
             string responseString = apiCall("createUser", postData);
 
+
             if (responseString == "1")
             {
                 return true;
