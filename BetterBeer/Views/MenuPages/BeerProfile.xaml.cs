@@ -15,11 +15,6 @@ namespace BetterBeer.MenuPages
         List<Criteria> crits;
 
         int beerID;
-        int ratingGeschmack = 0;
-        int ratingFarbe = 0;
-        int ratingSüff = 0;
-        int ratingDesign = 0;
-        int ratingKater = 0;
         
 
 
@@ -41,12 +36,14 @@ namespace BetterBeer.MenuPages
 
             crits = Database.ShowCriteria();
 
+            foreach (Criteria criteria in crits)
+            {
+                grd_rating.Children.Add(grd_Criteria);
+                
+            }
 
             attr1.Text = crits[0].Kriterium;
-            attr2.Text = crits[1].Kriterium;
-            attr3.Text = crits[2].Kriterium;
-            attr4.Text = crits[3].Kriterium;
-            attr5.Text = crits[4].Kriterium;
+
         }
 
         public void OnRightSwipe(View view)
@@ -71,110 +68,24 @@ namespace BetterBeer.MenuPages
 
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            ratingGeschmack = Convert.ToInt32(pickAttr1.Value);
-            ratingFarbe = Convert.ToInt32(pickAttr2.Value);
-            ratingDesign = Convert.ToInt32(pickAttr3.Value);
-            ratingSüff = Convert.ToInt32(pickAttr4.Value);
-            ratingKater = Convert.ToInt32(pickAttr1.Value);
+            foreach (Picker pick in grd_rating.Children)
+            {
+                rating.Add(pick.SelectedIndex -1 );
+            }
 
-            rating.Add(ratingGeschmack);
-            rating.Add(ratingFarbe);
-            rating.Add(ratingDesign);
-            rating.Add(ratingSüff);
-            rating.Add(ratingKater);
 
             bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating);
 
             if (!check)
             {
-                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte die Eingaben", "Okay");
+                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
             }
             else
             {
                 DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
                 Navigation.PushAsync(new DashBoard());
             }
-        }
-
-
-        private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            switch (pickAttr5.Value)
-            {
-                case 1:
-                    imgAttr5.Source = "oneBeer.png";
-                    break;
-                case 2:
-                    imgAttr5.Source = "twoBeer.png";
-                    break;
-                case 3:
-                    imgAttr5.Source = "threeBeer.png";
-                    break;
-                case 4:
-                    imgAttr5.Source = "fourBeer.png";
-                    break;
-                case 5:
-                    imgAttr5.Source = "fiveBeer.png";
-                    break;
-                case 0:
-                    imgAttr5.Source = "LeeresBier.jpg";
-                    break;
-                
-            }
-            Check();
-        }
-
-        private void pickAttr4_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            switch (pickAttr4.Value)
-            {
-                case 1:
-                    imgAttr4.Source = "oneBeer.png";
-                    break;
-                case 2:
-                    imgAttr4.Source = "twoBeer.png";
-                    break;
-                case 3:
-                    imgAttr4.Source = "threeBeer.png";
-                    break;
-                case 4:
-                    imgAttr4.Source = "fourBeer.png";
-                    break;
-                case 5:
-                    imgAttr4.Source = "fiveBeer.png";
-                    break;
-                case 0:
-                    imgAttr4.Source = "LeeresBier.jpg";
-                    break;
-            }
-            Check();
-        }
-
-        private void pickAttr2_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            switch (pickAttr2.Value)
-            {
-                case 1:
-                    imgAttr2.Source = "oneBeer.png";
-                    break;
-                case 2:
-                    imgAttr2.Source = "twoBeer.png";
-                    break;
-                case 3:
-                    imgAttr2.Source = "threeBeer.png";
-                    break;
-                case 4:
-                    imgAttr2.Source = "fourBeer.png";
-                    break;
-                case 5:
-                    imgAttr2.Source = "fiveBeer.png";
-                    break;
-                case 0:
-                    imgAttr2.Source = "LeeresBier.jpg";
-                    break;
-            }
-            Check();
-        }
+        }   
 
         private void pickAttr1_ValueChanged(object sender, ValueChangedEventArgs e)
         {
@@ -202,45 +113,19 @@ namespace BetterBeer.MenuPages
             Check();
         }
 
-        private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            switch (pickAttr3.Value)
-            {
-                case 1:
-                    imgAttr3.Source = "oneBeer.png";
-                    break;
-                case 2:
-                    imgAttr3.Source = "twoBeer.png";
-                    break;
-                case 3:
-                    imgAttr3.Source = "threeBeer.png";
-                    break;
-                case 4:
-                    imgAttr3.Source = "fourBeer.png";
-                    break;
-                case 5:
-                    imgAttr3.Source = "fiveBeer.png";
-                    break;
-                case 0:
-                    imgAttr3.Source = "LeeresBier.jpg";
-                    break;
-            }
-            Check();
-           
-        }
 
         private void Check()
         {
-            if (pickAttr1.Value == 0 || pickAttr2.Value == 0 || pickAttr3.Value == 0 || pickAttr4.Value == 0 || pickAttr5.Value == 0)
-            {
-                btn_Submit.IsEnabled = false;
-                btn_Submit.BackgroundColor = Color.Gray;
-            }
-            else
-            {
-                btn_Submit.IsEnabled = true;
-                btn_Submit.BackgroundColor = Color.FromHex("#FFCD33");
-            }
+            //if (grd_rating.Children.)
+            //{
+            //    btn_Submit.IsEnabled = false;
+            //    btn_Submit.BackgroundColor = Color.Gray;
+            //}
+            //else
+            //{
+            //    btn_Submit.IsEnabled = true;
+            //    btn_Submit.BackgroundColor = Color.FromHex("#FFCD33");
+            //}
         }
     }
 

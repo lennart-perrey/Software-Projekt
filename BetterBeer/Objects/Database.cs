@@ -326,7 +326,7 @@ namespace BetterBeer
         
         public static List<Friend> FindFriends(string friendName)
         {
-            string postData = $"userId={SpecificUser.UserID}&friendname={friendName}";
+            string postData = $"userId={SpecificUser.UserID}";
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
             string requestString = API + "?action=showFriends";
@@ -352,5 +352,41 @@ namespace BetterBeer
             return null;
         }
         
+        public static List<Friend> ShowUser(string username)
+        {
+            string requestString = API + "?action=showUser";
+            string postData = $"username={username}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
+            return friends;
+        }
+
+        public static bool CreateFriendship(int friendId)
+        {
+            string postdata = $"user1={SpecificUser.UserID}&user2={friendId}";
+            int i = int.Parse(apiCall("createFriendship", postdata));
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

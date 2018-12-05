@@ -1,11 +1,10 @@
 ﻿using BetterBeer.MenuPages;
 using BetterBeer.Objects;
-using Plugin.Media;
+using BetterBeer.Views.MenuPages.FriendsPages;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
 {
@@ -13,6 +12,8 @@ namespace BetterBeer
     public partial class FriendsPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        List<Friend> friends = Database.GetFriends();
+        public Friend SelectedFriend { get; set; }
 
         public FriendsPage()
         {
@@ -30,21 +31,31 @@ namespace BetterBeer
                 searchBar.BackgroundColor = Color.White;
             }
 
-            List<Friend> friends = Database.GetFriends();
             lv_FriendsList.ItemsSource = friends;
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
-
+                   
         }
 
-            private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-
+     
+                SelectedFriend = (Friend)lv_FriendsList.SelectedItem;
+                foreach (Friend friend in friends)
+                {
+                    if (friend.Name == SelectedFriend.Name)
+                    {
+                        await Navigation.PushAsync(new FriendProfile(friend));
+                    break;
+                    }
+                }
+            
+           
         }
 
-            public async void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);   
         }
@@ -84,6 +95,11 @@ namespace BetterBeer
             await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
+        private async void addFriends(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new AddFriendPage(), false);
+        }
 
     }
 }
