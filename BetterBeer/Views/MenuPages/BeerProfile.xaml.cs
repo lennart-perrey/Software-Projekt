@@ -49,7 +49,7 @@ namespace BetterBeer.MenuPages
             img_BeerImage.Source = beer.pic;
             lbl_BeerInfo.Text = beer.info;
 
-            if(lbl_BeerInfo.Text == "")
+            if(lbl_BeerInfo.Text == null)
             {
                 lbl_line.IsVisible = false;
             }
@@ -83,7 +83,7 @@ namespace BetterBeer.MenuPages
 
         public void OnLeftSwipe(View view)
         {
-            Navigation.PushAsync(new MenuPage());
+            Navigation.PushAsync(new DashBoard());
         }
 
         public void OnNothingSwipe(View view)

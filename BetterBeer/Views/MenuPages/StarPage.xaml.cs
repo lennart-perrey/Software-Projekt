@@ -138,12 +138,13 @@ namespace BetterBeer.MenuPages
                 if (picker_Criteria.IsVisible == true)
                 {
                     setHighscore();
+                    btn_Filter.Text = "Filter";
                     picker_Criteria.IsVisible = false;
                 }
                 else
                 {
                     picker_Criteria.IsVisible = true;
-
+                    btn_Filter.Text = "Cancel";
 
                     picker_Criteria.ItemsSource = kriterienString;
                     picker_Criteria.SelectedIndex = 0;

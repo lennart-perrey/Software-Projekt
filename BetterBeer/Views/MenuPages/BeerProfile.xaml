@@ -11,7 +11,7 @@
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
                         <Label x:Name="lbl_BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
                                FontAttributes="Bold" FontSize="Large"/>
-                        <Image x:Name="img_BeerImage" VerticalOptions="Start" ></Image>
+                        <Image x:Name="img_BeerImage" VerticalOptions="Start" HeightRequest="250" WidthRequest="250"></Image>
                         <Grid>
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
