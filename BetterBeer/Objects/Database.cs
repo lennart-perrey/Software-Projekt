@@ -14,7 +14,7 @@ namespace BetterBeer
         const string API = "http://spbier.bplaced.net/DBConnect.php";
         public static int CheckUser(string login, string password)
         {
-            string postData = usernameOrEmail(login) +$"&password={password}";          
+            string postData = usernameOrEmail(login) +$"&password={password}";
             int responseString = int.Parse(apiCall("validUser", postData));
 
             if (responseString > 0)
@@ -98,11 +98,38 @@ namespace BetterBeer
             return beers;
         }
 
+        public static List<Beer> getAvgGradeByBeerId(string beerId)
+        {
+            string postData = $"bierId={beerId}";
+            string responseString = apiCall("getAvgGradeByBeerId", postData);
+
+            if (responseString != "null")
+            {
+                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                return beers;
+            }
+
+            return null;
+        }
+        public static string countRatings(string beerId)
+        {
+            string postData = $"beerId={beerId}";
+            string responseString = apiCall("countRatings", postData);
+
+            if (responseString != "null")
+            {
+                return responseString;
+            }
+
+            return null;
+        }
 
         public static bool createBeer (string ean, string beerName, int brandId)
         {
-            string postData = $"beerName={beerName}&brandId={brandId}";
+            string postData = $"beerName={beerName}&brandId={brandId}&userId={SpecificUser.UserID}";
             int bierId=0;
+
+
 
             //Pruefung, ob Bier Vorhanden
             string responseString = apiCall("showBeerByName", postData);
@@ -112,7 +139,7 @@ namespace BetterBeer
             {
                 responseString = apiCall("createBeer", postData);
             }
-            try { 
+            try {
                 bierId = Convert.ToInt32(responseString);
             }
             catch (Exception)
@@ -203,11 +230,6 @@ namespace BetterBeer
             return null;
         }
 
-        //public static List<Beer> ShowBeer()
-        //{
-        //
-        //}
-
         private static string apiCall(string action, string postData)
         {
             string requestString = API + "?action=" + action;
@@ -248,7 +270,7 @@ namespace BetterBeer
 
             string requestString = API + "?action=uploadImage";
             byte[] imgData;
-            
+
 
             imgData = Pictures.ImgToByte(img);
             string postData = $"Picture={imgData}&UserId={UserID}";
@@ -264,41 +286,6 @@ namespace BetterBeer
             {
                 stream.Write(data, 0, data.Length);
             }
-        }
-
-
-        public static bool CreateRating(int beerID, int userID, List<int> rating)
-        {
-            string postData = $"beerId={beerID}&userId={userID}";
-            int ratingID = int.Parse(apiCall("createRating", postData));
-
-            if (ratingID >0)
-            {
-                for (int i = 1; i <= rating.Count; i++)
-                {
-                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i-1]}";
-                    apiCall("createGrade", postData);
-
-                }
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public static List<Criteria> ShowCriteria()
-        {
-            string requestString = API + "?action=showCriteria";
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-
-            List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
-            return crits;
         }
 
         public static List<Friend> GetFriends()
@@ -323,7 +310,7 @@ namespace BetterBeer
             List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
             return friends;
         }
-        
+
         public static List<Friend> FindFriends(string friendName)
         {
             string postData = $"userId={SpecificUser.UserID}";
@@ -387,6 +374,41 @@ namespace BetterBeer
             }
             else
                 return false;
+        }
+
+
+        public static bool CreateRating(int beerID, int userID, List<int> rating)
+        {
+            string postData = $"beerId={beerID}&userId={userID}";
+            int ratingID = int.Parse(apiCall("createRating", postData));
+
+            if (ratingID >0)
+            {
+                for (int i = 1; i <= rating.Count; i++)
+                {
+                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i-1]}";
+                    apiCall("createGrade", postData);
+
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static List<Criteria> ShowCriteria()
+        {
+            string requestString = API + "?action=showCriteria";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
+            return crits;
         }
     }
 }

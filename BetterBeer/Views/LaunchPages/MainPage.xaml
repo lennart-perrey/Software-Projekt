@@ -28,10 +28,7 @@
         <StackLayout BackgroundColor="White">
             <StackLayout Margin="20,50,20,0" Orientation="Horizontal" HorizontalOptions="Center" 
                      VerticalOptions="Start">
-                <Image Source="Logo_horizontal_SEPA" HeightRequest="120"/>
-                <ActivityIndicator x:Name="act_Indicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center"
-                                   HorizontalOptions="Center" Color="#FFCD33" HeightRequest="100" WidthRequest="100"/>
-                    
+                <Image Source="Logo_horizontal_SEPA" HeightRequest="120" HorizontalOptions="Center" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
                 <Grid BackgroundColor="White">

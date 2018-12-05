@@ -10,11 +10,9 @@ namespace BetterBeer
         {
             UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
         }
-
         public static void SetStyleBlack()
         {
-            UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.BlackTranslucent;
+            UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.Default;
         }
     }
 }
-

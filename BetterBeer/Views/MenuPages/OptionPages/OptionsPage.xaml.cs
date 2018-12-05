@@ -33,7 +33,15 @@ namespace BetterBeer
             ListViewGeneral.ItemsSource = itemsGeneral;
             ListViewSystem.ItemsSource = itemsSystem;
         }
-    
+
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+        }
+
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {

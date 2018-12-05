@@ -20,7 +20,7 @@ namespace BetterBeer
             else
             {
                 //Load if Logged In
-                MainPage = new NavigationPage(new MenuPage());
+                MainPage = new NavigationPage(new DashBoard());
             }
 
         }

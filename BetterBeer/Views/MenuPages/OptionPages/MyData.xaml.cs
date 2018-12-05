@@ -21,7 +21,13 @@ namespace BetterBeer.MenuPages
             }
 
             //get Passsword, Picture, Username and EMail from Database
-
+        }
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
         }
 
         private async void myImage_Tapped(object sender, EventArgs e)
@@ -174,5 +180,6 @@ namespace BetterBeer.MenuPages
             myPassword2.IsVisible = true;
 
         }
+
     }
 }

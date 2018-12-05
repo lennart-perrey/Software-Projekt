@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BetterBeer.Objects;
 using System.Data;
+using BetterBeer.Views.MenuPages;
 
 namespace BetterBeer.MenuPages
 {
@@ -49,6 +50,13 @@ namespace BetterBeer.MenuPages
             }
 
             setHighscore();
+        }
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
         }
 
         /// Erstellt die Ausgabe der Topliste
@@ -110,7 +118,7 @@ namespace BetterBeer.MenuPages
 
                 if (foundBeer != null)
                 {
-                    await Navigation.PushAsync(new BeerProfile(foundBeer));
+                    await Navigation.PushAsync(new ShowBeerRating(foundBeer));
                 }
                 else
                 {
@@ -130,12 +138,13 @@ namespace BetterBeer.MenuPages
                 if (picker_Criteria.IsVisible == true)
                 {
                     setHighscore();
+                    btn_Filter.Text = "Filter";
                     picker_Criteria.IsVisible = false;
                 }
                 else
                 {
                     picker_Criteria.IsVisible = true;
-
+                    btn_Filter.Text = "Cancel";
 
                     picker_Criteria.ItemsSource = kriterienString;
                     picker_Criteria.SelectedIndex = 0;
