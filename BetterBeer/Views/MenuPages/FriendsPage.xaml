@@ -41,7 +41,7 @@
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
 
 
@@ -53,32 +53,32 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0" VerticalOptions="Start">
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Options_Tapped" ></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
 
-                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1" VerticalOptions="Start">
+                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2" VerticalOptions="Start">
+                    <Image x:Name="img_Home" Source="HomeButton.PNG" Grid.Column="2" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Home_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Friends" Source="FriendsButtonClicked.PNG" Grid.Column="3" VerticalOptions="Start">
+                    <Image x:Name="img_Friends" Source="FriendsButtonClicked.PNG" Grid.Column="3" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4" VerticalOptions="Start">
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>

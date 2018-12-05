@@ -160,7 +160,9 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        public async void OnLeftSwipe(View view)
+
+
+            public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new DashBoard(), false);
         }

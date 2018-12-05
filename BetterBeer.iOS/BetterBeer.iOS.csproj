@@ -239,15 +239,15 @@
     <BundleResource Include="Resources\HomeButtonClicked.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\MenuButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\RankingButton.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\RankingButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
   </ItemGroup>
 </Project>
