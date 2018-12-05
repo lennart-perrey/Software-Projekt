@@ -73,8 +73,8 @@
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition  />
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                         <SearchBar Grid.Row="0" Grid.Column="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
                                    HorizontalOptions="StartAndExpand" TextChanged="searchBar_TextChanged" 

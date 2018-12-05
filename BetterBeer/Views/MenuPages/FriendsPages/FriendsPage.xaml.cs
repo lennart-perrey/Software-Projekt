@@ -12,7 +12,7 @@ namespace BetterBeer
     public partial class FriendsPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
-        List<Friend> friends = Database.GetFriends();
+        List<Friend> friends;
         public Friend SelectedFriend { get; set; }
 
         public FriendsPage()
@@ -30,7 +30,7 @@ namespace BetterBeer
             {
                 searchBar.BackgroundColor = Color.White;
             }
-
+            friends =  Database.GetFriends();
             lv_FriendsList.ItemsSource = friends;
         }
 

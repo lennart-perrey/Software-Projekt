@@ -51,13 +51,11 @@ namespace BetterBeer.MenuPages
 
             crits = Database.ShowCriteria();
 
-            foreach (Criteria criteria in crits)
-            {
-                grd_rating.Children.Add(grd_Criteria);
-                
-            }
-
             attr1.Text = crits[0].Kriterium;
+            attr2.Text = crits[1].Kriterium;
+            attr3.Text = crits[2].Kriterium;
+            attr4.Text = crits[3].Kriterium;
+            attr5.Text = crits[4].Kriterium;
 
         }
         protected override void OnAppearing()
@@ -107,7 +105,86 @@ namespace BetterBeer.MenuPages
                 DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
                 Navigation.PushAsync(new DashBoard());
             }
-        }   
+        }
+
+        private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            switch (pickAttr5.Value)
+            {
+                case 1:
+                    imgAttr5.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr5.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr5.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr5.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr5.Source = "fiveBeer.png";
+                    break;
+                case 0:
+                    imgAttr5.Source = "LeeresBier.jpg";
+                    break;
+
+            }
+            Check();
+        }
+
+        private void pickAttr4_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            switch (pickAttr4.Value)
+            {
+                case 1:
+                    imgAttr4.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr4.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr4.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr4.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr4.Source = "fiveBeer.png";
+                    break;
+                case 0:
+                    imgAttr4.Source = "LeeresBier.jpg";
+                    break;
+            }
+            Check();
+        }
+
+        private void pickAttr2_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            switch (pickAttr2.Value)
+            {
+                case 1:
+                    imgAttr2.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr2.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr2.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr2.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr2.Source = "fiveBeer.png";
+                    break;
+                case 0:
+                    imgAttr2.Source = "LeeresBier.jpg";
+                    break;
+            }
+            Check();
+        }
 
         private void pickAttr1_ValueChanged(object sender, ValueChangedEventArgs e)
         {
@@ -135,21 +212,45 @@ namespace BetterBeer.MenuPages
             Check();
         }
 
+        private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            switch (pickAttr3.Value)
+            {
+                case 1:
+                    imgAttr3.Source = "oneBeer.png";
+                    break;
+                case 2:
+                    imgAttr3.Source = "twoBeer.png";
+                    break;
+                case 3:
+                    imgAttr3.Source = "threeBeer.png";
+                    break;
+                case 4:
+                    imgAttr3.Source = "fourBeer.png";
+                    break;
+                case 5:
+                    imgAttr3.Source = "fiveBeer.png";
+                    break;
+                case 0:
+                    imgAttr3.Source = "LeeresBier.jpg";
+                    break;
+            }
+            Check();
+
+        }
 
         private void Check()
         {
-            //if (grd_rating.Children.)
-            //{
-            //    btn_Submit.IsEnabled = false;
-            //    btn_Submit.BackgroundColor = Color.Gray;
-            //}
-            //else
-            //{
-            //    btn_Submit.IsEnabled = true;
-            //    btn_Submit.BackgroundColor = Color.FromHex("#FFCD33");
-            //}
+            if (pickAttr1.Value == 0 || pickAttr2.Value == 0 || pickAttr3.Value == 0 || pickAttr4.Value == 0 || pickAttr5.Value == 0)
+            {
+                btn_Submit.IsEnabled = false;
+                btn_Submit.BackgroundColor = Color.Gray;
+            }
+            else
+            {
+                btn_Submit.IsEnabled = true;
+                btn_Submit.BackgroundColor = Color.FromHex("#FFCD33");
+            }
         }
     }
-
-
 }
