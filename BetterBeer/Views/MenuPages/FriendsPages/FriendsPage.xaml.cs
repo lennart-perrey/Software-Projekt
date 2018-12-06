@@ -34,8 +34,10 @@ namespace BetterBeer
                 searchBar.BackgroundColor = Color.White;
                 searchBar.WidthRequest = 250;
             }
-            friends =  Database.GetFriends();
+
+            friends = Database.GetFriends();
             lv_FriendsList.ItemsSource = friends;
+
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
@@ -46,17 +48,8 @@ namespace BetterBeer
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
      
-                SelectedFriend = (Friend)lv_FriendsList.SelectedItem;
-                foreach (Friend friend in friends)
-                {
-                    if (friend.Name == SelectedFriend.Name)
-                    {
-                        await Navigation.PushAsync(new FriendProfile(friend));
-                    break;
-                    }
-                }
-            
-           
+            Friend friend  =(Friend) lv_FriendsList.SelectedItem;
+            await Navigation.PushAsync(new FriendProfile(friend));
         }
 
         public async void OnLeftSwipe(View view)

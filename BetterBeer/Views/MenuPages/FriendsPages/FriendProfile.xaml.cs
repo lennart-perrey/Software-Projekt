@@ -15,8 +15,9 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 	{
 		public FriendProfile (Friend friend)
 		{
+            InitializeComponent();
             friendImage.Source = friend.Image;
-			InitializeComponent ();
+			
 
 		}
 	}

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
@@ -26,39 +26,6 @@
 
                             <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
-                        </Grid>
-                    </StackLayout>
-                    <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="White">
-                        <Grid BackgroundColor="White">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="40"/>
-                            </Grid.RowDefinitions>
-                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username"/>
-
-                            <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" />
-
-                            <Entry Grid.Row="0" x:Name="myPassword" Placeholder="Passwort"
-                                    IsVisible="false"
-                                   IsPassword="true"/>
-
-                            <Entry Grid.Row="1" x:Name="myPassword2" Placeholder="Passwort"
-                                    IsVisible="false"
-                                   IsPassword="true"/>
-
-                            <Button Grid.Row="2" x:Name="btn_ChangePassword" Text="Passwort ändern" 
-                                    HorizontalOptions="Fill" BackgroundColor="Gray" TextColor="White"
-                                    />
-
-                            <Button Grid.Row="2" x:Name="btn_CancelPasswordChange" Text="Abbrechen"
-                                    HorizontalOptions="Fill" BackgroundColor="#FF613F" TextColor="White" IsVisible="false"
-                                    />
-
-                            <Button Grid.Row="3" x:Name="btn_PasswordWasChanged" Text="Passwort ändern" 
-                                    HorizontalOptions="Fill" BackgroundColor="Gray" TextColor="White"
-                                    IsVisible="false"/>
                         </Grid>
                     </StackLayout>
                     
