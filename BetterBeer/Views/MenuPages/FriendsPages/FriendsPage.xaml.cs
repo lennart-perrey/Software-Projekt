@@ -1,11 +1,10 @@
 ﻿using BetterBeer.MenuPages;
 using BetterBeer.Objects;
-using Plugin.Media;
+using BetterBeer.Views.MenuPages.FriendsPages;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing.Net.Mobile.Forms;
 
 namespace BetterBeer
 {
@@ -13,11 +12,16 @@ namespace BetterBeer
     public partial class FriendsPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        List<Friend> friends;
+        public Friend SelectedFriend { get; set; }
 
         public FriendsPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+
+
             listener = new SwipeListener(stlout_Swipe, this);
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -28,23 +32,27 @@ namespace BetterBeer
             else if (Device.RuntimePlatform == Device.Android)
             {
                 searchBar.BackgroundColor = Color.White;
+                searchBar.WidthRequest = 250;
             }
 
-            List<Friend> friends = Database.GetFriends();
+            friends = Database.GetFriends();
             lv_FriendsList.ItemsSource = friends;
+
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
-
+                   
         }
 
-            private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-
+     
+            Friend friend  =(Friend) lv_FriendsList.SelectedItem;
+            await Navigation.PushAsync(new FriendProfile(friend));
         }
 
-            public async void OnLeftSwipe(View view)
+        public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);   
         }
@@ -84,6 +92,11 @@ namespace BetterBeer
             await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
+        private async void addFriends(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new AddFriendPage(), false);
+        }
 
     }
 }

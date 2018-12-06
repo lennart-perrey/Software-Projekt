@@ -1,4 +1,6 @@
-BetterBeer.iOS.csproj
+BetterBeer.iOS/Info.plist
+BetterBeer.iOS/BetterBeer.iOS.csproj
+
 Resource.designer.cs
 *.csproj
 *.sln

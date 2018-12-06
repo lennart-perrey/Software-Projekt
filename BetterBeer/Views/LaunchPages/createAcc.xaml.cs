@@ -40,7 +40,7 @@ namespace BetterBeer
                 }
                 else
                 {
-                    await DisplayAlert("Fehlgeschlagen", "Dein Account wurde nicht angelegt :(", "Mist");
+                    await DisplayAlert("Fehlgeschlagen", "Dein Account konnte nicht angelegt werden. \nBenutzername oder Email schon vorhanden", "Mist");
                 }
 
             }

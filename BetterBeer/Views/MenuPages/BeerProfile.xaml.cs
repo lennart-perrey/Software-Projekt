@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Xamarin.Forms.Grid;
 
 namespace BetterBeer.MenuPages
 {
@@ -11,15 +12,9 @@ namespace BetterBeer.MenuPages
 	public partial class BeerProfile : ContentPage, ISwipeCallback
 	{
         SwipeListener listener;
-        List<int> rating = new List<int>();
         List<Criteria> crits;
 
         int beerID;
-        int ratingGeschmack = 0;
-        int ratingFarbe = 0;
-        int ratingSüff = 0;
-        int ratingDesign = 0;
-        int ratingKater = 0;
         
 
 
@@ -56,12 +51,12 @@ namespace BetterBeer.MenuPages
 
             crits = Database.ShowCriteria();
 
-
             attr1.Text = crits[0].Kriterium;
             attr2.Text = crits[1].Kriterium;
             attr3.Text = crits[2].Kriterium;
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
+
         }
         protected override void OnAppearing()
         {
@@ -93,23 +88,19 @@ namespace BetterBeer.MenuPages
 
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            ratingGeschmack = Convert.ToInt32(pickAttr1.Value);
-            ratingFarbe = Convert.ToInt32(pickAttr2.Value);
-            ratingDesign = Convert.ToInt32(pickAttr3.Value);
-            ratingSüff = Convert.ToInt32(pickAttr4.Value);
-            ratingKater = Convert.ToInt32(pickAttr1.Value);
+            List<int> rating = new List<int>();
+            rating.Add(Convert.ToInt32(pickAttr1.Value));
+            rating.Add(Convert.ToInt32(pickAttr2.Value));
+            rating.Add(Convert.ToInt32(pickAttr3.Value));
+            rating.Add(Convert.ToInt32(pickAttr4.Value));
+            rating.Add(Convert.ToInt32(pickAttr5.Value));
 
-            rating.Add(ratingGeschmack);
-            rating.Add(ratingFarbe);
-            rating.Add(ratingDesign);
-            rating.Add(ratingSüff);
-            rating.Add(ratingKater);
 
             bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating);
 
             if (!check)
             {
-                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte die Eingaben", "Okay");
+                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
             }
             else
             {
@@ -117,7 +108,6 @@ namespace BetterBeer.MenuPages
                 Navigation.PushAsync(new DashBoard());
             }
         }
-
 
         private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
         {
@@ -141,7 +131,7 @@ namespace BetterBeer.MenuPages
                 case 0:
                     imgAttr5.Source = "LeeresBier.jpg";
                     break;
-                
+
             }
             Check();
         }
@@ -248,7 +238,7 @@ namespace BetterBeer.MenuPages
                     break;
             }
             Check();
-           
+
         }
 
         private void Check()
@@ -265,6 +255,4 @@ namespace BetterBeer.MenuPages
             }
         }
     }
-
-
 }
