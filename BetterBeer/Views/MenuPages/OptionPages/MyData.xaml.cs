@@ -48,7 +48,7 @@ namespace BetterBeer.MenuPages
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
                 });
 
-
+                Database.uploadImageToDatabase(file);
                 if (file == null)
                     return;
 
@@ -70,6 +70,7 @@ namespace BetterBeer.MenuPages
                     Directory = "Pictures",
                     Name = "ProfilPic.jpg"
                 });
+                Database.uploadImageToDatabase(file);
 
                 if (file == null)
                     return;

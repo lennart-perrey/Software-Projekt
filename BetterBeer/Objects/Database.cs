@@ -14,7 +14,7 @@ namespace BetterBeer
         const string API = "http://spbier.bplaced.net/DBConnect.php";
         public static int CheckUser(string login, string password)
         {
-            string postData = usernameOrEmail(login) +$"&password={password}";
+            string postData = usernameOrEmail(login) + $"&password={password}";
             int responseString = int.Parse(apiCall("validUser", postData));
 
             if (responseString > 0)
@@ -68,7 +68,7 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
 
-            List<Beer> beers= JsonConvert.DeserializeObject<List<Beer>>(responseString);
+            List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
             return beers;
         }
 
@@ -124,10 +124,10 @@ namespace BetterBeer
             return null;
         }
 
-        public static bool createBeer (string ean, string beerName, int brandId)
+        public static bool createBeer(string ean, string beerName, int brandId)
         {
             string postData = $"beerName={beerName}&brandId={brandId}&userId={SpecificUser.UserID}";
-            int bierId=0;
+            int bierId = 0;
 
 
 
@@ -135,11 +135,12 @@ namespace BetterBeer
             string responseString = apiCall("showBeerByName", postData);
 
             //Wenn nicht, wird es hinzugefügt
-            if(responseString == "")
+            if (responseString == "")
             {
                 responseString = apiCall("createBeer", postData);
             }
-            try {
+            try
+            {
                 bierId = Convert.ToInt32(responseString);
             }
             catch (Exception)
@@ -157,10 +158,10 @@ namespace BetterBeer
                     return true;
                 }
             }
-             return false;
+            return false;
         }
 
-        public static List<Brand> showBrand ()
+        public static List<Brand> showBrand()
         {
             string requestString = API + "?action=showBrand";
             WebRequest request = WebRequest.Create(requestString);
@@ -174,9 +175,9 @@ namespace BetterBeer
             return brands;
         }
 
-        public static Beer getBeerByEAN (string ean)
+        public static Beer getBeerByEAN(string ean)
         {
-            string postData =$"ean={ean}";
+            string postData = $"ean={ean}";
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
             string requestString = API + "?action=getBeerByEAN";
@@ -193,7 +194,7 @@ namespace BetterBeer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            if(responseString != "null")
+            if (responseString != "null")
             {
                 List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
                 return beers[0];
@@ -265,7 +266,7 @@ namespace BetterBeer
         }
 
 
-        public void uploadImageToDatabase(MediaFile img, Int32 UserID)
+        public static void uploadImageToDatabase(MediaFile img)
         {
 
             string requestString = API + "?action=uploadImage";
@@ -273,20 +274,50 @@ namespace BetterBeer
 
 
             imgData = Pictures.ImgToByte(img);
-            string postData = $"Picture={imgData}&UserId={UserID}";
+            string postData = $"image={imgData}&UserId={SpecificUser.UserID}";
 
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
             WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
-            request.ContentType = "multipart/form-data";
+            request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
 
             using (var stream = request.GetRequestStream())
             {
                 stream.Write(data, 0, data.Length);
             }
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
+
+        //public void getImage()
+        //{
+        //    string requestString = API + "?action=getImage";
+        //    byte[] imgData;
+
+        //    string postData = $"UserId={SpecificUser.UserID}";
+
+        //    byte[] data = Encoding.UTF8.GetBytes(postData);
+
+        //    WebRequest request = WebRequest.Create(requestString);
+        //    request.Method = "POST";
+        //    request.ContentType = "application/x-www-form-urlencoded";
+        //    request.ContentLength = data.Length;
+
+        //    using (var stream = request.GetRequestStream())
+        //    {
+        //        stream.Write(data, 0, data.Length);
+        //    }
+
+        //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        //    string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+        //    if (responseString != "null")
+        //    {
+        //        imgData =(byte[] reader[0])
+        //    }
+        //}
 
         public static List<Friend> GetFriends()
         {
@@ -345,11 +376,11 @@ namespace BetterBeer
             string postData = $"beerId={beerID}&userId={userID}";
             int ratingID = int.Parse(apiCall("createRating", postData));
 
-            if (ratingID >0)
+            if (ratingID > 0)
             {
                 for (int i = 1; i <= rating.Count; i++)
                 {
-                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i-1]}";
+                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i - 1]}";
                     apiCall("createGrade", postData);
 
                 }
