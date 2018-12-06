@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Xamarin.Forms.Grid;
 
 namespace BetterBeer.MenuPages
 {
@@ -11,7 +12,6 @@ namespace BetterBeer.MenuPages
 	public partial class BeerProfile : ContentPage, ISwipeCallback
 	{
         SwipeListener listener;
-        List<int> rating = new List<int>();
         List<Criteria> crits;
 
         int beerID;
@@ -88,10 +88,12 @@ namespace BetterBeer.MenuPages
 
         private void btn_Submit_Clicked(object sender, EventArgs e)
         {
-            foreach (Picker pick in grd_rating.Children)
-            {
-                rating.Add(pick.SelectedIndex -1 );
-            }
+            List<int> rating = new List<int>();
+            rating.Add(Convert.ToInt32(pickAttr1.Value));
+            rating.Add(Convert.ToInt32(pickAttr2.Value));
+            rating.Add(Convert.ToInt32(pickAttr3.Value));
+            rating.Add(Convert.ToInt32(pickAttr4.Value));
+            rating.Add(Convert.ToInt32(pickAttr5.Value));
 
 
             bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating);

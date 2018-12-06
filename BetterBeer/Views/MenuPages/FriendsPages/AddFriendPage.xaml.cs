@@ -15,10 +15,14 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 	{
         public Friend SelectedFriend { get; set; }
         List<Friend> friends;
-		public AddFriendPage ()
-		{
-			InitializeComponent ();
-		}
+        public AddFriendPage()
+        {
+            InitializeComponent();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyleBlack();
+            }
+        }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {

@@ -70,17 +70,12 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <Grid BackgroundColor="Black">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition  />
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                        <SearchBar Grid.Row="0" Grid.Column="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
-                                   HorizontalOptions="StartAndExpand" TextChanged="searchBar_TextChanged" 
-                                   Margin="0,-10,0,0"/>
+                        <SearchBar Grid.Row="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
+                                   HorizontalOptions="StartAndExpand" TextChanged="searchBar_TextChanged" WidthRequest="275" Margin="0,10,0,0"/>
 
-                    <Image Source="addFriends.PNG" Grid.Row="0" Grid.Column="1">
+                    <Image Source="addFriends.PNG" Grid.Row="0" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="End" Margin="0,10,25,0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="addFriends"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
