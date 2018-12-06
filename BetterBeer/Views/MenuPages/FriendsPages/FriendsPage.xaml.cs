@@ -19,6 +19,9 @@ namespace BetterBeer
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+
+
             listener = new SwipeListener(stlout_Swipe, this);
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -29,6 +32,7 @@ namespace BetterBeer
             else if (Device.RuntimePlatform == Device.Android)
             {
                 searchBar.BackgroundColor = Color.White;
+                searchBar.WidthRequest = 250;
             }
             friends =  Database.GetFriends();
             lv_FriendsList.ItemsSource = friends;

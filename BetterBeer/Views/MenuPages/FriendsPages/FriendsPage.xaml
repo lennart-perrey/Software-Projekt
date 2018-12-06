@@ -68,7 +68,7 @@
                 </Grid>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Grid BackgroundColor="White">
+                <Grid BackgroundColor="Black">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
