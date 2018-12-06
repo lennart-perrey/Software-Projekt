@@ -24,7 +24,7 @@
                                 </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
 
-                            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
+                            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" x:Name="lbl_Name"
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
                         </Grid>
                     </StackLayout>

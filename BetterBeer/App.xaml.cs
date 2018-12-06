@@ -12,6 +12,7 @@ namespace BetterBeer
             InitializeComponent();
 
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+           // int userID = SpecificUser.UserID;
             if (!isLoggedIn)
             {
                 //Load if Not Logged In
@@ -28,6 +29,7 @@ namespace BetterBeer
         protected override void OnStart()
         {
             // Handle when your app starts
+            SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
         }
 
         protected override void OnSleep()

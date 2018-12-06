@@ -19,6 +19,8 @@ namespace BetterBeer
             {
                 SetStatusStyle.SetStyle();
             }
+            SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);
+            lbl.Text = SpecificUser.UserID.ToString();
         }
         protected override void OnAppearing()
         {

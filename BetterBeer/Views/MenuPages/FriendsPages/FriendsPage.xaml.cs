@@ -19,7 +19,7 @@ namespace BetterBeer
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
 
 
             listener = new SwipeListener(stlout_Swipe, this);

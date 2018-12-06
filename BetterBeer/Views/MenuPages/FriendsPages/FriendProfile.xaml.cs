@@ -17,7 +17,7 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 		{
             InitializeComponent();
             friendImage.Source = friend.Image;
-			
+            lbl_Name.Text = friend.Name;
 
 		}
 	}

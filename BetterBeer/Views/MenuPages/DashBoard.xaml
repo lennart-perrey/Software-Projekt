@@ -89,7 +89,7 @@
                     </Frame>
 
                     <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label   Text="Dein Freund Leon hat Astra zuletzt bewertet"></Label>
+                        <Label  x:Name="lbl" Text="Dein Freund Leon hat Astra zuletzt bewertet"></Label>
                     </Frame>
 
                     <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent"  >

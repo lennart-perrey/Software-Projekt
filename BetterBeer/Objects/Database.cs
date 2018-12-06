@@ -19,7 +19,8 @@ namespace BetterBeer
 
             if (responseString > 0)
             {
-                SpecificUser.UserID = responseString;
+                
+               
                 return responseString;
             }
             else

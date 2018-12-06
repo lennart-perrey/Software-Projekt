@@ -36,11 +36,13 @@ namespace BetterBeer
                 string email = entry_email.Text;
                 string SaltedPassword = Database.GetSaltedPW(email);
                 string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
+                int userID = Database.CheckUser(email, password);
 
-
-                if (Database.CheckUser(email, password) > 0)
+                if (userID > 0)
                 {
                     Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+                    Application.Current.Properties["userID"] = userID;
+                    SpecificUser.UserID = userID;
                     await Navigation.PushAsync(new DashBoard());
                 }
                 else
