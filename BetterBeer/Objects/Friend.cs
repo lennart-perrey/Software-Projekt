@@ -21,9 +21,7 @@ namespace BetterBeer.Objects
         {
             Name = name;
             EMail = email;
-            Image = "http://spbier.bplaced.net/images/classicLeon.png";
-            
-            
+            Image = "http://spbier.bplaced.net/images/userIcon.png";
         }
     }
 }
