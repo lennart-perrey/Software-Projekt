@@ -12,7 +12,7 @@ namespace BetterBeer
             InitializeComponent();
 
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
-           // int userID = SpecificUser.UserID;
+          //  int userID = SpecificUser.UserID;
             if (!isLoggedIn)
             {
                 //Load if Not Logged In
