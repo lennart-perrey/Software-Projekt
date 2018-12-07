@@ -85,7 +85,10 @@
                     </Grid.RowDefinitions>
 
                     <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label    Text="Bestes Bier: Ratsherrn"></Label>
+                        <Label Text="Bestes Bier"></Label>
+                        <Label x:Name="bestBierName"/>
+                        <Image x:Name="bestBierImg"/>
+                        <Label x:Name="bestBierRating"/>
                     </Frame>
 
                     <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent" >

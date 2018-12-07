@@ -36,10 +36,10 @@ namespace BetterBeer
             this.beerName = beerName;
             this.brand = brand;
             this.pic = pic;
-            this.avgRating = Math.Round(avgRating,1);
             this.info = info;
+            this.avgRating = Math.Round(avgRating, 1);
 
-            if(this.pic == null)
+            if (this.pic == null)
             {
                 this.pic = "http://spbier.bplaced.net/images/beerExample2.png";
             }

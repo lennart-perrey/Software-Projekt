@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using BetterBeer.MenuPages;
 using ZXing.Net.Mobile.Forms;
+using System.Collections.Generic;
 
 namespace BetterBeer
 {
@@ -21,6 +22,13 @@ namespace BetterBeer
             }
             SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);
             lbl.Text = SpecificUser.UserID.ToString();
+
+
+            List<Beer> bestBeers = Database.Highscore();
+            Beer bestBeer = bestBeers[0];
+            bestBierImg.Source = bestBeer.pic;
+            bestBierName.Text = bestBeer.beerName;
+            bestBierRating.Text = Convert.ToString(bestBeer.avgRating);
         }
         protected override void OnAppearing()
         {
