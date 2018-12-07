@@ -63,9 +63,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer: hass.marc@gmx.net (DGBC945DW6)</CodesignKey>
+    <CodesignKey>iPhone Developer: jojo95istcool@googlemail.com (4GHCT7BX2H)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt4.BetterBeer</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>

@@ -39,6 +39,13 @@ namespace BetterBeer
             lv_FriendsList.ItemsSource = friends;
 
         }
+        protected override void OnAppearing()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                SetStatusStyle.SetStyle();
+            }
+        }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
