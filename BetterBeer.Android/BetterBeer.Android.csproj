@@ -97,6 +97,7 @@
     <AndroidResource Include="Resources\drawable\BetterBeerLogoV.png" />
     <AndroidResource Include="Resources\drawable\BetterBeerLogo.png" />
     <AndroidResource Include="Resources\drawable\MeinFoto.png" />
+    <AndroidResource Include="Resources\drawable\AddFriendButton.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

@@ -14,9 +14,15 @@
                     </Grid.RowDefinitions>
                         <SearchBar Grid.Row="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
                                    HorizontalOptions="StartAndExpand" TextChanged="searchBar_TextChanged"/>
+                        <Image x:Name="btn_addFriend" Source="AddFriendButton.png" Grid.Row="0" VerticalOptions="Center" 
+                           Margin="0,0,25,0" HorizontalOptions="End" HeightRequest="40" WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="addFriends"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
                 
-                <ListView x:Name="lv_FriendsList" ItemTapped="Handle_ItemTapped">
+                <ListView x:Name="lv_FriendsList" ItemTapped="Handle_ItemTapped" Margin="0,5,0,0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

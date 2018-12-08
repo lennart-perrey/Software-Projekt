@@ -17,11 +17,6 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 		{
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-
             friendImage.Source = friend.Image;
             lbl_Name.Text = friend.Name;
 

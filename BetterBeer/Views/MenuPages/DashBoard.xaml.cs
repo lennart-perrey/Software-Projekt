@@ -17,10 +17,7 @@ namespace BetterBeer
             InitializeComponent();
             
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
+
             SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);
 
             //BestBier
@@ -61,13 +58,6 @@ namespace BetterBeer
             throw new NotImplementedException();
         }
 
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
-        }
 
         public async void OnLeftSwipe(View view)
         {

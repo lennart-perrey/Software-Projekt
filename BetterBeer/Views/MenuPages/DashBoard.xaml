@@ -14,35 +14,53 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="33*"/>
-                        <RowDefinition Height="33*"/>
-                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="55*"/>
+                        <RowDefinition Height="55*"/>
+                        <RowDefinition Height="55*"/>
                     </Grid.RowDefinitions>
 
-                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label    Text="Bestes Bier: Ratsherrn"></Label>
-                    </Frame>
+                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black">> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bestes Bier" FontAttributes="Bold"></Label>
+         
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="33*"/>
+                          </Grid.RowDefinitions>
 
-                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label   Text="Dein Freund Leon hat Astra zuletzt bewertet"></Label>
-                    </Frame>
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*"/>
+                          </Grid.ColumnDefinitions>
 
-                    <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent"  >
-                        <Label   Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd "></Label>
+                            <Image x:Name="bestBierImg" Grid.Row="1" Grid.Column="0" HeightRequest="80" WidthRequest="80"/>
+                            <Label x:Name="bestBierName" Grid.Row="0" Grid.Column="0"/> 
+                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Medium" TextColor="Maroon" 
+                                   Grid.Row="1" Grid.Column="1" />
+                        </Grid>
+                        </StackLayout>
                     </Frame>
+                        
+                   <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" >
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Freunde" FontAttributes="Bold"></Label>
+         
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="13*"/>
+                          </Grid.RowDefinitions>
 
-                    <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent">
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                          </Grid.ColumnDefinitions>
 
-                        <Label Text="Bier des Tages: Augustiner Premium Bier"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" BackgroundColor="Transparent">
-                        <Label Text="Zuletzt bewertestes Bier: Flensburger Kellerbier"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label Text="Johannes ist doof"></Label>
-                    </Frame>
+                            <Image x:Name="friendRatingBeer" Grid.Row="0" Grid.Column="0" HeightRequest="80" WidthRequest="80"/>
+                            <Label x:Name="friendRatingName" Grid.Row="1" Grid.Column="0"/> 
+                        </Grid>
+                    </StackLayout>
+                     </Frame>
                 </Grid>
             </StackLayout>
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
