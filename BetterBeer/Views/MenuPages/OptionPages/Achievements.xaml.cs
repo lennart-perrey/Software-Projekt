@@ -10,18 +10,6 @@ namespace BetterBeer.MenuPages
         public Achievements()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-        }
-        protected override void OnDisappearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
-            base.OnDisappearing();
         }
     }
 }

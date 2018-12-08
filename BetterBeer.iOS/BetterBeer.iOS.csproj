@@ -183,7 +183,6 @@
     <BundleResource Include="Resources\BetterBeerLogo_H.png" />
     <BundleResource Include="Resources\BetterBeerLogo_V.png" />
     <BundleResource Include="Resources\MeinFoto.png" />
-    <BundleResource Include="Resources\addFriends.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\flensburger.jpg" />
@@ -243,15 +242,15 @@
     <BundleResource Include="Resources\HomeButtonClicked.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\MenuButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\RankingButton.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\RankingButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
   </ItemGroup>
 </Project>

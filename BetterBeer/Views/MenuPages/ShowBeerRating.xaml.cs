@@ -20,11 +20,6 @@ namespace BetterBeer.Views.MenuPages
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-
             //Set CurrentBeer
             beer = currentBeer;
             lbl_BeerName.Text = beer.beerName;
@@ -54,20 +49,11 @@ namespace BetterBeer.Views.MenuPages
                 lbl_crit4.Text = beers[3].avgRating.ToString();
                 lbl_crit5.Text = beers[4].avgRating.ToString();
             }
-
         }
 
         private async void btn_RateBeer_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BeerProfile(beer));
-        }
-
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
         }
     }
 }
