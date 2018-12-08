@@ -397,6 +397,12 @@ namespace BetterBeer
             return friends;
         }
 
+        public static Friend ShowUser(int userId){
+            string result = apiCall("showUser","userId="+userId);
+            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(result);
+            return friends[0];
+        }
+
         public static bool CreateFriendship(int friendId)
         {
             string postdata = $"user1={SpecificUser.UserID}&user2={friendId}";
@@ -442,6 +448,13 @@ namespace BetterBeer
 
             List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
             return crits;
+        }
+
+
+        public static List<FriendRating> showFriendLast(int userId){
+            string result = apiCall("showLastFriendRatings", "userId=" + userId);
+            List <FriendRating> friendRatings = JsonConvert.DeserializeObject<List<FriendRating>>(result);
+            return friendRatings;
         }
     }
 }

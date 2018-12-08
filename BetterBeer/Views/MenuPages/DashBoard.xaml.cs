@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using BetterBeer.MenuPages;
 using ZXing.Net.Mobile.Forms;
 using System.Collections.Generic;
+using BetterBeer.Objects;
 
 namespace BetterBeer
 {
@@ -21,15 +22,45 @@ namespace BetterBeer
                 SetStatusStyle.SetStyle();
             }
             SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);
-            lbl.Text = SpecificUser.UserID.ToString();
 
-
-            List<Beer> bestBeers = Database.Highscore();
-            Beer bestBeer = bestBeers[0];
+            //BestBier
+            List<Beer> allBeers = Database.Highscore();
+            Beer bestBeer = allBeers[0];
             bestBierImg.Source = bestBeer.pic;
             bestBierName.Text = bestBeer.beerName;
             bestBierRating.Text = Convert.ToString(bestBeer.avgRating);
+
+
+            //FriendRating
+            List<FriendRating>friendRatings = Database.showFriendLast(SpecificUser.UserID);
+            if(friendRatings.Count > 0){
+                FriendRating rating = friendRatings[0];
+                int bierId = rating.BierId;
+                Beer beer=null;
+                foreach (Beer beerdata in allBeers ){
+                    if(Convert.ToInt32(beerdata.beerId) == bierId){
+                        beer = beerdata;
+                    }
+                }
+                friendRatingBeer.Source = beer.pic;
+
+                Friend friend = Database.ShowUser(SpecificUser.UserID);
+                friendRatingName.Text = "Dein Freund "+friend.Name + " hat "+beer.beerName+" bewertet.";
+
+            }
+            else{
+
+            }
+
+
+
         }
+
+        void Handle_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnAppearing()
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -78,5 +109,6 @@ namespace BetterBeer
         {
             await Navigation.PushAsync(new CustomScanPage(), false);
         }
+
     }
 }

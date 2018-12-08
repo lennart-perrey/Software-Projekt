@@ -28,7 +28,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: jojo95istcool@googlemail.com (4GHCT7BX2H)</CodesignKey>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -39,6 +40,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt.BetterBeer</CodesignProvision>
+    <CodesignKey>iPhone Developer: jojo95istcool@googlemail.com (4GHCT7BX2H)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
