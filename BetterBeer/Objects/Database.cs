@@ -44,7 +44,19 @@ namespace BetterBeer
                 return false;
             }
         }
-
+        public static bool changePassword(String uName, String email, String password, String SaltedPassword)
+        {
+            string postData = $"username={uName}&email={email}&password={password}&saltedpassword={SaltedPassword}";
+            string responseString = apiCall("changePassword", postData);
+            if (responseString == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static string GetSaltedPW(string login)
         {
             string postData;
