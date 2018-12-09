@@ -41,15 +41,51 @@ namespace BetterBeer
                 }
                 friendRatingBeer.Source = beer.pic;
 
-                Friend friend = Database.ShowUser(SpecificUser.UserID);
-                friendRatingName.Text = "Dein Freund "+friend.Name + " hat "+beer.beerName+" bewertet.";
+                Friend friend = Database.ShowUser(rating.UserID);
+                friendRatingName.Text = friend.Name + " hat "+beer.beerName+ "  bewertet.";
 
+            }
+            
+            else{
+                friendRatingName.Text = "Du hast keine Freunde :( ";
+            }
+
+            //Rating
+            int userRatings = Database.countRatings(SpecificUser.UserID);
+            RatingLabel.Text = "Du hast " + userRatings + " Biere bewertet.";
+
+            //FriendRatings
+            List<FriendRatingCount> friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            if(friendRatingCount.Count >0){
+                foreach(FriendRatingCount frc in friendRatingCount){
+                    Friend friend = Database.ShowUser(frc.UserID);
+                    Label label = new Label
+                    {
+                        Text = friend .Name+ ":\t " + frc.RatingCount
+                    };
+                    RatingFriendCount.Children.Add(label);
+                }
             }
             else{
-
+                Label label = new Label
+                {
+                    Text = "Los füge schnel welche hinzu."
+                };
+                RatingFriendCount.Children.Add(label);
             }
 
 
+            //Random
+            Random r = new Random();
+            int number =r.Next(allBeers.Count);
+
+            Beer randomBeer = allBeers[number];
+            randomImg1.Source = randomBeer.pic;
+            randomName1.Text = randomBeer.beerName;
+
+            Beer newestBeer = allBeers[allBeers.Count - 1];
+            randomImg2.Source = newestBeer.pic;
+            randomName2.Text = newestBeer.beerName;
 
         }
 

@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout x:Name="stlout_Swipe" Margin="0,40,0,0">
             <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White">
-                <Grid Margin="10,25,10,10">
+                <Grid Margin="10,5,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -21,48 +21,109 @@
 
                     <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black">> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Text="Bestes Bier" FontAttributes="Bold"></Label>
-         
-                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="Bestes Bier" FontAttributes="Bold"  FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
                           <Grid.RowDefinitions>
-                            <RowDefinition Height="33*"/>
-                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="55*"/>
                           </Grid.RowDefinitions>
-
-                          <Grid.ColumnDefinitions>
+                           <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80*"/>
                             <ColumnDefinition Width="20*"/>
                           </Grid.ColumnDefinitions>
-
-                            <Image x:Name="bestBierImg" Grid.Row="1" Grid.Column="0" HeightRequest="80" WidthRequest="80"/>
+                             <Image x:Name="bestBierImg" Grid.Row="0" Grid.Column="0"/>
                             <Label x:Name="bestBierName" Grid.Row="0" Grid.Column="0"/> 
-                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Medium" TextColor="Maroon" 
-                                   Grid.Row="1" Grid.Column="1" />
+                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Medium" TextColor="Lime" 
+                                   Grid.Row="0" Grid.Column="1" />
                         </Grid>
+                       
+                            
+                            
+                            
                         </StackLayout>
                     </Frame>
                         
                    <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" >
                     <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Text="Freunde" FontAttributes="Bold"></Label>
-         
+                        <Label Text="Freunde" FontAttributes="Bold"  FontSize="Micro"></Label>
+                   
                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                          <Grid.RowDefinitions>
+                             <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
                             <RowDefinition Height="20*"/>
-                            <RowDefinition Height="13*"/>
                           </Grid.RowDefinitions>
 
                           <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                           </Grid.ColumnDefinitions>
-
-                            <Image x:Name="friendRatingBeer" Grid.Row="0" Grid.Column="0" HeightRequest="80" WidthRequest="80"/>
-                            <Label x:Name="friendRatingName" Grid.Row="1" Grid.Column="0"/> 
+                                
+                            <Image x:Name="friendRatingBeer" Grid.Row="0" Grid.Column="0" />
+                            <Label x:Name="friendRatingName" Grid.Row="1" Grid.Column="0" FontSize="Small" MaxLines="3" /> 
                         </Grid>
+     
+                          
                     </StackLayout>
                      </Frame>
+                    
+                   <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" >
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bewertungen" FontAttributes="Bold"  FontSize="Micro"></Label>                 
+                         <Label x:Name="RatingLabel" Grid.Row="1" Grid.Column="0" FontSize="Medium"/> 
+                    </StackLayout>
+                 </Frame>
+                    
+                   <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" >
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bewertungen deiner Freunde" FontAttributes="Bold"  FontSize="Micro"></Label>
+                                <StackLayout  x:Name="RatingFriendCount" ></StackLayout> 
+                    </StackLayout>
+                     </Frame>
+                    
+                    
+                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Platzhalter Bier" FontAttributes="Bold"  FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="55*"/>
+                          </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                          </Grid.ColumnDefinitions>
+                             <Image x:Name="randomImg1" Grid.Row="0" Grid.Column="0"/>
+                            <Label x:Name="randomName1" Grid.Row="0" Grid.Column="0"/> 
+                        </Grid>
+
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black">> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Neuestes Bier" FontAttributes="Bold"  FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="55*"/>
+                          </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                          </Grid.ColumnDefinitions>
+                             <Image x:Name="randomImg2" Grid.Row="0" Grid.Column="0"/>
+                            <Label x:Name="randomName2" Grid.Row="0" Grid.Column="0"/> 
+                        </Grid>
+
+                        </StackLayout>
+                    </Frame>
+                    
+                    
+                    
+                    
+                    
+                    
                 </Grid>
             </StackLayout>
+            
+            
+            
+            
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>

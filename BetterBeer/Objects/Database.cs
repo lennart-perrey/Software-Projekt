@@ -137,6 +137,19 @@ namespace BetterBeer
 
             return null;
         }
+        public static int countRatings(int userId)
+        {
+            string postData = $"userId={userId}";
+            string responseString = apiCall("countRatings", postData);
+
+            if (responseString != "null")
+            {
+                return Convert.ToInt32(responseString);
+            }
+
+            return 0;
+        }
+
 
         public static bool createBeer(string ean, string beerName, int brandId)
         {
@@ -468,10 +481,14 @@ namespace BetterBeer
             List <FriendRating> friendRatings = JsonConvert.DeserializeObject<List<FriendRating>>(result);
             return friendRatings;
         }
-        /*
-        public static IDictionary<int,int> countFriendRatings(int userId){
+
+        public static List<FriendRatingCount> countFriendRatings(int userId)
+        {
             string result = apiCall("showFriendRatingCount", "userId=" + userId);
-            //JsonConvert.DeserializeObject
-        }*/
+            List<FriendRatingCount> friendRatings = JsonConvert.DeserializeObject<List<FriendRatingCount>>(result);
+            return friendRatings;
+        }
+
+
     }
 }
