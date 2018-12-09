@@ -44,9 +44,9 @@ namespace BetterBeer
                 return false;
             }
         }
-        public static bool deleteAccount()
+        public static bool deleteAccount(int UserID)
         {
-            string postData = $"userId={SpecificUser.UserID}";
+            string postData = $"userId={UserID}";
             string responseString = apiCall("deleteAccount", postData);
             if (responseString == "1")
             {
