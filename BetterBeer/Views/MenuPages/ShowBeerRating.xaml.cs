@@ -31,23 +31,64 @@ namespace BetterBeer.Views.MenuPages
             //Get Criteria
             List<Criteria> criterias = Database.ShowCriteria();
 
-            //Set CriteriaLabels
-            lbl_attr1.Text = criterias[0].Kriterium;
-            lbl_attr2.Text = criterias[1].Kriterium;
-            lbl_attr3.Text = criterias[2].Kriterium;
-            lbl_attr4.Text = criterias[3].Kriterium;
-            lbl_attr5.Text = criterias[4].Kriterium;
-
             //Get Rating for Beer
-            List<Beer> beers = Database.getAvgGradeByBeerId(beer.beerId);
+            List<Rating> ratings = Database.getAvgGradeByBeerId(beer.beerId);
 
-            if (beers != null)
+
+            //Leider hard gecodet, weil die Labels feststehen. Bessere lösung, wäre wenn dynamisch.
+            if(ratings.Count <5){
+                frame_attr5.IsVisible = false;
+                lbl_attr5.IsVisible = false;
+                lbl_crit5.IsVisible = false;
+            }
+            if (ratings.Count < 4)
             {
-                lbl_crit1.Text = beers[0].avgRating.ToString();
-                lbl_crit2.Text = beers[1].avgRating.ToString();
-                lbl_crit3.Text = beers[2].avgRating.ToString();
-                lbl_crit4.Text = beers[3].avgRating.ToString();
-                lbl_crit5.Text = beers[4].avgRating.ToString();
+                frame_attr4.IsVisible = false;
+                lbl_attr4.IsVisible = false;
+                lbl_crit4.IsVisible = false;
+            }
+            if (ratings.Count < 3)
+            {
+                frame_attr3.IsVisible = false;
+                lbl_attr3.IsVisible = false;
+                lbl_crit3.IsVisible = false;
+            }
+            if (ratings.Count < 2 )
+            {
+                frame_attr2.IsVisible = false;
+                lbl_attr2.IsVisible = false;
+                lbl_crit2.IsVisible = false;
+            }
+            if (ratings.Count < 1)
+            {
+                frame_attr1.IsVisible = false;
+                lbl_attr1.IsVisible = false;
+                lbl_crit1.IsVisible = false;
+            }
+
+            if(ratings.Count > 0){
+                lbl_attr1.Text = ratings[0].Kriterium;
+                lbl_crit1.Text = Convert.ToString(ratings[0].Bewertung);
+            }
+            if (ratings.Count > 1)
+            {
+                lbl_attr2.Text = ratings[1].Kriterium;
+                lbl_crit2.Text = Convert.ToString(ratings[1].Bewertung);
+            }
+            if (ratings.Count > 2)
+            {
+                lbl_attr3.Text = ratings[2].Kriterium;
+                lbl_crit3.Text = Convert.ToString(ratings[2].Bewertung);
+            }
+            if (ratings.Count > 3)
+            {
+                lbl_attr4.Text = ratings[3].Kriterium;
+                lbl_crit4.Text = Convert.ToString(ratings[3].Bewertung);
+            }
+            if (ratings.Count > 4)
+            {
+                lbl_attr5.Text = ratings[4].Kriterium;
+                lbl_crit5.Text = Convert.ToString(ratings[4].Bewertung);
             }
         }
 

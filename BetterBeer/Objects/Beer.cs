@@ -43,6 +43,7 @@ namespace BetterBeer
             {
                 this.pic = "http://spbier.bplaced.net/images/beerExample2.png";
             }
+
         }
     }
 }
