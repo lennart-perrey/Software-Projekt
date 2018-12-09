@@ -95,12 +95,12 @@ namespace BetterBeer.MenuPages
         private async void btn_PasswordWasChanged_Clicked(Object sender, EventArgs e)
         {
             showMyData();
-            string SaltedPassword = HashAndSalt.CreateSalt();
+            string SaltedPassword = HashAndSalt.CreateSalt().Trim(' ');
             string uName = userName.Text;
             string email = myEmail.Text;
             string password = HashAndSalt.HashString(String.Format("{0}{1}", myPassword.Text, SaltedPassword));
             string password2 = HashAndSalt.HashString(String.Format("{0}{1}", myPassword2.Text, SaltedPassword));
-            if (Database.changePassword(uName, email, password, SaltedPassword))
+            if (Database.changePassword(password, SaltedPassword, SpecificUser.UserID))
             {
                 await DisplayAlert("Super", "Dein Passwort wurde erfolgreich geändert", "Ok");
                 App.Current.MainPage = new NavigationPage(new MainPage());

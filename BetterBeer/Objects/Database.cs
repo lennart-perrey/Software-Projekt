@@ -44,9 +44,22 @@ namespace BetterBeer
                 return false;
             }
         }
-        public static bool changePassword(String uName, String email, String password, String SaltedPassword)
+        public static bool deleteAccount()
         {
-            string postData = $"username={uName}&email={email}&password={password}&saltedpassword={SaltedPassword}";
+            string postData = $"userId={SpecificUser.UserID}";
+            string responseString = apiCall("deleteAccount", postData);
+            if (responseString == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool changePassword(String password, String SaltedPassword, int UserID)
+        {
+            string postData = $"password={password}&saltedpassword={SaltedPassword}&userId={UserID}";
             string responseString = apiCall("changePassword", postData);
             if (responseString == "1")
             {
