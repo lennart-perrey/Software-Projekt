@@ -69,7 +69,7 @@ namespace BetterBeer
             else{
                 Label label = new Label
                 {
-                    Text = "Los füge schnel welche hinzu."
+                    Text = "Los füge schnell welche hinzu."
                 };
                 RatingFriendCount.Children.Add(label);
             }
