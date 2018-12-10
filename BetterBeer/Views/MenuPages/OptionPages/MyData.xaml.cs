@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Plugin.Media;
+using BetterBeer.Objects;
 
 using Xamarin.Forms;
 
@@ -15,7 +16,16 @@ namespace BetterBeer.MenuPages
         public MyData()
         {
             InitializeComponent();
-
+            
+            
+            Friend user = Database.ShowUser(SpecificUser.UserID);
+            userName.Placeholder = user.Name;
+            myEmail.Placeholder = user.EMail;
+            if (user.Rang==1)
+            {
+                userNameLabel.Text = "Admin";
+            }
+            
             //get Passsword, Picture, Username and EMail from Database
         }
 

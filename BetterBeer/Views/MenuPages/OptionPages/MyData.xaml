@@ -36,8 +36,8 @@
                                 </TapGestureRecognizer>
                             </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
-                           
-                        <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
+                        <Label Grid.Row="1"  HorizontalOptions="Center" x:Name="userNameLabel"></Label>
+                        <Label Grid.Row="2" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
                        </Grid>
                     </StackLayout>
@@ -49,9 +49,9 @@
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                            </Grid.RowDefinitions>
-                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username"/>
-                        
-                            <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" />
+                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username" IsEnabled="False"/>
+
+                        <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" IsEnabled="False" />
                         
                             <Entry Grid.Row="0" x:Name="myPassword" Placeholder="Passwort"
                                    TextChanged="Handle_TextChangedPaassword" IsVisible="false"
