@@ -18,8 +18,12 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             InitializeComponent();
 
             friendImage.Source = friend.Image;
-            lbl_Name.Text = friend.Name;
-
+            this.Title = friend.Name;
 		}
+
+        private async void btn_cancelFriendship_Clicked(Object sender, EventArgs e)
+        {
+            await DisplayAlert("Fehler", "Freund entfernen geht noch nicht", "Ok");
+        }
     }
 }

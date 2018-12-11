@@ -29,11 +29,11 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                           
-                            <Label Grid.Row="0" Text="Biername" TextColor="Black" FontSize="Large" FontAttributes="Bold"
+                            <Label Grid.Row="0" x:Name="lbl_Biername" Text="Biername" TextColor="Black" FontSize="Large" FontAttributes="Bold"
                                    HorizontalTextAlignment="Center" VerticalOptions="Center"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
                             
-                            <Label Grid.Row="0" Text="Rating" TextColor="Maroon" FontSize="Large"
+                            <Label Grid.Row="0" x:Name="lbl_Rating" Text="Rating" TextColor="Maroon" FontSize="Large"
                                    FontAttributes="Bold" HorizontalTextAlignment="Center" 
                                    VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
                             
@@ -41,25 +41,25 @@
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                             
                 </Grid>
-                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped">
+                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
                                     <StackLayout Spacing="5" Orientation="Horizontal" Margin="5,0,5,0"
                                                  HorizontalOptions="Fill">
-
-                                        <Image Source="{Binding pic}" HeightRequest="40" WidthRequest="40"
-                                               VerticalOptions="Center"/>
-
-                                        <Label Text="{Binding beerName}" TextColor="Black" FontSize="Medium"
-                                               HorizontalTextAlignment="Start" VerticalOptions="Center"
-                                               HorizontalOptions="StartAndExpand"/>
-
-                                        <Label Text="{Binding avgRating}" TextColor="Maroon" FontSize="Large"
-                                               FontAttributes="Bold" HorizontalTextAlignment="End" 
-                                               VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
-
+                                        
+                                                <Image Source="{Binding pic}" HeightRequest="40" WidthRequest="40"
+                                                       VerticalOptions="Center" HorizontalOptions="Start"/>
+                                                       
+                                                <Label Text="{Binding beerName}" TextColor="Black" FontSize="Medium"
+                                                       HorizontalTextAlignment="Start" VerticalOptions="Center"
+                                                       HorizontalOptions="FillAndExpand"/>
+                                                       
+                                                <Label Text="{Binding avgRating}" TextColor="Maroon" FontSize="Large"
+                                                       FontAttributes="Bold" HorizontalTextAlignment="End" 
+                                                       VerticalOptions="Center" Margin="0,0,10,0" WidthRequest="50"/>
+                                        
                                     </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>
@@ -70,7 +70,7 @@
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using BetterBeer.Objects;
 using BetterBeer.Views.MenuPages;
 using BetterBeer.Views.MenuPages.FriendsPages;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace BetterBeer
 {
@@ -15,17 +16,21 @@ namespace BetterBeer
 
         public DashBoard()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                MainStack.Margin = new Thickness(0, 60, 0, 0);
+                //MainStack.Margin = new Thickness(0,60,0,0);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Left = 0;
+                safeInsets.Top = 40;
+                this.Padding = safeInsets;
             }
 
             listener = new SwipeListener(stlout_Swipe, this);
 
-            SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);
+            SpecificUser.UserID = Convert.ToInt32(Xamarin.Forms.Application.Current.Properties["userID"]);
 
             //BestBier
             List<Beer> allBeers = Database.Highscore();
@@ -70,7 +75,7 @@ namespace BetterBeer
                     Friend friend = Database.ShowUser(friendRatingCount[i].UserID);
                     Label label = new Label
                     {
-                        Text = friend.Name + ":\t " + friendRatingCount.Count.ToString()
+                        Text = friend.Name + ":\t " + friendRatingCount[i].RatingCount
                     };
                     RatingFriendCount.Children.Add(label);
                 }

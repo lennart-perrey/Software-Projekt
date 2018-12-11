@@ -102,7 +102,7 @@
                             </Grid>
                         </Grid>
 
-                        <Button x:Name="btn_Submit" Text="Bier Bewerten" Margin="0,30,0,20" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                        <Button x:Name="btn_Submit" Text="Bier bewerten" Margin="0,30,0,20" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
                           HeightRequest="45" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_RateBeer_Clicked"/>
                     </StackLayout>
                 </ScrollView>

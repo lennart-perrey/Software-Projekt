@@ -8,12 +8,11 @@
         <StackLayout>
             <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
                 <StackLayout BackgroundColor="White" Margin="20,0,20,0">
-                    <StackLayout Orientation="Vertical" VerticalOptions="Start" BackgroundColor="white">
+                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" BackgroundColor="white">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="175"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             <controls:CircleImage x:Name="friendImage" Grid.Row="0" Source="leon.png"
                              HeightRequest="150" WidthRequest="150" Aspect="AspectFill" BorderThickness="1"
@@ -25,11 +24,14 @@
                                 </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
 
-                            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" x:Name="lbl_Name"
+                            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3"
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
                         </Grid>
                     </StackLayout>
-                    
+                <StackLayout Margin="0,0,0,25" VerticalOptions="End"> 
+                    <Button x:Name="btn_cancelFriendship" Text="Freundschaft beenden" BackgroundColor="#FF613F"
+                            TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_cancelFriendship_Clicked"/>
+                </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

@@ -14,9 +14,9 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="66*"/>
-                        <RowDefinition Height="33*"/>
-                        <RowDefinition Height="66*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
 
                     <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" Padding="10"> 
@@ -112,13 +112,10 @@
                 </Grid>
             </StackLayout>
             
-            
-            
-            
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
 
 

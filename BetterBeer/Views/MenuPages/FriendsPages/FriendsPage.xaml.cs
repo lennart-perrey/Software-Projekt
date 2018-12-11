@@ -4,6 +4,7 @@ using BetterBeer.Views.MenuPages.FriendsPages;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace BetterBeer
@@ -18,11 +19,15 @@ namespace BetterBeer
         public FriendsPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            
-            if(Device.RuntimePlatform == Device.iOS)
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                MainStack.Margin = new Thickness(0,60,0,0);
+                //MainStack.Margin = new Thickness(0,60,0,0);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Left = 0;
+                safeInsets.Top = 40;
+                this.Padding = safeInsets;
             }
 
 

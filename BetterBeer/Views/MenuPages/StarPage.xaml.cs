@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using BetterBeer.Objects;
 using System.Data;
 using BetterBeer.Views.MenuPages;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace BetterBeer.MenuPages
 {
@@ -25,15 +26,22 @@ namespace BetterBeer.MenuPages
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                MainStack.Margin = new Thickness(0, 60, 0, 0);
+                //MainStack.Margin = new Thickness(0,60,0,0);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Left = 0;
+                safeInsets.Top = 50;
+                this.Padding = safeInsets;
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
                 btn_Filter.FontSize = 12;
+                lbl_Biername.FontSize = 12;
+                lbl_Rating.FontSize = 12;
+
             }
 
             listener = new SwipeListener(stlout_Swipe, this);
-            NavigationPage.SetHasNavigationBar(this, false);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
             if (Device.RuntimePlatform == Device.Android)
             {
