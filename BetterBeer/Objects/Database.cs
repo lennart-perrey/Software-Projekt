@@ -438,7 +438,10 @@ namespace BetterBeer
         public static Friend ShowUser(int userId){
             string result = apiCall("showUser","userId="+userId);
             List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(result);
-            return friends[0];
+            if (friends.Count == 0)
+                return null;
+            else
+                return friends[0];
         }
 
         public static bool CreateFriendship(int friendId)
@@ -454,20 +457,21 @@ namespace BetterBeer
         }
 
 
-        public static bool CreateRating(int beerID, int userID, List<int> rating)
+        public static bool CreateRating(int beerID, int userID, List<int> rating,List<Criteria> criterias)
         {
             string postData = $"beerId={beerID}&userId={userID}";
             int ratingID = int.Parse(apiCall("createRating", postData));
 
+           
             if (ratingID > 0)
             {
-                for (int i = 1; i <= rating.Count; i++)
+                int i = 0;
+                foreach (Criteria crit in criterias)
                 {
-                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i - 1]}";
+                    postData = $"ratingId={ratingID}&critId={crit.KriterienID}&grade={rating[i]}";
                     apiCall("createGrade", postData);
-
+                    i++;
                 }
-
                 return true;
             }
 

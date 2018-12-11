@@ -81,7 +81,7 @@
                     
                     <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black">> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Text="Platzhalter Bier" FontAttributes="Bold"  FontSize="Micro"></Label>
+                        <Label Text="Wie wäre es mit einem?" FontAttributes="Bold"  FontSize="Micro"></Label>
                          <Grid HorizontalOptions="Center" VerticalOptions="Center">
                           <Grid.RowDefinitions>
                             <RowDefinition Height="55*"/>

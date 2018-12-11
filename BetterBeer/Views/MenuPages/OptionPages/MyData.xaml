@@ -75,7 +75,7 @@
                         </Grid>
                     </StackLayout>
                 <StackLayout Margin="0,0,0,25">
-                    <Button x:Name="btn_deleteAcc" Text="Account löchen" BackgroundColor="#FF613F"
+                    <Button x:Name="btn_deleteAcc" Text="Account löschen" BackgroundColor="#FF613F"
                             TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_deleteAcc_Clicked"/>
                 </StackLayout>
         </StackLayout>

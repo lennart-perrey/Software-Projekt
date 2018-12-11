@@ -74,7 +74,7 @@ namespace BetterBeer.MenuPages
             rating.Add(Convert.ToInt32(pickAttr5.Value));
 
 
-            bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating);
+            bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating,crits);
 
             if (!check)
             {
