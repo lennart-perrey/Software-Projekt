@@ -9,8 +9,6 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                        <Label x:Name="lbl_BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
-                               FontAttributes="Bold" FontSize="Large"/>
                         <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg" HeightRequest="250" WidthRequest="250"></Image>
                         <Grid>
                             <Grid.RowDefinitions>
