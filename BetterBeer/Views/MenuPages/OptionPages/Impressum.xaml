@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BetterBeer.Views.MenuPages.OptionPages.Impressum"
+             Title="Impressum">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label FontSize="20" FontAttributes="Bold" Grid.Row="0" Text="Impressum Angaben gemäß § 5 TMG" />
+            <Label Grid.Row="1" Text="Hochschule Flensburg"/>
+            <Label Grid.Row="2" Text="Kanzleistraße 91-93 24943 Flensburg"/>
+            <Label FontSize="20" FontAttributes="Bold" Grid.Row="4" Text="Kontakt" />
+            <Label Grid.Row="5" Text="E-Mail: betterbeer@web.de"/>
+            <Label Grid.Row="6" Text="Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."/>
+            <Label Grid.Row="7" Text="Vertreten durch: Johannes Peretzke, Leon Kowalewski, Marc Haß, Marcel Böckmann, Lennart Perrey"/>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

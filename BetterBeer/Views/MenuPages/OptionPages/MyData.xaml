@@ -36,8 +36,8 @@
                                 </TapGestureRecognizer>
                             </controls:CircleImage.GestureRecognizers>
                             </controls:CircleImage>
-                           
-                        <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
+                        <Label Grid.Row="1"  HorizontalOptions="Center" x:Name="userNameLabel"></Label>
+                        <Label Grid.Row="2" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
                        </Grid>
                     </StackLayout>
@@ -49,9 +49,9 @@
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                            </Grid.RowDefinitions>
-                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username"/>
-                        
-                            <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" />
+                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username" IsEnabled="False"/>
+
+                        <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" IsEnabled="False" />
                         
                             <Entry Grid.Row="0" x:Name="myPassword" Placeholder="Passwort"
                                    TextChanged="Handle_TextChangedPaassword" IsVisible="false"
@@ -75,7 +75,7 @@
                         </Grid>
                     </StackLayout>
                 <StackLayout Margin="0,0,0,25">
-                    <Button x:Name="btn_deleteAcc" Text="Account löchen" BackgroundColor="#FF613F"
+                    <Button x:Name="btn_deleteAcc" Text="Account löschen" BackgroundColor="#FF613F"
                             TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_deleteAcc_Clicked"/>
                 </StackLayout>
         </StackLayout>

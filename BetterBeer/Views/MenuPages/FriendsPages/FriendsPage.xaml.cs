@@ -4,6 +4,7 @@ using BetterBeer.Views.MenuPages.FriendsPages;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace BetterBeer
@@ -18,18 +19,21 @@ namespace BetterBeer
         public FriendsPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                //MainStack.Margin = new Thickness(0,60,0,0);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Left = 0;
+                safeInsets.Top = 40;
+                this.Padding = safeInsets;
+            }
 
 
             listener = new SwipeListener(stlout_Swipe, this);
 
             if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-                searchBar.BackgroundColor = Color.Black;
-            }
-            else if (Device.RuntimePlatform == Device.Android)
             {
                 searchBar.BackgroundColor = Color.White;
                 searchBar.WidthRequest = 250;
@@ -39,6 +43,7 @@ namespace BetterBeer
             lv_FriendsList.ItemsSource = friends;
 
         }
+
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {

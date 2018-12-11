@@ -1,4 +1,5 @@
 ﻿using BetterBeer.MenuPages;
+using BetterBeer.Views.MenuPages.OptionPages;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -14,34 +15,21 @@ namespace BetterBeer
 
         public OptionsPage()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent(); 
             listener = new SwipeListener(stlout_Swipe, this);
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
 
             List<string> itemsGeneral = new List<string>();
             itemsGeneral.Add("Meine Daten");
             itemsGeneral.Add("Einstellungen");
-            itemsGeneral.Add("Achievements");
 
             List<string> itemsSystem = new List<string>();
+            itemsSystem.Add("Impressum");
             itemsSystem.Add("Logout");
 
             ListViewGeneral.ItemsSource = itemsGeneral;
             ListViewSystem.ItemsSource = itemsSystem;
         }
-
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
-        }
-
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
@@ -53,10 +41,6 @@ namespace BetterBeer
             {
                 await Navigation.PushAsync(new Options());
             }
-            else if (ListViewGeneral.SelectedItem.ToString() == "Achievements")
-            {
-                await Navigation.PushAsync(new Achievements());
-            }
         }
 
         private async void HandleSystem_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -66,6 +50,10 @@ namespace BetterBeer
                 Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
                 SpecificUser.UserID = 0;
                 await Navigation.PushAsync(new MainPage(), false);
+            }
+            else if(ListViewSystem.SelectedItem.ToString() == "Impressum")
+            {
+                await Navigation.PushAsync(new Impressum());
             }
         }
 

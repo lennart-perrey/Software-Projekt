@@ -20,11 +20,6 @@ namespace BetterBeer.Views.MenuPages
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-
             //Set CurrentBeer
             beer = currentBeer;
             lbl_BeerName.Text = beer.beerName;
@@ -36,38 +31,76 @@ namespace BetterBeer.Views.MenuPages
             //Get Criteria
             List<Criteria> criterias = Database.ShowCriteria();
 
-            //Set CriteriaLabels
-            lbl_attr1.Text = criterias[0].Kriterium;
-            lbl_attr2.Text = criterias[1].Kriterium;
-            lbl_attr3.Text = criterias[2].Kriterium;
-            lbl_attr4.Text = criterias[3].Kriterium;
-            lbl_attr5.Text = criterias[4].Kriterium;
-
             //Get Rating for Beer
-            List<Beer> beers = Database.getAvgGradeByBeerId(beer.beerId);
+            List<Rating> ratings = Database.getAvgGradeByBeerId(beer.beerId);
 
-            if (beers != null)
-            {
-                lbl_crit1.Text = beers[0].avgRating.ToString();
-                lbl_crit2.Text = beers[1].avgRating.ToString();
-                lbl_crit3.Text = beers[2].avgRating.ToString();
-                lbl_crit4.Text = beers[3].avgRating.ToString();
-                lbl_crit5.Text = beers[4].avgRating.ToString();
+            int ratedCrits = 0;
+            if(ratings != null){
+                ratedCrits= ratings.Count;
             }
 
+
+            //Leider hard gecodet, weil die Labels feststehen. Bessere lösung, wäre wenn dynamisch.
+            if (ratedCrits < 5){
+                frame_attr5.IsVisible = false;
+                lbl_attr5.IsVisible = false;
+                lbl_crit5.IsVisible = false;
+            }
+            if (ratedCrits < 4)
+            {
+                frame_attr4.IsVisible = false;
+                lbl_attr4.IsVisible = false;
+                lbl_crit4.IsVisible = false;
+            }
+            if (ratedCrits < 3)
+            {
+                frame_attr3.IsVisible = false;
+                lbl_attr3.IsVisible = false;
+                lbl_crit3.IsVisible = false;
+            }
+            if (ratedCrits < 2 )
+            {
+                frame_attr2.IsVisible = false;
+                lbl_attr2.IsVisible = false;
+                lbl_crit2.IsVisible = false;
+            }
+            if (ratedCrits < 1)
+            {
+                frame_attr1.IsVisible = false;
+                lbl_attr1.IsVisible = false;
+                lbl_crit1.IsVisible = false;
+            }
+
+
+            if(ratedCrits > 0){
+                lbl_attr1.Text = ratings[0].Kriterium;
+                lbl_crit1.Text = Convert.ToString(ratings[0].Bewertung);
+            }
+            if (ratedCrits > 1)
+            {
+                lbl_attr2.Text = ratings[1].Kriterium;
+                lbl_crit2.Text = Convert.ToString(ratings[1].Bewertung);
+            }
+            if (ratedCrits > 2)
+            {
+                lbl_attr3.Text = ratings[2].Kriterium;
+                lbl_crit3.Text = Convert.ToString(ratings[2].Bewertung);
+            }
+            if (ratedCrits > 3)
+            {
+                lbl_attr4.Text = ratings[3].Kriterium;
+                lbl_crit4.Text = Convert.ToString(ratings[3].Bewertung);
+            }
+            if (ratedCrits > 4)
+            {
+                lbl_attr5.Text = ratings[4].Kriterium;
+                lbl_crit5.Text = Convert.ToString(ratings[4].Bewertung);
+            }
         }
 
         private async void btn_RateBeer_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BeerProfile(beer));
-        }
-
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
         }
     }
 }

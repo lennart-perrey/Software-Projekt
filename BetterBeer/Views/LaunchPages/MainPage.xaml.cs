@@ -12,21 +12,7 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            if(Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-
             btn_login.IsEnabled = false;
-        }
-
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
-            base.OnDisappearing();
         }
 
         private async void btn_login_clicked(object sender, EventArgs e)
@@ -34,7 +20,8 @@ namespace BetterBeer
             try
             {
                 string email = entry_email.Text;
-                string SaltedPassword = Database.GetSaltedPW(email);
+                string SaltedPassword = Database.GetSaltedPW(email).Trim(' ');
+                SaltedPassword = Database.GetSaltedPW(email).Replace(' ', '+');
                 string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
                 int userID = Database.CheckUser(email, password);
 

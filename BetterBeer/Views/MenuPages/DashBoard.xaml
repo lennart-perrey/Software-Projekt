@@ -2,28 +2,120 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BetterBeer.DashBoard"
-             BackgroundColor="Black">
-
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <OnPlatform.iOS>
-                0,20,0,0
-            </OnPlatform.iOS>
-            <OnPlatform.Android>
-                0,0,0,0
-            </OnPlatform.Android>
-        </OnPlatform>
-    </ContentPage.Padding>
-
-
+             BackgroundColor="White">
+    
     <ContentPage.Content>
+        <StackLayout x:Name="stlout_Swipe">
+            <StackLayout x:Name="MainStack" VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <Grid Margin="10,5,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-        <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
 
-            <StackLayout BackgroundColor="Black" VerticalOptions="StartAndExpand">
+                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" Padding="10"> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bestes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="77*"/>
+                          </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="30*"/>
+                          </Grid.ColumnDefinitions>
+                             <Image x:Name="bestBierImg" Grid.Row="1" Grid.Column="0"/>
+                            <Label x:Name="bestBierName" Grid.Row="0" Grid.Column="0"/> 
+                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Large" TextColor="Maroon" 
+                                   Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                        </Grid>    
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame1_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                        
+                   <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" Padding="10">
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
+                   
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                             <Grid.RowDefinitions>
+                                <RowDefinition Height="33*"/>
+                                <RowDefinition Height="77*"/>
+                             </Grid.RowDefinitions>
+                            <Image x:Name="friendRatingBeer" Grid.Row="1"/>
+                            <Label x:Name="friendRatingName" Grid.Row="0" FontSize="Small" MaxLines="3" /> 
+                        </Grid>    
+                    </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame2_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                     </Frame>
+                    
+                   <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" Padding="10">
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bewertungen" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>                 
+                         <Label x:Name="RatingLabel" Grid.Row="1" Grid.Column="0" FontSize="Medium"/> 
+                    </StackLayout>
+                 </Frame>
+                    
+                   <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" Padding="5">
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Bewertungen deiner Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
+                                <StackLayout  x:Name="RatingFriendCount" ></StackLayout> 
+                    </StackLayout>
+                     </Frame>
+                    
+                    
+                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" Padding="10"> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Wie wäre es mit einem" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="77*"/>
+                          </Grid.RowDefinitions>
+                             <Image x:Name="randomImg1" Grid.Row="1"/>
+                            <Label x:Name="randomName1" Grid.Row="0"/> 
+                        </Grid>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame5_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    
+                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black" Padding="10"> 
+                     <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="Neuestes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
+                         <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                          <Grid.RowDefinitions>
+                            <RowDefinition Height="33*"/>
+                            <RowDefinition Height="77*"/>
+                          </Grid.RowDefinitions>
+                             <Image x:Name="randomImg2" Grid.Row="1"/>
+                            <Label x:Name="randomName2" Grid.Row="0"/> 
+                        </Grid>
+
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Frame6_Tapped"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame> 
+                </Grid>
+            </StackLayout>
+            
+            <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
 
 
@@ -35,32 +127,32 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0" HeightRequest="40" WidthRequest="40" VerticalOptions="End" Margin="0,0,0,5">
+                    <Image x:Name="img_Options" Source="MenuButton.PNG" Grid.Column="0" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Options_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
 
-                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1" HeightRequest="40" WidthRequest="40" VerticalOptions="End" Margin="0,0,0,5">
+                    <Image x:Name="img_Ranking" Source="RankingButton.PNG" Grid.Column="1" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Ranking_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Home" Source="HomeButtonClicked.PNG" Grid.Column="2" HeightRequest="40" WidthRequest="40" VerticalOptions="End" Margin="0,0,0,5">
+                    <Image x:Name="img_Home" Source="HomeButtonClicked.PNG" Grid.Column="2" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3" HeightRequest="40" WidthRequest="40" VerticalOptions="End" Margin="0,0,0,5">
+                    <Image x:Name="img_Friends" Source="FriendsButton.PNG" Grid.Column="3" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Friends_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
 
-                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4" HeightRequest="40" WidthRequest="40" VerticalOptions="End" Margin="0,0,0,5">
+                    <Image x:Name="img_Scan"  Source="CameraButton.PNG" Grid.Column="4" VerticalOptions="Start" Margin="0,5,0,0" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Scan_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
@@ -68,48 +160,6 @@
 
                 </Grid>
             </StackLayout>
-            
-            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
-
-            
-                <Grid Margin="10,25,10,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="33*"/>
-                        <RowDefinition Height="33*"/>
-                        <RowDefinition Height="33*"/>
-                    </Grid.RowDefinitions>
-
-                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label    Text="Bestes Bier: Ratsherrn"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label  x:Name="lbl" Text="Dein Freund Leon hat Astra zuletzt bewertet"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" BackgroundColor="Transparent"  >
-                        <Label   Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd "></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" BackgroundColor="Transparent">
-
-                        <Label Text="Bier des Tages: Augustiner Premium Bier"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" BackgroundColor="Transparent">
-                        <Label Text="Zuletzt bewertestes Bier: Flensburger Kellerbier"></Label>
-                    </Frame>
-
-                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black" BackgroundColor="Transparent" >
-                        <Label Text="Johannes ist doof"></Label>
-                    </Frame>
-                </Grid>
-            </StackLayout> 
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

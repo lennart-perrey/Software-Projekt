@@ -19,10 +19,7 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
         public AddFriendPage()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
+      
             friends = Database.GetAllUsers();
             lv_FriendsList.ItemsSource = friends;
         }

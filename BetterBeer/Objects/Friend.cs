@@ -16,14 +16,14 @@ namespace BetterBeer.Objects
         public string EMail { get; set; }
         [JsonProperty("Bild")]
         public string Image { get; set; }
-
+        [JsonProperty("RangID")]
+        public int Rang { get; set; }
+        
         public Friend(  string name, string email, string image)
         {
             Name = name;
             EMail = email;
-            Image = "http://spbier.bplaced.net/images/classicLeon.png";
-            
-            
+            Image = "http://spbier.bplaced.net/images/userIcon.png";
         }
     }
 }

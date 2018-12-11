@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Plugin.Media;
+using BetterBeer.Objects;
 
 using Xamarin.Forms;
 
@@ -15,19 +16,17 @@ namespace BetterBeer.MenuPages
         public MyData()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.iOS)
+            
+            
+            Friend user = Database.ShowUser(SpecificUser.UserID);
+            userName.Placeholder = user.Name;
+            myEmail.Placeholder = user.EMail;
+            if (user.Rang==1)
             {
-                SetStatusStyle.SetStyleBlack();
+                userNameLabel.Text = "Admin";
             }
-
+            
             //get Passsword, Picture, Username and EMail from Database
-        }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyleBlack();
-            }
         }
 
         private async void myImage_Tapped(object sender, EventArgs e)
@@ -89,24 +88,60 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        private void btn_deleteAcc_Clicked(Object sender, EventArgs e)
+        private async void btn_deleteAcc_Clicked(Object sender, EventArgs e)
         {
-            throw new Exception();
+            bool answer = await DisplayAlert("Account löschen", "Möchtest du dein Account wirklich löschen?", "Ja", "Nein");
+            if (answer == false)
+            {
+                await DisplayAlert("Super", "Na dann Prost!", "OK");
+            }
+            else if (answer == true)
+            {
+                answer = await DisplayAlert("Account löschen", "Bist du dir wirklich sicher?", "Ja", "Nein");
+                if (answer == false)
+                {
+                    await DisplayAlert("Super", "Na dann Prost!", "OK");
+                }
+                else if (answer == true)
+                {
+                    if (Database.deleteAccount(SpecificUser.UserID))
+                    {
+                        await DisplayAlert("Auf Wiedersehen", "Dein Account wurde gelöscht :(", "Ok");
+                        App.Current.MainPage = new NavigationPage(new MainPage());
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fehlgeschlagen", "Dein Account wurde wegen eines Fehlers nicht gelöscht", "Ok");
+                        App.Current.MainPage = new NavigationPage(new MainPage());
+                    }
+                }
+            }
         }
 
-        private async void btn_changePassword_Clicked(Object sender, EventArgs e)
+        private  void btn_changePassword_Clicked(Object sender, EventArgs e)
         {
             password1 = myPassword.Text;
             password2 = myPassword2.Text;
-
             showPasswordChange();
-
         }
 
         private async void btn_PasswordWasChanged_Clicked(Object sender, EventArgs e)
         {
             showMyData();
-
+            string SaltedPassword = HashAndSalt.CreateSalt().Trim(' ');
+            string uName = userName.Text;
+            string email = myEmail.Text;
+            string password = HashAndSalt.HashString(String.Format("{0}{1}", myPassword.Text, SaltedPassword));
+            string password2 = HashAndSalt.HashString(String.Format("{0}{1}", myPassword2.Text, SaltedPassword));
+            if (Database.changePassword(password, SaltedPassword, SpecificUser.UserID))
+            {
+                await DisplayAlert("Super", "Dein Passwort wurde erfolgreich geändert", "Ok");
+                App.Current.MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                await DisplayAlert("Fehlgeschlagen", "Dein Passwort wurde nicht geändert :(", "Mist");
+            }
             //passwort in Datenbank ändern
 
         }

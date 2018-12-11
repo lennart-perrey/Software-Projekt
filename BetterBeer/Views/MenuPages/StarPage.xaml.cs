@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using BetterBeer.Objects;
 using System.Data;
 using BetterBeer.Views.MenuPages;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace BetterBeer.MenuPages
 {
@@ -23,16 +24,27 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
 
-            listener = new SwipeListener(stlout_Swipe, this);
-            NavigationPage.SetHasNavigationBar(this, false);
             if (Device.RuntimePlatform == Device.iOS)
             {
-                SetStatusStyle.SetStyle();
-                searchBar.BackgroundColor = Color.Black;
+                //MainStack.Margin = new Thickness(0,60,0,0);
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                safeInsets.Left = 0;
+                safeInsets.Top = 50;
+                this.Padding = safeInsets;
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
-                searchBar.BackgroundColor = Color.White;
+                btn_Filter.FontSize = 12;
+                lbl_Biername.FontSize = 12;
+                lbl_Rating.FontSize = 12;
+
+            }
+
+            listener = new SwipeListener(stlout_Swipe, this);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
                 searchBar.WidthRequest = 250;
             }
 
@@ -50,13 +62,6 @@ namespace BetterBeer.MenuPages
             }
 
             setHighscore();
-        }
-        protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                SetStatusStyle.SetStyle();
-            }
         }
 
         /// Erstellt die Ausgabe der Topliste
@@ -173,7 +178,9 @@ namespace BetterBeer.MenuPages
             }
         }
 
-        public async void OnLeftSwipe(View view)
+
+
+            public async void OnLeftSwipe(View view)
         {
             await Navigation.PushAsync(new DashBoard(), false);
         }

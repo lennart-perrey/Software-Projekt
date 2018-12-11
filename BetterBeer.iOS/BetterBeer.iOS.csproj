@@ -28,7 +28,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: jojo95istcool@googlemail.com (4GHCT7BX2H)</CodesignKey>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -39,6 +40,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer: hass.marc@gmx.net (DGBC945DW6)</CodesignKey>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt5.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,7 +68,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer: hass.marc@gmx.net (DGBC945DW6)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt4.BetterBeer</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.SoftwareProjekt5.BetterBeer</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -180,7 +183,7 @@
     <BundleResource Include="Resources\BetterBeerLogo_H.png" />
     <BundleResource Include="Resources\BetterBeerLogo_V.png" />
     <BundleResource Include="Resources\MeinFoto.png" />
-    <BundleResource Include="Resources\addFriends.PNG" />
+    <BundleResource Include="Resources\AddFriendButton.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\flensburger.jpg" />
@@ -240,15 +243,15 @@
     <BundleResource Include="Resources\HomeButtonClicked.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\MenuButton.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\RankingButton.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\RankingButtonClicked.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButton.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\MenuButtonClicked.PNG" />
   </ItemGroup>
 </Project>

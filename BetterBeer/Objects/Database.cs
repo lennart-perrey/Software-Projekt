@@ -44,7 +44,32 @@ namespace BetterBeer
                 return false;
             }
         }
-
+        public static bool deleteAccount(int UserID)
+        {
+            string postData = $"userId={UserID}";
+            string responseString = apiCall("deleteAccount", postData);
+            if (responseString == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool changePassword(String password, String SaltedPassword, int UserID)
+        {
+            string postData = $"password={password}&saltedpassword={SaltedPassword}&userId={UserID}";
+            string responseString = apiCall("changePassword", postData);
+            if (responseString == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static string GetSaltedPW(string login)
         {
             string postData;
@@ -100,14 +125,14 @@ namespace BetterBeer
             return beers;
         }
 
-        public static List<Beer> getAvgGradeByBeerId(string beerId)
+        public static List<Rating> getAvgGradeByBeerId(string beerId)
         {
             string postData = $"bierId={beerId}";
             string responseString = apiCall("getAvgGradeByBeerId", postData);
 
             if (responseString != "null")
             {
-                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                List<Rating> beers = JsonConvert.DeserializeObject<List<Rating>>(responseString);
                 return beers;
             }
 
@@ -125,6 +150,19 @@ namespace BetterBeer
 
             return null;
         }
+        public static int countRatings(int userId)
+        {
+            string postData = $"userId={userId}";
+            string responseString = apiCall("countRatings", postData);
+
+            if (responseString != "null")
+            {
+                return Convert.ToInt32(responseString);
+            }
+
+            return 0;
+        }
+
 
         public static bool createBeer(string ean, string beerName, int brandId)
         {
@@ -397,6 +435,15 @@ namespace BetterBeer
             return friends;
         }
 
+        public static Friend ShowUser(int userId){
+            string result = apiCall("showUser","userId="+userId);
+            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(result);
+            if (friends.Count == 0)
+                return null;
+            else
+                return friends[0];
+        }
+
         public static bool CreateFriendship(int friendId)
         {
             string postdata = $"user1={SpecificUser.UserID}&user2={friendId}";
@@ -410,20 +457,21 @@ namespace BetterBeer
         }
 
 
-        public static bool CreateRating(int beerID, int userID, List<int> rating)
+        public static bool CreateRating(int beerID, int userID, List<int> rating,List<Criteria> criterias)
         {
             string postData = $"beerId={beerID}&userId={userID}";
             int ratingID = int.Parse(apiCall("createRating", postData));
 
+           
             if (ratingID > 0)
             {
-                for (int i = 1; i <= rating.Count; i++)
+                int i = 0;
+                foreach (Criteria crit in criterias)
                 {
-                    postData = $"ratingId={ratingID}&critId={i}&grade={rating[i - 1]}";
+                    postData = $"ratingId={ratingID}&critId={crit.KriterienID}&grade={rating[i]}";
                     apiCall("createGrade", postData);
-
+                    i++;
                 }
-
                 return true;
             }
 
@@ -443,6 +491,21 @@ namespace BetterBeer
             List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
             return crits;
         }
+
+
+        public static List<FriendRating> showFriendLast(int userId){
+            string result = apiCall("showLastFriendRatings", "userId=" + userId);
+            List <FriendRating> friendRatings = JsonConvert.DeserializeObject<List<FriendRating>>(result);
+            return friendRatings;
+        }
+
+        public static List<FriendRatingCount> countFriendRatings(int userId)
+        {
+            string result = apiCall("showFriendRatingCount", "userId=" + userId);
+            List<FriendRatingCount> friendRatings = JsonConvert.DeserializeObject<List<FriendRatingCount>>(result);
+            return friendRatings;
+        }
+
         public static List<Friend> GetAllUsers()
         {
             string requestString = API + "?action=showAll";
@@ -456,5 +519,6 @@ namespace BetterBeer
             List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
             return friends;
         }
+
     }
 }

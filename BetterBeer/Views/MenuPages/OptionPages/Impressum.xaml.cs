@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace BetterBeer.MenuPages
+namespace BetterBeer.Views.MenuPages.OptionPages
 {
-    public partial class Options : ContentPage
+    public partial class Impressum : ContentPage
     {
-        public Options()
+        public Impressum()
         {
             InitializeComponent();
         }
