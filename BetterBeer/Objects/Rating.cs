@@ -16,5 +16,16 @@ namespace BetterBeer.Objects
 
         [JsonProperty("Bewertung")]
         public double Bewertung { get; set; }
+
+
+        public Rating(int bierID, int kriteriumID, string kriterium, double bewertung)
+        {
+            this.bierId = bierID;
+            this.kriteriumId = kriteriumID;
+            this.Kriterium = kriterium;
+            this.Bewertung = Math.Round(bewertung,1);
+        }
     }
+
+
 }
