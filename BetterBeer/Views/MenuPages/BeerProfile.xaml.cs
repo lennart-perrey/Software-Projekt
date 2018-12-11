@@ -86,7 +86,10 @@ namespace BetterBeer.MenuPages
                 Navigation.PushAsync(new DashBoard());
             }
         }
-
+        private void btn_GoHome_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DashBoard());
+        }
         private void pickAttr5_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             switch (pickAttr5.Value)
