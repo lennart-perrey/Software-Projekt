@@ -25,6 +25,7 @@ namespace BetterBeer
                 MainStack.Margin = new Thickness(0,60,0,0);
             }
 
+
             listener = new SwipeListener(stlout_Swipe, this);
 
             if (Device.RuntimePlatform == Device.iOS)

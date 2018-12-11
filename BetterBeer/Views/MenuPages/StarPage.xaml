@@ -18,7 +18,7 @@
                     
                         <Button x:Name="btn_Filter" Grid.Row="0" Text="Filter" Clicked="btn_Filter_Clicked" 
                                 TextColor="Black" FontAttributes="Bold" FontSize="Large" BackgroundColor="White"
-                                HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,15,0"/> 
+                                HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0"/> 
                 </Grid>
                 <Picker x:Name="picker_Criteria" HorizontalOptions="FillAndExpand"
                         HeightRequest="50" SelectedIndexChanged="picker_SelectedItemChanged" BackgroundColor="#FFCD33"
@@ -35,7 +35,7 @@
                             
                             <Label Grid.Row="0" Text="Rating" TextColor="Maroon" FontSize="Large"
                                    FontAttributes="Bold" HorizontalTextAlignment="Center" 
-                                   VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,15,0"/>
+                                   VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
                             
                              <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3" 
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
@@ -58,7 +58,7 @@
 
                                         <Label Text="{Binding avgRating}" TextColor="Maroon" FontSize="Large"
                                                FontAttributes="Bold" HorizontalTextAlignment="End" 
-                                               VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,15,0"/>
+                                               VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
 
                                     </StackLayout>
                                 </ViewCell.View>
