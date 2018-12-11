@@ -33,7 +33,7 @@
                                    HorizontalTextAlignment="Center" VerticalOptions="Center"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
                             
-                            <Label Grid.Row="0" x:Name="lbl_Rating" Text="Rating" TextColor="Maroon" FontSize="Large"
+                            <Label Grid.Row="0" x:Name="lbl_Rating" Text="Rating" TextColor="#FFD657" FontSize="Large"
                                    FontAttributes="Bold" HorizontalTextAlignment="Center" 
                                    VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
                             
@@ -56,7 +56,7 @@
                                                        HorizontalTextAlignment="Start" VerticalOptions="Center"
                                                        HorizontalOptions="FillAndExpand"/>
                                                        
-                                                <Label Text="{Binding avgRating}" TextColor="Maroon" FontSize="Large"
+                                                <Label Text="{Binding avgRating}" TextColor="#FFD657" FontSize="Large"
                                                        FontAttributes="Bold" HorizontalTextAlignment="End" 
                                                        VerticalOptions="Center" Margin="0,0,10,0" WidthRequest="50"/>
                                         

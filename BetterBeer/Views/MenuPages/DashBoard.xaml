@@ -33,7 +33,7 @@
                           </Grid.ColumnDefinitions>
                              <Image x:Name="bestBierImg" Grid.Row="1" Grid.Column="0"/>
                             <Label x:Name="bestBierName" Grid.Row="0" Grid.Column="0"/> 
-                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Large" TextColor="Maroon" 
+                            <Label x:Name="bestBierRating" VerticalTextAlignment="End" FontSize="Large" TextColor="#FFD657" 
                                    Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center"/>
                         </Grid>    
                         </StackLayout>
