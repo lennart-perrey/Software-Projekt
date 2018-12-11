@@ -121,6 +121,8 @@
 
                         <Button x:Name="btn_Submit" Text="Bewertung Abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
                           HeightRequest="45" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
+                        <Button x:Name="btn_GoHome" Text="Abbrechen" IsEnabled="True" Margin="0,5,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
+                          HeightRequest="45" BackgroundColor="#FF613F" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_GoHome_Clicked"/>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
