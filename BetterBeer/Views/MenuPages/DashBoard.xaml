@@ -115,7 +115,7 @@
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
 
 
