@@ -23,6 +23,15 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
 
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                MainStack.Margin = new Thickness(0, 60, 0, 0);
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                btn_Filter.FontSize = 12;
+            }
+
             listener = new SwipeListener(stlout_Swipe, this);
             NavigationPage.SetHasNavigationBar(this, false);
 

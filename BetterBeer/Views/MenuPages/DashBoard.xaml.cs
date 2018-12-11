@@ -17,7 +17,12 @@ namespace BetterBeer
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                MainStack.Margin = new Thickness(0, 60, 0, 0);
+            }
+
             listener = new SwipeListener(stlout_Swipe, this);
 
             SpecificUser.UserID = Convert.ToInt32(Application.Current.Properties["userID"]);

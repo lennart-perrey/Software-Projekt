@@ -6,8 +6,8 @@
 
 
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe" Margin="0,40,0,0">
-            <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White" Margin="0,20,0,0">
+        <StackLayout x:Name="stlout_Swipe">
+            <StackLayout x:Name="MainStack" VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <Grid BackgroundColor="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

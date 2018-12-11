@@ -20,7 +20,10 @@ namespace BetterBeer
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             
-
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                MainStack.Margin = new Thickness(0,60,0,0);
+            }
 
             listener = new SwipeListener(stlout_Swipe, this);
 
