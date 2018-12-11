@@ -44,12 +44,12 @@
                 <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <ViewCell> 
                                 <ViewCell.View>
-                                    <StackLayout Spacing="5" Orientation="Horizontal" Margin="5,0,5,0"
+                                    <StackLayout HeightRequest="60" Spacing="8" Orientation="Horizontal" Margin="5,0,5,0"
                                                  HorizontalOptions="Fill">
                                         
-                                                <Image Source="{Binding pic}" HeightRequest="40" WidthRequest="40"
+                                                <Image Source="{Binding pic}" HeightRequest="60" WidthRequest="60"
                                                        VerticalOptions="Center" HorizontalOptions="Start"/>
                                                        
                                                 <Label Text="{Binding beerName}" TextColor="Black" FontSize="Medium"

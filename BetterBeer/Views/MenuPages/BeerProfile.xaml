@@ -8,8 +8,8 @@
         <StackLayout x:Name="stlout_Swipe" Margin="0,20,0,0">
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
-                    <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                        <Image x:Name="img_BeerImage" VerticalOptions="Start" HeightRequest="250" WidthRequest="250"></Image>
+                    <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,15,10,10" VerticalOptions="FillAndExpand">
+                        <Image x:Name="img_BeerImage" VerticalOptions="Start" HeightRequest="235" WidthRequest="235"></Image>
                         <Grid>
                         <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
