@@ -15,10 +15,13 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 	{
         public Friend SelectedFriend { get; set; }
         List<Friend> friends;
+
         public AddFriendPage()
         {
             InitializeComponent();
-
+      
+            friends = Database.GetAllUsers();
+            lv_FriendsList.ItemsSource = friends;
         }
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
@@ -26,8 +29,6 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             try
             {
                 string friend = searchBar.Text;
-
-
 
                 friends = Database.ShowUser(friend);
 
@@ -62,8 +63,15 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
                     if (friend.Name == SelectedFriend.Name)
                     {
                         Database.CreateFriendship(SelectedFriend.UserID);
-                        await Navigation.PushAsync(new FriendsPage());
-                        await DisplayAlert("Herzlichen Glückwunsch", "Du hast einen Freund", "Prost!");
+                        
+                        if (DisplayAlert("Möchtest du " + friend.Name + "zu deinem Beer Buddy ernennen?", "Prost!", "Nein").IsCanceled)
+                        {
+                            lv_FriendsList.ItemsSource = null;
+                        }
+                        else
+                        {
+                            await Navigation.PushAsync(new FriendsPage());
+                        }
                         break;
                     }
                 }

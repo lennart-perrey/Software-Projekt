@@ -506,6 +506,19 @@ namespace BetterBeer
             return friendRatings;
         }
 
+        public static List<Friend> GetAllUsers()
+        {
+            string requestString = API + "?action=showAll";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(responseString);
+            return friends;
+        }
 
     }
 }
