@@ -34,7 +34,7 @@ namespace BetterBeer.MenuPages
 
             await CrossMedia.Current.Initialize();
             bool answer = await DisplayAlert("Profilbild", "Möchtest du ein Bild aufnehmen oder auswählen?", "Aufnehmen", "Auswählen");
-
+            
             if (answer == false)
             {
                 if (!CrossMedia.Current.IsPickPhotoSupported)
