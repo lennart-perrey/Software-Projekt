@@ -438,7 +438,10 @@ namespace BetterBeer
         public static Friend ShowUser(int userId){
             string result = apiCall("showUser","userId="+userId);
             List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(result);
-            return friends[0];
+            if (friends.Count == 0)
+                return null;
+            else
+                return friends[0];
         }
 
         public static bool CreateFriendship(int friendId)
