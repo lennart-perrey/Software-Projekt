@@ -9,8 +9,6 @@
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
                 <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,25,10,10" VerticalOptions="FillAndExpand">
-                        <Label x:Name="lbl_BeerName" HorizontalOptions="Center" Text="Flensburger Pilsener"
-                               FontAttributes="Bold" FontSize="Large"/>
                         <Image x:Name="img_BeerImage" VerticalOptions="Start" HeightRequest="250" WidthRequest="250"></Image>
                         <Grid>
                         <Grid.RowDefinitions>
@@ -119,7 +117,7 @@
                             </Grid>
                         </Grid>
 
-                        <Button x:Name="btn_Submit" Text="Bewertung Abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
+                        <Button x:Name="btn_Submit" Text="Bewertung abgeben" IsEnabled="False" Margin="0,30,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
                           HeightRequest="45" BackgroundColor="Gray" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_Submit_Clicked"/>
                         <Button x:Name="btn_GoHome" Text="Abbrechen" IsEnabled="True" Margin="0,5,0,20" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
                           HeightRequest="45" BackgroundColor="#FF613F" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_GoHome_Clicked"/>

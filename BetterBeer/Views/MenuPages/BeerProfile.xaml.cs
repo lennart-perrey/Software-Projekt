@@ -25,7 +25,7 @@ namespace BetterBeer.MenuPages
 
             Beer beer = scannedBeer;
             beerID = Convert.ToInt32(beer.beerId);
-            lbl_BeerName.Text = beer.beerName;
+            this.Title = beer.beerName;
             img_BeerImage.Source = beer.pic;
             lbl_BeerInfo.Text = beer.info;
 

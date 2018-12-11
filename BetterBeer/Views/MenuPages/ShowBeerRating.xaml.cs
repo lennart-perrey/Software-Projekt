@@ -22,7 +22,7 @@ namespace BetterBeer.Views.MenuPages
 
             //Set CurrentBeer
             beer = currentBeer;
-            lbl_BeerName.Text = beer.beerName;
+            this.Title = beer.beerName;
             img_BeerImage.Source = beer.pic;
 
             //Set Counter
