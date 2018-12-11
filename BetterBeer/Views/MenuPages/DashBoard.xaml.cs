@@ -4,6 +4,8 @@ using BetterBeer.MenuPages;
 using ZXing.Net.Mobile.Forms;
 using System.Collections.Generic;
 using BetterBeer.Objects;
+using BetterBeer.Views.MenuPages;
+using BetterBeer.Views.MenuPages.FriendsPages;
 
 namespace BetterBeer
 {
@@ -57,14 +59,17 @@ namespace BetterBeer
             //FriendRatings
             List<FriendRatingCount> friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
             if(friendRatingCount.Count >0){
-                foreach(FriendRatingCount frc in friendRatingCount){
-                    Friend friend = Database.ShowUser(frc.UserID);
+                //foreach(FriendRatingCount frc in friendRatingCount){
+                for (int i = 0; i < 3; i++)
+                {
+                    Friend friend = Database.ShowUser(friendRatingCount[i].UserID);
                     Label label = new Label
                     {
-                        Text = friend .Name+ ":\t " + frc.RatingCount
+                        Text = friend.Name + ":\t " + friendRatingCount.Count.ToString()
                     };
                     RatingFriendCount.Children.Add(label);
                 }
+
             }
             else{
                 Label label = new Label
@@ -141,6 +146,30 @@ namespace BetterBeer
         private async void Scan_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CustomScanPage(), false);
+        }
+
+        private async void Frame1_Tapped(object sender, EventArgs e)
+        {
+            List<Beer> beer = Database.getBeerByName(bestBierName.Text);
+            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+        }
+
+        private async void Frame2_Tapped(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync(new FriendProfile(Database.GetFriends())
+            await DisplayAlert("Fehler", "Noch nicht besetzt!", "Ok");
+        }
+
+        private async void Frame5_Tapped(object sender, EventArgs e)
+        {
+            List<Beer> beer = Database.getBeerByName(randomName1.Text);
+            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+        }
+
+        private async void Frame6_Tapped(object sender, EventArgs e)
+        {
+            List<Beer> beer = Database.getBeerByName(randomName2.Text);
+            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
         }
 
     }

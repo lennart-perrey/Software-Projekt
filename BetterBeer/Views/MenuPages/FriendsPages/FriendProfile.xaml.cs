@@ -21,5 +21,5 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             lbl_Name.Text = friend.Name;
 
 		}
-	}
+    }
 }
