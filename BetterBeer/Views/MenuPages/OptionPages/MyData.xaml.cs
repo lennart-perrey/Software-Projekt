@@ -25,7 +25,10 @@ namespace BetterBeer.MenuPages
             {
                 userNameLabel.Text = "Admin";
             }
-            
+
+
+            myImage.Source = ImageSource.FromStream(() => new MemoryStream(Database.getImage()));
+
             //get Passsword, Picture, Username and EMail from Database
         }
 

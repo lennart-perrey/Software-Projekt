@@ -17,5 +17,7 @@ namespace BetterBeer
                 return memoryStream.ToArray();
             }
         }
+
+
     }
 }

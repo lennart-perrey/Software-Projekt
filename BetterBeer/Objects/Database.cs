@@ -11,7 +11,7 @@ namespace BetterBeer
 {
     public class Database
     {
-        const string API = "http://spbier.bplaced.net/DBConnect.php";
+        const string API = "http://spbier.bplaced.net/DBConnectTest.php";
         public static int CheckUser(string login, string password)
         {
             string postData = usernameOrEmail(login) + $"&password={password}";
@@ -314,7 +314,8 @@ namespace BetterBeer
 
 
             imgData = Pictures.ImgToByte(img);
-            string postData = $"image={imgData}&UserId={SpecificUser.UserID}";
+            var jSonData = JsonConvert.SerializeObject(imgData);
+            string postData = $"image={jSonData}&UserId={SpecificUser.UserID}";
 
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
@@ -331,33 +332,35 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
 
-        //public void getImage()
-        //{
-        //    string requestString = API + "?action=getImage";
-        //    byte[] imgData;
+        public static byte [] getImage()
+        {
+            string requestString = API + "?action=getImage";
+            
 
-        //    string postData = $"UserId={SpecificUser.UserID}";
+            string postData = $"UserId={SpecificUser.UserID}";
 
-        //    byte[] data = Encoding.UTF8.GetBytes(postData);
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
-        //    WebRequest request = WebRequest.Create(requestString);
-        //    request.Method = "POST";
-        //    request.ContentType = "application/x-www-form-urlencoded";
-        //    request.ContentLength = data.Length;
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
 
-        //    using (var stream = request.GetRequestStream())
-        //    {
-        //        stream.Write(data, 0, data.Length);
-        //    }
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
 
-        //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        //    string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            
 
-        //    if (responseString != "null")
-        //    {
-        //        imgData =(byte[] reader[0])
-        //    }
-        //}
+            var jSonData = JsonConvert.DeserializeObject(responseString);
+            string jSonDataString = jSonData.ToString();
+            byte[] imgData = Convert.FromBase64String(jSonDataString);
+
+            return imgData;
+        }
 
         public static List<Friend> GetFriends()
         {
