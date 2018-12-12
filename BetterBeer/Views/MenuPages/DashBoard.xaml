@@ -2,12 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BetterBeer.DashBoard"
-             BackgroundColor="Gray">
+             BackgroundColor="#DFDFDF">
     
     <ContentPage.Content>
-        <StackLayout x:Name="stlout_Swipe">
-            <StackLayout x:Name="MainStack" VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="Gray">
-                <Grid Margin="10,5,10,10">
+            <StackLayout x:Name="stlout_Swipe">
+                <StackLayout x:Name="MainStack" VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="#DFDFDF">
+                <Grid Margin="5,5,5,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -18,7 +18,6 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-
                     <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" Padding="10,10,5,10"> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Bestes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
@@ -62,14 +61,14 @@
                     
                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" Padding="10">
                     <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Text="Bewertungen" FontAttributes="Bold" TextDecorations="Underline" FontSize="11"></Label>                 
+                        <Label Text="Bewertungen" FontAttributes="Bold" TextDecorations="Underline" FontSize="10"></Label>                 
                          <Label x:Name="RatingLabel" Grid.Row="1" Grid.Column="0" FontSize="Medium"/> 
                     </StackLayout>
                  </Frame>
                     
-                   <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" Padding="5">
+                   <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" Padding="10,10,10,5">
                     <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Text="Bewertungen deiner Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="11"></Label>
+                        <Label Text="Bewertungen deiner Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="10"></Label>
                                 <StackLayout  x:Name="RatingFriendCount" ></StackLayout> 
                     </StackLayout>
                      </Frame>
@@ -101,7 +100,7 @@
                             <RowDefinition Height="77*"/>
                           </Grid.RowDefinitions>
                              <Image x:Name="randomImg2" Grid.Row="1"/>
-                            <Label x:Name="randomName2" Grid.Row="0"/> 
+                             <Label x:Name="randomName2" Grid.Row="0"/>
                         </Grid>
 
                         </StackLayout>
@@ -111,7 +110,6 @@
                     </Frame> 
                 </Grid>
             </StackLayout>
-            
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -160,7 +158,7 @@
 
                 </Grid>
             </StackLayout>
-        </StackLayout>
+         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
 

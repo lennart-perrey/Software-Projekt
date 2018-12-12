@@ -62,15 +62,7 @@ namespace BetterBeer
 
         protected override void OnResume()
         {
-            //Handle when you App resumes
-            RatedBeer.highscores = Database.Highscore();
-            RatedBeer.criterias = Database.ShowCriteria();
-            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
-            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
-            Friend.friends = Database.GetFriends();
+            
         }
     }
 }

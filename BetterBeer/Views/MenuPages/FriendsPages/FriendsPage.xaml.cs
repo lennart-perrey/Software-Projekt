@@ -94,7 +94,7 @@ namespace BetterBeer
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new CustomScanPage());
         }
 
         private async void addFriends(object sender, EventArgs e)

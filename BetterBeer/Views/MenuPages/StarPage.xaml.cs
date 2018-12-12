@@ -211,7 +211,7 @@ namespace BetterBeer.MenuPages
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new CustomScanPage());
         }
 
         private async void onRefresh (object sender, Xamarin.Forms.ItemTappedEventArgs e)

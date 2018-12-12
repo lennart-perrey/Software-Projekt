@@ -32,7 +32,6 @@ namespace BetterBeer
             listener = new SwipeListener(stlout_Swipe, this);
 
             //SpecificUser.UserID = Convert.ToInt32(Xamarin.Forms.Application.Current.Properties["userID"]);
-
             //BestBier
             Beer bestBeer = allBeers[0];
             bestBierImg.Source = bestBeer.pic;
@@ -107,12 +106,12 @@ namespace BetterBeer
 
             //Newest
             Beer newestBeer = allBeers[0];
-            foreach(Beer newBeer in allBeers){
-                if(Convert.ToInt32(newBeer.beerId)> Convert.ToInt32(newestBeer.beerId))
-                {
-                    newestBeer = newBeer;
-                }
-            }
+            //foreach(Beer newBeer in allBeers){
+                //if(Convert.ToInt32(newBeer.beerId)> Convert.ToInt32(newestBeer.beerId))
+               //{
+                //    newestBeer = newBeer;
+                //}
+            //}
             randomImg2.Source = newestBeer.pic;
             randomName2.Text = newestBeer.beerName;
 
@@ -125,19 +124,6 @@ namespace BetterBeer
 
         public void OnButtomSwipe(View view)
         {
-            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
-            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
-
-            //Random
-            Random r = new Random();
-            int number = r.Next(allBeers.Count);
-
-            Beer randomBeer = allBeers[number];
-            randomImg1.Source = randomBeer.pic;
-            randomName1.Text = randomBeer.beerName;
 
         }
 
@@ -159,6 +145,19 @@ namespace BetterBeer
 
         public void OnTopSwipe(View view)
         {
+            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+
+            //Random
+            Random r = new Random();
+            int number = r.Next(allBeers.Count);
+
+            Beer randomBeer = allBeers[number];
+            randomImg1.Source = randomBeer.pic;
+            randomName1.Text = randomBeer.beerName;
 
         }
 
@@ -179,7 +178,7 @@ namespace BetterBeer
 
         private async void Scan_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);
+            await Navigation.PushAsync(new CustomScanPage());
         }
 
         private async void Frame1_Tapped(object sender, EventArgs e)
