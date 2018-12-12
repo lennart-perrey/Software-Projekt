@@ -47,7 +47,8 @@ namespace BetterBeer.MenuPages
                 }
                 var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
                 {
-                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
+                    CompressionQuality = 50
                 });
 
                 Database.uploadImageToDatabase(file);
@@ -69,8 +70,10 @@ namespace BetterBeer.MenuPages
 
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
                     Directory = "Pictures",
-                    Name = "ProfilPic.jpg"
+                    Name = "ProfilPic.jpg",
+                    CompressionQuality = 50
                 });
                 Database.uploadImageToDatabase(file);
 
