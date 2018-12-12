@@ -22,7 +22,6 @@ namespace BetterBeer
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                //MainStack.Margin = new Thickness(0,60,0,0);
                 var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
                 safeInsets.Left = 0;
                 safeInsets.Top = 40;
