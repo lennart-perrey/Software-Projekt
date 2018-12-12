@@ -13,6 +13,7 @@ namespace BetterBeer
     public partial class DashBoard : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        List<Beer> allBeers = RatedBeer.highscores;
 
         public DashBoard()
         {
@@ -30,10 +31,9 @@ namespace BetterBeer
 
             listener = new SwipeListener(stlout_Swipe, this);
 
-            SpecificUser.UserID = Convert.ToInt32(Xamarin.Forms.Application.Current.Properties["userID"]);
+            //SpecificUser.UserID = Convert.ToInt32(Xamarin.Forms.Application.Current.Properties["userID"]);
 
             //BestBier
-            List<Beer> allBeers = Database.Highscore();
             Beer bestBeer = allBeers[0];
             bestBierImg.Source = bestBeer.pic;
             bestBierName.Text = bestBeer.beerName;
@@ -41,47 +41,53 @@ namespace BetterBeer
 
 
             //FriendRating
-            List<FriendRating>friendRatings = Database.showFriendLast(SpecificUser.UserID);
-            if(friendRatings.Count > 0){
+            List<FriendRating> friendRatings = BetterBeer.Objects.DashBoard.friendsRating;
+            if(friendRatings.Count > 0)
+            {
                 FriendRating rating = friendRatings[0];
                 int bierId = rating.BierId;
-                Beer beer=null;
-                foreach (Beer beerdata in allBeers ){
-                    if(Convert.ToInt32(beerdata.beerId) == bierId){
+                Beer beer = null;
+
+                foreach (Beer beerdata in allBeers)
+                {
+                    if(Convert.ToInt32(beerdata.beerId) == bierId)
+                    {
                         beer = beerdata;
                     }
                 }
                 friendRatingBeer.Source = beer.pic;
 
-                Friend friend = Database.ShowUser(rating.UserID);
+                Friend friend = BetterBeer.Objects.DashBoard.friend;
                 friendRatingName.Text = friend.Name + " hat "+beer.beerName+ "  bewertet.";
 
             }
-            
-            else{
+            else
+            {
                 friendRatingName.Text = "Du hast keine Freunde :( ";
             }
 
+
             //Rating
-            int userRatings = Database.countRatings(SpecificUser.UserID);
+            int userRatings = BetterBeer.Objects.DashBoard.count;
             RatingLabel.Text = "Du hast " + userRatings + " Biere bewertet.";
 
+
             //FriendRatings
-            List<FriendRatingCount> friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-            if(friendRatingCount.Count >0){
-                //foreach(FriendRatingCount frc in friendRatingCount){
-                for (int i = 0; i < 3; i++)
+            List<FriendRatingCount> friendRatingCount = BetterBeer.Objects.DashBoard.friendRatingCount;
+            if(friendRatingCount.Count >0)
+            {
+               List<Friend> friendsRatingList = BetterBeer.Objects.DashBoard.friendsRatingList;
+               for(int i = 0; i < 3; i++)
                 {
-                    Friend friend = Database.ShowUser(friendRatingCount[i].UserID);
                     Label label = new Label
                     {
-                        Text = friend.Name + ":\t " + friendRatingCount[i].RatingCount
+                        Text = friendsRatingList[i].Name + ":\t " + friendRatingCount[i].RatingCount
                     };
                     RatingFriendCount.Children.Add(label);
                 }
-
             }
-            else{
+            else
+            {
                 Label label = new Label
                 {
                     Text = "Los füge schnell welche hinzu."
@@ -97,6 +103,7 @@ namespace BetterBeer
             Beer randomBeer = allBeers[number];
             randomImg1.Source = randomBeer.pic;
             randomName1.Text = randomBeer.beerName;
+
 
             //Newest
             Beer newestBeer = allBeers[0];
@@ -116,6 +123,23 @@ namespace BetterBeer
             throw new NotImplementedException();
         }
 
+        public void OnButtomSwipe(View view)
+        {
+            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+
+            //Random
+            Random r = new Random();
+            int number = r.Next(allBeers.Count);
+
+            Beer randomBeer = allBeers[number];
+            randomImg1.Source = randomBeer.pic;
+            randomName1.Text = randomBeer.beerName;
+
+        }
 
         public async void OnLeftSwipe(View view)
         {

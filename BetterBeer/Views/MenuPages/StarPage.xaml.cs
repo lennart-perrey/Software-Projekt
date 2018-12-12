@@ -7,6 +7,7 @@ using BetterBeer.Objects;
 using System.Data;
 using BetterBeer.Views.MenuPages;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using System.Windows.Input;
 
 namespace BetterBeer.MenuPages
 {
@@ -14,11 +15,10 @@ namespace BetterBeer.MenuPages
     public partial class StarPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
-        List<Criteria> kriterien = Database.ShowCriteria();
+        //List<Criteria> kriterien = Database.ShowCriteria();
         IDictionary<string, int> criticsDict = new Dictionary<string, int>();
         public Beer SelectedBeer { get; set; }
         List<String> kriterienString;
-
 
         public StarPage()
         {
@@ -26,7 +26,6 @@ namespace BetterBeer.MenuPages
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                //MainStack.Margin = new Thickness(0,60,0,0);
                 var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
                 safeInsets.Left = 0;
                 safeInsets.Top = 50;
@@ -37,22 +36,18 @@ namespace BetterBeer.MenuPages
                 btn_Filter.FontSize = 12;
                 lbl_Biername.FontSize = 12;
                 lbl_Rating.FontSize = 12;
+                searchBar.WidthRequest = 250;
 
             }
 
             listener = new SwipeListener(stlout_Swipe, this);
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                searchBar.WidthRequest = 250;
-            }
-
             picker_Criteria.IsVisible = false;
 
             kriterienString = new List<string>();
 
-            foreach (Criteria crit in kriterien)
+            foreach (Criteria crit in RatedBeer.criterias)
             {
                 if (crit.Deleted_On == null)
                 {
@@ -66,9 +61,8 @@ namespace BetterBeer.MenuPages
 
         /// Erstellt die Ausgabe der Topliste
         private void setHighscore()
-        {
-            List<Beer> highscores = Database.Highscore();
-            lv_highscoreBeer.ItemsSource = highscores;
+        { 
+            lv_highscoreBeer.ItemsSource = RatedBeer.highscores;
         }
 
         /* Suchleistung Änderungen
@@ -220,5 +214,20 @@ namespace BetterBeer.MenuPages
             await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
+        private async void onRefresh (object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            
+            try
+            {
+                lv_highscoreBeer.IsRefreshing = true;
+                lv_highscoreBeer.ItemsSource = Database.Highscore();
+                lv_highscoreBeer.IsRefreshing = false;
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+                lv_highscoreBeer.IsRefreshing = false;
+            }
+        }
     }
 }

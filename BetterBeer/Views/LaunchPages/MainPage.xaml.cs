@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using BetterBeer.Objects;
 using Xamarin.Forms;
 
 namespace BetterBeer
@@ -17,6 +17,8 @@ namespace BetterBeer
 
         private async void btn_login_clicked(object sender, EventArgs e)
         {
+            act_Indicator.IsVisible = true;
+            act_Indicator.IsRunning = true;
             try
             {
                 string email = entry_email.Text;
@@ -29,11 +31,27 @@ namespace BetterBeer
                 {
                     Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
                     Application.Current.Properties["userID"] = userID;
+
+                    //Set UserID
                     SpecificUser.UserID = userID;
+
+                    //Set Initial Database-Requests
+                    RatedBeer.highscores = Database.Highscore();
+                    RatedBeer.criterias = Database.ShowCriteria();
+                    Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+                    BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+                    Friend.friends = Database.GetFriends();
+
+                    //Push DashBoard
                     await Navigation.PushAsync(new DashBoard());
                 }
                 else
                 {
+                    act_Indicator.IsVisible = false;
+                    act_Indicator.IsRunning = false;
                     await DisplayAlert("Fehlgeschlagen", "Anmelden fehlgeschlagen", "Mist");
                     entry_email.Text = "";
                     entry_password.Text = "";
@@ -41,6 +59,8 @@ namespace BetterBeer
             }
             catch(Exception)
             {
+                act_Indicator.IsVisible = false;
+                act_Indicator.IsRunning = false;
                 await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen.", "Ok");
             }
 

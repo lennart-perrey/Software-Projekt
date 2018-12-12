@@ -25,5 +25,7 @@ namespace BetterBeer.Objects
             EMail = email;
             Image = "http://spbier.bplaced.net/images/userIcon.png";
         }
+
+        public static List<Friend> friends;
     }
 }

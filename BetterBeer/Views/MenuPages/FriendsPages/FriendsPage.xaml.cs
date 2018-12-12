@@ -39,7 +39,7 @@ namespace BetterBeer
                 searchBar.WidthRequest = 250;
             }
 
-            friends = Database.GetFriends();
+            friends = Friend.friends;
             lv_FriendsList.ItemsSource = friends;
 
         }
@@ -47,19 +47,19 @@ namespace BetterBeer
 
         private async void searchBar_TextChanged(object sender, EventArgs e)
         {
-                   
+
         }
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-     
-            Friend friend  =(Friend) lv_FriendsList.SelectedItem;
+
+            Friend friend = (Friend)lv_FriendsList.SelectedItem;
             await Navigation.PushAsync(new FriendProfile(friend));
         }
 
         public async void OnLeftSwipe(View view)
         {
-            await Navigation.PushAsync(new CustomScanPage(), false);   
+            await Navigation.PushAsync(new CustomScanPage(), false);
         }
 
         public async void OnNothingSwipe(View view)
@@ -69,7 +69,7 @@ namespace BetterBeer
 
         public async void OnRightSwipe(View view)
         {
-            await Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(), false);
         }
 
         public async void OnTopSwipe(View view)
@@ -79,17 +79,17 @@ namespace BetterBeer
 
         private async void Options_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OptionsPage(),false);
+            await Navigation.PushAsync(new OptionsPage(), false);
         }
 
         private async void Home_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DashBoard(),false);
+            await Navigation.PushAsync(new DashBoard(), false);
         }
 
         private async void Ranking_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new StarPage(),false);
+            await Navigation.PushAsync(new StarPage(), false);
         }
 
         private async void Scan_Tapped(object sender, EventArgs e)
@@ -103,5 +103,21 @@ namespace BetterBeer
             await Navigation.PushAsync(new AddFriendPage(), false);
         }
 
+        private async void onRefresh(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+
+            try
+            {
+                lv_FriendsList.IsRefreshing = true;
+                lv_FriendsList.ItemsSource = Database.GetFriends();
+                lv_FriendsList.IsRefreshing = false;
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, da ist etwas schief gegangen, bitte probieren Sie es erneut.", "Ok");
+                lv_FriendsList.IsRefreshing = false;
+            }
+
+        }
     }
 }

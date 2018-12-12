@@ -4,7 +4,7 @@
              x:Class="BetterBeer.Views.MenuPages.OptionPages.Impressum"
              Title="Impressum">
     <ContentPage.Content>
-        <Grid>
+        <Grid Margin="10,10,10,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

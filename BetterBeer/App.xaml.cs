@@ -1,4 +1,5 @@
 ﻿using System;
+using BetterBeer.Objects;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,7 +21,17 @@ namespace BetterBeer
             }
             else
             {
-                //Load if Logged In
+                //Load if logged in
+                SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
+                RatedBeer.highscores = Database.Highscore();
+                RatedBeer.criterias = Database.ShowCriteria();
+                Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+                BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+                Friend.friends = Database.GetFriends();
+
                 MainPage = new NavigationPage(new DashBoard());
             }
 
@@ -28,8 +39,20 @@ namespace BetterBeer
 
         protected override void OnStart()
         {
-            // Handle when your app starts
             SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
+            RatedBeer.highscores = Database.Highscore();
+            RatedBeer.criterias = Database.ShowCriteria();
+            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+            Friend.friends = Database.GetFriends();
+
+            MainPage = new NavigationPage(new DashBoard());
+
+            // Handle when your app starts
+
         }
 
         protected override void OnSleep()
@@ -39,7 +62,15 @@ namespace BetterBeer
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            //Handle when you App resumes
+            RatedBeer.highscores = Database.Highscore();
+            RatedBeer.criterias = Database.ShowCriteria();
+            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+            Friend.friends = Database.GetFriends();
         }
     }
 }

@@ -41,7 +41,8 @@
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                             
                 </Grid>
-                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true">
+                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true" IsPullToRefreshEnabled="true"
+                          Refreshing="onRefresh">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell> 
