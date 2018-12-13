@@ -51,7 +51,7 @@
                                 <RowDefinition Height="77*"/>
                              </Grid.RowDefinitions>
                             <Image x:Name="friendRatingBeer" Grid.Row="1"/>
-                            <Label x:Name="friendRatingName" Grid.Row="0" FontSize="Medium" MaxLines="3" /> 
+                            <Label x:Name="friendRatingName" Grid.Row="0" FontSize="Small" MaxLines="3" /> 
                         </Grid>    
                     </StackLayout>
                         <Frame.GestureRecognizers>
