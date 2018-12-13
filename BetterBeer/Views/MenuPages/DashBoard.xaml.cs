@@ -27,6 +27,14 @@ namespace BetterBeer
                 safeInsets.Top = 40;
                 this.Padding = safeInsets;
             }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                bestBierName.FontSize = 14;
+                friendRatingName.FontSize = 14;
+                RatingLabel.FontSize = 14;
+                randomName1.FontSize = 14;
+                randomName2.FontSize = 14;
+            }
 
             listener = new SwipeListener(stlout_Swipe, this);
 
@@ -42,7 +50,7 @@ namespace BetterBeer
             List<FriendRating> friendRatings = BetterBeer.Objects.DashBoard.friendsRating;
             if(friendRatings.Count > 0)
             {
-                FriendRating rating = friendRatings[0];
+                FriendRating rating = friendRatings[friendRatings.Count -1];
                 int bierId = rating.BierId;
                 Beer beer = null;
 
@@ -90,6 +98,10 @@ namespace BetterBeer
                 {
                     Text = "Los füge schnell welche hinzu."
                 };
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    label.FontSize = 16;
+                }
                 RatingFriendCount.Children.Add(label);
             }
 
