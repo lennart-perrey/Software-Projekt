@@ -19,11 +19,13 @@ namespace BetterBeer.Objects
         [JsonProperty("RangID")]
         public int Rang { get; set; }
         
-        public Friend(  string name, string email, string image)
+        public Friend(string name, string email, string image)
         {
             Name = name;
             EMail = email;
             Image = "http://spbier.bplaced.net/images/userIcon.png";
         }
+
+        public static List<Friend> friends;
     }
 }

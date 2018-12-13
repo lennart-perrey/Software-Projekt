@@ -31,6 +31,8 @@
                 <Image Source="Logo_horizontal_SEPA" HeightRequest="120" HorizontalOptions="Center" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Margin="20,-20,20,0" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                <ActivityIndicator x:Name="act_Indicator" Color="Black" IsRunning="true" HeightRequest="50" WidthRequest="50"
+                                   HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="true" IsVisible="true"/>
                 <Grid BackgroundColor="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
@@ -54,7 +56,7 @@
                     Clicked="btn_login_clicked" BackgroundColor="Gray"
                     TextColor="White" FontAttributes="Bold" FontSize="18"/>
                     
-                    <Label Grid.Row="3" x:Name="lbl_forgotPassword" Text="Passwort vergessen?" 
+                    <Label IsVisible="false" x:Name="lbl_forgotPassword" Text="Passwort vergessen?" 
                    HorizontalOptions="Center"
                    TextColor="Gray" FontSize="13" FontAttributes="Italic"
                    Margin="0,20,0,10">
@@ -62,7 +64,9 @@
                             <TapGestureRecognizer Tapped="lbl_forgotPassword_Tapped"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Grid Grid.Row="4">
+                    
+                    
+                    <Grid Grid.Row="4" IsVisible="false">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
@@ -75,7 +79,7 @@
                         <Label Grid.Column="2" BackgroundColor="Gray" HeightRequest="1" 
                         HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                     </Grid>
-                    <Grid Grid.Row="5">
+                    <Grid Grid.Row="5" IsVisible="false">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="Auto"/>
@@ -89,11 +93,11 @@
                     </Grid>
                 </Grid>
             </StackLayout>
-            <StackLayout Margin="20,0,20,30" Orientation="Vertical" VerticalOptions="End">
+            <StackLayout Margin="20,0,20,40" Orientation="Vertical" VerticalOptions="End">
                 <Label BackgroundColor="Gray" HeightRequest="1" 
                            HorizontalOptions="Fill" VerticalOptions="Center"/>
                 <Label x:Name="lbl_createAcc" Text="Account erstellen" TextColor="#FFCD33" 
-                           FontSize="Default" HorizontalOptions="CenterAndExpand" 
+                           FontSize="Large" HorizontalOptions="CenterAndExpand" 
                            VerticalOptions="CenterAndExpand">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="lbl_createAcc_Tapped"/>

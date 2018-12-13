@@ -41,12 +41,13 @@
                                HorizontalOptions="Fill" VerticalOptions="Center"/>
                             
                 </Grid>
-                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true">
+                <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true" IsPullToRefreshEnabled="true"
+                          Refreshing="onRefresh">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell> 
                                 <ViewCell.View>
-                                    <StackLayout HeightRequest="60" Spacing="8" Orientation="Horizontal" Margin="5,0,5,0"
+                                    <StackLayout Spacing="8" Orientation="Horizontal" Margin="5,0,5,0"
                                                  HorizontalOptions="Fill">
                                         
                                                 <Image Source="{Binding pic}" HeightRequest="60" WidthRequest="60"
@@ -55,10 +56,10 @@
                                                 <Label Text="{Binding beerName}" TextColor="Black" FontSize="Medium"
                                                        HorizontalTextAlignment="Start" VerticalOptions="Center"
                                                        HorizontalOptions="FillAndExpand"/>
-                                                       
+
                                                 <Label Text="{Binding avgRating}" TextColor="#FFD657" FontSize="Large"
                                                        FontAttributes="Bold" HorizontalTextAlignment="End" 
-                                                       VerticalOptions="Center" Margin="0,0,10,0" WidthRequest="50"/>
+                                                       VerticalOptions="Center" Margin="0,0,10,0" WidthRequest="65"/>
                                         
                                     </StackLayout>
                                 </ViewCell.View>
