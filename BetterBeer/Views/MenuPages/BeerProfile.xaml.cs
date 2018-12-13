@@ -73,17 +73,25 @@ namespace BetterBeer.MenuPages
             rating.Add(Convert.ToInt32(pickAttr4.Value));
             rating.Add(Convert.ToInt32(pickAttr5.Value));
 
-
-            bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating,crits);
-
-            if (!check)
+            try
             {
-                DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
+                bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating, crits);
+
+                if (!check)
+                {
+                    DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
+                }
+                else
+                {
+                    DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
+                    Navigation.PushAsync(new DashBoard());
+                }
+
             }
-            else
+            catch
             {
-                DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
-                Navigation.PushAsync(new DashBoard());
+                DisplayAlert("Ne meister", "Du hast dieses Bier beweits bewerter", "Okay");
+                Navigation.PushAsync(new StarPage());
             }
         }
         private void btn_GoHome_Clicked(object sender, EventArgs e)
