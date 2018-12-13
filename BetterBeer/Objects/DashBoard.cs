@@ -14,19 +14,27 @@ namespace BetterBeer.Objects
 
         public static Friend getFriends()
         {
-            FriendRating rating = friendsRating[0];
-            friend = Database.ShowUser(rating.UserID);
+            if(friendsRating.Count > 0)
+            {
+                FriendRating rating = friendsRating[0];
+                friend = Database.ShowUser(rating.UserID);
+            }
+
             return friend;
         }
 
         public static List<Friend> getFriendsRating()
         {
             List<Friend> tempFriends = new List<Friend>();
-            for (int i = 0; i < 3; i++)
+            if(friendRatingCount.Count > 0)
             {
-                Friend tempFriend= Database.ShowUser(friendRatingCount[i].UserID);
-                tempFriends.Add(tempFriend);
+                for (int i = 0; i < 3; i++)
+                {
+                    Friend tempFriend = Database.ShowUser(friendRatingCount[i].UserID);
+                    tempFriends.Add(tempFriend);
+                }
             }
+
             return tempFriends;
         }
     }
