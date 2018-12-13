@@ -520,5 +520,16 @@ namespace BetterBeer
             return friends;
         }
 
+        public static bool CheckFriendship(int friendID)
+        {
+            string postdata = $"userID={SpecificUser.UserID}&friendID={friendID}";
+            string id = apiCall("checkFriendship", postdata);
+            if (id == "0" || id == "")
+            {
+                return false;   
+            }
+            return true;
+        }
+
     }
 }

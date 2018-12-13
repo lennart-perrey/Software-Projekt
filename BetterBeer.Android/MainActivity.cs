@@ -35,5 +35,6 @@ namespace BetterBeer.Droid
             global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
         }
+    
     }
 }

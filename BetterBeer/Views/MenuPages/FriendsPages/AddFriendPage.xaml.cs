@@ -62,15 +62,23 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
                 {
                     if (friend.Name == SelectedFriend.Name)
                     {
-                        Database.CreateFriendship(SelectedFriend.UserID);
-                        
-                        if (DisplayAlert("Möchtest du " + friend.Name + "zu deinem Beer Buddy ernennen?", "Prost!", "Nein").IsCanceled)
+                        if (Database.CheckFriendship(friend.UserID))
                         {
-                            lv_FriendsList.ItemsSource = null;
+                            await DisplayAlert("Freundschaft schon vorhanden!", "Du bist bereits mit diesem Buddy Befreundet", "Okay!");
+                            lv_FriendsList.SelectedItem = null;
                         }
                         else
                         {
-                            await Navigation.PushAsync(new FriendsPage());
+                            bool answer = await DisplayAlert("Freundschaft ", "Möchtest du " + friend.Name + "zu deinem Beer Buddy ernennen?", "Prost!", "Nein");
+                            if (answer)
+                            {
+                                Database.CreateFriendship(SelectedFriend.UserID);
+                                await Navigation.PushAsync(new FriendsPage());
+                            }
+                            else
+                            {
+                                lv_FriendsList.ItemsSource = null;
+                            }
                         }
                         break;
                     }

@@ -27,6 +27,8 @@ namespace BetterBeer.MenuPages
                     await DisplayAlert("Achtung", result.Text, "Ok");
                 });
             };
+
+            
         }
     }
 }
