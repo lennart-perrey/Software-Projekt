@@ -15,6 +15,13 @@ namespace BetterBeer.MenuPages
         {
             InitializeComponent();
 
+            if(Device.RuntimePlatform == Device.Android)
+            {
+                NavigationPage.SetHasBackButton(this, false);
+            }
+
+
+
             zxing = new ZXingScannerView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -79,5 +86,13 @@ namespace BetterBeer.MenuPages
 
             base.OnDisappearing();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Navigation.PushModalAsync(new DashBoard(), false);
+
+            return true;
+        }
+
     }
 }

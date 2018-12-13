@@ -6,8 +6,9 @@
 
 
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+       
             <StackLayout Margin="20,0,20,0">
+            <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" 
                      VerticalOptions="Start">
                     <Grid Margin="0,20,0,0">
@@ -70,7 +71,8 @@
                                 TextColor="White" FontAttributes="Bold" FontSize="18"/>
                     </Grid>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
