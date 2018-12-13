@@ -104,7 +104,7 @@ namespace BetterBeer
 
 
             //Newest
-            Beer newestBeer = allBeers[0];
+            Beer newestBeer = allBeers[allBeers.Count -1];
             //foreach(Beer newBeer in allBeers){
                 //if(Convert.ToInt32(newBeer.beerId)> Convert.ToInt32(newestBeer.beerId))
                //{
