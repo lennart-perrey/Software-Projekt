@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 using BetterBeer.MenuPages;
 using ZXing.Net.Mobile.Forms;
@@ -79,11 +79,18 @@ namespace BetterBeer
 
 
             //FriendRatings
+<<<<<<< HEAD
             List<FriendRatingCount> friendRatingCount = BetterBeer.Objects.DashBoard.friendRatingCount;
             if(friendRatingCount.Count >0)
             {
                List<Friend> friendsRatingList = BetterBeer.Objects.DashBoard.friendsRatingList;
                for(int i = 0; i < 3; i++)
+=======
+            List<FriendRatingCount> friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+            if(friendRatingCount.Count >0){
+                //foreach(FriendRatingCount frc in friendRatingCount){
+                for (int i = 0; i < friendRatingCount.Count && i <3; i++)
+>>>>>>> ad7afb7... Bugfix, nun können auch Leute mit weniger als 3 Freunden, aber mehr als 1 Freund unsere App nutzen.
                 {
                     Label label = new Label
                     {
