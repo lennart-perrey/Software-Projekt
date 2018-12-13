@@ -26,13 +26,33 @@ namespace BetterBeer.Objects
         public static List<Friend> getFriendsRating()
         {
             List<Friend> tempFriends = new List<Friend>();
-            if(friendRatingCount.Count > 0)
+            if(friendRatingCount.Count == 1)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    Friend tempFriend = Database.ShowUser(friendRatingCount[i].UserID);
+                    tempFriends.Add(tempFriend);
+                }
+            }
+            else if (friendRatingCount.Count == 2)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Friend tempFriend = Database.ShowUser(friendRatingCount[i].UserID);
+                    tempFriends.Add(tempFriend);
+                }
+            }
+            else if (friendRatingCount.Count > 2)
             {
                 for (int i = 0; i < 3; i++)
                 {
                     Friend tempFriend = Database.ShowUser(friendRatingCount[i].UserID);
                     tempFriends.Add(tempFriend);
                 }
+            }
+            else
+            {
+                return tempFriends;
             }
 
             return tempFriends;

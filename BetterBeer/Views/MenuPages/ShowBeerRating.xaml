@@ -12,7 +12,7 @@
                             <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg" HeightRequest="235" WidthRequest="235"></Image>             
                         <Grid Margin="0,-90,0,0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
 
@@ -35,9 +35,9 @@
                                 <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
 
-                            <Frame x:Name="frame_attr1" Grid.Row="0" BorderColor="Black" Padding="10"  HasShadow="true" 
+                            <Frame x:Name="frame_attr1" Grid.Row="0" BorderColor="Black" Padding="5"  HasShadow="true" 
                                    BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50*"/>
@@ -54,9 +54,9 @@
                                 </StackLayout> 
                             </Frame>
 
-                            <Frame x:Name="frame_attr2" Grid.Row="1" BorderColor="Black" Padding="10"  HasShadow="true" 
+                            <Frame x:Name="frame_attr2" Grid.Row="1" BorderColor="Black" Padding="5"  HasShadow="true" 
                                    BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -73,9 +73,9 @@
                                 </StackLayout> 
                             </Frame>
                             
-                            <Frame x:Name="frame_attr3" Grid.Row="2" BorderColor="Black" Padding="10"  HasShadow="true" 
+                            <Frame x:Name="frame_attr3" Grid.Row="2" BorderColor="Black" Padding="5"  HasShadow="true" 
                                    BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -92,9 +92,9 @@
                                 </StackLayout> 
                             </Frame>
                             
-                            <Frame x:Name="frame_attr4" Grid.Row="3" BorderColor="Black" Padding="10"  HasShadow="true" 
+                            <Frame x:Name="frame_attr4" Grid.Row="3" BorderColor="Black" Padding="5"  HasShadow="true" 
                                    BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -111,9 +111,9 @@
                                 </StackLayout> 
                             </Frame>
                             
-                            <Frame x:Name="frame_attr5" Grid.Row="4" BorderColor="Black" Padding="10"  HasShadow="true" 
+                            <Frame x:Name="frame_attr5" Grid.Row="4" BorderColor="Black" Padding="5"  HasShadow="true" 
                                    BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>

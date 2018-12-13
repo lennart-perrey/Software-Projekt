@@ -33,9 +33,10 @@ namespace BetterBeer.MenuPages
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
-                btn_Filter.FontSize = 12;
-                lbl_Biername.FontSize = 12;
-                lbl_Rating.FontSize = 12;
+                btn_Filter.FontSize = 14;
+                lbl_Biername.FontSize = 16;
+                lbl_Rating.FontSize = 16;
+                
                 searchBar.WidthRequest = 250;
 
             }

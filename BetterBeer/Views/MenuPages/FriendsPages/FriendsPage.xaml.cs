@@ -29,6 +29,10 @@ namespace BetterBeer
                 safeInsets.Top = 40;
                 this.Padding = safeInsets;
             }
+            else if(Device.RuntimePlatform == Device.Android)
+            {
+                searchBar.WidthRequest = 250;
+            }
 
 
             listener = new SwipeListener(stlout_Swipe, this);
