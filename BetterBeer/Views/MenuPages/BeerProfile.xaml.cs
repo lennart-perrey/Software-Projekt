@@ -90,7 +90,7 @@ namespace BetterBeer.MenuPages
             }
             catch
             {
-                DisplayAlert("Halt!", "Du hast dieses Bier beweits bewerter", "Okay");
+                DisplayAlert("Halt!", "Du hast dieses Bier beweits bewertet", "Okay");
                 Navigation.PushAsync(new StarPage());
             }
         }
