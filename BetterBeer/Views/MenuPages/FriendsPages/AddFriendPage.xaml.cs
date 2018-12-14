@@ -69,12 +69,13 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
                         }
                         else
                         {
-                            bool answer = await DisplayAlert("Freundschaft ", "Möchtest du " + friend.Name + "zu deinem Beer Buddy ernennen?", "Prost!", "Nein");
+                            bool answer = await DisplayAlert("Freundschaft ", "Möchtest du " + friend.Name + " zu deinem Beer Buddy ernennen?", "Prost!", "Nein");
                             if (answer)
                             {
                                 Database.CreateFriendship(SelectedFriend.UserID);
-                                await Navigation.PushAsync(new FriendsPage());
                                 BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                                await Navigation.PushAsync(new FriendsPage());
+
                             }
                             else
                             {

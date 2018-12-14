@@ -39,7 +39,6 @@ namespace BetterBeer
 
         protected override void OnStart()
         {
-            SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
             RatedBeer.highscores = Database.Highscore();
             RatedBeer.criterias = Database.ShowCriteria();
             Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
