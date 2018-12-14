@@ -112,8 +112,9 @@ namespace BetterBeer
 
             try
             {
+                Friend.friends = Database.GetFriends();
                 lv_FriendsList.IsRefreshing = true;
-                lv_FriendsList.ItemsSource = Database.GetFriends();
+                lv_FriendsList.ItemsSource = Friend.friends;
                 lv_FriendsList.IsRefreshing = false;
             }
             catch (Exception)
