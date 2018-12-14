@@ -116,13 +116,13 @@ namespace BetterBeer
 
 
             //Newest
-            Beer newestBeer = allBeers[allBeers.Count -1];
-            //foreach(Beer newBeer in allBeers){
-                //if(Convert.ToInt32(newBeer.beerId)> Convert.ToInt32(newestBeer.beerId))
-               //{
-                //    newestBeer = newBeer;
-                //}
-            //}
+            Beer newestBeer = allBeers[0];
+            foreach(Beer newBeer in allBeers){
+                if(Convert.ToInt32(newBeer.beerId)> Convert.ToInt32(newestBeer.beerId))
+               {
+                    newestBeer = newBeer;
+                }
+            }
             randomImg2.Source = newestBeer.pic;
             randomName2.Text = newestBeer.beerName;
 
