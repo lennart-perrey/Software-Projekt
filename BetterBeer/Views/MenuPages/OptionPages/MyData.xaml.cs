@@ -25,11 +25,19 @@ namespace BetterBeer.MenuPages
             {
                 userNameLabel.Text = "Admin";
             }
+            load();
 
-
-            myImage.Source = ImageSource.FromStream(() => new MemoryStream(Database.getImage()));
-
+            
             //get Passsword, Picture, Username and EMail from Database
+        }
+
+        private void load()
+        {
+            
+            Database.getImage();
+            myImage.Source = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ProfilPic.jpeg");
+
+
         }
 
         private async void myImage_Tapped(object sender, EventArgs e)

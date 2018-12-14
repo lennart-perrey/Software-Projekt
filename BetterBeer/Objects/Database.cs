@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Plugin.Media.Abstractions;
 using BetterBeer.Objects;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace BetterBeer
 {
@@ -19,8 +22,8 @@ namespace BetterBeer
 
             if (responseString > 0)
             {
-                
-               
+
+
                 return responseString;
             }
             else
@@ -310,10 +313,12 @@ namespace BetterBeer
         {
 
             string requestString = API + "?action=uploadImage";
-            byte[] imgData;
+            var imgData = Pictures.ImgToByte(img);
+
+            //byte[] imgData;
 
 
-            imgData = Pictures.ImgToByte(img);
+            //imgData = Pictures.ImgToByte(img);
             var jSonData = JsonConvert.SerializeObject(imgData);
             string postData = $"image={jSonData}&UserId={SpecificUser.UserID}";
 
@@ -332,34 +337,68 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
 
-        public static byte [] getImage()
+        public static void getImage()
         {
-            string requestString = API + "?action=getImage";
-            
-
-            string postData = $"UserId={SpecificUser.UserID}";
-
-            byte[] data = Encoding.UTF8.GetBytes(postData);
-
-            WebRequest request = WebRequest.Create(requestString);
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = data.Length;
-
-            using (var stream = request.GetRequestStream())
+            try
             {
-                stream.Write(data, 0, data.Length);
+
+                string requestString = API + "?action=getImage";
+                //var userid = new StringContent(JsonConvert.SerializeObject(SpecificUser.UserID), Encoding.UTF8, "application/json");
+                //using (var client = new HttpClient())
+                //{
+                //    client.BaseAddress = new Uri(requestString);
+
+                //    client.DefaultRequestHeaders.Accept.Clear();
+                //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //    //HttpResponseMessage response = await client.GetAsync(_apiUrl);
+                //    var response = client.PostAsync(requestString, userid);
+                //    if (response.IsSuccessStatusCode)
+                //    {
+                //        var data = await response.Content.ReadAsAsync<ExpandoObject>();
+                //        return Json(data);
+                //    }
+
+                //}
+
+                string postData = $"UserId={SpecificUser.UserID}";
+
+                byte[] data = Encoding.UTF8.GetBytes(postData);
+
+                WebRequest request = WebRequest.Create(requestString);
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+
+                using (var stream = request.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                //string jsonString = JsonConvert.DeserializeObject<string>(responseString);
+                //string cuttedResponse = responseString.Substring(11,responseString.Length -2);
+
+                //string jSonDataString = jSonData.ToString();
+                //string jSonDataStringN = jSonDataString.Substring(5);
+
+
+                byte[] bytes = Encoding.UTF8.GetBytes(responseString);
+                //var bytes = Convert.FromBase64String(data1);
+                //byte[] imgData = Encoding.UTF8.GetBytes(jSonDataStringN);
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ProfilPic.jpeg");
+                using (var imageFile = new FileStream(path, FileMode.Create))
+                {
+                    imageFile.Write(bytes, 0, bytes.Length);
+                    imageFile.Flush();
+                }
+            }
+            catch (Exception e)
+            {
+                string a = e.Message;
             }
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            
-
-            var jSonData = JsonConvert.DeserializeObject(responseString);
-            string jSonDataString = jSonData.ToString();
-            byte[] imgData = Convert.FromBase64String(jSonDataString);
-
-            return imgData;
         }
 
         public static List<Friend> GetFriends()
@@ -412,7 +451,7 @@ namespace BetterBeer
 
             return null;
         }
-        
+
         public static List<Friend> ShowUser(string username)
         {
             string requestString = API + "?action=showUser";
@@ -438,8 +477,9 @@ namespace BetterBeer
             return friends;
         }
 
-        public static Friend ShowUser(int userId){
-            string result = apiCall("showUser","userId="+userId);
+        public static Friend ShowUser(int userId)
+        {
+            string result = apiCall("showUser", "userId=" + userId);
             List<Friend> friends = JsonConvert.DeserializeObject<List<Friend>>(result);
             if (friends.Count == 0)
                 return null;
@@ -460,12 +500,12 @@ namespace BetterBeer
         }
 
 
-        public static bool CreateRating(int beerID, int userID, List<int> rating,List<Criteria> criterias)
+        public static bool CreateRating(int beerID, int userID, List<int> rating, List<Criteria> criterias)
         {
             string postData = $"beerId={beerID}&userId={userID}";
             int ratingID = int.Parse(apiCall("createRating", postData));
 
-           
+
             if (ratingID > 0)
             {
                 int i = 0;
@@ -496,9 +536,10 @@ namespace BetterBeer
         }
 
 
-        public static List<FriendRating> showFriendLast(int userId){
+        public static List<FriendRating> showFriendLast(int userId)
+        {
             string result = apiCall("showLastFriendRatings", "userId=" + userId);
-            List <FriendRating> friendRatings = JsonConvert.DeserializeObject<List<FriendRating>>(result);
+            List<FriendRating> friendRatings = JsonConvert.DeserializeObject<List<FriendRating>>(result);
             return friendRatings;
         }
 
