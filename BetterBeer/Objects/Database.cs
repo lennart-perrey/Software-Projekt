@@ -531,5 +531,20 @@ namespace BetterBeer
             return true;
         }
 
+        public static bool CancelFriendship(int friendID)
+        {
+            string postdata = $"userID={SpecificUser.UserID}&friendID={friendID}";
+            string response = apiCall("CancelFriendship", postdata);
+
+            if (response == "1")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

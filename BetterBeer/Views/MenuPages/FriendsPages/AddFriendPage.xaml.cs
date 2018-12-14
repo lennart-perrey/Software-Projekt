@@ -74,6 +74,7 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
                             {
                                 Database.CreateFriendship(SelectedFriend.UserID);
                                 await Navigation.PushAsync(new FriendsPage());
+                                BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
                             }
                             else
                             {

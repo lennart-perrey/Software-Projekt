@@ -21,7 +21,6 @@ namespace BetterBeer
 
             List<string> itemsGeneral = new List<string>();
             itemsGeneral.Add("Meine Daten");
-            itemsGeneral.Add("Einstellungen");
 
             List<string> itemsSystem = new List<string>();
             itemsSystem.Add("Impressum");
@@ -36,10 +35,6 @@ namespace BetterBeer
             if (ListViewGeneral.SelectedItem.ToString() == "Meine Daten")
             {
                await Navigation.PushAsync(new MyData());
-            }
-            else if (ListViewGeneral.SelectedItem.ToString() == "Einstellungen")
-            {
-                await Navigation.PushAsync(new Options());
             }
         }
 
