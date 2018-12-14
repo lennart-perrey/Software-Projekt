@@ -89,7 +89,7 @@ namespace BetterBeer.MenuPages
 
         protected override bool OnBackButtonPressed()
         {
-            Navigation.PushModalAsync(new DashBoard(), false);
+            Navigation.PushModalAsync(new NavigationPage(new DashBoard()));
 
             return true;
         }
