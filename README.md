@@ -28,9 +28,9 @@ Die Applikation wird nun auf ihrem Gerät bereitgestellt und sie können sie in 
 ### Quickstart IOS
 
 ### Impressum Angaben gemäß § 5 TMG
-Hochschule Flensburg
-Kanzleistraße 91-93 24943 Flensburg
-E-Mail: betterbeer@web.de
-Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+Hochschule Flensburg<br>
+Kanzleistraße 91-93 24943 Flensburg<br>
+E-Mail: betterbeer@web.de<br>
+Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.<br>
 Vertreten durch: Johannes Peretzke, Leon Kowalewski, Marc Haß, Marcel Böckmann, Lennart Perrey
 
