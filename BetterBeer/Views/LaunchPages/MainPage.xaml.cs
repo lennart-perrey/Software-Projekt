@@ -69,6 +69,7 @@ namespace BetterBeer
             {
                 act_Indicator.IsVisible = false;
                 await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen.", "Ok");
+                entry_password.Text = "";
             }
 
         }
