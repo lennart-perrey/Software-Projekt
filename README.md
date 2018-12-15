@@ -2,8 +2,8 @@
 
 Moin,
 wir sind ein Team junger Studenten aus dem wundervollen Flensburg. Im Rahmen unseres Software Projektes haben wir eine App entwickelt,
-mit welcher man Biersorten einscannen, bewerten und diese Bewertungen mit seinen Freunden teilen kann. Die App ist aus reinem Spaß am 
-Programmieren entstanden und wir haben beim Entwickeln sehr viel dazu gelernt. 
+mit welcher man Biersorten einscannen, bewerten und diese Bewertungen mit seinen Freunden teilen kann. 
+Die App ist aus reinem Spaß am Programmieren entstanden und wir haben beim Entwickeln sehr viel dazu gelernt. 
 
 Um alle funktionen von Better Beer in vollem Umfang Nutzen zu können müssen sie die Xamarin Entwicklertools installiert haben.
 Sie können diese im Visual Studio Installer herunterladen. Es werden dabei mindestens 10GB Speicher benötigt.
@@ -27,4 +27,10 @@ Die Applikation wird nun auf ihrem Gerät bereitgestellt und sie können sie in 
 
 ### Quickstart IOS
 
+### Impressum Angaben gemäß § 5 TMG
+Hochschule Flensburg
+Kanzleistraße 91-93 24943 Flensburg
+E-Mail: betterbeer@web.de
+Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+Vertreten durch: Johannes Peretzke, Leon Kowalewski, Marc Haß, Marcel Böckmann, Lennart Perrey
 
