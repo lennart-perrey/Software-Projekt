@@ -18,8 +18,7 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
             <StackLayout Margin="20,0,20,0">
-                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" 
-                     VerticalOptions="Start">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
                     <Grid Margin="0,20,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
@@ -35,7 +34,7 @@
                             HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                                Margin="0,20,0,0"/>
 
-                        <Label Grid.Row="2" Text="Ohh, dieses Bier kennen wir noch nicht. Bitte stellen Sie doch einen Antrag, damit wir dieses Bier in unser Sortiment Aufnehmen können."
+                        <Label Grid.Row="2" Text="Ohh, dieses Bier kennen wir noch nicht. Bitte stelle einen Antrag, damit wir dieses Bier in unser Sortiment Aufnehmen können."
                                VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
                                TextColor="Gray" FontAttributes="Italic"/>
 
@@ -43,34 +42,47 @@
                             HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                     </Grid>
                 </StackLayout>
-                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Margin="0,-100,0,0">
+                <Frame VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical">
                     <Grid BackgroundColor="White">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="25"/>
                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="25"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="15"/>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         
-                        <Label Grid.Row="0" x:Name="lbl_ean" HorizontalOptions="Center" VerticalOptions="Center"/>
-
-                        <Entry Grid.Row="1" x:Name="entry_BeerName" Placeholder="Biername"
-                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
-                                   Keyboard="Email"/>
-
-                        <Picker Grid.Row="2" x:Name="picker_BrandName"
-                                BackgroundColor="White" HeightRequest="45"/>
+                        <Label Grid.Row="0" x:Name="lbl_ean" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"/>
+                            
+                        <Label Grid.Row="1"/>
+                        
+                        <Label Grid.Row="2" Text="Biername eingeben:" VerticalOptions="Center" HorizontalOptions="Start"/>    
+                         
+                        <Entry Grid.Row="3" x:Name="entry_BeerName" Placeholder="Biername"
+                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                        
+                        <Label Grid.Row="4"/>
+                        
+                        <Label Grid.Row="5" Text="Marke auswählen:" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        
+                        <Picker Grid.Row="6" x:Name="picker_BrandName"
+                                BackgroundColor="White" HeightRequest="40"/>
                                   
-                        <Label Grid.Row="3"/>
+                        <Label Grid.Row="7"/>
 
-                        <Button Grid.Row="4" x:Name="btn_add" Text="Bierantrag stellen" VerticalOptions="Center"
+                        <Button Grid.Row="8" x:Name="btn_add" Text="Bierantrag stellen" VerticalOptions="Center"
                                 HorizontalOptions="Fill" HeightRequest="45"
                                 Clicked="btn_add_clicked" BackgroundColor="Gray"
                                 TextColor="White" FontAttributes="Bold" FontSize="18"/>
                     </Grid>                            
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="0,0,0,35">
+                </Frame>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="0,0,0,45">
                         <Button x:Name="btn_cancel" Text="Abbrechen" VerticalOptions="Center"
                                 HorizontalOptions="FillAndExpand" HeightRequest="45"
                                 Clicked="btn_cancel_clicked" BackgroundColor="#FF613F"

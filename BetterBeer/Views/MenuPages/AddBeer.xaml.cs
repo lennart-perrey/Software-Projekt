@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using BetterBeer.Objects;
 using Xamarin.Forms;
 
 namespace BetterBeer.MenuPages
@@ -17,8 +17,13 @@ namespace BetterBeer.MenuPages
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
+            Friend user = Database.ShowUser(SpecificUser.UserID);
+            if (user.Rang == 1)
+            {
+                lbl_ean.IsVisible = true;
+                lbl_ean.Text = "EAN: " + id;
+            }
 
-            lbl_ean.Text = id;
 
             foreach(Brand brand in brandsList)
             {

@@ -20,11 +20,6 @@ namespace BetterBeer.Views.MenuPages
         {
             InitializeComponent();
 
-            if(Device.RuntimePlatform == Device.Android)
-            {
-
-            }
-
             //Set CurrentBeer
             beer = currentBeer;
             this.Title = beer.beerName;

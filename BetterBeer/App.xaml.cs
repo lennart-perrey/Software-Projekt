@@ -57,16 +57,11 @@ namespace BetterBeer
                 BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
                 BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
                 Friend.friends = Database.GetFriends();
-
-             //   MainPage = new NavigationPage(new DashBoard());
             }
             catch(Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
-            // Handle when your app starts
-
         }
 
         protected override void OnSleep()
