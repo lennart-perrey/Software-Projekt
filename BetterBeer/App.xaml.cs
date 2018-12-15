@@ -58,7 +58,7 @@ namespace BetterBeer
                 BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
                 Friend.friends = Database.GetFriends();
 
-                MainPage = new NavigationPage(new DashBoard());
+             //   MainPage = new NavigationPage(new DashBoard());
             }
             catch(Exception ex)
             {
