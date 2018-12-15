@@ -51,7 +51,7 @@ namespace BetterBeer
             List<FriendRating> friendRatings = BetterBeer.Objects.DashBoard.friendsRating;
             if(friendRatings.Count > 0)
             {
-                FriendRating rating = friendRatings[friendRatings.Count -1];
+                FriendRating rating = friendRatings[0];
                 int bierId = rating.BierId;
                 Beer beer = null;
 

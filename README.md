@@ -15,7 +15,7 @@ Sie können diese im Visual Studio Installer herunterladen. Es werden dabei mind
 Um Xamarin Apps auf einem Android Gerät starten zu können müssen sie die Entwickleroptionen ihres Mobilen Gerätes aktiviert haben. 
 Dafür müssen sie folgende Schritte machen:
 
-1. Navigieren sie in ihre Telefoneistellungen
+1. Navigieren Sie in ihre Telefoneistellungen
 2. Klicken die 7 mal auf das Feld Build-Nummer
 3. Geben sie ihre Pin ein
 4. Der neue Reiter Entwickleroptionen erscheint in ihren Einstellungen
@@ -26,6 +26,16 @@ Dafür müssen sie folgende Schritte machen:
 Die Applikation wird nun auf ihrem Gerät bereitgestellt und sie können sie in vollem Umfang nutzen.
 
 ### Quickstart IOS
+
+Um Xamarin Apps auf dem IOS Gerät zu starten, benötigen sie zwangsläufig einen Mac.
+
+1. Verknüpfen Sie ihre Apple-Id mit Xcode. Dazu auf XCode -> Preference -> Accounts
+2. Erstellen Sie ein Projekt mit einer noch nicht vergebenen Bündel-Id.
+3. Öffnen Sie nun die info.plist Datei und ergänzen dort zunächst die Bündel-Id.
+4. Wählen Sie Bündle Signing Options und ergänzen in Signierungsidentität ihre Apple-ID und wählen Sie ihr  Bereitstellungsprofil (Bündel-Id) zu diesem Projekt aus.
+5. Verbinden Sie ihr Gerät per USB an den Mac oder seien Sie im gleichen WLAN-Netzwerk.
+6. Starten sie den Thread BetterBeer.IOS
+
 
 ### Impressum Angaben gemäß § 5 TMG
 Hochschule Flensburg<br>
