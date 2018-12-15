@@ -66,7 +66,7 @@ namespace BetterBeer
 
                 Friend friend = BetterBeer.Objects.DashBoard.friend;
                 LastFriendsRating = friend;
-                friendRatingName.Text = friend.Name + " hat "+beer.beerName+ "  bewertet.";
+                friendRatingName.Text = friend.Name + " hat "+beer.beerName+ " bewertet.";
 
             }
             else
