@@ -83,6 +83,11 @@ namespace BetterBeer.MenuPages
                 }
                 else
                 {
+                    RatedBeer.highscores = Database.Highscore();
+                    RatedBeer.criterias = Database.ShowCriteria();
+                    Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
                     DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
                     Navigation.PushAsync(new DashBoard());
                 }

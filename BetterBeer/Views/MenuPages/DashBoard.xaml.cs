@@ -14,6 +14,7 @@ namespace BetterBeer
     {
         SwipeListener listener;
         List<Beer> allBeers = RatedBeer.highscores;
+        Friend LastFriendsRating;
 
         public DashBoard()
         {
@@ -64,6 +65,7 @@ namespace BetterBeer
                 friendRatingBeer.Source = beer.pic;
 
                 Friend friend = BetterBeer.Objects.DashBoard.friend;
+                LastFriendsRating = friend;
                 friendRatingName.Text = friend.Name + " hat "+beer.beerName+ "  bewertet.";
 
             }
@@ -156,19 +158,27 @@ namespace BetterBeer
 
         public void OnTopSwipe(View view)
         {
-            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
-            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+            try
+            {
+                BetterBeer.Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+                BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
 
-            //Random
-            Random r = new Random();
-            int number = r.Next(allBeers.Count);
+                //Random
+                Random r = new Random();
+                int number = r.Next(allBeers.Count);
 
-            Beer randomBeer = allBeers[number];
-            randomImg1.Source = randomBeer.pic;
-            randomName1.Text = randomBeer.beerName;
+                Beer randomBeer = allBeers[number];
+                randomImg1.Source = randomBeer.pic;
+                randomName1.Text = randomBeer.beerName;
+            }
+            catch(Exception)
+            {
+                DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+            }
+
 
         }
 
@@ -194,26 +204,55 @@ namespace BetterBeer
 
         private async void Frame1_Tapped(object sender, EventArgs e)
         {
-            List<Beer> beer = Database.getBeerByName(bestBierName.Text);
-            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            try
+            {
+                List<Beer> beer = Database.getBeerByName(bestBierName.Text);
+                await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+            }
         }
 
         private async void Frame2_Tapped(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new FriendProfile(Database.GetFriends())
-            await DisplayAlert("Fehler", "Noch nicht besetzt!", "Ok");
+            try
+            {
+                List<Friend> friends = Database.FindFriends(LastFriendsRating.Name);
+                await Navigation.PushAsync(new FriendProfile(friends[0]));
+            }
+            catch(Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+            }
+
         }
 
         private async void Frame5_Tapped(object sender, EventArgs e)
         {
-            List<Beer> beer = Database.getBeerByName(randomName1.Text);
-            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            try
+            {
+                List<Beer> beer = Database.getBeerByName(randomName1.Text);
+                await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+            }
         }
 
         private async void Frame6_Tapped(object sender, EventArgs e)
         {
-            List<Beer> beer = Database.getBeerByName(randomName2.Text);
-            await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            try
+            {
+                List<Beer> beer = Database.getBeerByName(randomName2.Text);
+                await Navigation.PushAsync(new ShowBeerRating(beer[0]), false);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+            }
         }
 
     }

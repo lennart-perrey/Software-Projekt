@@ -12,17 +12,43 @@ namespace BetterBeer
         {
             InitializeComponent();
 
-            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
-          //  int userID = SpecificUser.UserID;
-            if (!isLoggedIn)
+            try
             {
-                //Load if Not Logged In
-                MainPage = new NavigationPage(new MainPage());
+                bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+                //  int userID = SpecificUser.UserID;
+                if (!isLoggedIn)
+                {
+                    //Load if Not Logged In
+                    MainPage = new NavigationPage(new MainPage());
+                }
+                else
+                {
+                    //Load if logged in
+                    SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
+                    RatedBeer.highscores = Database.Highscore();
+                    RatedBeer.criterias = Database.ShowCriteria();
+                    Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                    BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
+                    BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+                    Friend.friends = Database.GetFriends();
+
+                    MainPage = new NavigationPage(new DashBoard());
+                }
             }
-            else
+            catch(Exception ex)
             {
-                //Load if logged in
-                SpecificUser.UserID = Current.Properties.ContainsKey("userID") ? Convert.ToInt32(Current.Properties["userID"]) : 0;
+                throw new Exception(ex.Message);
+            }
+
+
+        }
+
+        protected override void OnStart()
+        {
+            try
+            {
                 RatedBeer.highscores = Database.Highscore();
                 RatedBeer.criterias = Database.ShowCriteria();
                 Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
@@ -34,21 +60,10 @@ namespace BetterBeer
 
                 MainPage = new NavigationPage(new DashBoard());
             }
-
-        }
-
-        protected override void OnStart()
-        {
-            RatedBeer.highscores = Database.Highscore();
-            RatedBeer.criterias = Database.ShowCriteria();
-            Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-            BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
-            BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
-            Friend.friends = Database.GetFriends();
-
-            MainPage = new NavigationPage(new DashBoard());
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             // Handle when your app starts
 
