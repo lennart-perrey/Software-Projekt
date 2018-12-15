@@ -44,8 +44,7 @@
                                             <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" x:Name="lbl_attr1" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                                   HeightRequest="45"/>
+                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                             
                                             <Label Grid.Column="1" x:Name="lbl_crit1" HorizontalOptions="Center" VerticalOptions="Center" 
                                                    FontSize="27" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="Center"
@@ -63,8 +62,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" x:Name="lbl_attr2" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                                   HeightRequest="45"/>
+                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                             
                                             <Label Grid.Column="1" x:Name="lbl_crit2" HorizontalOptions="Center" VerticalOptions="Center" 
                                                    FontSize="27" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="Center"
@@ -82,8 +80,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" x:Name="lbl_attr3" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                                   HeightRequest="45"/>
+                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                             
                                             <Label Grid.Column="1" x:Name="lbl_crit3" HorizontalOptions="Center" VerticalOptions="Center" 
                                                    FontSize="27" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="Center"
@@ -101,8 +98,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" x:Name="lbl_attr4" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                                   HeightRequest="45"/>
+                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                             
                                             <Label Grid.Column="1" x:Name="lbl_crit4" HorizontalOptions="Center" VerticalOptions="Center" 
                                                    FontSize="27" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="Center"
@@ -120,8 +116,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <Label Grid.Column="0" x:Name="lbl_attr5" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                                                   HeightRequest="45"/>
+                                                   FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                             
                                             <Label Grid.Column="1" x:Name="lbl_crit5" HorizontalOptions="Center" VerticalOptions="Center" 
                                                    FontSize="27" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="Center"
