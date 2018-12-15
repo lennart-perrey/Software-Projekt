@@ -1,6 +1,6 @@
 # Better Beer
 
-Moin,
+Moin,<br>
 wir sind ein Team junger Studenten aus dem wundervollen Flensburg. Im Rahmen unseres Software Projektes haben wir eine App entwickelt,
 mit welcher man Biersorten einscannen, bewerten und diese Bewertungen mit seinen Freunden teilen kann. 
 Die App ist aus reinem Spaß am Programmieren entstanden und wir haben beim Entwickeln sehr viel dazu gelernt. 
