@@ -219,7 +219,7 @@ namespace BetterBeer
         {
             try
             {
-                List<Friend> friends = Database.FindFriends(LastFriendsRating.Name);
+                List<Friend> friends = Database.ShowUser(LastFriendsRating.Name);
                 await Navigation.PushAsync(new FriendProfile(friends[0]));
             }
             catch(Exception)
