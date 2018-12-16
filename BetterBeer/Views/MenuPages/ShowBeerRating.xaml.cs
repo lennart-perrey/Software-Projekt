@@ -20,6 +20,14 @@ namespace BetterBeer.Views.MenuPages
         {
             InitializeComponent();
 
+            beer = currentBeer;
+            lbl_BeerInfo.Text = beer.info;
+
+            if (lbl_BeerInfo.Text == null)
+            {
+                lbl_line.IsVisible = false;
+            }
+
             //Set CurrentBeer
             beer = currentBeer;
             this.Title = beer.beerName;

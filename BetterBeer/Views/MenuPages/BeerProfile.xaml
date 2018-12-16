@@ -10,21 +10,7 @@
                 <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,5,10,10" VerticalOptions="FillAndExpand">
                         <Image x:Name="img_BeerImage" VerticalOptions="Start" HeightRequest="235" WidthRequest="235"></Image>
-                        <Grid>
-                        <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                            <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
-                                   HorizontalOptions="Fill" VerticalOptions="Center"/>
-                            
-                            <Label Grid.Row="1" x:Name="lbl_BeerInfo" VerticalOptions="CenterAndExpand"/>
-                            
-                            <Label Grid.Row="2" x:Name="lbl_line" BackgroundColor="Gray" HeightRequest="1" 
-                                   HorizontalOptions="Fill" VerticalOptions="Center"/>
-                            
-                            </Grid>
+
                         <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand" Margin="0,10,0,0">
 
                             <Grid.RowDefinitions>

@@ -7,8 +7,9 @@
     <ContentPage.Content>
         <StackLayout x:Name="stlout_Swipe">
             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical"  BackgroundColor="White">
+                <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
                     <StackLayout x:Name="grd_Swipe" BackgroundColor="White" Margin="10,5,10,10" VerticalOptions="FillAndExpand">
-                            <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg" HeightRequest="235" WidthRequest="235"></Image>             
+                            <Image x:Name="img_BeerImage" VerticalOptions="Start" Source="flensburger.jpg" HeightRequest="235" WidthRequest="235"></Image>
                         <Grid Margin="0,-90,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -23,8 +24,24 @@
                                        VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#FFD657"/>
                             </Frame>
                         </Grid>
+                        <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                            <Label Grid.Row="0" BackgroundColor="Gray" HeightRequest="1" 
+                                   HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            
+                            <Label Grid.Row="1" x:Name="lbl_BeerInfo" VerticalOptions="CenterAndExpand"/>
+                            
+                            <Label Grid.Row="2" x:Name="lbl_line" BackgroundColor="Gray" HeightRequest="1" 
+                                   HorizontalOptions="Fill" VerticalOptions="Center"/>
+                            
+                            </Grid>
+                        
 
-                        <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand" Margin="0,5,0,0">
+                        <Grid x:Name="grd_rating" VerticalOptions="EndAndExpand" Margin="0,15,0,0">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50"/>
@@ -128,6 +145,7 @@
                         <Button x:Name="btn_Submit" Text="Bier bewerten" Margin="0,10,0,20" BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
                           HeightRequest="45" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_RateBeer_Clicked"/>
                     </StackLayout>
+                </ScrollView>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

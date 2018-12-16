@@ -27,12 +27,6 @@ namespace BetterBeer.MenuPages
             beerID = Convert.ToInt32(beer.beerId);
             this.Title = beer.beerName;
             img_BeerImage.Source = beer.pic;
-            lbl_BeerInfo.Text = beer.info;
-
-            if(lbl_BeerInfo.Text == null)
-            {
-                lbl_line.IsVisible = false;
-            }
 
             crits = Database.ShowCriteria();
 
