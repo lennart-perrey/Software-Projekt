@@ -19,7 +19,9 @@ namespace BetterBeer
             {
                 string uName = entry_UserName.Text;
                 string email = entry_eMail.Text;
-                string SaltedPassword = HashAndSalt.CreateSalt().Trim(' ');
+                string value = HashAndSalt.CreateSalt();
+                string SaltedPassword= value.Replace(' ', '=');
+                SaltedPassword = value.Replace('+', '=');
                 string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
                 string password2 = HashAndSalt.HashString(String.Format("{0}{1}", entry_password2.Text, SaltedPassword));
 

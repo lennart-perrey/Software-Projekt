@@ -27,10 +27,12 @@ namespace BetterBeer
             });
 
             try
+                 
             {
                     string email = entry_email.Text;
-                    string SaltedPassword = Database.GetSaltedPW(email).Trim(' ');
-                    SaltedPassword = Database.GetSaltedPW(email).Replace(' ', '+');
+                    string value = Database.GetSaltedPW(email);
+                    string SaltedPassword = value.Replace(' ', '=');
+                    SaltedPassword = value.Replace('+', '=');
                     string password = HashAndSalt.HashString(String.Format("{0}{1}", entry_password.Text, SaltedPassword));
                     int userID = Database.CheckUser(email, password);
 
