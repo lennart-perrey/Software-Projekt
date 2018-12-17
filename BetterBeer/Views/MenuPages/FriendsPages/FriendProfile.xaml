@@ -41,22 +41,22 @@
             <cv:CarouselView x:Name="MainCarouselView">
                 <cv:CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-                            <Label Text="Zuletzt bewertetes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium"/>
+                        <StackLayout HorizontalOptions="Fill">
+                            <Label Text="Zuletzt bewertete Biere" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium"/>
                             <Grid Margin="0,10,0,0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60*"/>
-                                    <ColumnDefinition Width="40*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding BierName}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Grid.Column="1"/>
                                 <Image Source="{Binding Bild}" VerticalOptions="End" HeightRequest="150" WidthRequest="150" Grid.Column="1" HorizontalOptions="Center" Margin="0,10,0,0"/>
                                 <Grid Grid.Column="0">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
                                     </Grid.RowDefinitions>
 
 
@@ -121,8 +121,8 @@
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>
             </cv:CarouselView>
+            <Label HorizontalOptions="Center" Text="wische für weitere Bewertungen" TextColor="Gray" FontSize="Small"/>
             <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="0,5,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-            <Label HorizontalOptions="Center" Text="Wische um mehr Bewertungen anzusehen" TextColor="Gray" FontSize="Small"/>
             <StackLayout Margin="0,5,0,25" VerticalOptions="End" Orientation="Vertical">
                 <Button x:Name="btn_cancelFriendship" Text="Freundschaft beenden" BackgroundColor="#FF613F"
                                     TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_cancelFriendship_Clicked"/>
