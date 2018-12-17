@@ -14,7 +14,7 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 	public partial class FriendProfile : ContentPage
 	{
         Friend friend1;
-		public FriendProfile (Friend friend)
+        public FriendProfile (Friend friend)
 		{
             InitializeComponent();
 
@@ -30,36 +30,30 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             //Set Last Rating of Beer
             List<FriendRating> ratings = Database.getFriendRatingLastBeer(friend.UserID);
             List<Criteria> criterias = RatedBeer.criterias;
-            FriendRating friendRating = null;
-            List<LastFriendsRating> LastRatings = null;
+            List<LastRatingCarouselView> lastRatingCarouselViews = new List<LastRatingCarouselView>();
 
-
-
-            if(ratings.Count > 0)
+            if (ratings.Count > 0 || ratings != null)
             {
-                friendRating = ratings[0];
-                LastRatings = Database.getFriendRatingLastBeerByCrit(friendRating.RatingId);
+                foreach (FriendRating rating in ratings)
+                {
+                    List<LastFriendsRating> LastRatings = Database.getFriendRatingLastBeerByCrit(rating.RatingId);
+                    if(LastRatings.Count > 0)
+                    {
+                        LastRatingCarouselView lastRatingCarouselView = new LastRatingCarouselView(LastRatings[0].BierName, LastRatings[0].Bild, criterias[0].Kriterium, criterias[1].Kriterium,
+                        criterias[2].Kriterium, criterias[3].Kriterium, criterias[4].Kriterium, LastRatings[0].Bewertung.ToString(), LastRatings[1].Bewertung.ToString(),
+                        LastRatings[2].Bewertung.ToString(), LastRatings[3].Bewertung.ToString(), LastRatings[4].Bewertung.ToString());
 
-                lbl_crit1.Text = LastRatings[0].Bewertung.ToString();
-                lbl_crit2.Text = LastRatings[1].Bewertung.ToString();
-                lbl_crit3.Text = LastRatings[2].Bewertung.ToString();
-                lbl_crit4.Text = LastRatings[3].Bewertung.ToString();
-                lbl_crit5.Text = LastRatings[4].Bewertung.ToString();
+                        lastRatingCarouselViews.Add(lastRatingCarouselView);
+                    }
+                    
+                }
 
-                lbl_attr1.Text = criterias[0].Kriterium;
-                lbl_attr2.Text = criterias[1].Kriterium;
-                lbl_attr3.Text = criterias[2].Kriterium;
-                lbl_attr4.Text = criterias[3].Kriterium;
-                lbl_attr5.Text = criterias[4].Kriterium;
-
-                lastBierImg.Source = LastRatings[0].Bild;
-                lastBierName.Text = LastRatings[0].BierName;
+                MainCarouselView.ItemsSource = lastRatingCarouselViews;
             }
             else
             {
-                lastRating.IsVisible = false;
+                MainCarouselView.IsVisible = false;
             }
-
         }
 
         private async void btn_cancelFriendship_Clicked(Object sender, EventArgs e)

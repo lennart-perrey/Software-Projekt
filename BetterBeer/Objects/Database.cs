@@ -174,13 +174,12 @@ namespace BetterBeer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-
-            if (responseString != "null")
+            if(responseString != "[{BewertungID:null,BierID:null,UserID:null,created_on:null}]")
             {
                 List<FriendRating> ratings = JsonConvert.DeserializeObject<List<FriendRating>>(responseString);
                 return ratings;
             }
-            return null;
+            return null;  
         }
 
         public static List<Rating> getAvgGradeByBeerId(string beerId)
