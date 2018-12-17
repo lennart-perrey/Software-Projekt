@@ -15,6 +15,7 @@ namespace BetterBeer.MenuPages
     public partial class StarPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        SwipeListener listener1;
         //List<Criteria> kriterien = Database.ShowCriteria();
         IDictionary<string, int> criticsDict = new Dictionary<string, int>();
         public Beer SelectedBeer { get; set; }
@@ -42,6 +43,7 @@ namespace BetterBeer.MenuPages
             }
 
             listener = new SwipeListener(stlout_Swipe, this);
+           // listener1 = new SwipeListener(swipe, this);
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
             picker_Criteria.IsVisible = false;
