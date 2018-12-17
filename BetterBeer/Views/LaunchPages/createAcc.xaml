@@ -48,26 +48,26 @@
                         </Grid.RowDefinitions>
 
                         <Entry Grid.Row="0" x:Name="entry_UserName" Placeholder="Username"
-                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"/>
+                               BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start" FontSize="15"/>
 
                         <Entry Grid.Row="1" x:Name="entry_eMail" Placeholder="E-Mail"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
-                                   Keyboard="Email" TextChanged="Handle_TextChanged"/>
+                                   Keyboard="Email" TextChanged="Handle_TextChanged" FontSize="15"/>
 
                         <Entry Grid.Row="2" x:Name="entry_password" Placeholder="Passwort"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
-                                   IsPassword="true"/>
+                                   IsPassword="true" FontSize="15"/>
 
                         <Entry Grid.Row="3" x:Name="entry_password2" Placeholder="Passwort"
                                BackgroundColor="White" HeightRequest="45" HorizontalTextAlignment="Start"
-                                   IsPassword="true"/>
+                                   IsPassword="true" FontSize="15"/>
 
                         <Label Grid.Row="4"/>
 
                         <Button Grid.Row="5" x:Name="btn_create" Text="Account erstellen" VerticalOptions="Center"
                                 HorizontalOptions="Fill" HeightRequest="45"
                                 Clicked="btn_create_clicked" BackgroundColor="Gray"
-                                TextColor="White" FontAttributes="Bold" FontSize="18"/>
+                                TextColor="White" FontAttributes="Bold" FontSize="17"/>
                     </Grid>
                 </StackLayout>
         </StackLayout>
