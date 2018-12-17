@@ -16,28 +16,26 @@ namespace BetterBeer.MenuPages
         public MyData()
         {
             InitializeComponent();
-            
-            
+
+
             Friend user = Database.ShowUser(SpecificUser.UserID);
             userName.Placeholder = user.Name;
             myEmail.Placeholder = user.EMail;
-            if (user.Rang==1)
+            if (user.Rang == 1)
             {
                 userNameLabel.Text = "Admin";
             }
             load();
 
-            
+
             //get Passsword, Picture, Username and EMail from Database
         }
 
         private void load()
         {
-            
             Database.getImage();
-            myImage.Source = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ProfilPic.jpeg");
-
-
+            myImage.Source = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ProfilPic.jpg");
+            
         }
 
         private async void myImage_Tapped(object sender, EventArgs e)
@@ -58,8 +56,8 @@ namespace BetterBeer.MenuPages
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
                     CompressionQuality = 50
                 });
-
                 Database.uploadImageToDatabase(file);
+
                 if (file == null)
                     return;
 
@@ -81,10 +79,12 @@ namespace BetterBeer.MenuPages
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
                     Directory = "Pictures",
                     Name = "ProfilPic.jpg",
-                    CompressionQuality = 50
+                    CompressionQuality = 50,
+                    SaveToAlbum = true
+                    
                 });
                 Database.uploadImageToDatabase(file);
-
+               
                 if (file == null)
                     return;
 

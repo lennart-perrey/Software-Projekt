@@ -9,6 +9,8 @@ using BetterBeer.Objects;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Xamarin.Forms;
+using System.Text.RegularExpressions;
 
 namespace BetterBeer
 {
@@ -313,12 +315,8 @@ namespace BetterBeer
         {
 
             string requestString = API + "?action=uploadImage";
-            var imgData = Pictures.ImgToByte(img);
+            var imgData = Pictures.imgToBase64(img.Path);
 
-            //byte[] imgData;
-
-
-            //imgData = Pictures.ImgToByte(img);
             var jSonData = JsonConvert.SerializeObject(imgData);
             string postData = $"image={jSonData}&UserId={SpecificUser.UserID}";
 
@@ -337,29 +335,12 @@ namespace BetterBeer
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
 
-        public static void getImage()
+        public static string getImage()
         {
             try
             {
 
                 string requestString = API + "?action=getImage";
-                //var userid = new StringContent(JsonConvert.SerializeObject(SpecificUser.UserID), Encoding.UTF8, "application/json");
-                //using (var client = new HttpClient())
-                //{
-                //    client.BaseAddress = new Uri(requestString);
-
-                //    client.DefaultRequestHeaders.Accept.Clear();
-                //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //    //HttpResponseMessage response = await client.GetAsync(_apiUrl);
-                //    var response = client.PostAsync(requestString, userid);
-                //    if (response.IsSuccessStatusCode)
-                //    {
-                //        var data = await response.Content.ReadAsAsync<ExpandoObject>();
-                //        return Json(data);
-                //    }
-
-                //}
-
                 string postData = $"UserId={SpecificUser.UserID}";
 
                 byte[] data = Encoding.UTF8.GetBytes(postData);
@@ -377,28 +358,17 @@ namespace BetterBeer
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
                 string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-                //string jsonString = JsonConvert.DeserializeObject<string>(responseString);
-                //string cuttedResponse = responseString.Substring(11,responseString.Length -2);
 
-                //string jSonDataString = jSonData.ToString();
-                //string jSonDataStringN = jSonDataString.Substring(5);
+                string newresponseString = Regex.Replace(responseString, " ", "");
+                Pictures.stringToFile(newresponseString);
 
-
-                byte[] bytes = Encoding.UTF8.GetBytes(responseString);
-                //var bytes = Convert.FromBase64String(data1);
-                //byte[] imgData = Encoding.UTF8.GetBytes(jSonDataStringN);
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ProfilPic.jpeg");
-                using (var imageFile = new FileStream(path, FileMode.Create))
-                {
-                    imageFile.Write(bytes, 0, bytes.Length);
-                    imageFile.Flush();
-                }
             }
+
             catch (Exception e)
             {
                 string a = e.Message;
             }
-
+            return null;
         }
 
         public static List<Friend> GetFriends()
