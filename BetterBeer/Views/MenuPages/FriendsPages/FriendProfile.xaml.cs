@@ -21,7 +21,46 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             friend1 = friend;
             friendImage.Source = friend.Image;
             this.Title = friend.Name;
-		}
+
+            //Set Counter of Rating
+            int anzahlBewertungen = Database.showFriendsRatingCounter(friend.UserID);
+            lbl_Counter.Text = Convert.ToString(anzahlBewertungen);
+
+
+            //Set Last Rating of Beer
+            List<FriendRating> ratings = Database.getFriendRatingLastBeer(friend.UserID);
+            List<Criteria> criterias = RatedBeer.criterias;
+            FriendRating friendRating = null;
+            List<LastFriendsRating> LastRatings = null;
+
+
+
+            if(ratings.Count > 0)
+            {
+                friendRating = ratings[0];
+                LastRatings = Database.getFriendRatingLastBeerByCrit(friendRating.RatingId);
+
+                lbl_crit1.Text = LastRatings[0].Bewertung.ToString();
+                lbl_crit2.Text = LastRatings[1].Bewertung.ToString();
+                lbl_crit3.Text = LastRatings[2].Bewertung.ToString();
+                lbl_crit4.Text = LastRatings[3].Bewertung.ToString();
+                lbl_crit5.Text = LastRatings[4].Bewertung.ToString();
+
+                lbl_attr1.Text = criterias[0].Kriterium;
+                lbl_attr2.Text = criterias[1].Kriterium;
+                lbl_attr3.Text = criterias[2].Kriterium;
+                lbl_attr4.Text = criterias[3].Kriterium;
+                lbl_attr5.Text = criterias[4].Kriterium;
+
+                lastBierImg.Source = LastRatings[0].Bild;
+                lastBierName.Text = LastRatings[0].BierName;
+            }
+            else
+            {
+                lastRating.IsVisible = false;
+            }
+
+        }
 
         private async void btn_cancelFriendship_Clicked(Object sender, EventArgs e)
         {

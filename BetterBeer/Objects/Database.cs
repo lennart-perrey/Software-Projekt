@@ -125,6 +125,64 @@ namespace BetterBeer
             return beers;
         }
 
+        public static List<LastFriendsRating> getFriendRatingLastBeerByCrit(int ratingId)
+        {
+            string requestString = API + "?action=getFriendRatingLastBeerByCrit";
+            string postData = $"ratingId={ratingId}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            if(responseString != "null")
+            {
+                List<LastFriendsRating> ratings = JsonConvert.DeserializeObject<List<LastFriendsRating>>(responseString);
+                return ratings;
+            }
+            return null;
+
+        }
+
+        public static List<FriendRating> getFriendRatingLastBeer(int friendId)
+        {
+            string requestString = API + "?action=getFriendRatingLastBeer";
+            string postData = $"friendId={friendId}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+            if (responseString != "null")
+            {
+                List<FriendRating> ratings = JsonConvert.DeserializeObject<List<FriendRating>>(responseString);
+                return ratings;
+            }
+            return null;
+        }
+
         public static List<Rating> getAvgGradeByBeerId(string beerId)
         {
             string postData = $"bierId={beerId}";
@@ -249,6 +307,34 @@ namespace BetterBeer
             byte[] data = Encoding.UTF8.GetBytes(postData);
 
             string requestString = API + "?action=showBeerByName";
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            if (responseString != "null")
+            {
+                List<Beer> beers = JsonConvert.DeserializeObject<List<Beer>>(responseString);
+                return beers;
+            }
+
+            return null;
+        }
+
+        public static List<Beer> getBeerById(int bierId)
+        {
+            string postData = $"beerName={bierId}";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
+
+            string requestString = API + "?action=getBeerById";
             WebRequest request = WebRequest.Create(requestString);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
@@ -503,6 +589,13 @@ namespace BetterBeer
         {
             string result = apiCall("showFriendRatingCount", "userId=" + userId);
             List<FriendRatingCount> friendRatings = JsonConvert.DeserializeObject<List<FriendRatingCount>>(result);
+            return friendRatings;
+        }
+
+        public static int showFriendsRatingCounter(int userId)
+        {
+            string result = apiCall("showFriendRatingCounter", "friendId=" + userId);
+            int friendRatings = JsonConvert.DeserializeObject<int>(result);
             return friendRatings;
         }
 
