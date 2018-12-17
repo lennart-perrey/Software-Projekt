@@ -13,6 +13,13 @@ namespace BetterBeer
     public partial class DashBoard : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
+        SwipeListener listener1;
+        SwipeListener listener2;
+        SwipeListener listener3;
+        SwipeListener listener4;
+        SwipeListener listener5;
+        SwipeListener listener6;
+
         List<Beer> allBeers = RatedBeer.highscores;
         Friend LastFriendsRating;
 
@@ -38,6 +45,13 @@ namespace BetterBeer
             }
 
             listener = new SwipeListener(stlout_Swipe, this);
+            listener1 = new SwipeListener(frame1, this);
+            listener2 = new SwipeListener(frame2, this);
+            listener3 = new SwipeListener(frame3, this);
+            listener4 = new SwipeListener(frame4, this);
+            listener5 = new SwipeListener(frame5, this);
+            listener6 = new SwipeListener(frame6, this);
+
 
             //SpecificUser.UserID = Convert.ToInt32(Xamarin.Forms.Application.Current.Properties["userID"]);
             //BestBier

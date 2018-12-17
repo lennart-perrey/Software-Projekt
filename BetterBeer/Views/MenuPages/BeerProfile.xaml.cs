@@ -13,11 +13,9 @@ namespace BetterBeer.MenuPages
 	{
         SwipeListener listener;
         List<Criteria> crits;
-
+        List<Criteria> newGrades;
         int beerID;
         
-
-
         public BeerProfile (Beer scannedBeer)
         {
             InitializeComponent();
@@ -35,6 +33,25 @@ namespace BetterBeer.MenuPages
             attr3.Text = crits[2].Kriterium;
             attr4.Text = crits[3].Kriterium;
             attr5.Text = crits[4].Kriterium;
+
+            newGrades = Database.CheckRating(Convert.ToInt32(scannedBeer.beerId));
+
+            try
+            {
+                if (newGrades.Count != 0)
+                {
+                    pickAttr1.Value = Convert.ToInt32(newGrades[0].Bewertung);
+                    pickAttr2.Value = Convert.ToInt32(newGrades[1].Bewertung);
+                    pickAttr3.Value = Convert.ToInt32(newGrades[2].Bewertung);
+                    pickAttr4.Value = Convert.ToInt32(newGrades[3].Bewertung);
+                    pickAttr5.Value = Convert.ToInt32(newGrades[3].Bewertung);
+                }
+
+            }
+            catch
+            {
+                pickAttr5.Value = 0;
+            }
 
         }
 
@@ -69,27 +86,59 @@ namespace BetterBeer.MenuPages
 
             try
             {
-                bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating, crits);
-
-                if (!check)
+                if (newGrades == null)
                 {
-                    DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
+                    bool check = Database.CreateRating(beerID, SpecificUser.UserID, rating, crits);
+
+                    if (!check)
+                    {
+                        DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Okay");
+                    }
+                    else
+                    {
+                        RatedBeer.highscores = Database.Highscore();
+                        RatedBeer.criterias = Database.ShowCriteria();
+                        Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                        BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                        BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                        DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
+                        Navigation.PushAsync(new DashBoard());
+                    }
                 }
                 else
                 {
-                    RatedBeer.highscores = Database.Highscore();
-                    RatedBeer.criterias = Database.ShowCriteria();
-                    Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
-                    BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
-                    BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
-                    DisplayAlert("Super!", "Deine Bewertung wurde angelegt", "Okay");
-                    Navigation.PushAsync(new DashBoard());
+                    bool check= true;
+                    int i = 0;
+                    if (rating.Count > newGrades.Count)
+                    {
+                        Database.UpdateRating(newGrades[i].BewertungID, newGrades[i].KriterienID, rating[4]);
+                    }
+                    while(check == true && i < rating.Count -1)
+                    {
+                        check = Database.UpdateRating(newGrades[i].BewertungID , newGrades[i].KriterienID, rating[i]);
+                        i++;
+                    }
+                    
+                    if (!check)
+                    {
+                        DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Prost!");
+                    }
+                    else
+                    {
+                        RatedBeer.highscores = Database.Highscore();
+                        RatedBeer.criterias = Database.ShowCriteria();
+                        Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
+                        BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
+                        BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
+                        DisplayAlert("Super!", "Deine Bewerung wurde verändert", "Prost!");
+                        Navigation.PushAsync(new DashBoard());
+                    }
                 }
 
             }
             catch
             {
-                DisplayAlert("Halt!", "Du hast dieses Bier bereits bewertet", "Okay");
+                DisplayAlert("Hoppla!", "Da ist wohl etwas schief gelaufen", "Hört auf so viel zu saufen!");
                 Navigation.PushAsync(new StarPage());
             }
         }
@@ -201,6 +250,7 @@ namespace BetterBeer.MenuPages
             }
             Check();
         }
+
 
         private void pickAttr3_ValueChanged(object sender, ValueChangedEventArgs e)
         {

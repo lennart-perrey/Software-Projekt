@@ -44,18 +44,18 @@
                 <ListView x:Name="lv_highscoreBeer" ItemTapped="Handle_ItemTapped" HasUnevenRows="true" IsPullToRefreshEnabled="true"
                           Refreshing="onRefresh">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell> 
+                        <DataTemplate >
+                            <ViewCell > 
                                 <ViewCell.View>
                                     <StackLayout Spacing="8" Orientation="Horizontal" Margin="5,0,5,0"
-                                                 HorizontalOptions="Fill">
+                                                 HorizontalOptions="Fill" >
                                         
                                                 <Image Source="{Binding pic}" HeightRequest="60" WidthRequest="60"
                                                        VerticalOptions="Center" HorizontalOptions="Start"/>
                                                        
                                                 <Label Text="{Binding beerName}" TextColor="Black" FontSize="Medium"
                                                        HorizontalTextAlignment="Start" VerticalOptions="Center"
-                                                       HorizontalOptions="FillAndExpand"/>
+                                                       HorizontalOptions="FillAndExpand" x:Name="swipe"/>
 
                                                 <Label Text="{Binding avgRating}" TextColor="#FFD657" FontSize="Large"
                                                        FontAttributes="Bold" HorizontalTextAlignment="End" 
