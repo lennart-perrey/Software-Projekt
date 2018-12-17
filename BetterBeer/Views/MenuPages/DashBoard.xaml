@@ -18,7 +18,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" Padding="10,10,5,10"> 
+                    <Frame Grid.Column="0" Grid.Row="0" BorderColor="Black" Padding="10,10,5,10" x:Name="frame1"> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Bestes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
                          <Grid HorizontalOptions="Center" VerticalOptions="Center">
@@ -40,8 +40,8 @@
                             <TapGestureRecognizer Tapped="Frame1_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                     </Frame>
-                        
-                   <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" Padding="10">
+
+                    <Frame Grid.Column="1" Grid.Row="0" BorderColor="Black" Padding="10" x:Name="frame2">
                     <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
                    
@@ -58,23 +58,23 @@
                             <TapGestureRecognizer Tapped="Frame2_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                      </Frame>
-                    
-                   <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" Padding="10">
+
+                    <Frame Grid.Column="0" Grid.Row="1" BorderColor="Black" Padding="10" x:Name="frame3">
                     <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Bewertungen" FontAttributes="Bold" TextDecorations="Underline" FontSize="11"></Label>                 
                          <Label x:Name="RatingLabel" Grid.Row="1" Grid.Column="0" FontSize="Medium"/> 
                     </StackLayout>
                  </Frame>
-                    
-                   <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" Padding="10,10,5,5">
+
+                    <Frame Grid.Column="1" Grid.Row="1" BorderColor="Black" Padding="10,10,5,5" x:Name="frame4">
                     <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Bewertungen deiner Freunde" FontAttributes="Bold" TextDecorations="Underline" FontSize="11"></Label>
                                 <StackLayout  x:Name="RatingFriendCount" ></StackLayout> 
                     </StackLayout>
                      </Frame>
-                    
-                    
-                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" Padding="10"> 
+
+
+                    <Frame Grid.Column="0" Grid.Row="2" BorderColor="Black" Padding="10" x:Name="frame5"> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Wie wäre es mit einem" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
                          <Grid HorizontalOptions="Center" VerticalOptions="Center">
@@ -90,8 +90,8 @@
                             <TapGestureRecognizer Tapped="Frame5_Tapped"></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                     </Frame>
-                    
-                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black" Padding="10"> 
+
+                    <Frame Grid.Column="1" Grid.Row="2" BorderColor="Black" Padding="10" x:Name="frame6"> 
                      <StackLayout Grid.Column="0" Grid.Row="0">
                         <Label Text="Neuestes Bier" FontAttributes="Bold" TextDecorations="Underline" FontSize="Micro"></Label>
                          <Grid HorizontalOptions="Center" VerticalOptions="Center">

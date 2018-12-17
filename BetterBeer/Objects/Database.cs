@@ -545,6 +545,46 @@ namespace BetterBeer
                 return false;
             }
         }
+        public static List<Criteria> CheckRating(int beerID)
+        {
+            string postData = $"userId={SpecificUser.UserID}&beerId={beerID}";
+            string requestString = API + "?action=checkRating";
+            byte[] data = Encoding.UTF8.GetBytes(postData);
 
+
+            WebRequest request = WebRequest.Create(requestString);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            List<Criteria> crits = JsonConvert.DeserializeObject<List<Criteria>>(responseString);
+            return crits;
+
+        }
+
+        public static bool UpdateRating(int ratingID, int critID, int grade)
+        {
+            string postData = $"ratingId={ratingID}&critId={critID}&grade={grade}";
+
+            string response = apiCall("updateRating", postData);
+
+            try
+            {
+                Convert.ToInt32(response);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
