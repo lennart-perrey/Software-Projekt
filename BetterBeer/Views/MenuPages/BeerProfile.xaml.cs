@@ -44,7 +44,7 @@ namespace BetterBeer.MenuPages
                     pickAttr2.Value = Convert.ToInt32(newGrades[1].Bewertung);
                     pickAttr3.Value = Convert.ToInt32(newGrades[2].Bewertung);
                     pickAttr4.Value = Convert.ToInt32(newGrades[3].Bewertung);
-                    pickAttr5.Value = Convert.ToInt32(newGrades[3].Bewertung);
+                    pickAttr5.Value = Convert.ToInt32(newGrades[4].Bewertung);
                 }
 
             }
