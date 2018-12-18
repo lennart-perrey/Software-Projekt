@@ -29,7 +29,7 @@ namespace BetterBeer
                 safeInsets.Top = 40;
                 this.Padding = safeInsets;
             }
-            else if(Device.RuntimePlatform == Device.Android)
+            else if (Device.RuntimePlatform == Device.Android)
             {
                 searchBar.WidthRequest = 250;
             }
@@ -56,7 +56,6 @@ namespace BetterBeer
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-
             Friend friend = (Friend)lv_FriendsList.SelectedItem;
             await Navigation.PushAsync(new FriendProfile(friend));
         }

@@ -236,9 +236,9 @@ namespace BetterBeer
                 List<Friend> friends = Database.ShowUser(LastFriendsRating.Name);
                 await Navigation.PushAsync(new FriendProfile(friends[0]));
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+                await DisplayAlert("Fehler", ex.Message, "Ok");
             }
 
         }

@@ -2,38 +2,145 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="BetterBeer.Views.MenuPages.FriendsPages.FriendProfile"
-             Title="Profil">
+             Title="Profil"
+             BackgroundColor="White">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView Orientation="Horizontal" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="White" Margin="20,0,20,0">
-                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" BackgroundColor="white">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="175"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <controls:CircleImage x:Name="friendImage" Grid.Row="0" Source="leon.png"
-                             HeightRequest="150" WidthRequest="150" Aspect="AspectFill" BorderThickness="1"
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" Margin="20,0,20,0">
+            <StackLayout BackgroundColor="White" Orientation="Vertical" VerticalOptions="Start">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <controls:CircleImage x:Name="friendImage" Grid.Row="0" HeightRequest="125" WidthRequest="125" Aspect="AspectFill" BorderThickness="1"
                                               VerticalOptions="Center" HorizontalOptions="Center" 
                                               BorderColor="Gray" Margin="0,10,0,0">
-                                <controls:CircleImage.GestureRecognizers>
-                                    <TapGestureRecognizer >
-                                    </TapGestureRecognizer>
-                                </controls:CircleImage.GestureRecognizers>
-                            </controls:CircleImage>
+                    </controls:CircleImage>
 
-                            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3"
+                    <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="3"
                                HorizontalOptions="Fill" VerticalOptions="Center" Margin="-20,10,-20,0"/>
-                        </Grid>
-                    </StackLayout>
-                <StackLayout Margin="0,0,0,25" VerticalOptions="End"> 
-                    <Button x:Name="btn_cancelFriendship" Text="Freundschaft beenden" BackgroundColor="#FF613F"
-                            TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_cancelFriendship_Clicked"/>
-                </StackLayout>
-                </StackLayout>
-            </ScrollView>
+                </Grid>
+                <Grid Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" x:Name="lbl_Anzahl" Text="Anzahl Bewertungen:" TextColor="Black" FontSize="Large" FontAttributes="Bold" 
+                                   VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Frame x:Name="frame_counter" Grid.Row="0" HeightRequest="60" WidthRequest="60" CornerRadius="30" HorizontalOptions="End" 
+                                   VerticalOptions="Center" Margin="0,0,30,0" Padding="0" BackgroundColor="#FFD657" HasShadow="false">
+                        <Label x:Name="lbl_Counter" TextColor="White" FontSize="Large" FontAttributes="Bold" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#FFD657"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+            <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,5" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            <cv:CarouselView x:Name="MainCarouselView" HeightRequest="300">
+                <cv:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HorizontalOptions="Fill">
+                            <Label Text="Zuletzt bewertete Biere" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium"/>
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                    
+                                <Label Text="{Binding BierName}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Grid.Column="1"/>
+                                <Image Source="{Binding Bild}" VerticalOptions="End" HeightRequest="150" WidthRequest="150" Grid.Column="1" Margin="0,5,0,0"/>
+                                
+                                <Grid Grid.Column="0" VerticalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="40"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" x:Name="criteria1" Text="{Binding Criteria1}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"/>
+
+                                        <Label Grid.Column="1" x:Name="rating1" Text="{Binding Rating1}" VerticalOptions="Center" 
+                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" x:Name="criteria2" Text="{Binding Criteria2}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                              VerticalTextAlignment="Center"/>
+
+                                        <Label Grid.Column="1" x:Name="rating2" Text="{Binding Rating2}" VerticalOptions="Center" 
+                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" x:Name="criteria3" Text="{Binding Criteria3}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"/>
+
+                                        <Label Grid.Column="1" x:Name="rating3" Text="{Binding Rating3}"  VerticalOptions="Center" 
+                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" x:Name="criteria4" Text="{Binding Criteria4}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"/>
+
+                                        <Label Grid.Column="1" x:Name="rating4" Text="{Binding Rating4}" VerticalOptions="Center" 
+                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Grid.Row="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="20*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" x:Name="criteria5" Text="{Binding Criteria5}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center"/>
+
+                                        <Label Grid.Column="1" x:Name="rating5" Text="{Binding Rating5}" VerticalOptions="Center" 
+                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </cv:CarouselView.ItemTemplate>
+            </cv:CarouselView>
+            <Label HorizontalOptions="Center" Text="wische für weitere Bewertungen" TextColor="Gray" FontSize="Small"/>
+            <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            <StackLayout Margin="0,5,0,25" VerticalOptions="End" Orientation="Vertical">
+                <Button x:Name="btn_cancelFriendship" Text="Freundschaft beenden" BackgroundColor="#FF613F"
+                                    TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_cancelFriendship_Clicked"/>
+            </StackLayout>
         </StackLayout>
+       </ScrollView>
     </ContentPage.Content>
 </ContentPage>
