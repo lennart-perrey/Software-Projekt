@@ -3,6 +3,7 @@ using BetterBeer.Objects;
 using BetterBeer.Views.MenuPages.FriendsPages;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -15,12 +16,14 @@ namespace BetterBeer
         SwipeListener listener;
         List<Friend> friends;
         public Friend SelectedFriend { get; set; }
+        ActivityIndicator act_Indicator = new ActivityIndicator();
+       
 
         public FriendsPage()
         {
             InitializeComponent();
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-
+            act_Indicator.IsVisible = false;
             if (Device.RuntimePlatform == Device.iOS)
             {
                 //MainStack.Margin = new Thickness(0,60,0,0);
@@ -56,8 +59,15 @@ namespace BetterBeer
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+            await Task.Run(async () =>
+            {
+                act_Indicator.IsVisible = true;
+                await Task.Delay(500);
+
+            });
             Friend friend = (Friend)lv_FriendsList.SelectedItem;
             await Navigation.PushAsync(new FriendProfile(friend));
+            act_Indicator.IsVisible = false;
         }
 
         public async void OnLeftSwipe(View view)

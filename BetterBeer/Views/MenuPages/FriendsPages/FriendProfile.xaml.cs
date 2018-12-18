@@ -23,8 +23,8 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
                 frame_counter.HeightRequest = 50;
                 frame_counter.WidthRequest = 50;
                 frame_counter.CornerRadius = 25;
-                lbl_Counter.FontSize = Convert.ToDouble(NamedSize.Small);
-                lbl_Anzahl.FontSize = Convert.ToDouble(NamedSize.Medium);
+                lbl_Counter.FontSize = 18;
+                lbl_Anzahl.FontSize = 18;
             }
 
             friend1 = friend;
