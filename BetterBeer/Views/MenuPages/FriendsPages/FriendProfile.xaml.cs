@@ -18,6 +18,27 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
 		{
             InitializeComponent();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                frame_counter.HeightRequest = 50;
+                frame_counter.WidthRequest = 50;
+                frame_counter.CornerRadius = 25;
+                lbl_Counter.FontSize = Convert.ToDouble(NamedSize.Small);
+                lbl_Anzahl.FontSize = Convert.ToDouble(NamedSize.Medium);
+
+                criteria1.FontSize = 16;
+                criteria2.FontSize = 16;
+                criteria3.FontSize = 16;
+                criteria4.FontSize = 16;
+                criteria5.FontSize = 16;
+
+                rating1.FontSize = 16;
+                rating2.FontSize = 16;
+                rating3.FontSize = 16;
+                rating4.FontSize = 16;
+                rating5.FontSize = 16;
+            }
+
             friend1 = friend;
             friendImage.Source = friend.Image;
             this.Title = friend.Name;
