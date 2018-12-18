@@ -49,9 +49,9 @@
                                 <RowDefinition Height="40"/>
                                 <RowDefinition Height="40"/>
                            </Grid.RowDefinitions>
-                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username" IsEnabled="False"/>
+                            <Entry Grid.Row="0" x:Name="userName" Placeholder="Username" IsEnabled="False" FontSize="16"/>
 
-                        <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" IsEnabled="False" />
+                        <Entry Grid.Row="1" x:Name="myEmail" Placeholder="Email" IsEnabled="False" FontSize="16" />
                         
                             <Entry Grid.Row="0" x:Name="myPassword" Placeholder="Passwort"
                                    TextChanged="Handle_TextChangedPaassword" IsVisible="false"
@@ -64,7 +64,7 @@
                             <Button Grid.Row="2" x:Name="btn_ChangePassword" Text="Passwort ändern" 
                                     HorizontalOptions="Fill" BackgroundColor="Gray" TextColor="White"
                                     Clicked="btn_changePassword_Clicked"/>
-                        
+                            
                             <Button Grid.Row="2" x:Name="btn_CancelPasswordChange" Text="Abbrechen"
                                     HorizontalOptions="Fill" BackgroundColor="#FF613F" TextColor="White" IsVisible="false"
                                     Clicked="btn_CancelPasswordChange_Clicked"/>
