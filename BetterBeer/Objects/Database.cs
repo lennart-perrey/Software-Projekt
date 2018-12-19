@@ -563,6 +563,18 @@ namespace BetterBeer
             return false;
         }
 
+
+        public static bool CreateGrade(int ratingId, int critId, int grade){
+            string postData = $"ratingId={ratingId}&critId={critId}&grade={grade}";
+            string res=apiCall("createGrade", postData);
+            int result = int.Parse(res);
+            if (result > 0)
+                return true;
+            else
+                return false;
+        }
+
+
         public static List<Criteria> ShowCriteria()
         {
             string requestString = API + "?action=showCriteria";

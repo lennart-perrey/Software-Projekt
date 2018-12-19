@@ -36,22 +36,39 @@ namespace BetterBeer.MenuPages
 
             newGrades = Database.CheckRating(Convert.ToInt32(scannedBeer.beerId));
 
-            try
-            {
-                if (newGrades.Count != 0)
-                {
-                    pickAttr1.Value = Convert.ToInt32(newGrades[0].Bewertung);
-                    pickAttr2.Value = Convert.ToInt32(newGrades[1].Bewertung);
-                    pickAttr3.Value = Convert.ToInt32(newGrades[2].Bewertung);
-                    pickAttr4.Value = Convert.ToInt32(newGrades[3].Bewertung);
-                    pickAttr5.Value = Convert.ToInt32(newGrades[4].Bewertung);
-                }
+            pickAttr1.Value = 1;
+            pickAttr2.Value = 1;
+            pickAttr3.Value = 1;
+            pickAttr4.Value = 1;
+            pickAttr5.Value = 1;
 
-            }
-            catch
+            if (newGrades.Count != 0)
             {
-                pickAttr5.Value = 0;
+
+
+                if (crits[0].KriterienID == newGrades[0].KriterienID)
+                    pickAttr1.Value = Convert.ToInt32(newGrades[0].Bewertung);
+                else
+                    pickAttr1.Value = 0;
+                if (newGrades.Count > 1 && crits[1].KriterienID == newGrades[1].KriterienID)
+                    pickAttr2.Value = Convert.ToInt32(newGrades[1].Bewertung);
+                else
+                    pickAttr2.Value = 0;
+                if (newGrades.Count > 2 && crits[2].KriterienID == newGrades[2].KriterienID)
+                    pickAttr3.Value = Convert.ToInt32(newGrades[2].Bewertung);
+                else
+                    pickAttr3.Value = 0;
+                if (newGrades.Count > 3 && crits[3].KriterienID == newGrades[3].KriterienID)
+                    pickAttr4.Value = Convert.ToInt32(newGrades[3].Bewertung);
+                else
+                    pickAttr4.Value = 0;
+                if (newGrades.Count > 4 && crits[4].KriterienID == newGrades[4].KriterienID)
+                    pickAttr5.Value = Convert.ToInt32(newGrades[4].Bewertung);
+                else
+                    pickAttr5.Value = 0;
             }
+
+
 
         }
 
@@ -108,17 +125,21 @@ namespace BetterBeer.MenuPages
                 else
                 {
                     bool check= true;
-                    int i = 0;
-                    if (rating.Count > newGrades.Count)
+                    int bewertungsId = newGrades[1].BewertungID;
+                    for (int i = 0; i < rating.Count && check; i++)
                     {
-                        Database.UpdateRating(newGrades[i].BewertungID, newGrades[i].KriterienID, rating[4]);
+                        int critId = crits[i].KriterienID;
+                        int grade = rating[i];
+                        if (i  < newGrades.Count)
+                        {
+                            Database.UpdateRating(bewertungsId, critId, grade);
+                        }
+                        else
+                        {                   
+                            check = Database.CreateGrade(bewertungsId, critId, grade);
+                        }
                     }
-                    while(check == true && i < rating.Count -1)
-                    {
-                        check = Database.UpdateRating(newGrades[i].BewertungID , newGrades[i].KriterienID, rating[i]);
-                        i++;
-                    }
-                    
+
                     if (!check)
                     {
                         DisplayAlert("Fehler! Bier Konnte nicht angelegt werden", "Überprüfe bitte deine Eingaben", "Prost!");
