@@ -108,7 +108,15 @@ namespace BetterBeer.Views.MenuPages
 
         private async void btn_RateBeer_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+
             await Navigation.PushAsync(new BeerProfile(beer));
+            }
+            catch
+            {
+               await Navigation.PushAsync(new DashBoard());
+            }
         }
     }
 }

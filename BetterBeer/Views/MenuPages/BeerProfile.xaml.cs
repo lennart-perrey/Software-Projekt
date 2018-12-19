@@ -36,13 +36,7 @@ namespace BetterBeer.MenuPages
 
             newGrades = Database.CheckRating(Convert.ToInt32(scannedBeer.beerId));
 
-            pickAttr1.Value = 1;
-            pickAttr2.Value = 1;
-            pickAttr3.Value = 1;
-            pickAttr4.Value = 1;
-            pickAttr5.Value = 1;
-
-            if (newGrades.Count != 0)
+            if (newGrades != null)
             {
 
 
@@ -66,6 +60,15 @@ namespace BetterBeer.MenuPages
                     pickAttr5.Value = Convert.ToInt32(newGrades[4].Bewertung);
                 else
                     pickAttr5.Value = 0;
+            }
+            else
+            {
+                pickAttr1.Value = 0;
+                pickAttr2.Value = 0;
+                pickAttr3.Value = 0;
+                pickAttr4.Value = 0;
+                pickAttr5.Value = 0;
+
             }
 
 
