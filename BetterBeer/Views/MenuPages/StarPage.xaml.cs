@@ -15,7 +15,7 @@ namespace BetterBeer.MenuPages
     public partial class StarPage : ContentPage, ISwipeCallback
     {
         SwipeListener listener;
-        SwipeListener listener1;
+
         //List<Criteria> kriterien = Database.ShowCriteria();
         IDictionary<string, int> criticsDict = new Dictionary<string, int>();
         public Beer SelectedBeer { get; set; }

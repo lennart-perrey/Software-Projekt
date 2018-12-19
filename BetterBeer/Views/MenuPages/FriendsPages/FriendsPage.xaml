@@ -7,45 +7,48 @@
 
     <ContentPage.Content>
         <StackLayout x:Name="stlout_Swipe">
-            <StackLayout x:Name="MainStack" VerticalOptions="StartAndExpand" Orientation="Vertical"  BackgroundColor="White" >
+            <StackLayout x:Name="MainStack" VerticalOptions="Start" Orientation="Vertical"  BackgroundColor="White" >
                 <Grid BackgroundColor="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                        <SearchBar Grid.Row="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
+                    <SearchBar Grid.Row="0" x:Name="searchBar" Placeholder="Suche" VerticalOptions="Center" 
                                    HorizontalOptions="StartAndExpand" TextChanged="searchBar_TextChanged"/>
-                        <Image x:Name="btn_addFriend" Source="AddFriendButton.png" Grid.Row="0" VerticalOptions="Center" 
+                    <Image x:Name="btn_addFriend" Source="AddFriendButton.png" Grid.Row="0" VerticalOptions="Center" 
                            Margin="0,0,25,0" HorizontalOptions="End" HeightRequest="40" WidthRequest="40">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="addFriends"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
-                
-                <ListView x:Name="lv_FriendsList" ItemTapped="Handle_ItemTapped" Margin="0,5,0,0" 
+                <StackLayout VerticalOptions="CenterAndExpand">
+                <ActivityIndicator x:Name="act_Indicator" Color="Black" IsRunning="true" IsVisible="false" HeightRequest="50" WidthRequest="50"
+                                                           HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="true"/>
+
+                        <ListView x:Name="lv_FriendsList" ItemTapped="Handle_ItemTapped" Margin="0,5,0,0" 
                           HasUnevenRows="true" IsPullToRefreshEnabled="true"
                           Refreshing="onRefresh">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout Spacing="5" Orientation="Horizontal" Margin="5,0,5,0"
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Spacing="5" Orientation="Horizontal" Margin="5,0,5,0"
                                                  HorizontalOptions="Fill" HeightRequest="80">
-                                        
-                                        <Image Source="{Binding Image}" HeightRequest="65" WidthRequest="65"
+
+                                                <Image Source="{Binding Image}" HeightRequest="65" WidthRequest="65"
                                                VerticalOptions="Center"/>
-                                        
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium"
+
+                                                <Label Text="{Binding Name}" TextColor="Black" FontSize="Medium"
                                                HorizontalTextAlignment="Start" VerticalOptions="Center"
                                                HorizontalOptions="StartAndExpand"/>
-
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-           </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                </StackLayout>
+            </StackLayout>
             <StackLayout BackgroundColor="Black" VerticalOptions="End">
                 <Grid>
                     <Grid.RowDefinitions>

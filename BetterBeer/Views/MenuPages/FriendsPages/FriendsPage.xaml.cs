@@ -16,14 +16,12 @@ namespace BetterBeer
         SwipeListener listener;
         List<Friend> friends;
         public Friend SelectedFriend { get; set; }
-        ActivityIndicator act_Indicator = new ActivityIndicator();
-       
 
         public FriendsPage()
         {
             InitializeComponent();
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-            act_Indicator.IsVisible = false;
+
             if (Device.RuntimePlatform == Device.iOS)
             {
                 //MainStack.Margin = new Thickness(0,60,0,0);
@@ -37,7 +35,6 @@ namespace BetterBeer
                 searchBar.WidthRequest = 250;
             }
 
-
             listener = new SwipeListener(stlout_Swipe, this);
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -48,7 +45,6 @@ namespace BetterBeer
 
             friends = Friend.friends;
             lv_FriendsList.ItemsSource = friends;
-
         }
 
 
@@ -59,13 +55,14 @@ namespace BetterBeer
 
         private async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            await Task.Run(async () =>
-            {
-                act_Indicator.IsVisible = true;
-                await Task.Delay(500);
-
-            });
+            act_Indicator.IsVisible = true;
             Friend friend = (Friend)lv_FriendsList.SelectedItem;
+
+            await Task.Run(async () =>
+            {   
+                await Task.Delay(500);
+            });
+      
             await Navigation.PushAsync(new FriendProfile(friend));
             act_Indicator.IsVisible = false;
         }

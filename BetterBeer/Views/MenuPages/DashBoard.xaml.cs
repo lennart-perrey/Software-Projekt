@@ -7,6 +7,7 @@ using BetterBeer.Objects;
 using BetterBeer.Views.MenuPages;
 using BetterBeer.Views.MenuPages.FriendsPages;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using System.Threading.Tasks;
 
 namespace BetterBeer
 {
@@ -170,8 +171,23 @@ namespace BetterBeer
             await Navigation.PushAsync(new StarPage(),false);
         }
 
-        public void OnTopSwipe(View view)
+        public async void OnTopSwipe(View view)
         {
+            bestBierImg.IsVisible = false;
+            friendRatingBeer.IsVisible = false;
+            randomImg1.IsVisible = false;
+            randomImg2.IsVisible = false;
+            act_Indicator1.IsVisible = true;
+            act_Indicator2.IsVisible = true;
+            act_Indicator3.IsVisible = true;
+            act_Indicator4.IsVisible = true;
+
+            await Task.Run(async () =>
+            {
+
+                await Task.Delay(500);
+            });
+
             try
             {
                 BetterBeer.Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
@@ -179,6 +195,16 @@ namespace BetterBeer
                 BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
                 BetterBeer.Objects.DashBoard.friend = BetterBeer.Objects.DashBoard.getFriends();
                 BetterBeer.Objects.DashBoard.friendsRatingList = BetterBeer.Objects.DashBoard.getFriendsRating();
+
+                act_Indicator1.IsVisible = false;
+                act_Indicator2.IsVisible = false;
+                act_Indicator3.IsVisible = false;
+                act_Indicator4.IsVisible = false;
+
+                bestBierImg.IsVisible = true;
+                friendRatingBeer.IsVisible = true;
+                randomImg1.IsVisible = true;
+                randomImg2.IsVisible = true;
 
                 //Random
                 Random r = new Random();
@@ -190,10 +216,8 @@ namespace BetterBeer
             }
             catch(Exception)
             {
-                DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
+                await DisplayAlert("Fehler", "Ups, hier ist etwas schiefgegangen", "Ok");
             }
-
-
         }
 
         private async void Options_Tapped(object sender, EventArgs e)
@@ -231,10 +255,19 @@ namespace BetterBeer
 
         private async void Frame2_Tapped(object sender, EventArgs e)
         {
+            friendRatingBeer.IsVisible = false;
+            await Task.Run(async () =>
+            {
+                act_Indicator2.IsVisible = true;
+                await Task.Delay(500);
+            });
+
             try
             {
                 List<Friend> friends = Database.ShowUser(LastFriendsRating.Name);
                 await Navigation.PushAsync(new FriendProfile(friends[0]));
+                act_Indicator2.IsVisible = false;
+                friendRatingBeer.IsVisible = true;
             }
             catch(Exception ex)
             {
