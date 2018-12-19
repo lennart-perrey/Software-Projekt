@@ -19,9 +19,10 @@ namespace BetterBeer
 
         private async void btn_login_clicked(object sender, EventArgs e)
         {
+            act_Indicator.IsVisible = true;
+
             await Task.Run(async () =>
-            {
-                act_Indicator.IsVisible = true;
+            {               
                 await Task.Delay(500);
 
             });
