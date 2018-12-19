@@ -174,7 +174,7 @@ namespace BetterBeer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            if(responseString != "[{BewertungID:null,BierID:null,UserID:null,created_on:null}]")
+            if(responseString != "")
             {
                 List<FriendRating> ratings = JsonConvert.DeserializeObject<List<FriendRating>>(responseString);
                 return ratings;

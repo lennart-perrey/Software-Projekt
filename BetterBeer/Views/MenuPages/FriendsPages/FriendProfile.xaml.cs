@@ -41,27 +41,46 @@ namespace BetterBeer.Views.MenuPages.FriendsPages
             List<Criteria> criterias = RatedBeer.criterias;
             List<LastRatingCarouselView> lastRatingCarouselViews = new List<LastRatingCarouselView>();
 
-            if (ratings.Count > 0 || ratings != null)
+            if (ratings != null)
             {
-                foreach (FriendRating rating in ratings)
+                if(ratings.Count > 10)
                 {
-                    List<LastFriendsRating> LastRatings = Database.getFriendRatingLastBeerByCrit(rating.RatingId);
-                    if(LastRatings.Count > 0)
+                    for (int i = 0; i < 10; i++)
                     {
-                        LastRatingCarouselView lastRatingCarouselView = new LastRatingCarouselView(LastRatings[0].BierName, LastRatings[0].Bild, criterias[0].Kriterium, criterias[1].Kriterium,
-                        criterias[2].Kriterium, criterias[3].Kriterium, criterias[4].Kriterium, LastRatings[0].Bewertung.ToString(), LastRatings[1].Bewertung.ToString(),
-                        LastRatings[2].Bewertung.ToString(), LastRatings[3].Bewertung.ToString(), LastRatings[4].Bewertung.ToString());
+                        List<LastFriendsRating> LastRatings = Database.getFriendRatingLastBeerByCrit(ratings[i].RatingId);
+                        if (LastRatings.Count > 0)
+                        {
+                            LastRatingCarouselView lastRatingCarouselView = new LastRatingCarouselView(LastRatings[0].BierName, LastRatings[0].Bild, criterias[0].Kriterium, criterias[1].Kriterium,
+                            criterias[2].Kriterium, criterias[3].Kriterium, criterias[4].Kriterium, LastRatings[0].Bewertung.ToString(), LastRatings[1].Bewertung.ToString(),
+                            LastRatings[2].Bewertung.ToString(), LastRatings[3].Bewertung.ToString(), LastRatings[4].Bewertung.ToString());
 
-                        lastRatingCarouselViews.Add(lastRatingCarouselView);
+                            lastRatingCarouselViews.Add(lastRatingCarouselView);
+                        }
                     }
-                    
                 }
+                else
+                {
+                    foreach (FriendRating rating in ratings)
+                    {
+                        List<LastFriendsRating> LastRatings = Database.getFriendRatingLastBeerByCrit(rating.RatingId);
+                        if (LastRatings.Count > 0)
+                        {
+                            LastRatingCarouselView lastRatingCarouselView = new LastRatingCarouselView(LastRatings[0].BierName, LastRatings[0].Bild, criterias[0].Kriterium, criterias[1].Kriterium,
+                            criterias[2].Kriterium, criterias[3].Kriterium, criterias[4].Kriterium, LastRatings[0].Bewertung.ToString(), LastRatings[1].Bewertung.ToString(),
+                            LastRatings[2].Bewertung.ToString(), LastRatings[3].Bewertung.ToString(), LastRatings[4].Bewertung.ToString());
 
+                            lastRatingCarouselViews.Add(lastRatingCarouselView);
+                        }
+                    }
+                }
+               
                 MainCarouselView.ItemsSource = lastRatingCarouselViews;
             }
             else
             {
                 MainCarouselView.IsVisible = false;
+                lbl_swipe.IsVisible = false;
+                lbl_swipeLine.IsVisible = false;
             }
         }
 

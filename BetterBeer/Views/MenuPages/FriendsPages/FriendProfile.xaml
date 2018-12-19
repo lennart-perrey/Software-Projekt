@@ -37,105 +37,107 @@
                                        VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="#FFD657"/>
                     </Frame>
                 </Grid>
-            </StackLayout>
-            <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,5" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-            <cv:CarouselView x:Name="MainCarouselView" HeightRequest="300">
-                <cv:CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout HorizontalOptions="Fill">
-                            <Label Text="Zuletzt bewertete Biere" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium"/>
-                            <Grid Margin="0,10,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50*"/>
-                                    <ColumnDefinition Width="50*"/>
-                                </Grid.ColumnDefinitions>
-                                    
-                                <Label Text="{Binding BierName}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Grid.Column="1"/>
-                                <Image Source="{Binding Bild}" VerticalOptions="End" HeightRequest="150" WidthRequest="150" Grid.Column="1" Margin="0,5,0,0"/>
-                                
-                                <Grid Grid.Column="0" VerticalOptions="Center">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                    </Grid.RowDefinitions>
-
-
-                                    <Grid Grid.Row="0">
+                    <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,5" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <cv:CarouselView x:Name="MainCarouselView" HeightRequest="300">
+                        <cv:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HorizontalOptions="Fill">
+                                    <Label Text="Zuletzt bewertete Biere" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium"/>
+                                    <Grid Margin="0,10,0,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80*"/>
-                                            <ColumnDefinition Width="20*"/>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" x:Name="criteria1" Text="{Binding Criteria1}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                               VerticalTextAlignment="Center"/>
 
-                                        <Label Grid.Column="1" x:Name="rating1" Text="{Binding Rating1}" VerticalOptions="Center" 
-                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
-                                               VerticalTextAlignment="Center"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80*"/>
-                                            <ColumnDefinition Width="20*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" x:Name="criteria2" Text="{Binding Criteria2}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                              VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding BierName}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Grid.Column="1"/>
+                                        <Image Source="{Binding Bild}" VerticalOptions="End" HeightRequest="150" WidthRequest="150" Grid.Column="1" Margin="0,5,0,0"/>
 
-                                        <Label Grid.Column="1" x:Name="rating2" Text="{Binding Rating2}" VerticalOptions="Center" 
-                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
-                                               VerticalTextAlignment="Center"/>
-                                    </Grid>
-                                    <Grid Grid.Row="2">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80*"/>
-                                            <ColumnDefinition Width="20*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" x:Name="criteria3" Text="{Binding Criteria3}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                               VerticalTextAlignment="Center"/>
+                                        <Grid Grid.Column="0" VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                                <RowDefinition Height="40"/>
+                                            </Grid.RowDefinitions>
 
-                                        <Label Grid.Column="1" x:Name="rating3" Text="{Binding Rating3}"  VerticalOptions="Center" 
-                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
-                                               VerticalTextAlignment="Center"/>
-                                    </Grid>
-                                    <Grid Grid.Row="3">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80*"/>
-                                            <ColumnDefinition Width="20*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" x:Name="criteria4" Text="{Binding Criteria4}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                               VerticalTextAlignment="Center"/>
 
-                                        <Label Grid.Column="1" x:Name="rating4" Text="{Binding Rating4}" VerticalOptions="Center" 
-                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
-                                               VerticalTextAlignment="Center"/>
-                                    </Grid>
-                                    <Grid Grid.Row="4">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80*"/>
-                                            <ColumnDefinition Width="20*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" x:Name="criteria5" Text="{Binding Criteria5}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
-                                                                       FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                               VerticalTextAlignment="Center"/>
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" x:Name="criteria1" Text="{Binding Criteria1}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                           FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                   VerticalTextAlignment="Center"/>
 
-                                        <Label Grid.Column="1" x:Name="rating5" Text="{Binding Rating5}" VerticalOptions="Center" 
-                                                                       FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
-                                               VerticalTextAlignment="Center"/>
+                                                <Label Grid.Column="1" x:Name="rating1" Text="{Binding Rating1}" VerticalOptions="Center" 
+                                                                           FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                                   VerticalTextAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" x:Name="criteria2" Text="{Binding Criteria2}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                           FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                  VerticalTextAlignment="Center"/>
+
+                                                <Label Grid.Column="1" x:Name="rating2" Text="{Binding Rating2}" VerticalOptions="Center" 
+                                                                           FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                                   VerticalTextAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" x:Name="criteria3" Text="{Binding Criteria3}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                           FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                   VerticalTextAlignment="Center"/>
+
+                                                <Label Grid.Column="1" x:Name="rating3" Text="{Binding Rating3}"  VerticalOptions="Center" 
+                                                                           FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                                   VerticalTextAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" x:Name="criteria4" Text="{Binding Criteria4}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                           FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                   VerticalTextAlignment="Center"/>
+
+                                                <Label Grid.Column="1" x:Name="rating4" Text="{Binding Rating4}" VerticalOptions="Center" 
+                                                                           FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                                   VerticalTextAlignment="Center"/>
+                                            </Grid>
+                                            <Grid Grid.Row="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" x:Name="criteria5" Text="{Binding Criteria5}" TextColor="Black" FontAttributes="Bold" BackgroundColor="White" 
+                                                                           FontSize="20" VerticalOptions="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                   VerticalTextAlignment="Center"/>
+
+                                                <Label Grid.Column="1" x:Name="rating5" Text="{Binding Rating5}" VerticalOptions="Center" 
+                                                                           FontSize="23" FontAttributes="Bold" TextColor="#FFD657" HorizontalTextAlignment="End"
+                                                   VerticalTextAlignment="Center"/>
+                                            </Grid>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Grid>
-                        </StackLayout>
-                    </DataTemplate>
-                </cv:CarouselView.ItemTemplate>
-            </cv:CarouselView>
-            <Label HorizontalOptions="Center" Text="wische für weitere Bewertungen" TextColor="Gray" FontSize="Small"/>
-            <Label Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </cv:CarouselView.ItemTemplate>
+                    </cv:CarouselView>
+                </StackLayout>
+            <Label x:Name="lbl_swipe" HorizontalOptions="Center" Text="wische für weitere Bewertungen" TextColor="Gray" FontSize="Small"/>
+            <Label x:Name="lbl_swipeLine" Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" Margin="-20,5,-20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
             <StackLayout Margin="0,5,0,25" VerticalOptions="End" Orientation="Vertical">
                 <Button x:Name="btn_cancelFriendship" Text="Freundschaft beenden" BackgroundColor="#FF613F"
                                     TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="btn_cancelFriendship_Clicked"/>
