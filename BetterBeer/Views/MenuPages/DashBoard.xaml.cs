@@ -214,6 +214,34 @@ namespace BetterBeer
                 bestBierName.Text = bestBeer.beerName;
                 bestBierRating.Text = Convert.ToString(bestBeer.avgRating);
 
+                //Friend Rating
+                List<FriendRating> friendRatings = BetterBeer.Objects.DashBoard.friendsRating;
+                if(friendRatings.Count > 0)
+                {
+                    FriendRating rating = friendRatings[0];
+                    int bierId = rating.BierId;
+                    Beer beer = null;
+
+                    foreach (Beer beerdata in allBeers)
+                    {
+                        if(Convert.ToInt32(beerdata.beerId) == bierId)
+                        {
+                            beer = beerdata;
+                        }
+                    }
+                    friendRatingBeer.Source = beer.pic;
+
+                    Friend friend = BetterBeer.Objects.DashBoard.friend;
+                    LastFriendsRating = friend;
+                    friendRatingName.Text = friend.Name + " hat "+beer.beerName+ " bewertet.";
+
+                }
+                else
+                {
+                    friendRatingName.Text =  "Du hast keine Freunde :( ";
+                }
+
+
 
                 //Random
                 Random r = new Random();
