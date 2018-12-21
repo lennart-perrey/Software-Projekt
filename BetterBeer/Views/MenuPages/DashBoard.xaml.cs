@@ -190,6 +190,7 @@ namespace BetterBeer
 
             try
             {
+                RatedBeer.highscores = Database.Highscore();
                 BetterBeer.Objects.DashBoard.friendsRating = Database.showFriendLast(SpecificUser.UserID);
                 BetterBeer.Objects.DashBoard.count = Database.countRatings(SpecificUser.UserID);
                 BetterBeer.Objects.DashBoard.friendRatingCount = Database.countFriendRatings(SpecificUser.UserID);
@@ -205,6 +206,14 @@ namespace BetterBeer
                 friendRatingBeer.IsVisible = true;
                 randomImg1.IsVisible = true;
                 randomImg2.IsVisible = true;
+
+                //Best Beer
+                allBeers = RatedBeer.highscores;
+                Beer bestBeer = allBeers[0];
+                bestBierImg.Source = bestBeer.pic;
+                bestBierName.Text = bestBeer.beerName;
+                bestBierRating.Text = Convert.ToString(bestBeer.avgRating);
+
 
                 //Random
                 Random r = new Random();
